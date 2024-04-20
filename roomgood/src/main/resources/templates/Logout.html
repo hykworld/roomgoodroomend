@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{layout/basic :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <div style="width:50%;margin:auto;margin-top:50px;">
+            <h2 class="form-signin-heading">로그아웃</h2>
+            <p>
+            <h3>로그아웃 하시겠습니까?</h3>
+            <form th:action="@{/logoutmovieList}" th:method="post">
+                <button type="submit" class="btn btn-primary">예</button>
+                <a class="btn btn-primary" href="javascript:history.back();">아니오</a>
+            </form>
+
+            </p>
+        </div>
+
+    </th:block>
+</th:block>

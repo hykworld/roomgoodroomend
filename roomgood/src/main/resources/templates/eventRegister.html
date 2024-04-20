@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <script src="https://kit.fontawesome.com/07c0459639.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        * {
+        font-family: "Single Day", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    </style>
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- Custom styles for this template -->
+
+</head>
+<body>
+        <h1 class="mt-4">이벤트 등록</h1>
+
+        <form th:action="@{/eventRegister}" th:method="post">
+            <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+            <div class="form-group">
+                <label>이벤트 제목</label>
+
+                <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+
+            </div>
+            <div class="form-group">
+                <label >기한</label>
+                <input type="text" class="form-control" id="expired" name="expired" placeholder="이벤트 기간">
+            </div>
+
+            <label >글 내용</label>
+            <input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요">
+
+            <div class="form-group fileForm">
+                <label >이미지 파일</label>
+                <div class="custom-file">
+                    <input type="file"  class="custom-file-input files" id="fileInput" multiple>
+                    <label class="custom-file-label" data-browse="파일 선택"></label>
+                </div>
+            </div>
+
+            <div class="box">
+
+            </div>
+
+
+            <style>
+                .uploadResult{
+                    width:100%;
+                    height:300px;
+                    background-color:gray;
+                }
+                .uploadResult ul{
+                    display:flex;
+                    flex-flow:row;
+                    justify-content:center;
+                    align-items: center;
+                }
+                .uploadResult ul li{
+                    list-style:none;
+                    padding:10px;
+                }
+
+                .bigPictureWrapper {
+                  position: absolute;
+                  display: none;
+                  justify-content: center;
+                  align-items: center;
+                  top:0%;
+                  width:100%;
+                  height:100%;
+                  background-color: gray;
+                  z-index: 100;
+                }
+
+                .bigPicture {
+                  position: relative;
+                  display:flex;
+                  justify-content: center;
+                  align-items: center;
+                }
+
+                .bigPicture img{
+                    width:600px;
+                }
+
+                .btn-circle{
+                    width:25px !important;
+                    height:25px !important;
+                    line-height:0px !important;
+                }
+                .fa-times{
+                    font-size:10px !important;
+                }
+
+                .uploadResult {
+                    width: 100%;
+                    background-color: gray;
+                    margin-top: 10px;
+                }
+
+                .uploadResult ul {
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: center;
+                    align-items: center;
+                    vertical-align: top;
+                    overflow: auto;
+                }
+
+                .uploadResult ul li {
+                    list-style: none;
+                    padding: 10px;
+                    margin-left: 2em;
+                }
+
+
+            </style>
+            <input type="hidden" id="catch" value="aa">
+            <div class="uploadResult">
+                <p>파일을 끌어다가 놓으세요</p>
+                <ul>
+
+                </ul>
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+        </form>
+
+        <script type="application/javascript" th:inline="javascript" th:fragment="ajax-csrf-header">
+            $(document).ready(function(e) {
+
+            ////////////////csrf 토큰////////////////////////////////////////////////////////////////
+               var csrfToken = $("meta[name='_csrf']").attr("content");
+               var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+
+<!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
+<!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
+                $(document).ajaxSend(function (e, xhr, options) {
+                    xhr.setRequestHeader(csrfHeader, csrfToken);
+                });
+            ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
+
+                $("#myModal").hide();
+
+                var regex = new RegExp("(.*?)\.(gif|jpg|png)$");
+                var maxSize = 10485760; //10MB
+
+                function checkExtension(fileName, fileSize){
+
+                    if(fileSize >= maxSize){
+                        alert("파일 사이즈 초과");
+                        return false;
+                    }
+
+                    if(!regex.test(fileName)){
+                        alert("이미지만 업로드할 수 있습니다.");
+                        return false;
+                    }
+                    return true;
+                }
+
+                //////////////////////////////////등록버튼 클릭시 (드래그앤드롭 xx)////////////////////////////////////////////
+                $(".custom-file-input").on("change", function() {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                    //siblings는 형제 거기서 .custom-file-label얘를 찾아서 셀렉티드클래스를 주고 fileName으로 내용을 바꿔줘라
+                    var formData = new FormData();
+
+                    //이 두줄이 바뀜
+                    var inputFile = $(this);
+                    var files = inputFile[0].files;
+
+                    var appended = false;
+
+                    for (var i = 0; i < files.length; i++) {
+
+                        if(!checkExtension(files[i].name, files[i].size) ){
+                            return false;
+                        }
+
+                        console.log(files[i]);
+                        formData.append("uploadFiles", files[i]);
+                        appended = true;
+
+                    }
+
+                    //upload를 하지 않는다.
+                    if (!appended) {return;}
+
+                    for (var value of formData.values()) {
+                        console.log(value);
+                    }
+                    $("#myModal").show();
+                    //실제 업로드 부분
+                    //upload ajax
+                    $.ajax({
+                        url: '/uploadAjax',
+                        processData: false,
+                        contentType: false,
+                        data: formData,
+                        type: 'POST',
+                        dataType:'json',
+                        success: function(result){
+                            $("#myModal").show();
+                            console.log(result);
+                            showResult(result);
+                            $("#myModal").hide();
+
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.log(textStatus);
+                            $("#myModal").hide();
+                        }
+                    }); //$.ajax
+                }); //end change event
+                //////////////////////////////////등록버튼 클릭시.end (드래그앤드롭 xx)////////////////////////////////////////////
+
+
+                function showResult(uploadResultArr){
+                    var uploadUL = $(".uploadResult ul");
+                    var str ="";
+
+                    $(uploadResultArr).each(function(i, obj) {
+                        console.log("objobj"+obj);
+                        str += "<li data-name='" + obj.fileName + "' data-path='"+obj.folderPath+"' data-uuid='"+obj.uuid+"'>";
+                        str + " <div>";
+                        str += "<button type='button' data-file=\'" + obj.imageURL + "\' "
+                        str += "class='btn-warning btn-sm'>X</button><br>";
+                        str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>";
+                        str += "</div>";
+                        str + "</li>";
+                    });
+
+                    uploadUL.append(str);
+                }
+
+                //파일 지우기 -> 사진 x버튼
+                $(".uploadResult ").on("click", "li button", function(e){
+
+                    console.log("delete file");
+
+                    var targetFile = $(this).data("file");
+
+                    var targetLi = $(this).closest("li");
+
+                    $.ajax({
+                        url: '/removeFile',
+                        data: {fileName: targetFile},
+                        dataType:'text',
+                        type: 'POST',
+                        success: function(result){
+                            alert(result);
+
+                            targetLi.remove();
+                        }
+                    }); //$.ajax
+                });
+
+
+                //prevent submit
+                $("#submitBtn").on("click", function(e) {
+                    e.preventDefault();//이벤트방지
+                    var str = "";
+
+                    if($("#title").val()==false){
+                        alert("제목을 입력해주세요");
+                        $("#title").focus();
+                        return;
+                    };
+
+                    if($("#fileInput").val()==false){
+                        alert("파일을 선택해주세요");
+                        $("#fileInput").focus();
+                        return;
+                    };
+
+                    $(".uploadResult li").each(function(i,obj){
+                        var target = $(obj);
+                        str += "<input type='hidden' name='imageDTOList["+i+"].imgName' value='"+target.data('name') +"'>";
+                        str += "<input type='hidden' name='imageDTOList["+i+"].path' value='"+target.data('path')+"'>";
+                        str += "<input type='hidden' name='imageDTOList["+i+"].uuid' value='"+target.data('uuid')+"'>";
+                    });
+                    //태그들이 추가된 것을 확인한 후에 comment를 제거
+                    $(".box").html(str);
+                    console.log($("#catch"));
+                    $("#catch").remove();
+                    if($("#catch").val()=="aa"){
+                        alert("이미지 업로드 중입니다.");
+                        console.log($("#catch"));
+                    }else{
+                            $("form").submit();
+                        };
+                });
+
+                $(".uploadResult").on("dragenter dragover",function(event){
+                    //기본이벤트 취소 , 새창열리는 거 방지
+                    event.preventDefault();
+
+                });
+                //drop했을 때 파일의 목록을 구함
+                $(".uploadResult").on("drop",function(event){
+                    event.preventDefault();
+                    //FormData객체 생성. form태그에 대응하는 객체
+                    var formData=new FormData();
+
+                    //drop했을 때 파일의 목록을 구함 // 이렇게 바뀜?
+                    var files=event.originalEvent.dataTransfer.files;
+                    console.log(files);
+                    for(var i=0;i<files.length;i++){
+                        var file=files[i];
+                        console.log(file);
+                        //파일확장자,size체크
+                        if(!checkExtension(files[i].name,files[i].size)){
+                            return; //중지
+                        }
+                        formData.append("uploadFile",files[i]);
+                    }
+                    console.log(formData);
+                    $.ajax({
+                        url: "/uploadAjaxAction",
+                        processData: false, //QueryString(uploadAjaxAction?name=hkd)을 생성하지 않고
+                        contentType: false, //multipart/form-data형식으로 보냄
+                        data: formData,  //formData전송
+                        type: "POST",
+                        dataType: "json",
+                        success: function(result){
+                            console.log(result);
+
+                            showUploadedFile(result);//파일명출력
+                        }
+                    });
+                })
+
+            }); //document ready.end////////////////////////////////////////////////////////////////////////////////
+        </script>
+
+        </body>
+
+</html>
