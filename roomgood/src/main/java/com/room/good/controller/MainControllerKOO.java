@@ -58,7 +58,7 @@ public class MainControllerKOO {
     };
     @PostMapping("/eventRegister")
     public String eventRegisterPost(EventDTO eventDTO , RedirectAttributes redirectAttributes){
-        log.info("movieDTO: " + eventDTO);
+        log.info("EventDTO: " + eventDTO);
         Long mno = eventService.register(eventDTO);
         redirectAttributes.addFlashAttribute("msg", mno+"번 글로 등록되었습니다.");
         return "redirect:/blog";

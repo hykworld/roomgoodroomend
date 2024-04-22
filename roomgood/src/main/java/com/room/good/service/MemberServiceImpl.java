@@ -85,6 +85,9 @@ public class MemberServiceImpl implements MemberService {
         clubMember.setGrade("일반회원");
         clubMember.setAdress(memberDTO.getAdress());
         clubMember.addMemberRole(ClubMemberRole.USER);
+        clubMember.setStreetaddress(memberDTO.getStreetaddress());
+        clubMember.setDetailaddress(memberDTO.getDetailaddress());
+
         log.info("clubMember_clubMember"+clubMember);
         clubMemberRepository.save(clubMember);
         return true;
