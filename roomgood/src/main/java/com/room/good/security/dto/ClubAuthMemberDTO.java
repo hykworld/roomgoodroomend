@@ -29,6 +29,10 @@ public class ClubAuthMemberDTO extends User implements OAuth2User {
 
     private String phone;
 
+    private String adress;// 주소
+    private String streetaddress;		// 지번 주소
+    private String detailaddress;		// 상세
+
     private Map<String, Object> attr;
 
 //    private Map<String, Object> attributes;

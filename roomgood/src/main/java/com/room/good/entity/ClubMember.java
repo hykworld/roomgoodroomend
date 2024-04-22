@@ -28,7 +28,11 @@ public class ClubMember extends BaseEntity {
     private boolean fromSocial; // 의미없는데 ㄱㅊ
     ///////////////////
 
+
     private String adress;// 주소
+
+    private String streetaddress;		// 지번 주소
+    private String detailaddress;		// 상세
 
     @Column( columnDefinition = "BIGINT(20) DEFAULT 0")
     private Long money; // 충전금액

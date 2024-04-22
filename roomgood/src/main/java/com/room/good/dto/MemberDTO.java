@@ -18,6 +18,8 @@ public class MemberDTO {
     private String nickname;
     private String phone;
     private String adress;
+    private String streetaddress;		// 지번 주소
+    private String detailaddress;		// 상세
     private Long money;
     private Long mileage;
     private String grade;
