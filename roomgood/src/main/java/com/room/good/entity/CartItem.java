@@ -28,10 +28,14 @@ public class CartItem extends BaseEntity {
     @Column(nullable = false)
     private int quantity;
 
-    public CartItem(Cart cart, Product product, int quantity) {
+    public CartItem(Cart cart, Product product, int quantity) { // 물품 하나의 정보
         this.cart = cart;
         this.product = product;
         this.quantity = quantity;
+    }
+
+    public void addquantity(int quantity){
+        this.quantity += quantity;
     }
 }
 
