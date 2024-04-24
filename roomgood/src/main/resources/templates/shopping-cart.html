@@ -224,26 +224,7 @@
                                     <td class="cart__price">$ 47.00</td>
                                     <td class="cart__close"><i class="fa fa-close"></i></td>
                                 </tr>
-                                <tr>
-                                    <td class="product__cart__item">
-                                        <div class="product__cart__item__pic">
-                                            <img src="img/shopping-cart/cart-4.jpg" alt="">
-                                        </div>
-                                        <div class="product__cart__item__text">
-                                            <h6>Basic Flowing Scarf</h6>
-                                            <h5>$98.49</h5>
-                                        </div>
-                                    </td>
-                                    <td class="quantity__item">
-                                        <div class="quantity">
-                                            <div class="pro-qty-2">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 30.00</td>
-                                    <td class="cart__close"><i class="fa fa-close"></i></td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -274,7 +255,43 @@
                             <li>Subtotal <span>$ 169.50</span></li>
                             <li>Total <span>$ 169.50</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+<!--                        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>-->
+<!--                        &lt;!&ndash; iamport.payment.js &ndash;&gt;-->
+<!--                        <script src="https://cdn.iamport.kr/v1/iamport.js"></script>-->
+<!--                        <script>-->
+<!--                            function requestPay() {-->
+<!--                              IMP.init('imp82434250'); //iamport 대신 자신의 "가맹점 식별코드"를 사용-->
+<!--                              IMP.request_pay({-->
+<!--                                pg: "inicis",-->
+<!--                                pay_method: "card",-->
+<!--                                merchant_uid : 'merchant_'+new Date().getTime(),-->
+<!--                                name : '결제테스트',-->
+<!--                                amount : 14000,-->
+<!--                                buyer_email : 'kummo9@siot.do',-->
+<!--                                buyer_name : '구매자',-->
+<!--                                buyer_tel : '010-1234-5678',-->
+<!--                                buyer_addr : '서울특별시 강남구 삼성동',-->
+<!--                                buyer_postcode : '123-456'-->
+<!--                              }, function (rsp) { // callback-->
+<!--                                  if (rsp.success) {-->
+<!--                                    ...,-->
+<!--                                    // 결제 성공 시 로직,-->
+<!--                                    ...-->
+<!--                                  } else {-->
+<!--                                    ...,-->
+<!--                                    // 결제 실패 시 로직,-->
+<!--                                    ...-->
+<!--                                  }-->
+<!--                              });-->
+<!--                            }-->
+<!--                        </script>-->
+
+                        <!--bootpay 설치-->
+                        <!-- Js Plugins --> <button onclick="requestPayment()">결제하기</button> <!-- 버튼 클릭 시 결제 요청 함수 호출 -->
+                        <script src="https://js.bootpay.co.kr/bootpay-4.3.4.min.js" type="application/javascript"></script>
+                        <!--bootpay 설치.end-->
+
+                        <!-- jQuery -->
                     </div>
                 </div>
             </div>
@@ -359,8 +376,46 @@
         </div>
     </div>
     <!-- Search End -->
+    <script>
+        async function requestPayment() {
+    try {
+        const response = await Bootpay.requestPayment({
+            "application_id": "59a4d323396fa607cbe75de4",
+            "price": 500,
+            "order_name": "테스트결제",
+            "order_id": "TEST_ORDER_ID",
+            "pg":  "다날",
+            "method": "",
+            "tax_free": 0,
+            "user": {
+                "id": "회원아이디",
+                "username": "회원이름",
+                "phone": "01000000000",
+                "email": "test@test.com"
+            },
+            "items": [
+                {
+                    "id": "item_id",
+                    "name": "테스트아이템",
+                    "qty": 1,
+                    "price": 500
+                }
+            ],
+            "extra": {
+                "open_type": "iframe",
+                "card_quota": "0,2,3",
+                "escrow": false
+            }
+        });
+        console.log(response); // 결제 응답 처리
+    } catch (error) {
+        console.error(error); // 오류 처리
+    }
+}
 
-    <!-- Js Plugins -->
+    </script>
+
+<!--    <script src="js/pay.js"></script>-->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>

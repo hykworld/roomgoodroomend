@@ -30,6 +30,32 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*구씨 추가내역*/
+#mypagemenu li {
+    cursor:pointer;
+
+}
+.mymember div div{
+    padding-top:20px;
+    padding-bottom:0px;
+}
+/*구씨 추가내역*/
 html,
 body {
 	height: 100%;
@@ -2056,6 +2082,7 @@ ol {
 .breadcrumb-option {
 	background: #f3f2ee;
 	padding: 40px 0;
+
 }
 
 .breadcrumb__text h4 {

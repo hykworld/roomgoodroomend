@@ -24,7 +24,11 @@ public class QClubMember extends EntityPathBase<ClubMember> {
 
     public final StringPath adress = createString("adress");
 
+    public final StringPath birth = createString("birth");
+
     public final StringPath company = createString("company");
+
+    public final StringPath detailaddress = createString("detailaddress");
 
     public final StringPath email = createString("email");
 
@@ -43,6 +47,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
 
     public final StringPath name = createString("name");
 
+    public final StringPath nickname = createString("nickname");
+
     public final StringPath password = createString("password");
 
     public final StringPath phone = createString("phone");
@@ -51,6 +57,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     public final SetPath<ClubMemberRole, EnumPath<ClubMemberRole>> roleSet = this.<ClubMemberRole, EnumPath<ClubMemberRole>>createSet("roleSet", ClubMemberRole.class, EnumPath.class, PathInits.DIRECT2);
+
+    public final StringPath streetaddress = createString("streetaddress");
 
     public QClubMember(String variable) {
         super(ClubMember.class, forVariable(variable));

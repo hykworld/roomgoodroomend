@@ -64,81 +64,7 @@
 <!-- Offcanvas Menu End -->
 
 <!-- Header Section Begin -->
-<header class="header">
-    <div class="header__top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-7">
-                    <div class="header__top__left">
-                        <p>Free shipping, 30-day return or refund guarantee.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-5">
-                    <div class="header__top__right">
-                        <div class="header__top__links">
-                            <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
-                            <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
-                            <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
-                            <a href="/memberJoin" sec:authorize="isAuthenticated()">마이페이지</a>
-                            <a href="#">고객센터</a>
-                        </div>
-<!--                        <div class="header__top__hover">-->
-<!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
-<!--                            <ul>-->
-<!--                                <li>USD</li>-->
-<!--                                <li>EUR</li>-->
-<!--                                <li>USD</li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <div class="header__logo">
-                    <a href="/index"><img src="img/logo.png" alt=""></a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <nav class="header__menu mobile-menu">
-                    <ul>
-                        <li><a href="/shop">카테고리</a>
-                            <ul class="dropdown">
-                                <li><a href="/about" style="background-color:gray;">전체보기</a></li>
-                                <li><a href="/about">가구</a></li>
-                                <li><a href="/shop-details">가전</a></li>
-                                <li><a href="/shopping-cart">옷정리/보관</a></li>
-                                <li><a href="/checkout">생활용품</a></li>
-                                <li><a href="/blog-details">소품/취미</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">인기차트</a></li>
-                        <li><a href="/contact">만원이하</a></li>
-
-                        <li><a href="/contact">딸기마켓</a></li>
-                        <li class="active"><a href="/blog">이벤트</a>
-                            <ul class="dropdown">
-                                <li><a href="/eventRegister">글등록</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <div class="header__nav__option">
-                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="canvas__open"><i class="fa fa-bars"></i></div>
-    </div>
-</header>
+<div th:insert="~{header.html}"></div>
 <!-- Header Section End -->
 
 <!-- Breadcrumb Section Begin -->
@@ -191,74 +117,23 @@
     </div>
 </section>
 <!-- Blog Section End -->
+<ul class="pagination h-100 justify-content-center align-items-center" style="height:50px !important">
+    <li class="page-item" th:if="${result.prev}">
+        <a class="page-link" th:href="@{/blog(page= ${result.start -1})}" tabindex="-1">Previous</a>
+    </li>
+    <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
+        <a class="page-link" th:href="@{/blog(page = ${page})}">
+            [[${page}]]
+        </a>
+    </li>
+    <li class="page-item" th:if="${result.next}">
+        <a class="page-link" th:href="@{/blog(page= ${result.end + 1} )}">Next</a>
+    </li>
+</ul>
+
 
 <!-- Footer Section Begin -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="footer__about">
-                    <div class="footer__logo">
-                        <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                    </div>
-                    <p>The customer is at the heart of our unique business model, which includes design.</p>
-                    <a href="#"><img src="img/payment.png" alt=""></a>
-                </div>
-            </div>
-            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                <div class="footer__widget">
-                    <h6>Shopping</h6>
-                    <ul>
-                        <li><a href="#">Clothing Store</a></li>
-                        <li><a href="#">Trending Shoes</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Sale</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-6">
-                <div class="footer__widget">
-                    <h6>Shopping</h6>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Payment Methods</a></li>
-                        <li><a href="#">Delivary</a></li>
-                        <li><a href="#">Return & Exchanges</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                <div class="footer__widget">
-                    <h6>NewLetter</h6>
-                    <div class="footer__newslatter">
-                        <p>Be the first to know about new arrivals, look books, sales & promos!</p>
-                        <form action="#">
-                            <input type="text" placeholder="Your email">
-                            <button type="submit"><span class="icon_mail_alt"></span></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="footer__copyright__text">
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    <p>Copyright ©
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        2020
-                        All rights reserved | This template is made with <i class="fa fa-heart-o"
-                                                                            aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib</a>
-                    </p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<div th:insert="~{footer.html}"></div>
 <!-- Footer Section End -->
 
 <!-- Search Begin -->
