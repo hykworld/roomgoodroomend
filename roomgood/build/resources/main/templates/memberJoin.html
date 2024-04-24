@@ -168,7 +168,11 @@
                             <label for="sample6_postcode">주소<span data-text-content="true"
                                                                   style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                                   class="">*</span></label>
+<<<<<<< HEAD
                             <input type="text" class="form-control" id="sample6_postcode" name="adress" placeholder="우편번호" required>
+=======
+                            <input type="text" class="form-control" id="sample6_postcode" name="adress" placeholder="우편번호" required readonly="readonly">
+>>>>>>> b7e8e60e3b2d3b67da82d1770ff45335f0338c90
 
                         </div>
 
@@ -297,12 +301,15 @@
                 </form>
             </div>
         </div>
-        <footer class="my-3 text-center text-small">
-            <p class="mb-1">자취방 살아남기</p>
-        </footer>
     </div>
+        <div th:insert="~{footer.html}"></div>
 
 <script>
+
+    var msg = [[${msg}]];
+    if(msg){
+    alert(msg);
+    };
 
 <!--    window.addEventListener('load', () => {-->
 <!--      const forms = document.getElementsByClassName('validation-form');-->
@@ -319,6 +326,7 @@
 <!--      });-->
 <!--    }, false);-->
 </script>
+
 </body>
 
 </html>
