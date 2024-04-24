@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c55e45a2-36ce-4094-b78f-c2fe25fd5f2e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerKOO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerKOO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application-oauth.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application-oauth.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/.jshintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/Gruntfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/Gruntfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/dist/jquery.magnific-popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/dist/jquery.magnific-popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/dist/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/dist/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/dist/magnific-popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/dist/magnific-popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/jquery-loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/jquery-loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/jquery/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/qunit/qunit.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/qunit/qunit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/qunit/qunit.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/libs/qunit/qunit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/magnific-popup.jquery.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/magnific-popup.jquery.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/css/_settings.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/css/_settings.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/css/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/gallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/iframe.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/iframe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/inline.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/inline.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/retina.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/retina.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/zoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/src/js/zoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/analytics.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/analytics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/build-tool.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/build-tool.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/examples.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/examples.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/logo.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/logo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_includes/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_layouts/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/_layouts/default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/documentation.md" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/documentation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/site-assets/ajax/test-ajax-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/site-assets/ajax/test-ajax-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/site-assets/ajax/test-ajax.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/site-assets/ajax/test-ajax.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/site-assets/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/site-assets/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/uglify.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/uglify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/zepto.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/zepto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/zepto.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/third-party-libs/zepto.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/wordpress.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/Magnific-Popup-master/website/wordpress.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/MIT-LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/MIT-LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/demo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/demo/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/demo/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/demo/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/jquery.slicknav.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/jquery.slicknav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/jquery.slicknav.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/jquery.slicknav.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/slicknav.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/slicknav.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/slicknav.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/dist/slicknav.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/jquery.slicknav.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/jquery.slicknav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/scss/core.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/scss/core.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/scss/slicknav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/scss/slicknav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/scss/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/SlickNav-master/scss/theme.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-grid.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-reboot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/bootstrap-4.2.1-dist/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/fonts/ElegantIcons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/fonts/ElegantIcons.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/lte-ie7.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/lte-ie7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/elegant_font/HTML CSS/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/HELP-US-OUT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/HELP-US-OUT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/css/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/css/font-awesome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/animated.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/animated.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/bordered-pulled.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/bordered-pulled.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/core.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/core.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/fixed-width.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/fixed-width.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/font-awesome.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/font-awesome.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/icons.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/icons.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/larger.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/larger.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/list.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/list.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/mixins.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/mixins.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/path.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/path.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/rotated-flipped.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/rotated-flipped.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/screen-reader.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/screen-reader.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/stacked.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/stacked.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/variables.less" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/less/variables.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_animated.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_animated.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_bordered-pulled.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_bordered-pulled.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_core.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_core.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_fixed-width.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_fixed-width.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_icons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_icons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_larger.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_larger.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_list.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_path.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_path.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_rotated-flipped.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_rotated-flipped.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_screen-reader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_screen-reader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_stacked.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_stacked.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/font-awesome.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/font-awesome-4.7.0/scss/font-awesome.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/css/nice-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/css/nice-select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/fastclick.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/fastclick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/jquery.nice-select.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/jquery.nice-select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/jquery.nice-select.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/jquery.nice-select.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/prism.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/js/prism.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/_nice-select-prefixed.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/_nice-select-prefixed.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/_prism.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/_prism.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/nice-select.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/nice-select.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/Source/jquery-nice-select-1.1.0/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/elegant-icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/elegant-icons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/magnific-popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/magnific-popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/nice-select.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/nice-select.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/owl.carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/owl.carousel.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/slicknav.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/slicknav.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/ElegantIcons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/ElegantIcons.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery-3.3.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/jquery-3.3.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery.countdown.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/jquery.countdown.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery.nice-select.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/jquery.nice-select.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery.nicescroll.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/jquery.nicescroll.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/jquery.slicknav.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/jquery.slicknav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/mixitup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/mixitup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/js/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/js/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_about.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_about.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_blog-details.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_blog-details.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_blog-sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_blog-sidebar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_blog.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_blog.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_breadcrumb.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_breadcrumb.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_checkout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_checkout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_contact.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_contact.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_hero.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_hero.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_home-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_home-page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_product.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_product.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_responsive.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_responsive.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_shop-details.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_shop-details.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_shop.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_shop.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_shopping-cart.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_shopping-cart.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/_variable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/_variable.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/static/sass/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/sass/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shopping-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shopping-cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="good" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2eX6NCuv76s9qwXCJCXj3ghrgRb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GoodApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build good.executor": "Run",
+    "Gradle.good [:GoodApplication.main()].executor": "Run",
+    "Gradle.good [bootWar].executor": "Run",
+    "Gradle.roomgood [:GoodApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "yoon",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/git_kdigital/springboot_workspace/shop",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\entity" />
+      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\service" />
+      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\resources\templates" />
+      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\resources\static\img" />
+      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\security\service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\resources\templates\room" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.room.good.controller" />
+      <recent name="com.room.good.dto" />
+      <recent name="com.room.good.security.handler" />
+      <recent name="com.room.good.repository" />
+      <recent name="com.room.good.security.dto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GoodApplication">
+    <configuration name="GoodApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.room.good.GoodApplication" />
+      <module name="good.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.room.good.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="good [bootWar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootWar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.good [bootWar]" />
+        <item itemvalue="Application.GoodApplication" />
+        <item itemvalue="Gradle.good [bootWar]" />
+        <item itemvalue="Application.GoodApplication" />
+        <item itemvalue="Application.GoodApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c55e45a2-36ce-4094-b78f-c2fe25fd5f2e" name="Changes" comment="" />
+      <created>1712038533726</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712038533726</updated>
+    </task>
+    <servers />
+  </component>
+</project>

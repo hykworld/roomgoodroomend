@@ -23,7 +23,7 @@ public class CartItem extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Product product;
+    private Product product;//프로독트의 프라이머리키다
 
     @Column(nullable = false)
     private int quantity;

@@ -33,4 +33,5 @@ public class Cart extends BaseEntity {
     public Cart(ClubMember clubMember) {
         this.clubMember = clubMember;
     }
+
 }

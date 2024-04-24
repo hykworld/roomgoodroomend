@@ -3,20 +3,20 @@ package com.room.good.controller;
 import com.room.good.dto.EventDTO;
 import com.room.good.dto.MemberDTO;
 import com.room.good.dto.PageRequestDTO;
-import com.room.good.dto.PageResultDTO;
 import com.room.good.service.EventService;
 import com.room.good.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 @Log4j2
@@ -35,6 +35,7 @@ public class MainControllerKOO {
     @GetMapping("/blog")
     public void getblog(PageRequestDTO pageRequestDTO, Model model ){
         model.addAttribute("result",eventService.getList(pageRequestDTO));
+        log.info("resultresult"+eventService.getList(pageRequestDTO));
     };
 
 
@@ -102,7 +103,7 @@ public class MainControllerKOO {
 
     @PostMapping("/memberJoin")
     public String memberJoin(RedirectAttributes redirectAttributes, MemberDTO memberDTO, HttpSession session ,String year,String month,String day) {
-        memberDTO.setBirth(year+month+day);
+        memberDTO.setBirth(year+"-"+month+"-"+day);// 구분해서 넣으려고 나중에 - 이거 기준으로 잘라서 수정할거임
         memberDTO.setGrade("일반회원");
         log.info("memberDTOmemberDTO"+memberDTO);
         if (memberService.check(memberDTO.getEmail())) {
@@ -120,6 +121,7 @@ public class MainControllerKOO {
             redirectAttributes.addFlashAttribute("msg", "회원가입에 성공하셨습니다.");
             return "redirect:/blog";
         }
+
     }
     @GetMapping("/faillogin")
     public String loginmovie(String error,RedirectAttributes redirectAttributes){
@@ -132,11 +134,49 @@ public class MainControllerKOO {
 
 
     @GetMapping("/mypage")
-    public void getmypage(){};
+    public void getmypage(Model model, Principal principal,@RequestParam(defaultValue = "member")String category){
+
+        String email = principal.getName();
+        MemberDTO memberDTO = memberService.findbyid(email);
+        log.info("memberDTOmemberDTO"+memberDTO);
+        model.addAttribute("memberDTO",memberDTO);
+
+        model.addAttribute("category",category);
+    };
+    @PostMapping("/mypage")
+    public String postmypage(){
+
+        return "redirect:/mypageupdate";
+    };
+
+    @GetMapping("/mypageupdate")
+    public void getmypageupdate(Model model, Principal principal){
+
+        String email = principal.getName();
+        MemberDTO memberDTO = memberService.findbyid(email);
+        String[] splitBirth = memberDTO.getBirth().split("-");
+
+        model.addAttribute("memberDTO",memberDTO);
+        model.addAttribute("birth1",splitBirth[0]);
+        model.addAttribute("birth2",splitBirth[1]);
+        model.addAttribute("birth3",splitBirth[2]);
+    };
+    @PostMapping("/mypageupdate")
+    public String postmypageupdate(MemberDTO memberDTO,RedirectAttributes redirectAttributes,String year,String month,String day){
+        memberDTO.setBirth(year+"-"+month+"-"+day);
+        log.info("memberDTOmypageupdate"+memberDTO);
+        memberService.membermodify(memberDTO);
+        redirectAttributes.addFlashAttribute("msg","회원 정보 수정을 완료했습니다.");
+        return "redirect:/mypage";
+    };
     @GetMapping("/Loginshop")
     public void getLoginshop(){};
     @GetMapping("/Logout")
-    public void getLogout(){};
+    public String getLogout(HttpSession session){
+        session.invalidate();
+
+        return "redirect:/blog";
+    };
     @GetMapping("/checkout")
     public void getCheckout(){};
     @GetMapping("/shop")
