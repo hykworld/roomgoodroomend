@@ -26,6 +26,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
 
     public final StringPath company = createString("company");
 
+    public final StringPath detailaddress = createString("detailaddress");
+
     public final StringPath email = createString("email");
 
     public final BooleanPath fromSocial = createBoolean("fromSocial");
@@ -51,6 +53,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     public final SetPath<ClubMemberRole, EnumPath<ClubMemberRole>> roleSet = this.<ClubMemberRole, EnumPath<ClubMemberRole>>createSet("roleSet", ClubMemberRole.class, EnumPath.class, PathInits.DIRECT2);
+
+    public final StringPath streetaddress = createString("streetaddress");
 
     public QClubMember(String variable) {
         super(ClubMember.class, forVariable(variable));
