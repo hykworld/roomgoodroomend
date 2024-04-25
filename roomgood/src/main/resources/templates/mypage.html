@@ -1,11 +1,329 @@
-<h2 xmlns:th="http://www.w3.org/1999/xhtml">에러페이지입니다.</h2>
-<p th:text="'상태: ' + ${status}"></p>
-<p th:text="'에러: ' + ${error}"></p>
-<p th:text="'경로: ' + ${path}"></p>
-<p th:text="'메시지: ' + ${message}"></p>
-<p th:text="'예외: ' + ${exception}"></p><h2 xmlns:th="http://www.w3.org/1999/xhtml">에러페이지입니다.</h2>
-<p th:text="'상태: ' + ${status}"></p>
-<p th:text="'에러: ' + ${error}"></p>
-<p th:text="'경로: ' + ${path}"></p>
-<p th:text="'메시지: ' + ${message}"></p>
-<p th:text="'예외: ' + ${exception}"></p>
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Male-Fashion | Template</title>
+    <!--제이쿼리-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+
+<!-- Offcanvas Menu Begin -->
+<div th:insert="~{header.html}"></div>
+<!-- Header Section End -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>내 정보</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/index">Home</a>
+                        <span>내 정보</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Begin -->
+<form>
+    <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+    <section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <div class="cart__discount cart__total" style="text-align: center;">
+                        <br><br>
+                        <div>이미지 자리</div>
+                        <br>
+                        <br>
+                        <h6>구건모</h6>
+                    </div>
+                    <div class="cart__total" style="text-align: center;">
+                        <ul id="mypagemenu"><b>
+                            <li id="mypagemenu1">구매 목록</li>
+                            <hr>
+                            <li  id="mypagemenu2">마일리지 / 충전금액</a></li>
+                            <hr>
+                            <li  id="mypagemenu3">쿠폰</li>
+                            <hr>
+                            <li  id="mypagemenu4">찜 목록 / 최근 본 상품</li>
+                            <hr>
+                            <li id="mypagemenu5">문의 내역</li>
+                            <hr>
+                        </b>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <hr>
+                    <div class="row " style=" text-align: center;">
+                        <div class="col-md-3 mb-3">결제완료</div>
+                        <div class="col-md-3 mb-3">배송준비</div>
+                        <div class="col-md-3 mb-3">배송중</div>
+                        <div class="col-md-3 mb-3">배송완료</div>
+                    </div>
+                    <div class="row" style=" text-align: center;">
+                        <div class="col-md-3 mb-3">0</div>
+                        <div class="col-md-3 mb-3">0</div>
+                        <div class="col-md-3 mb-3">0</div>
+                        <div class="col-md-3 mb-3">0</div>
+                    </div>
+                    <hr>
+                    <div id="category0" style="display:block;">
+                        <div class="mymember" style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">email</div>
+                                <div class="col-md-8 mb-3">[[${memberDTO.email}]]</div>
+                                <input type="hidden" name="id" value="리얼아이디">
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">비밀번호</div>
+                                <div class="col-md-8 mb-3">비밀번호변경버튼</div>
+                                <input type="hidden" name="id" value="리얼아이디">
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">연락처</div>
+                                <div class="col-md-8 mb-3">[[${memberDTO.phone}]]</div>
+                                <input type="hidden" name="id" value="리얼아이디">
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">주소</div>
+                                <div class="col-md-8 mb-3">[[${memberDTO.streetaddress}]]<span> [[${memberDTO.detailaddress}]]</span>
+                                </div>
+                                <input type="hidden" name="id" value="리얼아이디">
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="continue__btn">
+                                    <a href="#">Continue Shopping</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="continue__btn update__btn">
+                                    <a href="/mypageupdate">회원정보 수정</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--구매목록#########################################-->
+                    <div id="category1" style="display:none;">
+                        <div class="mymember"  style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
+                            <hr>
+                                <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>구매 목록</b></div>
+                            <hr>
+                            <div class="row" style="background: #f3f2ee;">
+                                <div class="col-md-5 mb-3" style="text-align: center;"><b>상품 내역</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>결제 금액</b></div>
+                                <div class="col-md-4 mb-3" style="text-align: center;"><b>주문 상세</b></div>
+                            </div>
+                            <!--반복될 애들-->
+                            <div class="row" style="border:1px solid #f3f2ee ;font-size:15px">
+                                <div class="col-md-5 mb-3" style="text-align: center;"><b>상품명</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>10,000원</b></div>
+                                <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">조회</button></div>
+                            </div>
+                            <!--반복될 애들.end-->
+                        </div>
+                    </div>
+                    <!--구매목록.end#########################################-->
+
+                    <!--마일리지와 충전금액#########################################-->
+                    <div id="category2" style="display:none;">
+                        <div class="mymember"  style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">마일리지</div>
+                                <div class="col-md-8 mb-3">현재 마일리지는 <b>[[${memberDTO.mileage}]]원</b> 입니다.</div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">잔여금액</div>
+                                <div class="col-md-8 mb-3">현재 잔여금액은 <b>[[${memberDTO.money}]]원</b> 입니다.</div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <!--마일리지와 충전금액.end#########################################-->
+
+                    <!--쿠폰#########################################-->
+                    <div id="category3" style="display:none;">
+                        <div class="mymember"  style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12 mb-3" style="text-align:center;">현재 보유한 쿠폰은 총 <b>3개</b> 입니다.</div>
+                            </div>
+                            <hr>
+                            <div class="col-md-12 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">쿠폰목록 확인</button></div>
+                        </div>
+                    </div>
+                    <!--쿠폰.end#########################################-->
+
+                    <!--찜목록 , 최근 본 상품#########################################-->
+                    <div id="category4" style="display:none;">
+                        <div class="mymember"  style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
+                            <hr>
+                            <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>찜 목록 / 최근 본 상품</b></div>
+                            <hr>
+                            <div class="row" >
+                                <div id="mypagewish" class="col-md-6 mb-3" style="text-align: center;background: #dddddd; padding:10px; cursor:pointer"><b>찜 목록</b></div>
+                                <div id="mypageresent" class="col-md-6 mb-3" style="text-align: center;background: #f3f2ef;padding:10px; cursor:pointer"><b>최근 본 상품</b></div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-md-5 mb-3" style="text-align: center;"><b>상품명</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
+                            </div>
+                            <!--반복될 애들-->
+
+                            <div id="mypagewishlist" class="row" style="border:1px solid #f3f2ee ;font-size:15px">
+                                <div class="col-md-5 mb-3" style="text-align: center;">사리곰탕</div>
+                                <div class="col-md-3 mb-3" style="text-align: center;">10,000원</div>
+                                <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                            </div>
+
+                            <div id="mypageresentlist" class="row" style="border:1px solid #f3f2ee ;font-size:15px ; display: none;">
+                                <div class="col-md-5 mb-3" style="text-align: center;">이동형 의자</div>
+                                <div class="col-md-3 mb-3" style="text-align: center;">5,000원</div>
+                                <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                            </div>
+                            <!--반복될 애들.end-->
+                        </div>
+                    </div>
+                    <!--찜목록 , 최근 본 상품.end#########################################-->
+
+                    <!--문의내역#########################################-->
+                    <div id="category5" style="display:none;">
+                        <div class="mymember"  style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
+                            <hr>
+                            <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>현재 문의 내역</b></div>
+                            <hr>
+                            <br>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-10 mb-3">사이트가 너무 느려요</div>
+                                <div class="col-md-2 mb-3" style="color:red;text-align: center;"><b>답변완료</b></div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-10 mb-3">사이트가 너무 느려요 답장좀!</div>
+                                <div class="col-md-2 mb-3 "style="text-align: center;"><b>답변 미완료</b></div>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <!--문의내역#########################################-->
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<!-- Shopping Cart Section End -->
+<div th:insert="~{footer.html}"></div>
+<script>
+
+    $('#mypagemenu1').on('click',function(){
+
+       $('#category0').css('display','none')
+       $('#category1').css('display','block')
+       $('#category2').css('display','none')
+       $('#category3').css('display','none')
+       $('#category4').css('display','none')
+       $('#category5').css('display','none')
+    });
+    $('#mypagemenu2').on('click',function(){
+    $('#category0').css('display','none')
+        $('#category1').css('display','none');
+       $('#category2').css('display','block');
+       $('#category3').css('display','none');
+       $('#category4').css('display','none');
+       $('#category5').css('display','none');
+    });
+    $('#mypagemenu3').on('click',function(){
+    $('#category0').css('display','none')
+        $('#category1').css('display','none');
+       $('#category2').css('display','none');
+       $('#category3').css('display','block');
+       $('#category4').css('display','none');
+       $('#category5').css('display','none');
+    });
+    $('#mypagemenu4').on('click',function(){
+    $('#category0').css('display','none')
+        $('#category1').css('display','none');
+       $('#category2').css('display','none');
+       $('#category3').css('display','none');
+       $('#category4').css('display','block');
+       $('#category5').css('display','none');
+    });
+    $('#mypagemenu5').on('click',function(){
+    $('#category0').css('display','none')
+        $('#category1').css('display','none');
+       $('#category2').css('display','none');
+       $('#category3').css('display','none');
+       $('#category4').css('display','none');
+       $('#category5').css('display','block');
+    });
+
+    $('#mypageresent').on('click',function(){
+        $('#mypagewish').css('background-color','#f3f2ef')
+        $('#mypageresent').css('background-color','#dddddd')
+        $('#mypagewishlist').css('display','none')
+        $('#mypageresentlist').css('display','flex')
+    })
+    $('#mypagewish').on('click',function(){
+        $('#mypagewish').css('background-color','#dddddd')
+        $('#mypageresent').css('background-color','#f3f2ef')
+        $('#mypagewishlist').css('display','flex')
+        $('#mypageresentlist').css('display','none')
+    })
+
+
+</script>
+
+<!--    <script src="js/pay.js"></script>-->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>

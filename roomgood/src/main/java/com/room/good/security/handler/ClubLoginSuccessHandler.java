@@ -1,5 +1,6 @@
 package com.room.good.security.handler;
 
+import com.room.good.entity.ClubMember;
 import com.room.good.repository.ClubMemberRepository;
 import com.room.good.security.dto.ClubAuthMemberDTO;
 import jakarta.servlet.ServletException;
@@ -13,9 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
-import com.room.good.entity.ClubMember;
-
 
 import java.io.IOException;
 import java.util.Optional;
@@ -68,7 +66,6 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
         if(member.get().getPhone()==null){
             log.info("here");
             redirectStratgy.sendRedirect(request, response, "/join");
-
         }
         else if(passwordResult && fromSocial){//초기 비밀번호를 1111입력 후 , 안바꿨을 때 ! 
             log.info("success!!");

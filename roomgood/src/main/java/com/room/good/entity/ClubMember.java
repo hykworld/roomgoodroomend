@@ -23,6 +23,7 @@ public class ClubMember extends BaseEntity {
 
     private String password;
     private String name;
+    private String nickname;
     private String phone;
 
     private boolean fromSocial; // 의미없는데 ㄱㅊ
@@ -30,6 +31,7 @@ public class ClubMember extends BaseEntity {
 
 
     private String adress;// 주소
+    private String birth;//생일
 
     private String streetaddress;		// 지번 주소
     private String detailaddress;		// 상세
@@ -43,7 +45,6 @@ public class ClubMember extends BaseEntity {
     //nullable = false => NOT NULL
     @Column( columnDefinition = "VARCHAR(255) DEFAULT '회사없음'")
     private String company;
-
 
     //oneToMany여야되는데  @ElementCollection 이걸로 똑같이 함 이럴 땐 리스트가 와야된다. set 을 쓴 이유는 중복이 안되게함!
     @ElementCollection(fetch = FetchType.LAZY)

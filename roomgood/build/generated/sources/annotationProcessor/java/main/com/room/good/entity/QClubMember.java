@@ -24,6 +24,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
 
     public final StringPath adress = createString("adress");
 
+    public final StringPath birth = createString("birth");
+
     public final StringPath company = createString("company");
 
     public final StringPath detailaddress = createString("detailaddress");
@@ -44,6 +46,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
     public final NumberPath<Long> money = createNumber("money", Long.class);
 
     public final StringPath name = createString("name");
+
+    public final StringPath nickname = createString("nickname");
 
     public final StringPath password = createString("password");
 

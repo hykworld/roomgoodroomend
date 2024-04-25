@@ -61,6 +61,7 @@ public class ClubOAuthUserDetailsService extends DefaultOAuth2UserService {
         }else if(clientName.equals("Kakao")){
             Map<String, Object> attributes = oAuth2User.getAttributes();
             Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
+            log.info(attributes+"attributesattributesattributesattributesattributes");
             company ="kakao";
             email = (String) kakaoAccount.get("email");
         }else if(clientName.equals("Naver")){

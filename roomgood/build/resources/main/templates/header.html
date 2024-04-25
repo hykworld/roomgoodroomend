@@ -1,0 +1,114 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<div class="offcanvas-menu-overlay"></div>
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__option">
+        <div class="offcanvas__links">
+            <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
+            <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
+            <a href="/loginshop" sec:authorize="isAnonymous()" class="active">회원가입</a>
+            <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
+            <a href="/FAQ">고객센터</a>
+        </div>
+        <div class="offcanvas__top__hover">
+            <span>Usd <i class="arrow_carrot-down"></i></span>
+            <ul>
+                <li>USD</li>
+                <li>EUR</li>
+                <li>USD</li>
+            </ul>
+        </div>
+    </div>
+    <div class="offcanvas__nav__option">
+        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+        <a href="#"><img src="img/icon/heart.png" alt=""></a>
+        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__text">
+        <p>자취방 살아남기</p>
+    </div>
+</div>
+<!-- Offcanvas Menu End -->
+
+<!-- Header Section Begin -->
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-7">
+                    <div class="header__top__left">
+                        <p style="cursor:pointer"><b><a href="/index">자취방 살아남기</a></b></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-5">
+                    <div class="header__top__right">
+                        <div class="header__top__links">
+                            <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
+                            <a href="/Logout" onclick="return check()" sec:authorize="isAuthenticated()">로그아웃</a>
+                            <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
+                            <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
+                            <a href="/FAQ">고객센터</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a href="/index"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        <li><a href="/shop">카테고리</a>
+                            <ul class="dropdown">
+                                <li><a href="/about" style="background-color:gray;">전체보기</a></li>
+                                <li><a href="/about">가구</a></li>
+                                <li><a href="/shop-details">가전</a></li>
+                                <li><a href="/shopping-cart">옷정리/보관</a></li>
+                                <li><a href="/checkout">생활용품</a></li>
+                                <li><a href="/blog-details">소품/취미</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">인기차트</a></li>
+                        <li><a href="/contact">만원이하</a></li>
+
+                        <li><a href="/contact">딸기마켓</a></li>
+                        <li ><a href="/blog">이벤트</a>
+                            <ul class="dropdown">
+                                <li><a href="/eventRegister">글등록</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                    <a href="/wishlist"><img src="img/icon/heart.png" alt=""></a>
+                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+</header>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69fc336d5aebd640ad29910f36299ef42d919072
+<script>
+    function check() {
+    var result = confirm("로그아웃하시겠습니까?");
+    return result;
+<<<<<<< HEAD
+}
+=======
+    }
+>>>>>>> 69fc336d5aebd640ad29910f36299ef42d919072
+</script>
