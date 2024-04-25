@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Male-Fashion | Template</title>
+    <!--제이쿼리-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+<!-- Page Preloder -->
+
+<!-- Offcanvas Menu Begin -->
+<div th:insert="~{header.html}"></div>
+<!-- Header Section End -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>위시리스트</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/index">Home</a>
+                        <span>위시리스트</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Begin -->
+<form>
+    <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+    <section class="shopping-cart spad">
+        <div class="container">
+
+            <div class="col-lg-12">
+                <h2>위시리스트</h2>
+            </div>
+            <br>
+            <div class="col-lg-12">
+                <div class="cart__discount " style="text-align: center;">
+                    <div><img src="img/profile.jpg"></div>
+                    <br>
+                    <div><h3>구건모</h3></div>
+                </div>
+            </div>
+
+            <div class="col-lg-12" style="">
+                태그1 ,태그1 ,태그1
+            </div>
+            <hr>
+            <div class="cart__total" style="text-align: center;">
+                <ul id="mypagemenu"><b>
+                    <li id="mypagemenu1">구매 목록</li>
+                    <hr>
+                    <li id="mypagemenu2">마일리지 / 충전금액</a></li>
+                    <hr>
+                    <li id="mypagemenu3">쿠폰</li>
+                    <hr>
+                    <li id="mypagemenu4">찜 목록 / 최근 본 상품</li>
+                    <hr>
+                    <li id="mypagemenu5">문의 내역</li>
+                    <hr>
+                </b>
+                </ul>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
+    </section>
+</form>
+<!-- Shopping Cart Section End -->
+<div th:insert="~{footer.html}"></div>
+
+
+<!--    <script src="js/pay.js"></script>-->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>
