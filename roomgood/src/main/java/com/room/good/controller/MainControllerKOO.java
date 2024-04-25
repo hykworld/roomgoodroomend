@@ -77,19 +77,14 @@ public class MainControllerKOO {
     }
 
     @PostMapping("/join")
-    public String joinPost(Long id,String email,String name,String phone, String password, RedirectAttributes redirectAttributes){
+    public String joinPost(String year,String month,String day,MemberDTO memberDTO, RedirectAttributes redirectAttributes){
+        memberDTO.setBirth(year+"-"+month+"-"+day);// 구분해서 넣으려고 나중에 - 이거 기준으로 잘라서 수정할거임
+        memberDTO.setGrade("일반회원");
+        log.info(memberDTO);
 
-        log.info("name = "+ name);
-        log.info("phone = "+ phone);
-        log.info("password = "+ password);
-        MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setId(id);
-        memberDTO.setEmail(email);
-        memberDTO.setName(name);
-        memberDTO.setPhone(phone);
-        memberDTO.setPassword(password);
         //그냥 memberDTO memberDTO 써도 됨 근데 이해하기쉽게 이래 서놔씀
         if (memberService.join(memberDTO)){
+            redirectAttributes.addFlashAttribute("msg","회원가입에 성공하셨습니다.");
             return "redirect:/blog";
         }else {
             redirectAttributes.addFlashAttribute("msg","이미 가입되어있는 핸드폰 번호입니다.");
@@ -177,7 +172,15 @@ public class MainControllerKOO {
 
         return "redirect:/blog";
     };
-    @GetMapping("/checkout")
+    @GetMapping("wishlist")
+    public void wishlist(Model model, Principal principal){
+        String email = principal.getName();
+        MemberDTO memberDTO = memberService.findbyid(email);
+        log.info("memberDTOmemberDTO"+memberDTO);
+        model.addAttribute("memberDTO",memberDTO);
+    };
+
+    @GetMapping("/resetpw")
     public void getCheckout(){};
     @GetMapping("/shop")
     public void getshop(){};

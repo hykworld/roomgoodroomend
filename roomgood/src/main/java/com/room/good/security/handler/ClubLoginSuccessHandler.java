@@ -66,7 +66,6 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
         if(member.get().getPhone()==null){
             log.info("here");
             redirectStratgy.sendRedirect(request, response, "/join");
-
         }
         else if(passwordResult && fromSocial){//초기 비밀번호를 1111입력 후 , 안바꿨을 때 ! 
             log.info("success!!");

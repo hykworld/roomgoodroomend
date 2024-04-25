@@ -51,6 +51,16 @@
     cursor:pointer;
 
 }
+/*구씨가 스는 버튼들 커스텀*/
+.koobtn{
+    color: #ffffff;
+    background: #111111;
+    border-color: #111111;
+     border-radius: 5px;
+
+
+
+}
 .mymember div div{
     padding-top:20px;
     padding-bottom:0px;
