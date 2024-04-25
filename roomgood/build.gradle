@@ -71,6 +71,8 @@ dependencies {
 
 			"com.querydsl:querydsl-apt:${queryDslVersion}:jakarta")
 
+	runtimeOnly 'com.h2database:h2'
+
 }
 
 tasks.named('test') {
