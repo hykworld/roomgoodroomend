@@ -1,6 +1,8 @@
 package com.room.good.service;
 
+import com.room.good.dto.ProductListDTO;
 import com.room.good.dto.TimeSaleDTO;
+import com.room.good.repository.ProductRepository;
 import com.room.good.repository.TimeSaleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -15,7 +17,18 @@ import java.util.stream.Collectors;
 public class SoominServiceImpl implements SoominService{
 
     private final TimeSaleRepository timeSaleRepository;
+    private final ProductRepository productRepository;
 
+    @Override
+    public List<ProductListDTO> getProductList() {
+
+        List<ProductListDTO> productListDTO = productRepository.findAll().stream().map(productList -> ProductListDTO.builder()
+                .pname(productList.getPname())
+                .price(productList.getPrice())
+                .build()).collect(Collectors.toList());
+
+        return  productListDTO;
+    }
 
     @Override
     public List<TimeSaleDTO> getTimeSaleList() {

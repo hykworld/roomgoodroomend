@@ -17,6 +17,7 @@ public class MainControllerSumin {
     @GetMapping({"/","/main"})
     public String mainPage(Model model){
 
+        model.addAttribute("list",soominService.getProductList());
         model.addAttribute("time",soominService.getTimeSaleList());
 
         return "/index";
