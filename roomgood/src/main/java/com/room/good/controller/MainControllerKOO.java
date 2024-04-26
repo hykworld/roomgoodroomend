@@ -172,7 +172,7 @@ public class MainControllerKOO {
 
         return "redirect:/blog";
     };
-    @GetMapping("wishlist")
+    @GetMapping("/wishlist")
     public void wishlist(Model model, Principal principal){
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
@@ -188,4 +188,6 @@ public class MainControllerKOO {
     public void getSDetails(){};
     @GetMapping("/shopping-cart")
     public void getShoppingCart(){};
+
+
 }
