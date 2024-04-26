@@ -6,7 +6,8 @@
             <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
             <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
             <a href="/loginshop" sec:authorize="isAnonymous()" class="active">회원가입</a>
-            <a href="#">고객센터</a>
+            <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
+            <a href="/FAQ">고객센터</a>
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -24,7 +25,7 @@
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
-        <p>Free shipping, 30-day return or refund guarantee.</p>
+        <p>자취방 살아남기</p>
     </div>
 </div>
 <!-- Offcanvas Menu End -->
@@ -36,26 +37,18 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
-                        <p>자취방 살아남기</p>
+                        <p style="cursor:pointer"><b><a href="/index">자취방 살아남기</a></b></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
                             <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
-                            <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
+                            <a href="/Logout" onclick="return check()" sec:authorize="isAuthenticated()">로그아웃</a>
                             <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
-                            <a href="/memberJoin" sec:authorize="isAuthenticated()">마이페이지</a>
-                            <a href="#">고객센터</a>
+                            <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
+                            <a href="/FAQ">고객센터</a>
                         </div>
-                        <!--                        <div class="header__top__hover">-->
-                        <!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
-                        <!--                            <ul>-->
-                        <!--                                <li>USD</li>-->
-                        <!--                                <li>EUR</li>-->
-                        <!--                                <li>USD</li>-->
-                        <!--                            </ul>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -97,7 +90,7 @@
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
+                    <a href="/wishlist"><img src="img/icon/heart.png" alt=""></a>
                     <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                 </div>
             </div>
@@ -105,3 +98,10 @@
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
 </header>
+
+<script>
+    function check() {
+    var result = confirm("로그아웃하시겠습니까?");
+    return result;
+    }
+</script>

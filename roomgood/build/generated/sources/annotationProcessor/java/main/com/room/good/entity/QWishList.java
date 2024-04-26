@@ -49,7 +49,7 @@ public class QWishList extends EntityPathBase<WishList> {
     public QWishList(Class<? extends WishList> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.clubMember = inits.isInitialized("clubMember") ? new QClubMember(forProperty("clubMember")) : null;
-        this.product = inits.isInitialized("product") ? new QProduct(forProperty("product"), inits.get("product")) : null;
+        this.product = inits.isInitialized("product") ? new QProduct(forProperty("product")) : null;
     }
 
 }

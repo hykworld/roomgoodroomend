@@ -52,6 +52,7 @@ public class SubControllerKOO {
             //현재 IE사용 불가, Edge는 크로미움으로 바뀌었기 때문에 필요없는 코드가 됨.
             String fileName =
                     originalName.substring(originalName.lastIndexOf("\\") + 1);
+            //파일 경로에서 마지막 \ 다음에 있는 문자열(즉, 파일 이름)을 추출하는 것입니다.
             log.info("fileName : " + fileName);
             log.info("originalName : " + originalName);
             String folderPath = makeFolder();
