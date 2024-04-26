@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
 
 <head>
+    <!--토큰 ----------------------->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <!--토큰 ----------------------->
     <meta charset="UTF-8">
     <meta name="description" content="Male_Fashion Template">
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
@@ -33,6 +38,34 @@
         margin-bottom: 3%; /*인풋 부분 간격*/
         }
 </style>
+<!-------------------업로드 이미지 구역 css--------------------->
+<style>
+    .uploadResult {
+        width: 100%;
+        background-color: gray;
+        margin-top: 10px;
+    }
+
+    .uploadResult ul {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        vertical-align: top;
+        overflow: auto;
+    }
+
+    .uploadResult ul li {
+        list-style: none;
+        padding: 10px;
+        margin-left: 2em;
+    }
+
+    .uploadResult ul li img {
+        width: 100px;
+    }
+</style>
+<!-------------------업로드 이미지 구역 css--------------------->
 <!-----------윤기가 추가한 css--------------------------------->
 <body>
 <!---------------------- body---------------------------------------------------------------------------------------------------->
@@ -95,7 +128,7 @@
 </section>
 <!--살이 좀 빠졋네 -> 공지사항 노란 바.end-->
 <!---------------------- 상품 등록 구간---------------------------------------------------------------------------------------------------->
-<form th:action="@{/register}" th:method="post">
+<form th:action="@{/productregister}" th:method="post">
     <div class="container" style="margin-top: 3%;">
         <div class="row mb-3">
             <div class="col-lg-3">
@@ -156,23 +189,41 @@
                             <input id="selectedCategoryLevel2" type="hidden" name="categoryLevel2">
                             <input id="selectedCategoryLevel3" type="hidden" name="categoryLevel3">
                             <!--카테고리 선택--------------------------------------------------->
-                            <div class="input-group col-lg-12 mb-3">
-                                <input class="form-control" name="title" placeholder="판매가(필수)">
-                                원
+                                <div class="form-group row">
+                                    <input class="form-control col-lg-10" name="price" placeholder="판매가(필수)">
+                                    <div class="col-lg-2">원</div>
+                                </div>
+                                <div class="form-group row">
+                                    <input class="form-control col-lg-10" name="stock" placeholder="수량">
+                                    <div class="col-lg-2">수량</div>
+                                </div>
+                            <div class="checkbox-group">
+                                <p>제품 상태 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input class="form-check-input" type="checkbox" id="tag11" name="itemSellStatus" value=SELL>
+                                <label for="tag11">SELL</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input class="form-check-input" type="checkbox" id="tag21" name="itemSellStatus" value=SOLD_OUT>
+                                <label for="tag21">SOLD_OUT</label></p>
                             </div>
                             <!-- <input class="form-control" name="stock" placeholder="상품 수량"> -->
                             <!-- 수민이가 일단 빼자고 해서 주석 -->
-                            <input class="form-control mb-3" name="title" placeholder="상품 요약 설명">
+                            <input class="form-control mb-3" name="subContent" placeholder="상품 요약 설명">
                             <textarea class="form-control mb-3" name="content" placeholder="상품 상세 설명" rows="6"></textarea>
 
                             <!-- 업로드된 이미지 목록 -------------------------------------------------------->
                             <div>
                                 <div class="container mb-3" style="margin-top: 3%; height: 200px; background-color: rgb(193, 193, 193);">
-                                    <h5 style="text-align: left;">이미지 업로드</h5>
+                                    <h5 style="text-align: left;">image preview</h5>
                                     <div class="uploadResult">
                                         <ul>
 
                                         </ul>
+                                    </div>
+                                </div>
+                                <div class="form-group fileForm">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input files" id="fileInput" multiple>
+                                        <label class="custom-file-label" for="fileInput" data-browse="파일첨부"></label>
                                     </div>
                                 </div>
                             </div>
@@ -218,8 +269,11 @@
                             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
                         </div>
                     </ul>
-                    <button type="submit">상품등록</button>
-                    <button type="submit">취소(그전페이지로)</button>
+                    <div class="box">
+
+                    </div>
+                    <button id="submitBtn" type="submit">상품등록</button>
+                    <button type="reset">취소(그전페이지로)</button>
                 </div>
             </div>
         </div>
@@ -235,9 +289,7 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-        </form>
+
     </div>
 </div>
 <!-- Search End -->
@@ -331,6 +383,148 @@
     }
 </script>
 <!--------------카테고리 js end--------------------------------------->
+
+<!--------------제품 상태 체크 박스--------------------------------------------------->
+<script>
+    const checkboxes = document.querySelectorAll('input[name="itemSellStatus"]');
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', function() {
+            checkboxes.forEach((cb) => {
+                if (cb !== this) {
+                    cb.checked = false;
+                }
+            });
+        });
+    });
+</script>
+<!-----------------------제품 상태 체크 박스end------------------------------------------>
+<!-- 이미지 업로드 ----js------------------------------------------------>
+<script>
+    $(document).ready(function(){
+    ////////////////csrf 토큰////////////////////////////////////////////////////////////////
+       var csrfToken = $("meta[name='_csrf']").attr("content");
+       var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+
+<!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
+<!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader(csrfHeader, csrfToken);
+        });
+    ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
+
+/////////////이미지 체크////////////
+        var regex=new RegExp("(.*?\.(jpg|png|gif))$");
+        var maxSize=10*1024*1024; //10MB
+        //filesize, image유무 체크
+        function checkExtension(fileName,fileSize){
+            if(fileSize>maxSize){
+                alert("파일사이즈가 10MB를 초과했습니다");
+                return false;
+            }
+            if(!regex.test(fileName)){
+                alert("이미지만 업로드할 수 있습니다");
+                return false;
+            }
+            return true;
+        }
+        $(".custom-file-input").on("change",function(){
+            var fileName=$(this).val().split("\\").pop(); //파일명만 구하기
+            $(this).siblings(".custom-file-label").html(fileName);
+
+            var formData=new FormData(); // form에 대응되는 객체
+            var inputFile=$(this); // 들어간 파일
+            var files=inputFile[0].files;
+
+            var appended=false; // 첨부파일 선택 유뮤 체크flag
+
+            for(var i=0;i<files.length;i++){
+
+                if(!checkExtension(files[i].name, files[i].size)){
+                    return false;
+                }
+                console.log(files[i]);
+                formData.append("uploadFiles",files[i]);
+                appended=true; // 첨부파일 선택 true
+            }
+            // 첨부파일 선택하지 않았으면 종료
+            if(!appended){
+                return;
+            }
+            // ajax방식으로 파일전송
+            $.ajax({
+                url:"/uploadAjax", //서버주소
+                processData:false, // 파일전송시 설정 -> 트루로하면 data 속성에 지정된 데이터를 문자열로 변환하려함 제이쿼리가!!
+                contentType:false, // 파일전송시 설정 -> 트루로하면 자동으로 application/x-www-form-urlencoded; charset=UTF-8' 뭐 이런식으로 컨텐트타입이 정해진다네요 파일의 타입은 multipart/form-data이런 형식으로 전송을 해야돼서 폴스로!
+                data: formData, //서버로 전송되는 데이터
+                type: "post", //전송방식
+                dataType: "json", //서버에서 넘어오는 데이터의 형식
+                success:function(result){ //서버에서 데이터가 정상적으로 넘어오면
+
+                console.log(result);
+
+                    showResult(result); // 썸네일 목록 출력
+                    <!--$(".custom-file-input").val(""); // input type="file" 초기화-->
+                    $(".custom-file-label").html(""); // input type="file" 실제 화면 초기화
+                }
+            });
+        });
+//////////////////////////////////등록버튼 클릭시.end (드래그앤드롭 xx)////////////////////////////////
+
+//uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
+        function showResult(uploadResultArr){
+            var uploadURL=$(".uploadResult ul"); //썸네일이 출력되는 위치
+            var str="";
+            $(uploadResultArr).each(function(i,obj){
+                str+="<li data-name='"+obj.fileName+"' data-path='"+obj.folderPath+"' data-uuid='"+obj.uuid+"'>";
+                str+="<div>";
+                str+="<button type='button' data-file='"+obj.imageURL+"' class='btn btn-warning btn-sm'>&times;</button><br>";
+                str+="<img src='/display?fileName="+obj.thumbnailURL+"'>";
+                str+="</div>";
+                str+="</li>";
+            });
+
+            uploadURL.append(str);
+        }
+
+        //삭제버튼클릭
+        $(".uploadResult").on("click","li button",function(){
+            var targetFile=$(this).data("file");//obj.imageURL 얘! -> 즉 이미지 경로
+            var targetLi=$(this).closest("li");
+
+            $.ajax({
+                url:"/removeFile", //서버주소
+                data:{fileName:targetFile}, //서버로 전송되는 데이터
+                dataType:"text", //서버에서 넘어오는 데이터의 타입
+                type:"post", //전송방식
+                success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                    if(result=="true"){
+                        alert("이미지가 삭제되었습니다");
+                    }
+                    targetLi.remove(); // 화면에서 썸네일삭제
+                }
+            });
+        });
+
+        //등록버튼클릭
+        $("#submitBtn").on("click",function(e){
+            e.preventDefault();  //전송방지
+            var str="";
+            $(".uploadResult li").each(function(i,obj){
+                var target=$(obj);
+                console.log("obj 등록 버튼시" +obj)
+                str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
+                str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
+                str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
+            });
+            $(".box").html(str); // hidden태그 출력
+            $("form").submit(); //폼전송
+
+        });
+    });
+</script>
+
+<!----------- 이미지 업로드 js---end--------------------------->
 </body>
 
 </html>

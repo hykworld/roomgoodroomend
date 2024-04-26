@@ -73,6 +73,9 @@ dependencies {
 
 	runtimeOnly 'com.h2database:h2'
 
+	//4.25윤기 추가
+	implementation 'org.modelmapper:modelmapper:2.3.9'
+
 }
 
 tasks.named('test') {
