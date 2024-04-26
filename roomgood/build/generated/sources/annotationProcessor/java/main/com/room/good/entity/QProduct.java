@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -23,6 +24,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final StringPath content = createString("content");
 
+    public final EnumPath<com.room.good.constant.ItemSellStatus> itemSellStatus = createEnum("itemSellStatus", com.room.good.constant.ItemSellStatus.class);
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
@@ -38,6 +41,8 @@ public class QProduct extends EntityPathBase<Product> {
     public final NumberPath<Long> stock = createNumber("stock", Long.class);
 
     public final StringPath subContent = createString("subContent");
+
+    public final SetPath<Tag, EnumPath<Tag>> tagSet = this.<Tag, EnumPath<Tag>>createSet("tagSet", Tag.class, EnumPath.class, PathInits.DIRECT2);
 
     public QProduct(String variable) {
         super(Product.class, forVariable(variable));
