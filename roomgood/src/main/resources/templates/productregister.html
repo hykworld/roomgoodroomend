@@ -276,6 +276,11 @@
                     </div>
                     <button class="btn-primary" type="submit">상품등록</button>
                     <button type="submit">취소(그전페이지로)</button>
+                    <div class="box">
+
+                    </div>
+                    <button id="submitBtn" type="submit">상품등록</button>
+                    <button type="reset">취소(그전페이지로)</button>
                 </div>
             </div>
         </div>
@@ -291,9 +296,7 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-        </form>
+
     </div>
 </div>
 <!-- Search End -->
@@ -469,6 +472,7 @@
 
                     showResult(result); // 썸네일 목록 출력
                     $(".custom-file-input").val(""); // input type="file" 초기화
+                    <!--$(".custom-file-input").val(""); // input type="file" 초기화-->
                     $(".custom-file-label").html(""); // input type="file" 실제 화면 초기화
                 }
             });
