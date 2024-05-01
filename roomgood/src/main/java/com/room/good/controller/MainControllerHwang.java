@@ -54,9 +54,9 @@ public class MainControllerHwang {
         // @ModelAttribute("requestDTO")
     };
 
-<<<<<<< HEAD
+
     public void productregisterget(){}
-=======
+
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
         productService.modify(productDTO);
