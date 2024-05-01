@@ -1,11 +1,13 @@
 package com.room.good.entity;
+
 import com.room.good.constant.ItemSellStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,7 +41,6 @@ public class Product extends BaseEntity {
 
     private String subContent; // 간략한 설명 // 4.25컬럼 추가
     private ItemSellStatus itemSellStatus; // 상품 판매 상태
-
 // 이미지는 따로 하는건가?
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
@@ -56,10 +57,8 @@ public class Product extends BaseEntity {
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    private Order1 order1;
 
-    // 필요한 생성자 추가
-    public Product(Long pno, String pname, Long stock) {
-        this.pno = pno;
-        this.pname = pname;
-        this.stock = stock;
-    }
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<ProductImage> images = new ArrayList<>();
+
 }
