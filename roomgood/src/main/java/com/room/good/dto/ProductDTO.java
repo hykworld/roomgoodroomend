@@ -8,7 +8,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,8 @@ import java.util.List;
 @NoArgsConstructor// 기본생성자
 @AllArgsConstructor// 전부생성자
 public class ProductDTO {
+
+    private Long pno;
 
     private String pname;//상품명
     private CategoryBig categoryBig; // 카테고리 대
@@ -32,6 +37,7 @@ public class ProductDTO {
 
     @Builder.Default
     private List<ProductImageDTO> imageDTOList= new ArrayList<>();
+
 
 
     //이미지 어레이 리스트
