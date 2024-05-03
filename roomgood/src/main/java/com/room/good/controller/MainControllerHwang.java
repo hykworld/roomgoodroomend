@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 public class MainControllerHwang {
     private final ProductService productService;
-    private final MemberService memberService;
+
 
 
     /*shop = 리스트 페이지 =======================================================*/
@@ -59,8 +59,9 @@ public class MainControllerHwang {
 
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
-        productService.modify(productDTO);
+        Long pno=productService.modify(productDTO);
 
+        redirectAttributes.addFlashAttribute("msg",pno);
         redirectAttributes.addAttribute("page",requestDTO.getPage());
         return "redirect:/shop";
     };

@@ -73,17 +73,13 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     @Override
     public Long modify(ProductDTO productDTO) {
-        // 기존 상품 정보 가져오기
         Map<String, Object> entityMap = dtoToEntity(productDTO);
-        // map 형태로 들어가는 이유 -> dtoToEntity        보기!
         Product product = (Product) entityMap.get("product");
-        // 보고왔으면 이건 Movie 엔티티라는걸 알게됨!dtoToEntity 를 보면 <String,Object>라서 Object 를 이렇게 형변환을 해줘야 됨
         List<ProductImage> poroductImageList=(List<ProductImage>)entityMap.get("imgList");
         productRepository.save(product); // movie insert
         poroductImageList.forEach(productImage -> {
             ProductImage save = productImageRepository.save(productImage);
             // movie image insert
-
         });
         return product.getPno();
     }
