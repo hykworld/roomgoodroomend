@@ -34,11 +34,7 @@ public class MainControllerHwang {
     @GetMapping("/productmodify")
     public void modify(){
     };
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 683fd26678d5750473235e70d98ee4cc3f99c261
     public void productregisterget(){}
     
 

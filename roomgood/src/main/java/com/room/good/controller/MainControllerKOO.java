@@ -25,8 +25,7 @@ public class MainControllerKOO {
 
     private final EventService eventService;
     private final MemberService memberService;
-    @GetMapping("/index")
-    public void getIndex(){};
+
 
 
 
@@ -184,8 +183,7 @@ public class MainControllerKOO {
     public void getCheckout(){};
     @GetMapping("/shop")
     public void getshop(){};
-    @GetMapping("/shop-details")
-    public void getSDetails(){};
+
     @GetMapping("/shopping-cart")
     public void getShoppingCart(){};
 }

@@ -28,6 +28,8 @@ public class QClubMember extends EntityPathBase<ClubMember> {
 
     public final StringPath company = createString("company");
 
+    public final ListPath<ContactProduct, QContactProduct> contactProducts = this.<ContactProduct, QContactProduct>createList("contactProducts", ContactProduct.class, QContactProduct.class, PathInits.DIRECT2);
+
     public final StringPath detailaddress = createString("detailaddress");
 
     public final StringPath email = createString("email");

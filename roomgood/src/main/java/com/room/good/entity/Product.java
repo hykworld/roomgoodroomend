@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -62,4 +63,14 @@ public class Product extends BaseEntity {
         this.pname = pname;
         this.stock = stock;
     }
+
+
+    // 제품 삭제시 연관 댓글 삭제 구현을 위한 One To Many
+
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
+    private List<ContactProduct> contactProducts;
+
+
+
+
 }

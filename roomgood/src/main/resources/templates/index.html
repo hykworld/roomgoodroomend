@@ -338,8 +338,8 @@
         <div class="container">
             <div class="row">
             </div>
-            <div class="row product__filter"> // th:each 주고
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+            <div class="row product__filter">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix" th:each="list:${list}">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                             <ul class="product__hover">
@@ -348,9 +348,9 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <h5>$67.24</h5>
+                            <h6>[[${list.pname}]]</h6>
+                            <a href="#" class="add-cart">장바구니 추가</a>
+                            <h5>[[${list.price}]]원</h5>
                         </div>
                     </div>
                 </div>

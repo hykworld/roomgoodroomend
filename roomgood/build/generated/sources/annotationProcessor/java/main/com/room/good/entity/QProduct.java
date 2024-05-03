@@ -22,6 +22,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
+    public final ListPath<ContactProduct, QContactProduct> contactProducts = this.<ContactProduct, QContactProduct>createList("contactProducts", ContactProduct.class, QContactProduct.class, PathInits.DIRECT2);
+
     public final StringPath content = createString("content");
 
     public final EnumPath<com.room.good.constant.ItemSellStatus> itemSellStatus = createEnum("itemSellStatus", com.room.good.constant.ItemSellStatus.class);
