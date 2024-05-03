@@ -14,11 +14,19 @@ public class MainControllerSumin {
 
     private final SoominService soominService;
 
-    @GetMapping({"/","/main"})
+    @GetMapping({"/","/main","/index"})
     public String mainPage(Model model){
 
+        model.addAttribute("list",soominService.getProductList());
         model.addAttribute("time",soominService.getTimeSaleList());
 
         return "/index";
-    }
+    };
+
+    @GetMapping("/shop-details")
+    public void getSDetails(Model model){
+
+
+
+    };
 }

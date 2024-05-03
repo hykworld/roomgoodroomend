@@ -21,7 +21,6 @@ public class MainControllerHwang {
     private final ProductService productService;
 
 
-
     /*shop = 리스트 페이지 =======================================================*/
     @GetMapping("/shop")
     public void readshop(PageRequestDTO pageRequestDTO, Model model ){
@@ -29,7 +28,6 @@ public class MainControllerHwang {
 
         log.info("resultresult"+productService.getList(pageRequestDTO));
     };
-
 
     @GetMapping("/productregister")
     public void register(){
@@ -54,6 +52,9 @@ public class MainControllerHwang {
         // @ModelAttribute("requestDTO")
     };
 
+
+    public void productregisterget(){}
+
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
         Long pno=productService.modify(productDTO);
@@ -70,7 +71,5 @@ public class MainControllerHwang {
         model.addAttribute("result",productService.getList(pageRequestDTO));
         return "redirect:/shop";
     }
-
-
 
 }
