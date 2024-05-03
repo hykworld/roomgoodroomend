@@ -83,16 +83,99 @@
     </div>
 </section>
 <!--살이 좀 빠졋네 -> 공지사항 노란 바.end-->
-<div class="container" style="max-width:500px;">
-    <div class="col-lg-12 mb-3 mt-3" style="text-align:left;">가입한 이메일 주소를 입력하세요
+<form th:if="!${msgPw}" action="/emails/verification-requests" method="post">
+    <div th:if="!${msgPw}" class="container" style="max-width:500px;">
+        <div class="col-lg-12 mb-3 mt-3" style="text-align:left; padding:0px;">
+            가입한 이메일 주소를 입력하세요.
+        </div>
+
+        <div th:if="!${email}" class="col-lg-12 mb-4" style="text-align:left; padding:0px;">
+            <input type="email" name="email" class="form-control" placeholder="이메일" required=""
+                   autofocus="">
+        </div>
+
+        <div th:if="${email}"
+             class="col-lg-12 mb-4" style="text-align:left; padding:0px;">
+            <input type="email" name="email" class="form-control" placeholder="이메일" required="" th:value="${email}"
+                   autofocus="" readonly>
+        </div>
+
+
+        <div class="col-lg-12 mb-4" style=" padding:0px;">
+            <button class="btn btn-info" type="submit" style="width:100%;">이메일로 인증코드 받기</button>
+        </div>
+        <input type="hidden" th:name="_csrf" th:value="${_csrf.token}">
     </div>
+</form>
 
-        <div class="col-lg-12 mb-3" style="text-align:left;">
-            <input type="text" id="username" name="username" class="form-control" placeholder="이메일" required=""
-                   autofocus=""></div>
-        <div class="col-lg-12 mb-3"><button class="btn btn-info">확인</button></div>
 
-</div>
+<form action="/emails/verifications" method="get">
+
+    <div class="container" th:if="!${msgPw}" style="max-width:500px;">
+        <div th:if="${email}" class="col-lg-12 mb-3 mt-3" style="text-align:left;padding:0px;">
+            이메일로 전송 된 코드를 입력하세요.
+        </div>
+        <div th:if="${email}" class="row">
+            <div class="col-lg-9 mb-4" style="text-align:left; ">
+                <input type="text" name="code" class="form-control" placeholder="코드 번호" required="" autofocus="">
+            </div>
+            <input type="hidden" name="email" class="form-control" placeholder="이메일" required="" th:value="${email}" autofocus="" readonly>
+
+            <div class="col-lg-3 mb-4">
+                <button class="btn btn-info" type="submit" style="width:100%"> 확인</button>
+            </div>
+        </div>
+
+        <div th:if="!${msgPw}" class="cart__discount cart__total" style="text-align: center; font-size:12px; padding:25px 20px ">
+            <div>회원가입 시 입력한 정보가 기억이 나지 않는다면?</div>
+            <a href="/FAQ">고객센터에 문의하기(1622-3124)</a>
+        </div>
+    </div>
+    <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+</form>
+
+
+<!--th:if="${msgPw}"-->
+<form action="/changePW" method="post">
+    <input type="hidden" name="email" class="form-control" th:value="${email}" autofocus="">
+    <div class="container" th:if="${msgPw}" style="max-width:500px;">
+        <div class="col-lg-12 mb-3 mt-3" style="text-align:left;padding:0px;">
+            변경할 비밀번호를 입력하세요.
+        </div>
+            <div class="col-lg-12 mb-4" style="text-align:left;padding:0px;">
+                <input type="password" name="password" class="form-control" placeholder="비밀번호" required=""
+                       autofocus="">
+            </div>
+            <div class="col-lg-12 mb-4" style="text-align:left;padding:0px; ">
+                <input type="password" name="password2" class="form-control" placeholder="비밀번호확인" required=""
+                       autofocus="">
+            </div>
+
+            <div class="col-lg-12 mb-4" style="padding:0px;">
+                <button class="btn btn-info" type="submit" style="width:100%"> 비밀번호 변경</button>
+            </div>
+
+        <div class="cart__discount cart__total" style="text-align: center; font-size:12px; padding:25px 20px ">
+            <div>회원가입 시 입력한 정보가 기억이 나지 않는다면?</div>
+            <a href="/FAQ">고객센터에 문의하기(1622-3124)</a>
+        </div>
+    </div>
+    <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+</form>
+
+
+<!--<hr>-->
+
+<!--<h2>Verify Email</h2>-->
+<!--<form action="/emails/verifications" method="get">-->
+<!--    <label for="email">Email:</label>-->
+<!--    <input type="email" id="email" name="email" required><br>-->
+<!--    <label for="code">Verification Code:</label>-->
+<!--    <input type="text" id="code" name="code" required><br>-->
+<!--    <button type="submit">Verify</button>-->
+<!--    <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>-->
+<!--</form>-->
+
 
 <!-- Footer Section Begin -->
 <!-- Footer Section End -->
@@ -126,6 +209,7 @@
     };
 </script>
 <script src="js/main.js"></script>
+
 </body>
 
 </html>

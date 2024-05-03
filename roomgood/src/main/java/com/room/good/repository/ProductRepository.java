@@ -25,6 +25,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     WHERE p.pno = pno;*/
 
 
+
     @Query("select p, pi from Product p " +
             "left outer join ProductImage pi on pi.product = p" +
             " group by p ")
@@ -33,4 +34,5 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // from Movie left outer join MovieImage on Movie.mno = MovieImage.movie_mno
     // left outer join review on  Movie.bno = review.movie_mno
     // group by movie.mno;
+
 }

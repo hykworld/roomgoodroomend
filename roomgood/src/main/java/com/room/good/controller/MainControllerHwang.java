@@ -54,6 +54,9 @@ public class MainControllerHwang {
         // @ModelAttribute("requestDTO")
     };
 
+
+    public void productregisterget(){}
+
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
         Long pno=productService.modify(productDTO);
@@ -70,6 +73,7 @@ public class MainControllerHwang {
         model.addAttribute("result",productService.getList(pageRequestDTO));
         return "redirect:/shop";
     }
+
 
 
 }
