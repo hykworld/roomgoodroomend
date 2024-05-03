@@ -1,10 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="description" content="Male_Fashion Template">
+  <meta name="keywords" content="Male_Fashion, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Male-Fashion | Template</title>
+  <!--제이쿼리-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+  <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
+
 <body>
-$END$
+<!-- Page Preloder -->
+
+<!-- Offcanvas Menu Begin -->
+<div th:insert="~{header.html}"></div>
+<!-- Header Section End -->
+
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb__text">
+          <h4>결제</h4>
+          <div class="breadcrumb__links">
+            <a href="/index">Home</a>
+            <span>결제</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+<!-- Shopping Cart Section Begin -->
+<form>
+  <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+  <section class="shopping-cart spad">
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col-lg-9">
+            <div class="col-md-3 mb-3"><h4>주문자</h4></div>
+          <hr>
+        <div class="row mb-3">
+          <div class="col-lg-2" style="text-align:center;align-items: center; justify-content: center;display: flex;">이름</div>
+          <div class="col-lg-4"><input class="form-control"></div>
+        </div>
+          <div class="row mb-3">
+            <div class="col-lg-2" style="text-align:center;align-items: center; justify-content: center;display: flex;">이메일</div>
+            <div class="col-lg-4"><input class="form-control"></div>@
+            <div class="col-lg-4">
+              <select class="" style="width:100%!important">
+                    <option value="">선택해주세요</option>
+              <option value="naver.com">naver.com</option>
+              <option value="hanmail.net">hanmail.net</option>
+              <option value="daum.net">daum.net</option>
+              <option value="gmail.com">gmail.com</option>
+              <option value="kakao.com">kakao.com</option>
+              <option value="nate.com">nate.com</option>
+              <option value="hotmail.com">hotmail.com</option>
+              <option value="outlook.com">outlook.com</option>
+              <option value="icloud.com">icloud.com</option>
+              <option value="CUSTOM">직접 입력</option></select>
+            </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-lg-2" style="text-align:center;align-items: center; justify-content: center;display: flex;">전화번호</div>
+            <div class="col-lg-4"><input class="form-control"></div>
+          </div>
+
+        </div>
+        <div class="col-lg-3">
+          <div class="cart__discount cart__total" style="text-align: center;">
+            <br><br>
+            <div>이미지 자리</div>
+            <br>
+            <br>
+            <h6>구건모</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+<!-- Shopping Cart Section End -->
+<div th:insert="~{footer.html}"></div>
+
+<!--    <script src="js/pay.js"></script>-->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
 </body>
+
 </html>

@@ -4,11 +4,11 @@ import com.room.good.entity.Cart;
 import com.room.good.entity.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CartttRepository extends JpaRepository<Cart,Long> {
+import java.util.Optional;
 
+public interface CartttItemRepository extends JpaRepository<CartItem,Long> {
 
-
-    Cart findByClubMemberId(Long id);
+    Optional<CartItem> findByProductPno(Long pno);
 
 
 }
