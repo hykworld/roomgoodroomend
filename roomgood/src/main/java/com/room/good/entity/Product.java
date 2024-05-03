@@ -41,7 +41,11 @@ public class Product extends BaseEntity {
 
     private String subContent; // 간략한 설명 // 4.25컬럼 추가
     private ItemSellStatus itemSellStatus; // 상품 판매 상태
+<<<<<<< HEAD
     // 이미지는 따로 하는건가?
+=======
+// 이미지는 따로 하는건가?
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private Set<Tag> tagSet = new HashSet<>();

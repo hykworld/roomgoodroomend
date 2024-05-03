@@ -207,6 +207,7 @@
                                 <input type="text" class="form-control col-lg-10" name="price"
                                        th:value="${dto.price}">
                                 <div class="col-lg-2">원</div>
+<<<<<<< HEAD
                             </div>
                             <div class="form-group row">
                                 <input type="text" class="form-control col-lg-10" name="stock"
@@ -222,7 +223,26 @@
                                 <input class="form-check-input" type="checkbox" id="tag21" name="itemSellStatus"
                                        value="SOLD_OUT" th:checked="${dto.itemSellStatus == 1}">
                                 <label for="tag21">SOLD_OUT</label>
+=======
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
                             </div>
+                            <div class="form-group row">
+                                <input type="text" class="form-control col-lg-10" name="stock"
+                                       th:value="${dto.stock}">
+                                <div class="col-lg-2">수량</div>
+                            </div>
+                            <div class="checkbox-group">
+                                제품 상태 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <input class="form-check-input" type="checkbox" id="tag11" name="itemSellStatus"
+                                       value="SELL" th:checked="${dto.itemSellStatus =='SELL'}">
+                                <label for="tag11">SELL</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input class="form-check-input" type="checkbox" id="tag21" name="itemSellStatus"
+                                       value="SOLD_OUT" th:checked="${dto.itemSellStatus == 'SOLD_OUT'}">
+                                <label for="tag21">SOLD_OUT</label>
+                            </div>
+
                             <!-- <input class="form-control" name="stock" placeholder="상품 수량"> -->
                             <!-- 수민이가 일단 빼자고 해서 주석 -->
                             <input type="text" class="form-control mb-3" name="subContent"
@@ -340,71 +360,72 @@
 <!--------------카테고리 js--------------------------------------->
 <script>
     function selectCategoryLevel1(value) {
-        document.getElementById('selectedCategoryLevel1').value = value;
-        // 중분류 선택란 초기화
-        var categoryLevel2Select = document.getElementById('categoryLevel2');
-        categoryLevel2Select.innerHTML = '';
-        categoryLevel2Select.appendChild(document.createElement('option'));
+     document.getElementById('selectedCategoryLevel1').value = value;
+     // 중분류 선택란 초기화
+     var categoryLevel2Select = document.getElementById('categoryLevel2');
+     categoryLevel2Select.innerHTML = '';
+     categoryLevel2Select.appendChild(document.createElement('option'));
 
-        // 중분류 선택 옵션 추가
-        var categories = {
-            '가구': ['의자', '테이블', '장식'],
-            '가전': ['TV', '냉장고', '세탁기'],
-            '정리/보관': ['서랍장', '옷걸이', '선반'],
-            '생활용품': ['휴지통', '바구니', '화장품정리'],
-            '소품/취미': ['그림', '퍼즐', '모형'],
-        };
-        categories[value].forEach(function(category) {
-            var option = document.createElement('option');
-            option.text = category;
-            option.value = category;
-            categoryLevel2Select.appendChild(option);
-        });
-        // 중분류 선택란 보이도록 변경
-        document.getElementById('categoryLevel2Div').style.display = 'block';
-        // 소분류 선택 초기화
-        document.getElementById('selectedCategoryLevel2').value = '';
-        document.getElementById('selectedCategoryLevel3').value = '';
-    }
+     // 중분류 선택 옵션 추가
+     var categories = {
+         '가구': ['의자', '테이블', '장식'],
+         '가전': ['TV', '냉장고', '세탁기'],
+         '정리/보관': ['서랍장', '옷걸이', '선반'],
+         '생활용품': ['휴지통', '바구니', '화장품정리'],
+         '소품/취미': ['그림', '퍼즐', '모형'],
+     };
+     categories[value].forEach(function(category) {
+         var option = document.createElement('option');
+         option.text = category;
+         option.value = category;
+         categoryLevel2Select.appendChild(option);
+     });
+     // 중분류 선택란 보이도록 변경
+     document.getElementById('categoryLevel2Div').style.display = 'block';
+     // 소분류 선택 초기화
+     document.getElementById('selectedCategoryLevel2').value = '';
+     document.getElementById('selectedCategoryLevel3').value = '';
+ }
 
-    function selectCategoryLevel2(value) {
-        document.getElementById('selectedCategoryLevel2').value = value;
-        // 소분류 선택란 초기화
-        var categoryLevel3Select = document.getElementById('categoryLevel3');
-        categoryLevel3Select.innerHTML = '';
-        categoryLevel3Select.appendChild(document.createElement('option'));
+ function selectCategoryLevel2(value) {
+     document.getElementById('selectedCategoryLevel2').value = value;
+     // 소분류 선택란 초기화
+     var categoryLevel3Select = document.getElementById('categoryLevel3');
+     categoryLevel3Select.innerHTML = '';
+     categoryLevel3Select.appendChild(document.createElement('option'));
 
-        // 소분류 선택 옵션 추가
-        var categories = {
-            '의자': ['나무의자', '금속의자', '플라스틱의자'],
-            '테이블': ['목재테이블', '유리테이블', '금속테이블'],
-            '장식': ['조화', '그림', '시계'],
-            'TV': ['LCD TV', 'LED TV', 'OLED TV'],
-            '냉장고': ['일반 냉장고', '양문 냉장고', '김치 냉장고'],
-            '세탁기': ['일반 세탁기', '드럼 세탁기', '스팀 세탁기'],
-            '서랍장': ['목재 서랍장', '플라스틱 서랍장', '금속 서랍장'],
-            '옷걸이': ['목재 옷걸이', '플라스틱 옷걸이', '금속 옷걸이'],
-            '선반': ['목재 선반', '플라스틱 선반', '금속 선반'],
-            '휴지통': ['플라스틱 휴지통', '금속 휴지통', '유리 휴지통'],
-            '바구니': ['플라스틱 바구니', '금속 바구니', '목재 바구니'],
-            '화장품정리': ['화장품 거치대', '화장품 정리함', '화장품 케이스'],
-            '그림': ['유화', '수채화', '아크릴화'],
-            '퍼즐': ['1000조각', '500조각', '200조각'],
-            '모형': ['자동차', '비행기', '선박'],
-        };
-        categories[value].forEach(function(category) {
-            var option = document.createElement('option');
-            option.text = category;
-            option.value = category;
-            categoryLevel3Select.appendChild(option);
-        });
-        // 소분류 선택란 보이도록 변경
-        document.getElementById('categoryLevel3Div').style.display = 'block';
-    }
+     // 소분류 선택 옵션 추가
+     var categories = {
+         '의자': ['나무의자', '금속의자', '플라스틱의자'],
+         '테이블': ['목재테이블', '유리테이블', '금속테이블'],
+         '장식': ['조화', '그림', '시계'],
+         'TV': ['LCD TV', 'LED TV', 'OLED TV'],
+         '냉장고': ['일반 냉장고', '양문 냉장고', '김치 냉장고'],
+         '세탁기': ['일반 세탁기', '드럼 세탁기', '스팀 세탁기'],
+         '서랍장': ['목재 서랍장', '플라스틱 서랍장', '금속 서랍장'],
+         '옷걸이': ['목재 옷걸이', '플라스틱 옷걸이', '금속 옷걸이'],
+         '선반': ['목재 선반', '플라스틱 선반', '금속 선반'],
+         '휴지통': ['플라스틱 휴지통', '금속 휴지통', '유리 휴지통'],
+         '바구니': ['플라스틱 바구니', '금속 바구니', '목재 바구니'],
+         '화장품정리': ['화장품 거치대', '화장품 정리함', '화장품 케이스'],
+         '그림': ['유화', '수채화', '아크릴화'],
+         '퍼즐': ['1000조각', '500조각', '200조각'],
+         '모형': ['자동차', '비행기', '선박'],
+     };
+     categories[value].forEach(function(category) {
+         var option = document.createElement('option');
+         option.text = category;
+         option.value = category;
+         categoryLevel3Select.appendChild(option);
+     });
+     // 소분류 선택란 보이도록 변경
+     document.getElementById('categoryLevel3Div').style.display = 'block';
+ }
 
-    function selectCategoryLevel3(value) {
-        document.getElementById('selectedCategoryLevel3').value = value;
-    }
+ function selectCategoryLevel3(value) {
+     document.getElementById('selectedCategoryLevel3').value = value;
+ }
+
 </script>
 <!--------------카테고리 js end--------------------------------------->
 
@@ -420,10 +441,36 @@
             });
         });
     });
+<<<<<<< HEAD
 </script>
 <!-----------------------제품 상태 체크 박스end------------------------------------------>
 <!-- 이미지 업로드 ----js------------------------------------------------>
 <script>
+=======
+// dto.itemSellStatus 값 가져오기
+const itemSellStatus = "[[${dto.itemSellStatus}]]";
+
+// 체크박스 요소 가져오기///////////////////////////////////////////
+const sellCheckbox = document.getElementById('tag11');
+const soldOutCheckbox = document.getElementById('tag21');
+
+// dto.itemSellStatus 값에 따라 체크박스 체크 설정
+if (itemSellStatus === 'SELL') {
+    sellCheckbox.checked = true;
+    soldOutCheckbox.checked = false;
+} else if (itemSellStatus === 'SOLD_OUT') {
+    sellCheckbox.checked = false;
+    soldOutCheckbox.checked = true;
+} else {
+    sellCheckbox.checked = false;
+    soldOutCheckbox.checked = false;
+}
+
+</script>
+<!-----------------------제품 상태 체크 박스end------------------------------------------>
+<!-- 이미지 업로드 ----js------------------------------------------------>
+<script th:inline="javascript">
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
     $(document).ready(function(){
     ////////////////csrf 토큰////////////////////////////////////////////////////////////////
        var csrfToken = $("meta[name='_csrf']").attr("content");
@@ -495,6 +542,7 @@
         });
 //////////////////////////////////등록버튼 클릭시.end (드래그앤드롭 xx)////////////////////////////////
 
+<<<<<<< HEAD
 
 
 
@@ -506,6 +554,23 @@
 
 //uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
 
+=======
+//uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
+        function showResult(uploadResultArr){
+            var uploadURL=$(".uploadResult ul"); //썸네일이 출력되는 위치
+            var str="";
+            $(uploadResultArr).each(function(i,obj){
+                str+="<li data-name='"+obj.fileName+"' data-path='"+obj.folderPath+"' data-uuid='"+obj.uuid+"'>";
+                str+="<div>";
+                str+="<button type='button' data-file='"+obj.imageURL+"' class='btn btn-warning btn-sm'>&times;</button><br>";
+                str+="<img src='/display?fileName="+obj.thumbnailURL+"'>";
+                str+="</div>";
+                str+="</li>";
+            });
+
+            uploadURL.append(str);
+        }
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
         // 이미지 삭제 버튼 클릭
         $(".uploadResult").on("click", "li .deleteBtn", function() {
             var targetFile = $(this).closest("li").find("img").attr("src");
@@ -525,24 +590,34 @@
             });
         });
 
+<<<<<<< HEAD
     });
 </script>
 <!--수정 삭제-->
 <script th:inline="javascript">
 
     function showResult(uploadResultArr){
+=======
+<!--건모 코드 올려진 이미지 가져오기-->
+    function showResult2(uploadResultArr){
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
             var uploadURL=$(".uploadResult ul"); //썸네일이 출력되는 위치
             var str="";
             $(uploadResultArr).each(function(i,obj){
                 str+="<li data-name='"+obj.piimgName+"' data-path='"+obj.pipath+"' data-uuid='"+obj.piuuid+"'>";
                 str+="<div>";
+<<<<<<< HEAD
                 str+="<button type='button' data-file='"+obj.imageURL+"' class='btn btn-warning btn-sm deleteBtn'>&times;</button><br>";
+=======
+                str+="<button type='button' data-file='"+obj.imageURL+"' class='btn btn-warning btn-sm'>&times;</button><br>";
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
                 str+="<img src='/display?fileName="+obj.thumbnailURL+"'>";
                 str+="</div>";
                 str+="</li>";
                 console.log("str");
                 console.log(str);
             });
+<<<<<<< HEAD
             uploadURL.append(str);
         }
 
@@ -556,6 +631,23 @@
     showimg();
 
 
+=======
+
+            uploadURL.append(str);
+        }
+    var testimg =[[${dto.imageDTOList}]];
+    console.log(testimg);
+
+
+    function showimg(){
+        showResult2(testimg);
+    }
+    showimg();
+          <!--건모 코드-->  <!--건모 코드-->  <!--건모 코드-->  <!--건모 코드-->
+    });
+
+    <!--수정하기-->
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
     var actionForm = $("form");
     $(".modifyBtn").click(function(){
      if(!confirm("수정하시겠습니까?")){
@@ -567,18 +659,27 @@
      $(".uploadResult li").each(function(i,obj){
        console.log("wqewqewqe");
          var target=$(obj);
+<<<<<<< HEAD
          console.log(target);
          str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
          str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
          str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
 
        console.log(str);
+=======
+         str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
+         str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
+         str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
      });
      $(".box").html(str); // hidden태그 출력
      // 폼 속성 변경 및 전송
      actionForm.attr("action","/productmodify").attr("method","post").submit();
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
  });
      $(".removeBtn").click(function(){
          if(!confirm("삭제하시겠습니까?")){
@@ -603,6 +704,28 @@
 
          actionForm.submit();
      })
+<<<<<<< HEAD
+=======
+    //올려진 이미지 삭제버튼클릭
+        $(".uploadResult").on("click","li button",function(){
+            var targetFile=$(this).data("file");//obj.imageURL 얘! -> 즉 이미지 경로
+            var targetLi=$(this).closest("li");
+
+            $.ajax({
+                url:"/removeFile", //서버주소
+                data:{fileName:targetFile}, //서버로 전송되는 데이터
+                dataType:"text", //서버에서 넘어오는 데이터의 타입
+                type:"post", //전송방식
+                success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                    if(result=="true"){
+                        alert("이미지가 삭제되었습니다");
+                    }
+                    targetLi.remove(); // 화면에서 썸네일삭제
+                }
+            });
+        });
+
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
 </script>
 <!----------- 이미지 업로드 js---end--------------------------->
 </body>

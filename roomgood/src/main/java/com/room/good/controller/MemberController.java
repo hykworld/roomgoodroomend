@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+<<<<<<< HEAD
 
 @Log4j2
+=======
+@Slf4j //@Log4j2; 문제 생겨서 지움
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
