@@ -207,24 +207,6 @@
                                 <input type="text" class="form-control col-lg-10" name="price"
                                        th:value="${dto.price}">
                                 <div class="col-lg-2">원</div>
-<<<<<<< HEAD
-                            </div>
-                            <div class="form-group row">
-                                <input type="text" class="form-control col-lg-10" name="stock"
-                                       th:value="${dto.stock}">
-                                <div class="col-lg-2">수량</div>
-                            </div>
-                            <div class="checkbox-group">
-                                제품 상태 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input class="form-check-input" type="checkbox" id="tag11" name="itemSellStatus"
-                                       value="SELL" th:checked="${dto.itemSellStatus == 0}">
-                                <label for="tag11">SELL</label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <input class="form-check-input" type="checkbox" id="tag21" name="itemSellStatus"
-                                       value="SOLD_OUT" th:checked="${dto.itemSellStatus == 1}">
-                                <label for="tag21">SOLD_OUT</label>
-=======
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
                             </div>
                             <div class="form-group row">
                                 <input type="text" class="form-control col-lg-10" name="stock"
@@ -441,12 +423,6 @@
             });
         });
     });
-<<<<<<< HEAD
-</script>
-<!-----------------------제품 상태 체크 박스end------------------------------------------>
-<!-- 이미지 업로드 ----js------------------------------------------------>
-<script>
-=======
 // dto.itemSellStatus 값 가져오기
 const itemSellStatus = "[[${dto.itemSellStatus}]]";
 
@@ -470,7 +446,6 @@ if (itemSellStatus === 'SELL') {
 <!-----------------------제품 상태 체크 박스end------------------------------------------>
 <!-- 이미지 업로드 ----js------------------------------------------------>
 <script th:inline="javascript">
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
     $(document).ready(function(){
     ////////////////csrf 토큰////////////////////////////////////////////////////////////////
        var csrfToken = $("meta[name='_csrf']").attr("content");
@@ -542,19 +517,6 @@ if (itemSellStatus === 'SELL') {
         });
 //////////////////////////////////등록버튼 클릭시.end (드래그앤드롭 xx)////////////////////////////////
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-//uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
-
-=======
 //uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
         function showResult(uploadResultArr){
             var uploadURL=$(".uploadResult ul"); //썸네일이 출력되는 위치
@@ -570,7 +532,6 @@ if (itemSellStatus === 'SELL') {
 
             uploadURL.append(str);
         }
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
         // 이미지 삭제 버튼 클릭
         $(".uploadResult").on("click", "li .deleteBtn", function() {
             var targetFile = $(this).closest("li").find("img").attr("src");
@@ -590,48 +551,20 @@ if (itemSellStatus === 'SELL') {
             });
         });
 
-<<<<<<< HEAD
-    });
-</script>
-<!--수정 삭제-->
-<script th:inline="javascript">
-
-    function showResult(uploadResultArr){
-=======
 <!--건모 코드 올려진 이미지 가져오기-->
     function showResult2(uploadResultArr){
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
             var uploadURL=$(".uploadResult ul"); //썸네일이 출력되는 위치
             var str="";
             $(uploadResultArr).each(function(i,obj){
                 str+="<li data-name='"+obj.piimgName+"' data-path='"+obj.pipath+"' data-uuid='"+obj.piuuid+"'>";
                 str+="<div>";
-<<<<<<< HEAD
-                str+="<button type='button' data-file='"+obj.imageURL+"' class='btn btn-warning btn-sm deleteBtn'>&times;</button><br>";
-=======
                 str+="<button type='button' data-file='"+obj.imageURL+"' class='btn btn-warning btn-sm'>&times;</button><br>";
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
                 str+="<img src='/display?fileName="+obj.thumbnailURL+"'>";
                 str+="</div>";
                 str+="</li>";
                 console.log("str");
                 console.log(str);
             });
-<<<<<<< HEAD
-            uploadURL.append(str);
-        }
-
-
-    var testimg =[[${dto.imageDTOList}]];
-    console.log(testimg);
-
-    function showimg(){
-        showResult(testimg);
-    }
-    showimg();
-
-
-=======
 
             uploadURL.append(str);
         }
@@ -647,7 +580,6 @@ if (itemSellStatus === 'SELL') {
     });
 
     <!--수정하기-->
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
     var actionForm = $("form");
     $(".modifyBtn").click(function(){
      if(!confirm("수정하시겠습니까?")){
@@ -659,27 +591,13 @@ if (itemSellStatus === 'SELL') {
      $(".uploadResult li").each(function(i,obj){
        console.log("wqewqewqe");
          var target=$(obj);
-<<<<<<< HEAD
-         console.log(target);
          str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
          str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
          str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
-
-       console.log(str);
-=======
-         str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
-         str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
-         str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
      });
      $(".box").html(str); // hidden태그 출력
      // 폼 속성 변경 및 전송
      actionForm.attr("action","/productmodify").attr("method","post").submit();
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
  });
      $(".removeBtn").click(function(){
          if(!confirm("삭제하시겠습니까?")){
@@ -704,8 +622,6 @@ if (itemSellStatus === 'SELL') {
 
          actionForm.submit();
      })
-<<<<<<< HEAD
-=======
     //올려진 이미지 삭제버튼클릭
         $(".uploadResult").on("click","li button",function(){
             var targetFile=$(this).data("file");//obj.imageURL 얘! -> 즉 이미지 경로
@@ -725,7 +641,6 @@ if (itemSellStatus === 'SELL') {
             });
         });
 
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
 </script>
 <!----------- 이미지 업로드 js---end--------------------------->
 </body>

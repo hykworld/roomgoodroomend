@@ -30,11 +30,7 @@ public class MainControllerHwang {
         log.info("resultresult"+productService.getList(pageRequestDTO));
     };
 
-<<<<<<< HEAD
-    /*상품 등록***********************************/
-=======
-/*상품 등록***********************************/
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
+
     @GetMapping("/productregister")
     public void register(){
     };
@@ -57,27 +53,6 @@ public class MainControllerHwang {
         model.addAttribute("dto",productDTO);
         // @ModelAttribute("requestDTO")
     };
-
-<<<<<<< HEAD
-    @PostMapping("/productmodify")
-    public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
-        Long pno=productService.modify(productDTO);
-
-        redirectAttributes.addFlashAttribute("msg",pno);
-        redirectAttributes.addAttribute("page",requestDTO.getPage());
-        return "redirect:/shop";
-    };
-
-    @PostMapping("/productremove")
-    public String remove(long pno, RedirectAttributes redirectAttributes, PageRequestDTO pageRequestDTO, Model model){
-        productService.remove(pno);
-        redirectAttributes.addFlashAttribute("msg",pno);
-        model.addAttribute("result",productService.getList(pageRequestDTO));
-        return "redirect:/shop";
-    }
-=======
->>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
-
 
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
