@@ -20,9 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MainControllerHwang {
     private final ProductService productService;
 
-<<<<<<< HEAD
-=======
-
 
     /*shop = 리스트 페이지 =======================================================*/
     @GetMapping("/shop")
@@ -32,8 +29,6 @@ public class MainControllerHwang {
         log.info("resultresult"+productService.getList(pageRequestDTO));
     };
 
-
->>>>>>> f80df135cfe97a62b4e9b2372a928d825f05671a
     @GetMapping("/productregister")
     public void register(){
     };
@@ -57,10 +52,9 @@ public class MainControllerHwang {
         // @ModelAttribute("requestDTO")
     };
 
-<<<<<<< HEAD
+
     public void productregisterget(){}
-    
-=======
+
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
         Long pno=productService.modify(productDTO);
@@ -77,8 +71,5 @@ public class MainControllerHwang {
         model.addAttribute("result",productService.getList(pageRequestDTO));
         return "redirect:/shop";
     }
-
-
->>>>>>> f80df135cfe97a62b4e9b2372a928d825f05671a
 
 }

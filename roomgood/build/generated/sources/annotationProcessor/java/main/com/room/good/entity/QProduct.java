@@ -22,8 +22,6 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final ListPath<ContactProduct, QContactProduct> contactProducts = this.<ContactProduct, QContactProduct>createList("contactProducts", ContactProduct.class, QContactProduct.class, PathInits.DIRECT2);
-
     public final StringPath content = createString("content");
 
     public final ListPath<ProductImage, QProductImage> images = this.<ProductImage, QProductImage>createList("images", ProductImage.class, QProductImage.class, PathInits.DIRECT2);

@@ -14,8 +14,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // save() 저장, findAll() 조회, FindById() 아이디로 조회, delete() 삭제 가 기본값
     // count() entity 총 갯수 반환
 
-<<<<<<< HEAD
-=======
+
     @Query("select p, pi" +
             " from Product p left outer join ProductImage pi on pi.product = p " +
             " where p.pno = :pno " +
@@ -36,6 +35,5 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // from Movie left outer join MovieImage on Movie.mno = MovieImage.movie_mno
     // left outer join review on  Movie.bno = review.movie_mno
     // group by movie.mno;
->>>>>>> f80df135cfe97a62b4e9b2372a928d825f05671a
 
 }

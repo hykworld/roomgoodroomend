@@ -560,11 +560,7 @@
 
             cpnum = $(this).parent().parent().parent().data("cpnum");
 
-            console.log(cpnum);
-
             cpanum = $(this).parent().data("cpanum");
-
-            console.log(cpanum);
 
             cpaContent.val($(this).parent().find(".capcontentClass").text().trim());
 
@@ -572,7 +568,7 @@
         });
 
         $(".cpaModifyBtn").click(function(){
-            var data = {cpnum:cpnum, cpanum:cpanum, cpacontent:cpaContent};
+            var data = {cpnum:cpnum, cpanum:cpanum, cpacontent:cpaContent.val()};
 
             $.ajax({
                 url:"/cpanswer/" + cpnum +"/" + cpanum,
@@ -588,7 +584,24 @@
             $(".productAnswerModal").modal('hide');
         });
 
+        $(".contactProductList").on("click",".cpaRemoveBtn",function(){
+            var alert = confirm("삭제하시겠습니까?");
+            if(alert){
+                cpnum = $(this).parent().parent().parent().data("cpnum");
+                cpanum = $(this).parent().data("cpanum");
+                var data={cpanum:cpanum};
+                $.ajax({
+                    url:"/cpanswer/"+ cpnum +"/"+ cpanum,
+                    type:"DELETE",
+                    contentType:"application/json; charset=utf-8",
+                    dataType:"text",
+                    success: function(result){
+                        getCpanswer();
+                    }
+                })
+            }
 
+        });
 
 
 

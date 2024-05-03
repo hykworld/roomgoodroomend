@@ -58,7 +58,7 @@ public class Product extends BaseEntity {
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    private Order1 order1;
 
-<<<<<<< HEAD
+
     // 필요한 생성자 추가
     public Product(Long pno, String pname, Long stock) {
         this.pno = pno;
@@ -69,15 +69,13 @@ public class Product extends BaseEntity {
 
     // 제품 삭제시 연관 댓글 삭제 구현을 위한 One To Many
 
-    @OneToMany(mappedBy = "product", orphanRemoval = true)
-    private List<ContactProduct> contactProducts;
+//    @OneToMany(mappedBy = "product", orphanRemoval = true)
+//    private List<ContactProduct> contactProducts;
 
 
-
-=======
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
->>>>>>> f80df135cfe97a62b4e9b2372a928d825f05671a
+
 
 }
