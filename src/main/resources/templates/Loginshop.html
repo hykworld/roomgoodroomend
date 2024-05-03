@@ -1,0 +1,112 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" integrity="sha384-oOE/3m0LUMPub4kaC09mrdEhIc+e3exm4xOGxAmuFXhBNF4hcg/6MiAXAf5p0P56" crossorigin="anonymous">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body style="padding-top: 0px;!important">
+<div class="header__top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-7">
+                <div class="header__top__left">
+                    <a href="/index">자취방 살아남기</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <div class="header__top__right">
+                    <div class="header__top__links">
+                        <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
+                        <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
+                        <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
+                        <a href="/memberJoin" sec:authorize="isAuthenticated()">마이페이지</a>
+                        <a href="#">고객센터</a>
+                    </div>
+                    <!--                        <div class="header__top__hover">-->
+                    <!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
+                    <!--                            <ul>-->
+                    <!--                                <li>USD</li>-->
+                    <!--                                <li>EUR</li>-->
+                    <!--                                <li>USD</li>-->
+                    <!--                            </ul>-->
+                    <!--                        </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>로그인</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/index">home</a>
+                        <span>로그인</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container" style="max-width: 530px;">
+    <hr>
+    <form class="form-signin" method="post" style="max-width: 400px;">
+        <h2 class="form-signin-heading">로그인</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="이메일" required="" autofocus="">
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="비밀번호" required="">
+        </p>
+        <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+        <button class="btn btn-lg btn-info btn-block" type="submit">계속하기</button>
+        <hr/>
+        <div class="row" style="font-size:14px; padding:0px; margin:0px;">
+        <div class="col-md-6" style="text-align:center"><a href="/memberJoin">회원가입</a></div>
+        <div class="col-md-6" style="text-align:center" ><a href="/resetpw">비밀번호 재설정</a></div>
+        </div>
+        <hr/>
+
+        <tbody><tr><td><a href="/oauth2/authorization/google" class="btn btn-lg btn-light btn-block"><img th:src="@{/img/google.png}" style="width:20px; height:25px; padding-bottom:5px;"> Google로 계속하기</a></td></tr></tbody>
+        <label></label>
+        <tbody><tr><td><a href="/oauth2/authorization/naver" class="btn btn-lg btn-success btn-block"><img th:src="@{/img/naver.png}" style="width:20px; height:25px; padding-bottom:5px;"> Naver로 계속하기</a></td></tr></tbody>
+        <label></label>
+        <tbody><tr><td><a href="/oauth2/authorization/kakao" class="btn btn-lg btn-warning btn-block"><img th:src="@{/img/kakao.png}" style="width:20px; height:25px; padding-bottom:5px;"> Kakao로 계속하기</a></td></tr></tbody>
+        <label></label>
+        <tbody><tr><td><a href="/oauth2/authorization/kakao" class="btn btn-lg btn-primary btn-block"><img th:src="@{/img/facebook.png}" style="width:20px; height:25px; padding-bottom:5px;"> Facebook으로 계속하기</a></td></tr></tbody>
+
+    </form>
+    <hr>
+    </table>
+</div>
+<div th:insert="~{footer.html}"></div>
+<script th:inline="javascript">
+    var msg = [[${msg}]];
+
+    if(msg){
+        alert(msg);
+
+    };
+    var error = [[${error}]];
+    if(error){
+        alert(error);
+
+    };
+</script>
+</body></html>
