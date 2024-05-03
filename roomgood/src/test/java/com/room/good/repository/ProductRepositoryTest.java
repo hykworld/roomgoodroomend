@@ -24,6 +24,14 @@ class ProductRepositoryTest {
     public void createProductTest(){
         Product product= new Product();
         product.setPname("테스트 상품");
+<<<<<<< HEAD
+        product.setPrice(10000L);
+        product.setContent("테스트");
+        product.setSubContent("테스트 서브");
+        product.setStock(1l);
+        Product savedProduct =productRepository.save(product);
+
+=======
         product.setStock(1l);
         product.setPrice(10000L);
         product.setContent("테스트");
@@ -39,6 +47,7 @@ class ProductRepositoryTest {
 
         productImageRepository.save(productImage);
 
+>>>>>>> 8670f751e87aaa765f280cc5004f10385d44571f
         System.out.println(savedProduct.toString());
 
     }

@@ -33,7 +33,8 @@ public class MainControllerKOO {
 
 
     @GetMapping("/blog")
-    public void getblog(PageRequestDTO pageRequestDTO, Model model ){
+    public void getblog(PageRequestDTO pageRequestDTO, Model model,HttpSession session ){
+
         model.addAttribute("result",eventService.getList(pageRequestDTO));
         log.info("resultresult"+eventService.getList(pageRequestDTO));
     };
