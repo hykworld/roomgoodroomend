@@ -72,7 +72,7 @@ public class MainControllerHwang {
         model.addAttribute("result",productService.getList(pageRequestDTO));
         return "redirect:/shop";
     }
->>>>>>> 130967b0dee98c468844d1e7a5b9ccfc175c9aa8
+
 
 
 }

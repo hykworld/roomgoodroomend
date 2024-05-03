@@ -26,6 +26,7 @@ public class Cart extends BaseEntity {
 
     private int quantity; // 수량
 
+    @Builder.Default
     @OneToMany(mappedBy = "cart") // cart가 One
     private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
     // CartItem엔티티에 있는 CartItem타입으로 배열을 만든다

@@ -1,7 +1,9 @@
 package com.room.good.service;
 
 import com.room.good.dto.CartDTO;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CartServiceImpl implements CartService {
 
     //장바구니화면의 목록
