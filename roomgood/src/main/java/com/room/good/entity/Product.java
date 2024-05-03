@@ -27,7 +27,7 @@ public class Product extends BaseEntity {
     //length = 255 이 기본값 공부용으로 남김
     private String pname;//상품명
 
-   @Column(nullable = false)// null값 안됨
+    @Column(nullable = false)// null값 안됨
     private Long stock; //재고
     private Long price;//가격
 
@@ -41,6 +41,7 @@ public class Product extends BaseEntity {
 
     private String subContent; // 간략한 설명 // 4.25컬럼 추가
     private ItemSellStatus itemSellStatus; // 상품 판매 상태
+
 // 이미지는 따로 하는건가?
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default

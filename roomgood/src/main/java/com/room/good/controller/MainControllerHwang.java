@@ -30,7 +30,7 @@ public class MainControllerHwang {
         log.info("resultresult"+productService.getList(pageRequestDTO));
     };
 
-/*상품 등록***********************************/
+
     @GetMapping("/productregister")
     public void register(){
     };
@@ -53,9 +53,6 @@ public class MainControllerHwang {
         model.addAttribute("dto",productDTO);
         // @ModelAttribute("requestDTO")
     };
-
-
-    public void productregisterget(){}
 
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){

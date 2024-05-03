@@ -20,6 +20,7 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -138,6 +139,21 @@ public class SubControllerKOO {
             return new ResponseEntity<>(false,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     };
+
+
+
+//    @GetMapping("/cart")
+//    public ResponseEntity<Boolean> cartIn(Principal principal, Long pno){
+//
+//        String email = principal.getName();// 이메일일거임 아마
+//        log.info(email+"cartController_principal.getName()");
+//        //cartservice.additem(email,pno);
+//        //
+//
+//
+//        return new ResponseEntity<>(true,HttpStatus.OK);
+//    };
+
 
 
 }
