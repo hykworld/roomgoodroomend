@@ -31,6 +31,7 @@ public class Cart extends BaseEntity {
     private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
     // CartItem엔티티에 있는 CartItem타입으로 배열을 만든다
 
+
     public Cart(ClubMember clubMember) {
         this.clubMember = clubMember;
     }
