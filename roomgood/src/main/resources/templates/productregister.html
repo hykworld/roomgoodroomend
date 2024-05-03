@@ -12,7 +12,7 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>RoomGoodRoomEnd</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -42,6 +42,7 @@
 <style>
     .uploadResult {
         width: 100%;
+        height: 80%;
         background-color: gray;
         margin-top: 10px;
     }
@@ -151,7 +152,7 @@
                     <ul class="register_info">
                         <div class="form-group">
                             <!----------------제품 input start-------------------->
-                            <input class="form-control mb-3" name="pname" placeholder="상품명(필수)">
+                            <input type="text" class="form-control mb-3" name="pname" placeholder="상품명(필수)">
 
                             <!-------------------------카테고리 선택------------------->
                             <div class="row">
@@ -190,29 +191,29 @@
                             <input id="selectedCategoryLevel3" type="hidden" name="categoryLevel3">
                             <!--카테고리 선택--------------------------------------------------->
                             <div class="form-group row">
-                                <input class="form-control col-lg-10" name="price" placeholder="판매가(필수)">
+                                <input type="text" class="form-control col-lg-10" name="price" placeholder="판매가(필수)">
                                 <div class="col-lg-2">원</div>
                             </div>
                             <div class="form-group row">
-                                <input class="form-control col-lg-10" name="stock" placeholder="수량">
+                                <input type="text" class="form-control col-lg-10" name="stock" placeholder="수량">
                                 <div class="col-lg-2">수량</div>
                             </div>
                             <div class="checkbox-group">
                                 <p>제품 상태 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <input class="form-check-input" type="checkbox" id="tag11" name="itemSellStatus" value=SELL>
                                     <label for="tag11">SELL</label>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                                     <input class="form-check-input" type="checkbox" id="tag21" name="itemSellStatus" value=SOLD_OUT>
                                     <label for="tag21">SOLD_OUT</label></p>
                             </div>
                             <!-- <input class="form-control" name="stock" placeholder="상품 수량"> -->
                             <!-- 수민이가 일단 빼자고 해서 주석 -->
-                            <input class="form-control mb-3" name="subContent" placeholder="상품 요약 설명">
+                            <input type="text" class="form-control mb-3" name="subContent" placeholder="상품 요약 설명">
                             <textarea class="form-control mb-3" name="content" placeholder="상품 상세 설명" rows="6"></textarea>
 
                             <!-- 업로드된 이미지 목록 -------------------------------------------------------->
                             <div>
-                                <div class="container mb-3" style="margin-top: 3%; height: 200px; background-color: rgb(193, 193, 193);">
+                                <div class="container mb-3" style="margin-top: 3%; height: 300px; background-color: rgb(193, 193, 193);">
                                     <h5 style="text-align: left;">image preview</h5>
                                     <div class="uploadResult">
                                         <ul>
@@ -223,7 +224,7 @@
                                 <div class="form-group fileForm">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input files" id="fileInput" multiple>
-                                        <label class="custom-file-label" data-browse="파일첨부"></label>
+                                        <label class="custom-file-label" for="fileInput" data-browse="파일첨부"></label>
                                     </div>
                                 </div>
                             </div>
@@ -269,18 +270,13 @@
                             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
                         </div>
                     </ul>
-
-                    <div class="box">
-
-
-                    </div>
-                    <button class="btn-primary" type="submit">상품등록</button>
-                    <button type="submit">취소(그전페이지로)</button>
                     <div class="box">
 
                     </div>
                     <button id="submitBtn" type="submit">상품등록</button>
-                    <button type="reset">취소(그전페이지로)</button>
+                    <a th:href="@{/shop}">
+                        <button type="button" class="">리스트</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -471,7 +467,6 @@
                 console.log(result);
 
                     showResult(result); // 썸네일 목록 출력
-                    $(".custom-file-input").val(""); // input type="file" 초기화
                     <!--$(".custom-file-input").val(""); // input type="file" 초기화-->
                     $(".custom-file-label").html(""); // input type="file" 실제 화면 초기화
                 }
@@ -514,20 +509,19 @@
             });
         });
 
-
         //등록버튼클릭
-        $(".btn-primary").on("click",function(e){
+        $("#submitBtn").on("click",function(e){
             e.preventDefault();  //전송방지
             var str="";
             $(".uploadResult li").each(function(i,obj){
                 var target=$(obj);
+                console.log("obj 등록 버튼시" +obj)
                 str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
                 str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
                 str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
             });
             $(".box").html(str); // hidden태그 출력
             $("form").submit(); //폼전송
-
         });
     });
 </script>

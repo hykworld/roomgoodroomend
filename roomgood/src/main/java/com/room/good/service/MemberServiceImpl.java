@@ -47,6 +47,7 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
         Optional<ClubMember> clubMember = clubMemberRepository.findById(memberDTO.getId());
+        // List<Object[]> a =
         if(clubMember.isPresent()){
         ClubMember c = clubMember.get();
         c.setName(memberDTO.getName());

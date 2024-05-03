@@ -36,6 +36,7 @@ public class EventServiceImpl implements EventService{
 
         Page<Object[]> result = eventRepository.getListPage(pageable); //리스트를 페이징처리해서 가져옴
 
+
         log.info("==============================================");
         result.getContent().forEach(arr -> {
             log.info(Arrays.toString(arr));
@@ -44,7 +45,7 @@ public class EventServiceImpl implements EventService{
         Function<Object[], EventDTO> fn = (arr -> entitiesToDTO( // fn은 지금 그릇 만드는중 -> 지금 arr에 뭐 들어가고 하는게 아니고 만약 <Object[], MovieDTO>여기안에 내용들 그득히
                 //차있으면 그거에 따라서 밑에 방식으로 처리하겠다는 뜻.
                 (Event)arr[0] ,
-                (List<EventImage>)(Arrays.asList((EventImage)arr[1]))
+                (List<EventImage>)(Arrays.asList((EventImage)arr[1])) /// 이렇게 바꿀 수 있어요
         )
         );
 

@@ -17,19 +17,19 @@ class ProductRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
-//    @Test
-//    @DisplayName("상품 저장 테스트")
-//    public void createProductTest(){
-//        Product product= new Product();
-//        product.setPname("테스트 상품");
-//        product.setPrice(10000L);
-//        product.setContent("테스트");
-//        product.setSubContent("테스트 서브");
-//        product.setStock(1l);
-//        Product savedProduct =productRepository.save(product);
-//
-//        System.out.println(savedProduct.toString());
-//
-//    }
+    @Test
+    @DisplayName("상품 저장 테스트")
+    public void createProductTest(){
+        Product product= new Product();
+        product.setPname("테스트 상품");
+        product.setPrice(10000L);
+        product.setContent("테스트");
+        product.setSubContent("테스트 서브");
+        product.setStock(1l);
+        Product savedProduct =productRepository.save(product);
+
+        System.out.println(savedProduct.toString());
+
+    }
 
 }

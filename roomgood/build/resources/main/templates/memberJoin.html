@@ -124,8 +124,7 @@
                             <label for="name">비밀번호<span data-text-content="true"
                                                         style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                         class="">*</span></label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호"
-                                   value="" required>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호" required>
                             <div class="invalid-feedback">
                                 비밀번호을 입력해주세요.
                             </div>
@@ -170,7 +169,7 @@
                             <label for="sample6_postcode">주소<span data-text-content="true"
                                                                   style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                                   class="">*</span></label>
-                            <input type="text" class="form-control" id="sample6_postcode" name="adress" placeholder="우편번호" readonly="readonly" required>
+                            <input type="text" class="form-control" id="sample6_postcode" name="adress" placeholder="우편번호" readonly="readonly" minlength="4" maxlength="6">
 
                         </div>
 
@@ -235,7 +234,7 @@
                         <label for="phone">핸드폰 번호<span data-text-content="true"
                                                        style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                        class="">*</span></label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="(-)없이 입력하세요"
+                        <input type="text" class="form-control" id="phone" name="phone" maxlength="11" minlength="11" placeholder="(-)없이 입력하세요"
                                required>
                         <div class="invalid-feedback">
                             핸드폰 번호를 입력해주세요.
@@ -265,21 +264,21 @@
                     <div class="row">
                         <div class="col-md-2 mb-3">
                             <label for="year">출생연도</label>
-                            <input type="text" class="form-control" id="year" name="year" placeholder="1996"  maxlength="4" required>
+                            <input type="text" class="form-control" id="year" name="year" placeholder="1996"  maxlength="4" minlength="4" required>
                             <div class="invalid-feedback">
                                 출생 연도를 입력하세요.
                             </div>
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="month">월</label>
-                            <input type="text" class="form-control" id="month" name="month" placeholder="08"  maxlength="2" required>
+                            <input type="text" class="form-control" id="month" name="month" placeholder="08"  maxlength="2" minlength="2" required>
                             <div class="invalid-feedback">
                                 월을 입력하세요.
                             </div>
                         </div>
                         <div class="col-md-2 mb-3">
                             <label for="day">일</label>
-                            <input type="text" class="form-control" id="day" name="day" placeholder="31"  maxlength="2" required>
+                            <input type="text" class="form-control" id="day" name="day" placeholder="31"  maxlength="2" minlength="2" required>
                             <div class="invalid-feedback">
                                 일을 입력하세요.
                             </div>
@@ -309,14 +308,14 @@
     alert(msg);
     };
 
-    $('#submitbtn').on('click',function(e){
+   <!-- $('#submitbtn').on('click',function(e){
         e.preventDefault();
-       if($('#year').val().length !== 4 || $('#year').val().trim() === ''){
+        if($('#year').val().length !== 4 || $('#year').val().trim() === ''){
         alert("출생연도를 확인하세요")
         return false;
         };
         $("form").submit();
-    })
+    })-->
 
 
 

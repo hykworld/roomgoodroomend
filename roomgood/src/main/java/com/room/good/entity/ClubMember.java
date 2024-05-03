@@ -30,11 +30,11 @@ public class ClubMember extends BaseEntity {
     ///////////////////
 
 
-    private String adress;// 주소
+    private String adress;// 주소(우편번호)
     private String birth;//생일
 
-    private String streetaddress;		// 지번 주소
-    private String detailaddress;		// 상세
+    private String streetaddress;// 지번 주소
+    private String detailaddress;// 상세
     private String code;// 이메일 통해서 비번 재설정할 떄 필요함.
 
     @Column( columnDefinition = "BIGINT(20) DEFAULT 0")
