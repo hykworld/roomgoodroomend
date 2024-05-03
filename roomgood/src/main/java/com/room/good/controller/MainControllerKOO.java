@@ -25,8 +25,7 @@ public class MainControllerKOO {
 
     private final EventService eventService;
     private final MemberService memberService;
-    @GetMapping("/index")
-    public void getIndex(){};
+
 
 
 
