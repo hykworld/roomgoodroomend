@@ -41,19 +41,18 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-<<<<<<< HEAD
+
 	//어노테이션 쓸라고 넣음 @NotNull @MAX, @MIN 같은거
 	implementation 'javax.validation:validation-api:2.0.1.Final'
 
 //	runtimeOnly 'com.mysql:mysql-connector-j'
-=======
+
 	//이메일/////이메일/////이메일/////이메일/////이메일/////이메일/////이메일///
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.2.4'
 	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 
 	//이메일.end/////이메일/////이메일/////이메일/////이메일/////이메일/////이메일/////이메일///
->>>>>>> origin/jong
 
 	//MariaDB/////////////////////////////////////////////////////////////////////////////////////
 	// https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client

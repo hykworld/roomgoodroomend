@@ -28,27 +28,22 @@ public class Cart extends BaseEntity {
     @JoinColumn(name = "club_member_id") // ClubMember와 관계를 맺고있고 ClubMember의 주 PK를 참조하도록 할라면 써야함
     private ClubMember clubMember; // 회원
 
-
-<<<<<<< HEAD
-    public Cart(ClubMember clubMember) { // 유저 정보에 대한것들이 바뀌면 그거를 여기 clubmember에 적용하는것???
-=======
-    @Builder.Default
-    @OneToMany(mappedBy = "cart") // cart가 One
-    private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
-    // CartItem엔티티에 있는 CartItem타입으로 배열을 만든다
+        @Builder.Default
+        @OneToMany(mappedBy = "cart") // cart가 One
+        private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
+        // CartItem엔티티에 있는 CartItem타입으로 배열을 만든다
 
 
     public Cart(ClubMember clubMember) {
->>>>>>> origin/jong
-        this.clubMember = clubMember;
-    }
+            this.clubMember = clubMember;
+        }
 
-    public static Cart createCart(ClubMember clubMember){ // 유저당 하나의 장바구니만 있어야 하기 때문에 유저당 하나씩 만드는것
-        Cart cart = new Cart();
-        cart.setClubMember(clubMember);
-        return cart;
+        public static Cart createCart (ClubMember clubMember){ // 유저당 하나의 장바구니만 있어야 하기 때문에 유저당 하나씩 만드는것
+            Cart cart = new Cart();
+            cart.setClubMember(clubMember);
+            return cart;
+        }
     }
-}
 
 // OneToMany를 사용한 이유 == Cart와 관련된 CartItem을 쉽게 가져올수 있음,,
 // cascade = CascadeType.ALL == 부모엔티티의 상태변경을 자식엔티티에 전파하는 방식,, 부모엔티티에 대한 모든변경이 자식엔티티에 적용

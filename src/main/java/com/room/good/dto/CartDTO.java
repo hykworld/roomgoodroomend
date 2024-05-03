@@ -1,9 +1,13 @@
 package com.room.good.dto;
 
+import com.room.good.entity.CartItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -17,11 +21,8 @@ public class CartDTO {
 
     private int totalPrice; // 총 가격
 
-<<<<<<< HEAD
+
 //    List<CartItemDTO> cartItemDTOList = new ArrayList<>();
-=======
     @Builder.Default
     private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
->>>>>>> origin/jong
-
 }

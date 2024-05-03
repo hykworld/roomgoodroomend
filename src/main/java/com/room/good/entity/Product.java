@@ -78,7 +78,7 @@ public class Product extends BaseEntity {
     @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
 
-<<<<<<< HEAD
+
     /////////////////////////////종효   주문////////////////////////
     public void removeStock(Long stock){
         Long restStock = this.stock - stock; // 상품의 재고수량에서 판매수량을 빼서 남은재고수량 구하기
@@ -87,7 +87,6 @@ public class Product extends BaseEntity {
             // 상품의 재고가 주문 수량보다 작을 경우 재고 부족 예외처리
         }this.stock = restStock; // 주문 후 남은 재고 수량을 상품의 현재 재고 값으로 할당
     }
-=======
->>>>>>> origin/jong
+
 
 }

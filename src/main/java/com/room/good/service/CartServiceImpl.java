@@ -1,7 +1,7 @@
 package com.room.good.service;
 
 import com.room.good.dto.CartDTO;
-<<<<<<< HEAD
+
 import com.room.good.dto.CartItemDTO;
 import com.room.good.entity.Cart;
 import com.room.good.entity.CartItem;
@@ -25,11 +25,6 @@ import java.util.Optional;
 @Log4j2
 @Service
 @RequiredArgsConstructor
-=======
-import org.springframework.stereotype.Service;
-
-@Service
->>>>>>> origin/jong
 public class CartServiceImpl implements CartService {
 
     private final CartRepository cartRepository;

@@ -27,17 +27,12 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
 
-<<<<<<< HEAD
+
     ///////////////////////////////////////////////////////////////////////////////////////////
 
     @Query("select p, pi from Product p left join ProductImage pi on pi.product = p where p.pno = :pno")
     List<Object[]> getProduct(Long pno);
 
-
-
-
-=======
->>>>>>> origin/jong
     @Query("select p, pi from Product p " +
             "left outer join ProductImage pi on pi.product = p" +
             " group by p ")
