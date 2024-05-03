@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -60,6 +61,15 @@ public class ClubMember extends BaseEntity {
 
         roleSet.add(clubMemberRole);
     }
+
+
+    // 제품 삭제시 연관 댓글 삭제 구현을 위한 One To Many
+
+    @OneToMany(mappedBy = "clubMember", orphanRemoval = true)
+    private List<ContactProduct> contactProducts;
+
+
+
 
 
 
