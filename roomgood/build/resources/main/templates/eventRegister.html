@@ -89,7 +89,7 @@
         <div class="form-group fileForm">
             <label>이미지 파일</label>
             <div class="custom-file">
-                <input type="file" class="custom-file-input files" id="fileInput" multiple>
+                <input type="file" class="custom-file-input files" id="fileInput">
                 <label class="custom-file-label" data-browse="파일 선택"></label>
             </div>
         </div>
@@ -291,8 +291,8 @@
        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 
-<!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
-<!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
+<!--var csrfToken = /*[[${_csrf.token}]]*/ null;-->
+<!--var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
         $(document).ajaxSend(function (e, xhr, options) {
             xhr.setRequestHeader(csrfHeader, csrfToken);
         });
@@ -436,7 +436,6 @@
             //태그들이 추가된 것을 확인한 후에 comment를 제거
             $(".box").html(str);
             $("form").submit();
-
         });
 
         $(".uploadResult").on("dragenter dragover",function(event){

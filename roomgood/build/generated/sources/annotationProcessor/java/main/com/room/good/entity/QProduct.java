@@ -26,6 +26,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final StringPath content = createString("content");
 
+    public final ListPath<ProductImage, QProductImage> images = this.<ProductImage, QProductImage>createList("images", ProductImage.class, QProductImage.class, PathInits.DIRECT2);
+
     public final EnumPath<com.room.good.constant.ItemSellStatus> itemSellStatus = createEnum("itemSellStatus", com.room.good.constant.ItemSellStatus.class);
 
     //inherited

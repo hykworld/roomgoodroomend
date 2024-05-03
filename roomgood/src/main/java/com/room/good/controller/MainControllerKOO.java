@@ -32,7 +32,8 @@ public class MainControllerKOO {
 
 
     @GetMapping("/blog")
-    public void getblog(PageRequestDTO pageRequestDTO, Model model ){
+    public void getblog(PageRequestDTO pageRequestDTO, Model model,HttpSession session ){
+
         model.addAttribute("result",eventService.getList(pageRequestDTO));
         log.info("resultresult"+eventService.getList(pageRequestDTO));
     };
@@ -171,7 +172,7 @@ public class MainControllerKOO {
 
         return "redirect:/blog";
     };
-    @GetMapping("wishlist")
+    @GetMapping("/wishlist")
     public void wishlist(Model model, Principal principal){
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
@@ -181,9 +182,13 @@ public class MainControllerKOO {
 
     @GetMapping("/resetpw")
     public void getCheckout(){};
+<<<<<<< HEAD
     @GetMapping("/shop")
     public void getshop(){};
 
     @GetMapping("/shopping-cart")
     public void getShoppingCart(){};
+=======
+
+>>>>>>> f80df135cfe97a62b4e9b2372a928d825f05671a
 }

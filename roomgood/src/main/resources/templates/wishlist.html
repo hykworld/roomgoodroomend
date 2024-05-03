@@ -26,6 +26,34 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        .col-lg-2 {
+          position: relative;
+          display: inline-block;
+          transition: color 0.3s ease; /* 호버 효과를 위한 색상 전환 효과 */
+          cursor:pointer;
+          padding-bottom:10px;
+        }
+
+      .col-lg-2::after {
+
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 0;
+          width: 0; /* 초기에는 바텀 라인의 너비가 0 */
+          height: 2px;
+          background-color: gray;
+          transition: width 0.3s ease; /* 너비 변화를 부드럽게 만듦 */
+      }
+
+      .col-lg-2:hover::after {
+          width: calc(70% - 40px); /* 호버 상태에서 바텀 라인의 너비를 조정하여 가운데에서부터 양옆으로 확장됨 */
+      }
+
+    </style>
 </head>
 
 <body>
@@ -58,48 +86,104 @@
     <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
     <section class="shopping-cart spad">
         <div class="container">
-
-            <div class="col-lg-12">
-                <h2>위시리스트</h2>
-            </div>
             <br>
             <div class="col-lg-12">
                 <div class="cart__discount " style="text-align: center;">
                     <div><img src="img/profile.jpg"></div>
                     <br>
-                    <div><h3>구건모</h3></div>
+                    <div><b>구건모</b>님의 찜 목록</div>
                 </div>
             </div>
+            <div class="row mywish" style="text-align:center;justify-content: center;">
 
-            <div class="col-lg-12" style="">
-                태그1 ,태그1 ,태그1
+              <div id="mywish1" class="col-lg-2">전체</div>
+              <div id="mywish2" class="col-lg-2">가전</div>
+              <div id="mywish3" class="col-lg-2">옷정리/보관</div>
+              <div id="mywish4" class="col-lg-2">생활용품</div>
+              <div id="mywish5" class="col-lg-2">소품/취미</div>
             </div>
             <hr>
-            <div class="cart__total" style="text-align: center;">
-                <ul id="mypagemenu"><b>
-                    <li id="mypagemenu1">구매 목록</li>
+                <div class="mymember"  style="margin-left:50px;text-align: center; margin-bot:150px font-size:18px;">
                     <hr>
-                    <li id="mypagemenu2">마일리지 / 충전금액</a></li>
+                    <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>찜 목록</b></div>
                     <hr>
-                    <li id="mypagemenu3">쿠폰</li>
-                    <hr>
-                    <li id="mypagemenu4">찜 목록 / 최근 본 상품</li>
-                    <hr>
-                    <li id="mypagemenu5">문의 내역</li>
-                    <hr>
-                </b>
-                </ul>
+                    <div class="row all" style="background: #f3f2ee;">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>상품 내역</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><b>주문 상세</b></div>
+                    </div>
+                    <!--반복될 애들-->
+                    <div class="row elect" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>가전</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>100,000원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    </div>
+                    <div class="row cloth" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>옷정리/보관</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>15,000원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    </div>
+                    <div class="row daily" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>생활용품</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>1,000원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    </div>
+                    <div class="row good" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>소품/취미</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>1,000원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    </div>
+                    <div class="row good" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>소품/취미</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>5,000원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    </div>
 
-            </div>
+                    <!--반복될 애들.end-->
+                </div>
         </div>
-        </div>
-        </div>
-
     </section>
 </form>
 <!-- Shopping Cart Section End -->
 <div th:insert="~{footer.html}"></div>
+<script>
+    $('#mywish1').on('click',function(){
 
+        $('.all').css('display','flex')
+        $('.elect').css('display','flex');
+        $('.cloth').css('display','flex');
+        $('.daily').css('display','flex');
+        $('.good').css('display','flex');
+    });
+    $('#mywish2').on('click',function(){
+        $('.all').css('display','flex')
+        $('.elect').css('display','flex');
+        $('.cloth').css('display','none');
+        $('.daily').css('display','none');
+        $('.good').css('display','none');
+    });
+    $('#mywish3').on('click',function(){
+        $('.all').css('display','flex')
+        $('.elect').css('display','none');
+        $('.cloth').css('display','flex');
+        $('.daily').css('display','none');
+        $('.good').css('display','none');
+    });
+    $('#mywish4').on('click',function(){
+        $('.all').css('display','flex')
+        $('.elect').css('display','none');
+        $('.cloth').css('display','none');
+        $('.daily').css('display','flex');
+        $('.good').css('display','none');
+    });
+    $('#mywish5').on('click',function(){
+        $('.all').css('display','flex')
+        $('.elect').css('display','none');
+        $('.cloth').css('display','none');
+        $('.daily').css('display','none');
+        $('.good').css('display','flex');
+    });
+</script>
 
 <!--    <script src="js/pay.js"></script>-->
 <script src="js/jquery-3.3.1.min.js"></script>

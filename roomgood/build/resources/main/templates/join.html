@@ -124,7 +124,7 @@
                                                     style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                     class="">*</span></label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호"
-                               value="" required>
+                               value="" required minlength="4">
                         <div class="invalid-feedback">
                             비밀번호을 입력해주세요.
                         </div>
@@ -134,7 +134,7 @@
                                                            style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                            class="">*</span></label>
                         <input type="password" class="form-control" id="password2"
-                               placeholder="비밀번호 확인" value="" required>
+                               placeholder="비밀번호 확인" value="" required minlength="4">
                         <div class="invalid-feedback">
                             비밀번호를 입력해주세요.
                         </div>
@@ -169,7 +169,7 @@
                         <label for="sample6_postcode">주소<span data-text-content="true"
                                                               style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                               class="">*</span></label>
-                        <input type="text" class="form-control" id="sample6_postcode" name="adress" placeholder="우편번호" required readonly="readonly">
+                        <input type="text" class="form-control" id="sample6_postcode" name="adress" placeholder="우편번호" required readonly="readonly" minlength="4" maxlength="6">
 
                     </div>
 
@@ -235,7 +235,7 @@
                                                    style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                    class="">*</span></label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="(-)없이 입력하세요"
-                           required>
+                           required minlength="10" maxlength="11">
                     <div class="invalid-feedback">
                         핸드폰 번호를 입력해주세요.
                     </div>
@@ -264,21 +264,21 @@
                 <div class="row">
                     <div class="col-md-2 mb-3">
                         <label for="year">출생연도</label>
-                        <input type="text" class="form-control" id="year" name="year" placeholder="1996" required>
+                        <input type="text" class="form-control" id="year" name="year" placeholder="1996" required minlength="4" maxlength="4">
                         <div class="invalid-feedback">
                             출생 연도를 입력하세요.
                         </div>
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="month">월</label>
-                        <input type="text" class="form-control" id="month" name="month" placeholder="08" required>
+                        <input type="text" class="form-control" id="month" name="month" placeholder="08" required minlength="2" maxlength="2">
                         <div class="invalid-feedback">
                             월을 입력하세요.
                         </div>
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="day">일</label>
-                        <input type="text" class="form-control" id="day" name="day" placeholder="31" required>
+                        <input type="text" class="form-control" id="day" name="day" placeholder="31" required minlength="2" maxlength="2">
                         <div class="invalid-feedback">
                             일을 입력하세요.
                         </div>

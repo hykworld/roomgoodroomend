@@ -1,16 +1,26 @@
 package com.room.good.service;
 
 import com.room.good.dto.MemberDTO;
+import com.room.good.email.MailService;
 import com.room.good.entity.ClubMember;
 import com.room.good.entity.ClubMemberRole;
+import com.room.good.exception.BusinessLogicException;
+import com.room.good.exception.ExceptionCode;
+import com.room.good.redis.RedisService;
 import com.room.good.repository.ClubMemberRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.time.Duration;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @Log4j2
@@ -18,6 +28,15 @@ import java.util.Optional;
 public class MemberServiceImpl implements MemberService {
     //
     private final ClubMemberRepository clubMemberRepository;
+
+    // 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일
+    private static final String AUTH_CODE_PREFIX = "AuthCode ";
+    private final RedisService redisService;
+    private final MailService mailService;
+    @Value("${spring.mail.auth-code-expiration-millis}")
+    private long authCodeExpirationMillis;
+
+    // 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일
 
     @Override
     public boolean join(MemberDTO memberDTO) {
@@ -28,12 +47,21 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
         Optional<ClubMember> clubMember = clubMemberRepository.findById(memberDTO.getId());
+        // List<Object[]> a =
         if(clubMember.isPresent()){
         ClubMember c = clubMember.get();
         c.setName(memberDTO.getName());
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         c.setPassword(passwordEncoder.encode(memberDTO.getPassword()));
         c.setPhone(memberDTO.getPhone());
+        c.setBirth(memberDTO.getBirth());
+        c.setNickname(memberDTO.getNickname());
+        c.setStreetaddress(memberDTO.getStreetaddress());
+        c.setDetailaddress(memberDTO.getDetailaddress());
+        c.setGrade(memberDTO.getGrade());
+        c.setMoney(memberDTO.getMoney());
+        c.setAdress(memberDTO.getAdress());
+        c.setMileage(memberDTO.getMileage());
 
             clubMemberRepository.save(c);
         }
@@ -135,5 +163,71 @@ public class MemberServiceImpl implements MemberService {
 
         return memberDTO;
     }
+    ///////////////////////////////////////////////////////////////////이메일 추가////////
+    ///////////////////////////////////////////////////////////////////이메일 추가////////
+    ///////////////////////////////////////////////////////////////////이메일 추가////////
+    ///////////////////////////////////////////////////////////////////이메일 추가////////
 
-}
+    public void sendCodeToEmail(String toEmail) {
+        log.info("여기찍히나?");
+        String title = "Travel with me 이메일 인증 번호";
+        String authCode = this.createCode();
+        log.info("authCodeauthCode?"+authCode);
+        Optional<ClubMember> byEmail = clubMemberRepository.findByEmail2(toEmail);
+        ClubMember clubMember = byEmail.get();
+        clubMember.setCode(authCode);
+        clubMemberRepository.save(clubMember);
+        mailService.sendEmail(toEmail, title, authCode);
+        log.info("sendEmailsuccess");
+        // 이메일 인증 요청 시 인증 번호 Redis에 저장 ( key = "AuthCode " + Email / value = AuthCode )
+
+//        redisService.setValues(AUTH_CODE_PREFIX + toEmail,
+//                authCode, Duration.ofMillis(this.authCodeExpirationMillis));
+    }
+    public boolean checkCode(String email, String code){
+
+        Optional<ClubMember> byEmail = clubMemberRepository.findByEmail2(email);
+        if(code.equals(byEmail.get().getCode())){//코드가 내가 저장하고 이멜로 보내준 거랑 일치하면 !
+            return true;
+        }else {
+
+            return false;
+        }
+
+
+    }
+
+    @Override
+    @Transactional
+    public boolean passwordChange(String email,String password) {
+        log.info("serviceEmail"+email);
+        log.info("servicepassword"+password);
+        Optional<ClubMember> byEmail2 = clubMemberRepository.findByEmail2(email);
+        log.info("byEmail2byEmail2"+byEmail2);
+        ClubMember clubMember = byEmail2.get();
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); //해싱 알고리즘!!
+        clubMember.setPassword(passwordEncoder.encode(password));
+        log.info("clubMemberclubMemberclubMember"+clubMember);
+        log.info(clubMember.getPassword());
+        clubMemberRepository.save(clubMember);
+        return true;
+    }
+
+    @Override
+    public String createCode() {
+        int lenth = 6;
+        try {
+            Random random = SecureRandom.getInstanceStrong();
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < lenth; i++) {
+                builder.append(random.nextInt(10));
+            }
+            return builder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            log.debug("MemberService.createCode() exception occur");
+            throw new BusinessLogicException(ExceptionCode.NO_SUCH_ALGORITHM);
+        }
+
+    }
+
+    }

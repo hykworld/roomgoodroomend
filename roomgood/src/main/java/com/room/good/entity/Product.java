@@ -1,10 +1,11 @@
 package com.room.good.entity;
+
 import com.room.good.constant.ItemSellStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +27,7 @@ public class Product extends BaseEntity {
     //length = 255 이 기본값 공부용으로 남김
     private String pname;//상품명
 
-   @Column(nullable = false)// null값 안됨
+    @Column(nullable = false)// null값 안됨
     private Long stock; //재고
     private Long price;//가격
 
@@ -57,6 +58,7 @@ public class Product extends BaseEntity {
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    private Order1 order1;
 
+<<<<<<< HEAD
     // 필요한 생성자 추가
     public Product(Long pno, String pname, Long stock) {
         this.pno = pno;
@@ -72,5 +74,10 @@ public class Product extends BaseEntity {
 
 
 
+=======
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<ProductImage> images = new ArrayList<>();
+>>>>>>> f80df135cfe97a62b4e9b2372a928d825f05671a
 
 }

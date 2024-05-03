@@ -31,11 +31,12 @@ public class ClubMember extends BaseEntity {
     ///////////////////
 
 
-    private String adress;// 주소
+    private String adress;// 주소(우편번호)
     private String birth;//생일
 
-    private String streetaddress;		// 지번 주소
-    private String detailaddress;		// 상세
+    private String streetaddress;// 지번 주소
+    private String detailaddress;// 상세
+    private String code;// 이메일 통해서 비번 재설정할 떄 필요함.
 
     @Column( columnDefinition = "BIGINT(20) DEFAULT 0")
     private Long money; // 충전금액
@@ -51,6 +52,8 @@ public class ClubMember extends BaseEntity {
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private Set<ClubMemberRole> roleSet = new HashSet<>();
+
+
     // n+1문제때문에 Set을 씀! 레퍼런스만 건다 8가지 기본타입은 쓸 수가 없다.
 
 
