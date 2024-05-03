@@ -1,2 +1,7 @@
-package com.room.good.service;public class CartttService {
-}
+//package com.room.good.service;
+//
+//public interface CartttService {
+//
+//
+//    Boolean additem(String email,Long pno);
+//}
