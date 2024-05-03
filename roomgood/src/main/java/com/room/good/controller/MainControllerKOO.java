@@ -183,8 +183,4 @@ public class MainControllerKOO {
     @GetMapping("/resetpw")
     public void getCheckout(){};
 
-    @GetMapping("/shop-details")
-    public void getSDetails(){};
-    @GetMapping("/shopping-cart")
-    public void getShoppingCart(){};
 }

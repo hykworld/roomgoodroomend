@@ -20,6 +20,7 @@ public class CartDTO { // 장바구니에 필요한 컬럼
 
     private int quantity; // 총 수량 알기위해
 
+    @Builder.Default
     private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
 
 }

@@ -19,7 +19,5 @@ public class MainControllerHong {
     public void shoppingCart(CartDTO cartDTO, Model model){
         model.addAttribute("result",cartService.cartList(cartDTO, cartDTO.getClubMemberId()));
     }
-
-
 }
 
