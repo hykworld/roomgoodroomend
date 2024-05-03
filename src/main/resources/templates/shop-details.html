@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>회원가입 화면 샘플 - Bootstrap</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--내가 추가.end-->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Male-Fashion | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!--내가 추가.end-->
+
+
+    <style>
+        <!--        body {-->
+        <!--          min-height: 100vh;-->
+
+        <!--          background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));-->
+        <!--          background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);-->
+        <!--          background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);-->
+        <!--          background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);-->
+        <!--          background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);-->
+        <!--        }-->
+
+        <!--        body {-->
+        <!--          min-height: 100vh;-->
+
+        <!--          background: -webkit-gradient(linear, left bottom, right top, from(#F3F2EE), to(#F3F2EE));-->
+        <!--          background: -webkit-linear-gradient(bottom left, #F3F2EE 0%, #F3F2EE 100%);-->
+        <!--          background: -moz-linear-gradient(bottom left, #F3F2EE 0%, #F3F2EE 100%);-->
+        <!--          background: -o-linear-gradient(bottom left, #F3F2EE 0%, #F3F2EE 100%);-->
+        <!--          background: linear-gradient(to top right, #F3F2EE 0%, #F3F2EE 100%);-->
+        <!--        }-->
+
+
+                .input-form {
+                  max-width: 800px;
+
+                  margin-top: 80px;
+                  padding: 32px;
+
+                  background: #fff;
+                  -webkit-border-radius: 10px;
+                  -moz-border-radius: 10px;
+                  border-radius: 10px;
+        <!--          -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);-->
+        <!--          -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);-->
+        <!--          box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)-->
+                }
+
+        #mainContent{
+            max-width:1260px;
+            width:100%;
+            margin: 0 auto;
+        }
+        .imgBox{
+            width:50%;
+            height:500px;
+            background-color:#342;
+            float:left;
+        }
+        ul,li,ol{
+            list-style:none;
+        }
+        .breadcrumb-option{
+            margin-bottom:100px;
+        }
+        .product_buy{
+            height:500px;
+        }
+        .product_nav{
+            margin-top:60px;
+            border-top:solid 1px #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<!--<div id="preloder">-->
+<!--    <div class="loader"></div>-->
+<!--</div>-->
+
+<!-- Breadcrumb Section Begin -->
+<div th:include="header.html"></div>
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>회원가입</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/index">home</a>
+                        <span>회원가입</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+
+
+
+
+<div id="mainContent">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="shop__sidebar">
+                <div class="shop__sidebar__search">
+                    <form action="#">
+                        <input type="text" placeholder="Search...">
+                        <button type="submit"><span class="icon_search"></span></button>
+                    </form>
+                </div>
+                <div class="shop__sidebar__accordion">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                            </div>
+                            <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__categories">
+                                        <ul class="nice-scroll">
+                                            <li><a href="#">Men (20)</a></li>
+                                            <li><a href="#">Women (20)</a></li>
+                                            <li><a href="#">Bags (20)</a></li>
+                                            <li><a href="#">Clothing (20)</a></li>
+                                            <li><a href="#">Shoes (20)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                            </div>
+                            <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__brand">
+                                        <ul>
+                                            <li><a href="#">Louis Vuitton</a></li>
+                                            <li><a href="#">Chanel</a></li>
+                                            <li><a href="#">Hermes</a></li>
+                                            <li><a href="#">Gucci</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
+                            </div>
+                            <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__price">
+                                        <ul>
+                                            <li><a href="#">$0.00 - $50.00</a></li>
+                                            <li><a href="#">$50.00 - $100.00</a></li>
+                                            <li><a href="#">$100.00 - $150.00</a></li>
+                                            <li><a href="#">$150.00 - $200.00</a></li>
+                                            <li><a href="#">$200.00 - $250.00</a></li>
+                                            <li><a href="#">250.00+</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
+                            </div>
+                            <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__tags">
+                                        <a href="#">Product</a>
+                                        <a href="#">Bags</a>
+                                        <a href="#">Shoes</a>
+                                        <a href="#">Fashio</a>
+                                        <a href="#">Clothing</a>
+                                        <a href="#">Hats</a>
+                                        <a href="#">Accessories</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <!--구매부분 작성-->
+            <div class="product_buy">
+                <div class="imgBox">
+                    <div></div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div>
+                    <form>
+                        <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
+                        <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
+                        <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
+                        <h2>플러피 매트 토퍼 12cm</h2>
+                        <p>판매가 : 37,900원</p>
+                        <p>배송비 : 10,000원 </p>
+                        <p>총 가격 : 47,900원</p>
+                        <button class="btn btn-secondary">장바구니 추가</button><button class="btn btn-primary">바로 구매하기</button>
+                    </form>
+                </div>
+            </div>
+            <!--구매부분 작성 끝-->
+
+            <!--상품 내비 바-->
+            <div class="product_nav">
+                <ul>
+                    <li><a>상품 구매</a></li>
+                    <li><a>상세 정보</a></li>
+                    <li><a>상품 후기</a></li>
+                    <li><a>상품 문의</a></li>
+                </ul>
+            </div>
+
+            <!--상품 상세 설명-->
+            <div class="product_details">
+                <div>
+
+                </div>
+                <div>여기는 상품 리뷰</div>
+                <div>
+                    <button type="button" class="btn btn-info addContactProduct">제품문의</button>
+                    <div class="list-group contactProductList">
+
+                    </div>
+                </div>
+                <div>이건 구현할지말지 구상안함ㅇㅇ;;;</div>
+            </div>
+            <!--상품 상세 설명 끝-->
+        </div>
+    </div>
+</div>
+
+<!--여기는 상품문의 등록 모달창 깔삼 하게 바꿀 에정이긴한데 뭐 일단 그렇다고 ㅇㅇㅇ;;;;;-->
+<div class="contactProductModal modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">제품 문의</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button><!--이건 x 모양 닫기 버튼-->
+            </div>
+            <div class="modal-body">
+                <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="mid" value="1">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="nickName" value="parksoomin">
+                </div>
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" class="form-control" name="cptitle" placeholder="제목" >
+                </div>
+                <div class="form-group">
+                    <label>문의 내역</label>
+                    <input type="text" class="form-control" name="cpcontent" placeholder="문의 내역" >
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary contactProductSaveBtn">저장</button>
+                <button type='button' class='btn btn-warning cpModifyBtn'>수정</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--여기는 답변 즉 대댓할곳임 ㅇㅇ;;;;;;-->
+<div class="productAnswerModal modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">제품 답변</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button><!--이건 x 모양 닫기 버튼-->
+            </div>
+            <div class="modal-body">
+                <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+                <div class="form-group">
+                    <label>답변</label>
+                    <input type="text" class="form-control" name="cpacontent" placeholder="답변" >
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary cpaSaveBtn">저장</button>
+                <button type='button' class='btn btn-warning cpaModifyBtn'>수정</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:insert="~{footer.html}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script>
+<!--    $(window).resize(function(){-->
+
+<!--    $('.imgBox').each(function() {-->
+<!--    $(this).height($(this).width());-->
+<!--    });-->
+<!--    }).resize();-->
+
+    $(function(){
+        var csrfToken = $("meta[name='_csrf']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+
+        <!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
+        <!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader(csrfHeader, csrfToken);
+        });
+
+        var pno = 1;
+        var contactProductModal = $(".contactProductModal");
+        var inputMid = $("input[name='mid']");
+        var inputNickname = $("input[name='nickName']");
+        var inputTitle = $("input[name='cptitle']");
+        var inputContent = $("input[name='cpcontent']");
+        var cpnum;
+        var cpanum;
+
+        $(".addContactProduct").click(function(){
+            inputTitle.val("");
+            inputContent.val("");
+
+            $(".cpModifyBtn").hide();
+            $(".contactProductSaveBtn").show();
+
+            $(".contactProductModal").modal("show");
+        });
+
+        $(".contactProductSaveBtn").click(function(){
+            var data = {pno:pno, mid:inputMid.val(),nickName:inputNickname.val(), cptitle : inputTitle.val(), cpcontent : inputContent.val()};
+
+
+            $.ajax({
+                url:'/contactProduct/' + pno,
+                type:"POST",
+                data:JSON.stringify(data),
+                contentType:"application/json; charset=utf-8",
+                dataType:"text",
+                success: function(result){
+                    console.log(result);
+                    getContactProducts();
+                }
+            })
+            contactProductModal.modal('hide');
+
+        });
+
+        function getContactProducts(){
+
+            function formatTime(str){
+                var date = new Date(str);
+                return date.getFullYear() + '/' +
+                    (date.getMonth() + 1) + '/' +
+                    date.getDate() + ' ' +
+                    date.getHours() + ':' +
+                    date.getMinutes();
+            }
+
+            $.ajax({
+                url:"/contactProduct/" + pno + "/all",
+                type:"GET",
+                success: function(arr){
+                    var str = "";
+
+                    $.each(arr, function(idx, contactProduct){
+                        str += "<div class='card-body' data-cpnum=" + contactProduct.cpnum + " data-mid=" +contactProduct.mid+">";
+                        str += "<input type='hidden' value="+contactProduct.cpcontent+" class='cpcontentclass'/>";
+                        str += "<div class='card-title'>"+contactProduct.cptitle+"</div>";
+                        str += "<div class='card-subtitle mb-2 text-muted'>"+contactProduct.nickName+"</div>";
+                        str += "<div class='list-group contactProductAnswerList"+contactProduct.cpnum+"'></div>";
+                        str += "<button type='button' class='btn btn-warning modifyBtn'>수정</button>";
+                        str += "<button type='button' class='btn btn-danger removeBtn'>삭제</button>";
+                        str += "<button type='button' class='btn btn-primary answerLookBtn'>답변보기</button>"
+                        str += "<button type='button' class='btn btn-primary answerBtn'>답변</button>";
+                        str += "</div>";
+                    });
+
+                    $(".contactProductList").html(str);
+                }
+            })
+        }
+        getContactProducts();
+
+        $(".contactProductList").on("click",".modifyBtn",function(){
+
+            $(".contactProductSaveBtn").hide();
+            $(".cpModifyBtn").show();
+
+            var target = $(this).parent();
+            console.log(target);
+            cpnum = target.data("cpnum");
+            inputTitle.val(target.find('.card-title').text().trim());
+            inputContent.val(target.find('.cpcontentclass').val());
+
+            contactProductModal.modal('show');
+
+        });
+
+        $(".cpModifyBtn").click(function(){
+            var data = {cpnum:cpnum, pno:pno, mid:inputMid.val(),nickName:inputNickname.val(), cptitle : inputTitle.val(), cpcontent : inputContent.val()};
+
+            $.ajax({
+                url:'/contactProduct/' + pno + '/' + cpnum,
+                type:"PUT",
+                data:JSON.stringify(data),
+                contentType:"application/json; charset=utf-8",
+                dataType:"text",
+                success: function(result){
+                    getContactProducts();
+                }
+            })
+            contactProductModal.modal("hide");
+        });
+
+        $(".contactProductList").on("click",".removeBtn",function(){
+            var alert = confirm("삭제하시겠습니까?");
+            if(alert){
+                cpnum = $(this).parent().data("cpnum");
+                var data={cpnum:cpnum};
+                $.ajax({
+                    url:"/contactProduct/"+ pno +"/"+ cpnum,
+                    type:"DELETE",
+                    contentType:"application/json; charset=utf-8",
+                    dataType:"text",
+                    success: function(result){
+                        getContactProducts();
+                    }
+                })
+            }
+
+        });
+
+        //--------------------------------------------------------------------------------------------------
+        //여기는 대댓글 관련애들ㅇㅇ
+
+        var cpaContent = $("input[name='cpacontent']");
+
+        $(".contactProductList").on("click",".answerBtn",function(){
+
+            cpaContent.val("");
+
+            cpnum = $(this).parent().data("cpnum");
+
+            console.log(cpnum);
+
+            $(".cpaModifyBtn").hide();
+
+            $(".productAnswerModal").modal('show');
+
+        });
+
+        function getCpanswer(){
+
+            function formatTime(str){
+                var date = new Date(str);
+                return date.getFullYear() + '/' +
+                    (date.getMonth() + 1) + '/' +
+                    date.getDate() + ' ' +
+                    date.getHours() + ':' +
+                    date.getMinutes();
+            }
+
+
+            $.ajax({
+                url:"/cpanswer/" + cpnum,
+                type:"GET",
+                success: function(arr){
+                    var str ="";
+                    $.each(arr, function(idx,result){
+                        str += "<div data-cpanum="+result.cpanum+">";
+                        str += "<div class='capcontentClass'>"+result.cpacontent+"</div>";
+                        str += "<button type='button' class='btn btn-warning cpaModifyBtn2'>수정</button>";
+                        str += "<button type='button' class='btn btn-warning cpaRemoveBtn'>삭제</button>";
+                        str += "</div>";
+                    });
+                    $(".contactProductAnswerList"+cpnum).html(str);
+                }
+            })
+
+        }
+        $(".cpaSaveBtn").click(function(){
+            var data = {cpnum:cpnum, cpacontent:cpaContent.val()};
+
+             $.ajax({
+                url:"/cpanswer/" + cpnum,
+                type:"POST",
+                data:JSON.stringify(data),
+                contentType:"application/json; charset=utf-8",
+                dataType:"text",
+                success: function(result){
+
+                    getCpanswer();
+                }
+            })
+
+
+            $(".productAnswerModal").modal('hide');
+
+        });
+
+        $(".contactProductList").on("click",".answerLookBtn",function(){
+            cpnum = $(this).parent().data("cpnum");
+            console.log(cpnum);
+            getCpanswer();
+        });
+
+        $(".contactProductList").on("click",".cpaModifyBtn2",function(){
+            $(".cpaModifyBtn").show();
+            $(".cpaSaveBtn").hide();
+
+            cpnum = $(this).parent().parent().parent().data("cpnum");
+
+            cpanum = $(this).parent().data("cpanum");
+
+            cpaContent.val($(this).parent().find(".capcontentClass").text().trim());
+
+            $(".productAnswerModal").modal('show');
+        });
+
+        $(".cpaModifyBtn").click(function(){
+            var data = {cpnum:cpnum, cpanum:cpanum, cpacontent:cpaContent.val()};
+
+            $.ajax({
+                url:"/cpanswer/" + cpnum +"/" + cpanum,
+                type:"PUT",
+                data:JSON.stringify(data),
+                contentType:"application/json; charset=utf-8",
+                dataType:"text",
+                success: function(result){
+                    getCpanswer();
+                }
+            })
+
+            $(".productAnswerModal").modal('hide');
+        });
+
+        $(".contactProductList").on("click",".cpaRemoveBtn",function(){
+            var alert = confirm("삭제하시겠습니까?");
+            if(alert){
+                cpnum = $(this).parent().parent().parent().data("cpnum");
+                cpanum = $(this).parent().data("cpanum");
+                var data={cpanum:cpanum};
+                $.ajax({
+                    url:"/cpanswer/"+ cpnum +"/"+ cpanum,
+                    type:"DELETE",
+                    contentType:"application/json; charset=utf-8",
+                    dataType:"text",
+                    success: function(result){
+                        getCpanswer();
+                    }
+                })
+            }
+
+        });
+
+
+
+
+    });
+
+
+</script>
+
+</body>
+
+</html>
