@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"clubMember"})
+@ToString(exclude = {"clubMember","cartItems"})
 public class Cart extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

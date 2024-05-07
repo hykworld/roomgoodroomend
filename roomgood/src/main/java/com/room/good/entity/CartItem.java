@@ -11,7 +11,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @RequiredArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"cart","product"})
 public class CartItem extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
