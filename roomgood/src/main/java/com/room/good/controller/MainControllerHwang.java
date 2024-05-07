@@ -3,7 +3,7 @@ package com.room.good.controller;
 
 import com.room.good.dto.PageRequestDTO;
 import com.room.good.dto.ProductDTO;
-import com.room.good.service.MemberService;
+
 import com.room.good.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @Log4j2
@@ -20,14 +23,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class MainControllerHwang {
     private final ProductService productService;
 
-
     /*shop = 리스트 페이지 =======================================================*/
-    @GetMapping("/shop")
-    public void readshop(PageRequestDTO pageRequestDTO, Model model ){
-        model.addAttribute("result",productService.getList(pageRequestDTO));
+//    @GetMapping("/shop")
+//    public void readshop(PageRequestDTO pageRequestDTO, Model model ){
+//        model.addAttribute("result",productService.getList(pageRequestDTO));
+//    };
 
-        log.info("resultresult"+productService.getList(pageRequestDTO));
-    };
+    @GetMapping("/shop")
+    public String readshop(PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Long cno) {
+        if (cno != null) {
+            model.addAttribute("result", productService.categoryPage(cno, pageRequestDTO));
+        } else {
+            model.addAttribute("result", productService.getList(pageRequestDTO));
+        }
+        return "shop"; // shop.html로 이동
+    }
 
     @GetMapping("/productregister")
     public void register(){
@@ -35,6 +45,8 @@ public class MainControllerHwang {
 
     @PostMapping("/productregister")
     public String itemregister(ProductDTO productDTO, RedirectAttributes redirectAttributes){
+
+        log.info("{} productDTOproductDTOproductDTO", productDTO.getCategoryBig());
 
         Long pno=productService.register(productDTO);
         redirectAttributes.addFlashAttribute("msg",pno);

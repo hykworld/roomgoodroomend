@@ -3,6 +3,8 @@ package com.room.good.entity;
 import com.room.good.constant.ItemSellStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 import java.util.ArrayList;
@@ -47,9 +49,9 @@ public class Product extends BaseEntity {
     @Builder.Default
     private Set<Tag> tagSet = new HashSet<>();
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    private CategoryBig categoryBig;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cno") // CategoryBig 엔티티의 cno와 매핑
+    private CategoryBig categoryBig; // Product와 CategoryBig의 관계 매핑
 
     //@ManyToOne(fetch = FetchType.LAZY)
     //private Admin admin;
@@ -77,5 +79,7 @@ public class Product extends BaseEntity {
     @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
 
+    @ManyToOne (fetch = FetchType.LAZY)
+    private ClubMember clubMember;
 
 }

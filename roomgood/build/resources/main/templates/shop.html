@@ -94,9 +94,21 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="#">
-                            <input type="text" placeholder="Search...">
-                            <button type="submit"><span class="icon_search"></span></button>
+                        <form action="/shop" method="get" id="searchForm">
+                            <input type="hidden" name="page" value ="1">
+                            <div class="input-group-prepend">
+                            <select class="custom-select" name="type">
+                                <option value="0" selected >전체</option>
+                                <option value="1">가구</option>
+                                <option value="2">가전</option>
+                                <option value="3">정리/보관</option>
+                                <option value="4">생활용품</option>
+                                <option value="5">소품/취미</option>
+                            </select>
+                                <input  type="text"  class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="Search">
+                                <button type="submit"><span class="icon_search"></span></button>
+                            </div>
+
                         </form>
                     </div>
                     <div class="shop__sidebar__accordion">
@@ -110,15 +122,12 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__categories">
                                             <ul class="nice-scroll">
-                                                <li><a href="#">Men (20)</a></li>
-                                                <li><a href="#">Women (20)</a></li>
-                                                <li><a href="#">Bags (20)</a></li>
-                                                <li><a href="#">Clothing (20)</a></li>
-                                                <li><a href="#">Shoes (20)</a></li>
-                                                <li><a href="#">Accessories (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
-                                                <li><a href="#">Kids (20)</a></li>
+                                                <li><a href="/shop">전체보기</a></li>
+                                                <li><a href="/shop?cno=1">가구</a></li>
+                                                <li><a href="/shop?cno=2">가전</a></li>
+                                                <li><a href="/shop?cno=3">정리/보관</a></li>
+                                                <li><a href="/shop?cno=4">생활용품</a></li>
+                                                <li><a href="/shop?cno=5">소품/취미</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -287,112 +296,50 @@
                 <a th:href="@{/productregister}">글쓰기</a>
                 <!--상품 부분------------------------------------------------------------------------------------>
                 <div class="row">
-
                     <div class="col-lg-4 col-md-6 col-sm-6" th:each="dto : ${result.dtoList}">
-                        <div class="product__item sale">
-                            <a th:href="@{/productread(pno=${dto.pno}, page=${result.page})}">
-                                <!--프로덕트 아이템 세일과 프로덕트 아이템이랑 css 조금씩 다름-->
+                        <div  class="product__item sale">
+                            <!--th:if="${dto.categoryBig.cno == 4}"-->
+                            <a th:href="@{/productread(pno=${dto.pno},
+                            page=${result.page},
+                            type=${pageRequestDTO.type} ,
+                            keyword = ${pageRequestDTO.keyword})}">
                                 <div class="product__item__pic set-bg">
-                                    <!--data-setbg="img/product/product-11.jpg"-->
-
                                     <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
                                          th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
                                          style="width: 100%; height:100%;border-radius: 5px;">
-
                                     <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
                                          src="img/noimage.png" style="width: 100%; height:100%;border-radius: 5px;">
-
-                                    <span class="label">Sale</span><!--sale 표시-->
+                                    <span class="label">Sale</span>
                                     <ul class="product__hover">
-                                        <!--찜하기 아이콘-->
                                         <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                        <!--비교하기 아이콘-->
-                                        <li><a href="#"><img src="img/icon/compare.png" alt="">
-                                            <span>Compare</span></a>
-                                        </li>
-                                        <!--돋보기 아이콘-->
+                                        <li><a href="#"><img src="img/icon/compare.png" alt=""><span>Compare</span></a></li>
                                         <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
                                     </ul>
-
                                 </div>
                             </a>
                             <div class="product__item__text">
-
-
-                                <!-- 상품제목 title-->
-
-                                <!-- 호버하면 장바구니 넣기 등장-->
                                 <a href="#" class="add-cart">+ Add To Cart</a>
-                                <!--상품명-->
-                                <h5>[[${dto.pname}]]</h5>
-                                <!--평점-->
+                                <h5>[[${dto.categoryBig.cname}]]</h5>
+                                <h5 th:text="${dto.pname}"></h5>
                                 <div class="rating">
-                                    <!--차잇는 별-->
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <!--안 차잇는 별-->
                                     <i class="fa fa-star-o"></i>
                                 </div>
-                                <!--가격-->
-                                <h5>[[${dto.price}]]</h5>
-
-                                <!--옵션/제품 색상 있는거 알려중-->
+                                <h5 th:text="${dto.price}"></h5>
                                 <div class="product__color__select">
-                                    <label for="pc-31">
-                                        <input type="radio" id="pc-31">
-                                    </label>
-                                    <label class="active black" for="pc-32">
-                                        <input type="radio" id="pc-32">
-                                    </label>
-                                    <label class="grey" for="pc-33">
-                                        <input type="radio" id="pc-33">
-                                    </label>
-                                </div><!--옵션/제품 색상 있는거 알려중 end-->
+                                    <label for="pc-31"><input type="radio" id="pc-31"></label>
+                                    <label class="active black" for="pc-32"><input type="radio" id="pc-32"></label>
+                                    <label class="grey" for="pc-33"><input type="radio" id="pc-33"></label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--위랑 아래랑 조금 css 달라서 남겨둠 -->
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                         <div class="product__item">
-                             <div class="product__item__pic set-bg" data-setbg="img/product/product-12.jpg">
-                                 <span class="label">Sale</span>
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                    </li>
-                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6>Ankle Boots</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5>$98.49</h5>
-                                <div class="product__color__select">
-                                    <label for="pc-34">
-                                        <input type="radio" id="pc-34">
-                                    </label>
-                                    <label class="active black" for="pc-35">
-                                        <input type="radio" id="pc-35">
-                                    </label>
-                                    <label class="grey" for="pc-36">
-                                        <input type="radio" id="pc-36">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
+                </div>
                     <!--상품 부분------------------------------------------------------------------------------------>
                     <!--페이징 부분------------------------------------------------------------------------------------>
-                </div>
                 <!--                    <div class="row">-->
                 <!--                        <div class="col-lg-12">-->
                 <!--                            <div class="product__pagination">-->
@@ -410,18 +357,29 @@
                         <ul class="pagination h-100 justify-content-center align-items-center"
                             style="height:50px !important">
                             <li class="page-item" th:if="${result.prev}">
-                                <a class="page-link" th:href="@{/shop(page= ${result.start -1})}"
-                                   tabindex="-1">Previous</a>
+                                <a class="page-link"
+                                   th:href="@{/board/list(page= ${result.start -1},
+                                    type=${pageRequestDTO.type} ,
+                                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">
+                                    Previous</a>
                             </li>
+
                             <li th:class=" 'page-item ' + ${result.page == page?'active':''} "
                                 th:each="page: ${result.pageList}">
-                                <a class="page-link" th:href="@{/shop(page = ${page})}">
+                                <a class="page-link"
+                                   th:href="@{/board/list(page = ${page} ,
+                                   type=${pageRequestDTO.type} ,
+                                   keyword = ${pageRequestDTO.keyword}  )}">
                                     [[${page}]]
                                 </a>
                             </li>
+
                             <li class="page-item" th:if="${result.next}">
-                                <a class="page-link" th:href="@{/shop(page= ${result.end + 1} )}">Next</a>
+                                <a class="page-link" th:href="@{/board/list(page= ${result.end + 1} ,
+                                type=${pageRequestDTO.type} ,
+                                keyword = ${pageRequestDTO.keyword} )}">Next</a>
                             </li>
+
                         </ul>
                     </div>
                 </div>
@@ -511,6 +469,9 @@
 </div>
 <!-- Search End -->
 
+<script>
+
+</script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
