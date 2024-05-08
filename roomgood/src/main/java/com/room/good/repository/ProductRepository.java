@@ -65,6 +65,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
             "GROUP BY p")
     Page<Object[]> searchPageForAll(@Param("type") String type, @Param("keyword") String keyword, Pageable pageable);
 
-
+    @Query("select p, pi from Product p left join ProductImage pi on pi.product = p where p.pno = :pno")
+    List<Object[]> getProduct(Long pno);
 
 }

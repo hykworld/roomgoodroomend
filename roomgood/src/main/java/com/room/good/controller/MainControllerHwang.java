@@ -57,8 +57,9 @@ public class MainControllerHwang {
     /*상품 수정***********************************/
     @GetMapping({"/productread","/productmodify"})
     public void modify(Long pno,  @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO, Model model, RedirectAttributes redirectAttributes ){
-        ProductDTO productDTO=productService.read(pno);
 
+        ProductDTO productDTO=productService.read(pno);
+        log.info("herereree");
         model.addAttribute("result",productService.getList(pageRequestDTO));
         model.addAttribute("dto",productDTO);
         // @ModelAttribute("requestDTO")
@@ -70,7 +71,7 @@ public class MainControllerHwang {
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
         Long pno=productService.modify(productDTO);
-
+        log.info("modify(productDTO)");
         redirectAttributes.addFlashAttribute("msg",pno);
         redirectAttributes.addAttribute("page",requestDTO.getPage());
         return "redirect:/shop";
