@@ -8,7 +8,6 @@ import com.room.good.entity.ClubMemberRole;
 import com.room.good.exception.BusinessLogicException;
 import com.room.good.exception.ExceptionCode;
 import com.room.good.redis.RedisService;
-import com.room.good.repository.CartttRepository;
 import com.room.good.repository.ClubMemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.time.Duration;
 import java.util.Optional;
 import java.util.Random;
 
@@ -30,7 +28,7 @@ import java.util.Random;
 public class MemberServiceImpl implements MemberService {
     //
     private final ClubMemberRepository clubMemberRepository;
-    private final CartttRepository cartttRepository;
+
 
     // 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일
     private static final String AUTH_CODE_PREFIX = "AuthCode ";
@@ -68,12 +66,7 @@ public class MemberServiceImpl implements MemberService {
         c.setAdress(memberDTO.getAdress());
         c.setMileage(memberDTO.getMileage());
 
-            Cart cart1 = new Cart();
-            cart1.setClubMember(c);
 
-            Cart cart2 = cartttRepository.save(cart1);
-            c.setCartnumber(cart2.getCno());
-            log.info(c+"finishcart");
 
 
             clubMemberRepository.save(c);
@@ -136,11 +129,7 @@ public class MemberServiceImpl implements MemberService {
 
         log.info("clubMember_clubMember"+clubMember);
 
-        Cart cart1 = new Cart();
-        cart1.setClubMember(clubMember);
-        Cart cart2 = cartttRepository.save(cart1);
-        clubMember.setCartnumber(cart2.getCno());
-        log.info(clubMember+"finishcart");
+
 
 
         clubMemberRepository.save(clubMember);

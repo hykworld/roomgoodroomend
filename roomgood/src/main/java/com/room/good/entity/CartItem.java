@@ -15,12 +15,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @Setter
-<<<<<<< HEAD
 @ToString(exclude = {"cart","product"})
-=======
-@ToString(exclude = {"cart"})
 @Table(name = "cart_item")
->>>>>>> 319b1cf89e84878f441a57cf9ec21c6d7e1bb906
+
 public class CartItem extends BaseEntity {
     // 카트아이템에 필요한건 상품고유번호, 카트고유번호, 상품정보(), 갯수, 카트아이템을 넣을 생성자, 카운트
     @Id
