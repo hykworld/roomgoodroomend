@@ -301,7 +301,7 @@
                             <!--th:if="${dto.categoryBig.cno == 4}"-->
                             <a th:href="@{/productread(pno=${dto.pno},
                             page=${result.page},
-                            type=${pageRequestDTO.type} ,
+                            type=${pageRequestDTO.cno} ,
                             keyword = ${pageRequestDTO.keyword})}">
                                 <div class="product__item__pic set-bg">
                                     <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
