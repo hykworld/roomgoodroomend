@@ -5,8 +5,12 @@ import com.room.good.dto.PageRequestDTO;
 import com.room.good.dto.PageResultDTO;
 import com.room.good.dto.ProductDTO;
 import com.room.good.dto.ProductImageDTO;
+import com.room.good.entity.CategoryBig;
+import com.room.good.entity.CategoryMiddle;
 import com.room.good.entity.Product;
 import com.room.good.entity.ProductImage;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 import java.util.ArrayList;
@@ -25,23 +29,14 @@ public interface ProductService {
         Long modify(ProductDTO productDTO);
         /////////읽기////////////////////////////////////////////////////////
         ProductDTO read(Long pno);
-
-        /////////읽기////////////////////////////////////////////////////////
+        /////////제거////////////////////////////////////////////////////////
         void remove(Long pno);
         //////// 페이징 처리///////////////////////////////////////////////////
         PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO requestDTO); //목록 처리!
-        // getList(PageRequestDTO requestDTO)을 통해
-        // PageResultDTO<MovieDTO, Object[]>의 객체 만들기
+        //////// 카테고리///////////////////////////////////////////////////
+        PageResultDTO<ProductDTO, Object[]> categoryPage(long cno, PageRequestDTO requestDTO);
 
-        //주어진 페이지 요청 정보에 따라 페이지 결과 DTO를 가져오는 getList 메서드입니다.
-        //getList 메서드는 PageRequestDTO를 매개변수로 받아서 PageResultDTO<MovieDTO, Object[]>를 반환합니다.
-        //즉, 이 메서드는 페이지 요청 정보에 따라 페이징된 영화 목록을 가져와서
-        // 해당 페이지의 결과를 PageResultDTO<MovieDTO, Object[]> 형태로 반환합니다.
-
-        //////// 페이징 처리///////////////////////////////////////////////////
-
-        /*서버의 요청으로 db에 저장된 값을 뷰로 꺼내기 위해 엔티티를 dto로 만듬
-         ***********************************************************************/
+        //////// 엔티티 투 디티오///////////////////////////////////////////////////
         default ProductDTO entitiesToDTO(Product product, List<ProductImage> productImages) {
                 ProductDTO productDTO = ProductDTO.builder()
                         .pno(product.getPno())
@@ -52,6 +47,10 @@ public interface ProductService {
                         .content(product.getContent())
                         .subContent(product.getSubContent())
                         .build();
+
+                // 카테고리 정보 추가
+                CategoryBig categoryBig = product.getCategoryBig();
+                productDTO.setCategoryBig(categoryBig);
 
                 List<ProductImageDTO> productImageDTOList = productImages.stream().map(productImage -> {
                         if (productImage != null) {
@@ -78,7 +77,7 @@ public interface ProductService {
 
         /*클라이언트에 받은 값을 엔티티로 바꿔서 db에 저장 ***********************************************************/
         default Map<String, Object> dtoToEntity(ProductDTO productDTO) {
-                Map<String, Object> entityMap = new HashMap<>();//해쉬맵형태로 entityMap생성
+                Map<String, Object> entityMap = new HashMap<>();
 
                 Product product = Product.builder()
                         .pno(productDTO.getPno())
@@ -89,15 +88,14 @@ public interface ProductService {
                         .content(productDTO.getContent())
                         .subContent(productDTO.getSubContent())
                         .build();
-                //----------- 제품정보------------------------------>
-                System.out.println("productproduct"+product);
-                entityMap.put("product", product);//위에서 만든 movie 는 "movie"라는 키값으로 연결!
-                //----------- 제품사진------------------------------>
+
+                CategoryBig categoryBig = productDTO.getCategoryBig(); // 카테고리 정보 가져오기
+                product.setCategoryBig(categoryBig); // 제품에 카테고리 설정
+
                 List<ProductImageDTO> imageDTOList = productDTO.getImageDTOList();
-                System.out.println("sdfsdf"+imageDTOList);
+
                 if (imageDTOList != null && imageDTOList.size() > 0) {
-                        List<ProductImage> productImageList = imageDTOList.stream().map(productImageDTO
-                                -> {
+                        List<ProductImage> productImageList = imageDTOList.stream().map(productImageDTO -> {
                                 ProductImage productImage = ProductImage.builder()
                                         .pinum(productImageDTO.getPinum())
                                         .pipath(productImageDTO.getPipath())
@@ -108,11 +106,12 @@ public interface ProductService {
                                 return productImage;
                         }).collect(Collectors.toList());
                         entityMap.put("imgList", productImageList);
-                        System.out.println("bbbbbbbbbbb"+productImageList);
                 }
-                return entityMap;
 
+                entityMap.put("product", product); // 엔티티 맵에 제품 추가
+                return entityMap;
         }
+
         /*클라이언트에 받은 값을 엔티티로 바꿔서 db에 저장
          ***********************************************************************/
 

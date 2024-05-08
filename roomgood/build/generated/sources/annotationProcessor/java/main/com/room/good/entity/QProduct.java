@@ -18,9 +18,15 @@ public class QProduct extends EntityPathBase<Product> {
 
     private static final long serialVersionUID = 1483312463L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QProduct product = new QProduct("product");
 
     public final QBaseEntity _super = new QBaseEntity(this);
+
+    public final QCategoryBig categoryBig;
+
+    public final QClubMember clubMember;
 
     public final StringPath content = createString("content");
 
@@ -47,15 +53,25 @@ public class QProduct extends EntityPathBase<Product> {
     public final SetPath<Tag, EnumPath<Tag>> tagSet = this.<Tag, EnumPath<Tag>>createSet("tagSet", Tag.class, EnumPath.class, PathInits.DIRECT2);
 
     public QProduct(String variable) {
-        super(Product.class, forVariable(variable));
+        this(Product.class, forVariable(variable), INITS);
     }
 
     public QProduct(Path<? extends Product> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QProduct(PathMetadata metadata) {
-        super(Product.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QProduct(PathMetadata metadata, PathInits inits) {
+        this(Product.class, metadata, inits);
+    }
+
+    public QProduct(Class<? extends Product> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.categoryBig = inits.isInitialized("categoryBig") ? new QCategoryBig(forProperty("categoryBig")) : null;
+        this.clubMember = inits.isInitialized("clubMember") ? new QClubMember(forProperty("clubMember")) : null;
     }
 
 }

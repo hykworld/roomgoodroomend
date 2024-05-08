@@ -2,6 +2,7 @@ package com.room.good.service;
 
 import com.room.good.dto.MemberDTO;
 import com.room.good.email.MailService;
+import com.room.good.entity.Cart;
 import com.room.good.entity.ClubMember;
 import com.room.good.entity.ClubMemberRole;
 import com.room.good.exception.BusinessLogicException;
@@ -18,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.time.Duration;
 import java.util.Optional;
 import java.util.Random;
 
@@ -28,6 +28,7 @@ import java.util.Random;
 public class MemberServiceImpl implements MemberService {
     //
     private final ClubMemberRepository clubMemberRepository;
+
 
     // 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일
     private static final String AUTH_CODE_PREFIX = "AuthCode ";
@@ -39,6 +40,7 @@ public class MemberServiceImpl implements MemberService {
     // 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일// 이메일
 
     @Override
+    @Transactional
     public boolean join(MemberDTO memberDTO) {
 
 //        Optional<ClubMember> a = repository.findByPhone(memberDTO.getPhone());
@@ -46,6 +48,7 @@ public class MemberServiceImpl implements MemberService {
         if(clubMemberRepository.findByPhone(memberDTO.getPhone()).isPresent()){
             return false;
         }
+
         Optional<ClubMember> clubMember = clubMemberRepository.findById(memberDTO.getId());
         // List<Object[]> a =
         if(clubMember.isPresent()){
@@ -63,8 +66,15 @@ public class MemberServiceImpl implements MemberService {
         c.setAdress(memberDTO.getAdress());
         c.setMileage(memberDTO.getMileage());
 
+
+
+
             clubMemberRepository.save(c);
+
+
+
         }
+
 
         return true;
 
@@ -83,7 +93,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    @Transactional
     public boolean memberJoin(MemberDTO memberDTO) {
+
         ClubMember clubMember = new ClubMember();
         clubMember.setEmail(memberDTO.getEmail());
 
@@ -93,7 +105,6 @@ public class MemberServiceImpl implements MemberService {
         //해시알고리즘사용중~.end
 
         /////////////이렇게 해야 스트링으로 받은거 추가 가능!! enum!
-
         String role = "MANAGER";
         ClubMemberRole memberRole = ClubMemberRole.valueOf(role);
         clubMember.addMemberRole(memberRole);
@@ -117,7 +128,13 @@ public class MemberServiceImpl implements MemberService {
         clubMember.setDetailaddress(memberDTO.getDetailaddress());
 
         log.info("clubMember_clubMember"+clubMember);
+
+
+
+
         clubMemberRepository.save(clubMember);
+
+
         return true;
     }
 

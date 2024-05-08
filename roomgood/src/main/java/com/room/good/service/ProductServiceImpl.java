@@ -1,6 +1,9 @@
 package com.room.good.service;
 
 
+
+import com.room.good.repository.CategoryRepository;
+
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +26,9 @@ import com.room.good.repository.ProductImageRepository;
 import com.room.good.repository.ProductRepository;
 
 
+import javax.inject.Qualifier;
 import java.util.*;
 import java.util.function.Function;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,26 +36,39 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ProductImageRepository productImageRepository;
+    private final CategoryRepository categoryRepository;
 
     /*등록********************************************************************************/
     @Transactional
     @Override
     public Long register(ProductDTO productDTO) {
 
-        Map<String, Object> entityMap = dtoToEntity(productDTO);// map 형태로 들어가는 이유 -> dtoToEntity 보기!
+        Map<String, Object> entityMap = dtoToEntity(productDTO);
         Product product = (Product) entityMap.get("product");
-        // 보고왔으면 이건 Movie 엔티티라는걸 알게됨!dtoToEntity 를 보면 <String,Object>라서 Object 를 이렇게 형변환을 해줘야 됨
-
         List<ProductImage> poroductImageList=(List<ProductImage>)entityMap.get("imgList");
+        productRepository.save(product); // Product 저장
 
-        productRepository.save(product); // movie insert
         poroductImageList.forEach(productImage -> {
             ProductImage save = productImageRepository.save(productImage);// movie image insert
-
         });
         return product.getPno();
     }
+    //// 수정/////////////
+    @Transactional
+    @Override
+    public Long modify(ProductDTO productDTO) {
 
+        Map<String, Object> entityMap = dtoToEntity(productDTO);
+        Product product = (Product) entityMap.get("product");
+        List<ProductImage> poroductImageList=(List<ProductImage>)entityMap.get("imgList");
+        productRepository.save(product); // movie insert
+
+        poroductImageList.forEach(productImage -> {
+            ProductImage save = productImageRepository.save(productImage);
+            // movie image insert
+        });
+        return product.getPno();
+    }
     /////////////////////리드//////////////////////////////////
     @Transactional
     @Override
@@ -66,25 +80,9 @@ public class ProductServiceImpl implements ProductService {
             ProductImage productImage=(ProductImage)arr[1];
             productImageList.add(productImage);
         });
-
         return entitiesToDTO(product,productImageList);
     }
-    //// 수정/////////////
-    @Transactional
-    @Override
-    public Long modify(ProductDTO productDTO) {
-        Map<String, Object> entityMap = dtoToEntity(productDTO);
-        Product product = (Product) entityMap.get("product");
-        List<ProductImage> poroductImageList=(List<ProductImage>)entityMap.get("imgList");
-        productRepository.save(product); // movie insert
-        poroductImageList.forEach(productImage -> {
-            ProductImage save = productImageRepository.save(productImage);
-            // movie image insert
-        });
-        return product.getPno();
-    }
     ///////////// 삭제///////////////////////////////////////////////////////
-
     @Transactional
     @Override
     public void remove(Long pno) {
@@ -94,16 +92,12 @@ public class ProductServiceImpl implements ProductService {
         productImageRepository.deleteById(pno);
     }
 
-
     /*페이징*******************************************************************************/
+    /*페이징*******************************************************************************/
+    @Transactional
     @Override
     public PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO requestDTO) {
         Pageable pageable = requestDTO.getPageable(Sort.by("pno").descending());// mno 기준으로 솔팅!
-        // 이 생성자는 Sort 타입의 인자를 받는 생성자 .
-        // -> 이렇게 만든 sort는 return PageRequest.of(page -1, size, sort);에 들어가서 리턴됨
-        // 즉
-        // pageable = PageRequest.of(page -1, size, Sort.by("mno").descending()); 이렇게 완성
-
         Page<Object[]> result = productRepository.getListPage(pageable); // 리스트를 페이징처리해서 가져옴
 
         log.info("==============================================");
@@ -123,4 +117,91 @@ public class ProductServiceImpl implements ProductService {
         return new PageResultDTO<>(result, fn);
         // 위에서 만들었던 펑션 -> <Object[], MovieDTO> 이 그릇을 가지고있는 fn과 result를 가지고 생성자를 호출중
     }
+
+    @Transactional
+    @Override
+    public PageResultDTO<ProductDTO, Object[]> categoryPage(long cno, PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("pno").descending());
+        Page<Object[]> result = productRepository.getListPageByCategory(cno, pageable);
+
+        log.info("==============================================");
+        result.getContent().forEach(arr -> {
+            log.info(Arrays.toString(arr));
+        });
+
+        Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
+                (Product) arr[0],
+                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1]))));
+
+        return new PageResultDTO<>(result, fn);
+    }
+
+//    @Transactional
+//    @Override
+//    public PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO requestDTO) {
+//
+//        Page<Object[]> result = null;
+//        if(requestDTO.getType()==null){
+//            Pageable pageable = requestDTO.getPageable(Sort.by("pno").descending());// mno 기준으로 솔팅!
+//            result = productRepository.getListPage(pageable); // 리스트를 페이징처리해서 가져옴
+//        }else if (requestDTO.getType().equals("0")) {
+//            result = productRepository.searchPageForAll(
+//                    requestDTO.getType(),
+//                    requestDTO.getKeyword(),
+//                    requestDTO.getPageable(Sort.by("pno").descending()));
+//        }else {
+//            result = productRepository.searchPage(
+//                    requestDTO.getType(),
+//                    requestDTO.getKeyword(),
+//                    requestDTO.getPageable(Sort.by("pno").descending()));
+//        }
+//        log.info("==============================================");
+//        result.getContent().forEach(arr -> {
+//            log.info(Arrays.toString(arr));
+//        });
+//
+//        Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
+//
+//                (Product) arr[0],
+//                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1]))));
+//
+//        return new PageResultDTO<>(result, fn);
+//    }
+//
+//    @Transactional
+//    @Override
+//    public PageResultDTO<ProductDTO, Object[]> categoryPage(long cno, PageRequestDTO requestDTO) {
+//
+//        Page<Object[]> result =null;
+//        if (requestDTO.getType() != null && requestDTO.getKeyword() != null) {
+//            // 검색 조건이 있는 경우
+//            if (requestDTO.getType() == null || requestDTO.getType().equals("0")) {
+//                // 전체 검색인 경우
+//                result = productRepository.searchPageForAll(
+//                        requestDTO.getType(),
+//                        requestDTO.getKeyword(), // 검색어 설정
+//                        requestDTO.getPageable(Sort.by("pno").descending()) // 페이지와 정렬 설정
+//                );
+//            } else {
+//                // 특정 타입에 따른 검색인 경우
+//                result = productRepository.searchPage(
+//                        requestDTO.getType(), // 타입 설정
+//                        requestDTO.getKeyword(), // 검색어 설정
+//                        requestDTO.getPageable(Sort.by("pno").descending()) // 페이지와 정렬 설정
+//                );
+//            }
+//        } else {
+//            // 검색 조건이 없는 경우
+//            result = productRepository.getListPageByCategory(cno, requestDTO.getPageable(Sort.by("pno").descending()));
+//        }
+//        Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
+//                (Product) arr[0],
+//                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1])))
+//        );
+//
+//        return new PageResultDTO<>(result, fn);
+//    }
+
+
+
 }

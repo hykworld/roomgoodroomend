@@ -158,37 +158,37 @@
                             <div class="row">
                                 <div class="col-lg-4 mb-3">
                                     <div class="input-group" style="width: auto;">
-                                        <select class="custom-select" id="categoryLevel1" onchange="selectCategoryLevel1(this.value)">
+                                        <select class="custom-select" id="categoryLevel1" name="categoryBig">
                                             <option disabled selected>대분류 선택</option>
-                                            <option value="가구">가구</option>
-                                            <option value="가전">가전</option>
-                                            <option value="정리/보관">정리/보관</option>
-                                            <option value="생활용품">생활용품</option>
-                                            <option value="소품/취미">소품/취미</option>
+                                            <option value="1">가구</option>
+                                            <option value="2">가전</option>
+                                            <option value="3">정리/보관</option>
+                                            <option value="4">생활용품</option>
+                                            <option value="5">소품/취미</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-4" id="categoryLevel2Div">
-                                    <div class="input-group" style="width: auto;">
-                                        <select class="custom-select" id="categoryLevel2" onchange="selectCategoryLevel2(this.value)">
-                                            <option disabled selected>중분류 선택</option>
-                                            <!-- 중분류 옵션은 JavaScript에서 동적으로 추가 -->
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4" id="categoryLevel3Div">
-                                    <div class="input-group" style="width: auto;">
-                                        <select class="custom-select" id="categoryLevel3" onchange="selectCategoryLevel3(this.value)">
-                                            <option disabled selected>소분류 선택</option>
-                                            <!-- 소분류 옵션은 JavaScript에서 동적으로 추가 -->
-                                        </select>
-                                    </div>
-                                </div>
+<!--                                <div class="col-lg-4" id="categoryLevel2Div">-->
+<!--                                    <div class="input-group" style="width: auto;">-->
+<!--                                        <select class="custom-select" id="categoryLevel2" name="categoryMiddle" >-->
+<!--                                            <option disabled selected>중분류 선택</option>-->
+<!--                                            &lt;!&ndash; 중분류 옵션은 JavaScript에서 동적으로 추가 &ndash;&gt;-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-lg-4" id="categoryLevel3Div">-->
+<!--                                    <div class="input-group" style="width: auto;">-->
+<!--                                        <select class="custom-select" id="categoryLevel3" name="categorySmall" >-->
+<!--                                            <option disabled selected>소분류 선택</option>-->
+<!--                                            &lt;!&ndash; 소분류 옵션은 JavaScript에서 동적으로 추가 &ndash;&gt;-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
 
-                            <input id="selectedCategoryLevel1" type="hidden" name="categoryLevel1">
-                            <input id="selectedCategoryLevel2" type="hidden" name="categoryLevel2">
-                            <input id="selectedCategoryLevel3" type="hidden" name="categoryLevel3">
+                            <input id="selectedCategoryLevel1" type="hidden" name="categoryBig">
+<!--                            <input id="selectedCategoryLevel2" type="hidden" name="categoryMiddle">-->
+<!--                            <input id="selectedCategoryLevel3" type="hidden" name="categoryLevel3">-->
                             <!--카테고리 선택--------------------------------------------------->
                             <div class="form-group row">
                                 <input type="text" class="form-control col-lg-10" name="price" placeholder="판매가(필수)">
@@ -318,72 +318,72 @@
 
 <!--------------카테고리 js--------------------------------------->
 <script>
-    function selectCategoryLevel1(value) {
-        document.getElementById('selectedCategoryLevel1').value = value;
-        // 중분류 선택란 초기화
-        var categoryLevel2Select = document.getElementById('categoryLevel2');
-        categoryLevel2Select.innerHTML = '';
-        categoryLevel2Select.appendChild(document.createElement('option'));
+<!--    function selectCategoryLevel1(value) {-->
+<!--        document.getElementById('selectedCategoryLevel1').value = value;-->
+<!--        // 중분류 선택란 초기화-->
+<!--        var categoryLevel2Select = document.getElementById('categoryLevel2');-->
+<!--        categoryLevel2Select.innerHTML = '';-->
+<!--        categoryLevel2Select.appendChild(document.createElement('option'));-->
 
-        // 중분류 선택 옵션 추가
-        var categories = {
-            '가구': ['의자', '테이블', '장식'],
-            '가전': ['TV', '냉장고', '세탁기'],
-            '정리/보관': ['서랍장', '옷걸이', '선반'],
-            '생활용품': ['휴지통', '바구니', '화장품정리'],
-            '소품/취미': ['그림', '퍼즐', '모형'],
-        };
-        categories[value].forEach(function(category) {
-            var option = document.createElement('option');
-            option.text = category;
-            option.value = category;
-            categoryLevel2Select.appendChild(option);
-        });
-        // 중분류 선택란 보이도록 변경
-        document.getElementById('categoryLevel2Div').style.display = 'block';
-        // 소분류 선택 초기화
-        document.getElementById('selectedCategoryLevel2').value = '';
-        document.getElementById('selectedCategoryLevel3').value = '';
-    }
+<!--        // 중분류 선택 옵션 추가-->
+<!--        var categories = {-->
+<!--            '가구': ['의자', '테이블', '장식'],-->
+<!--            '가전': ['TV', '냉장고', '세탁기'],-->
+<!--            '정리/보관': ['서랍장', '옷걸이', '선반'],-->
+<!--            '생활용품': ['휴지통', '바구니', '화장품정리'],-->
+<!--            '소품/취미': ['그림', '퍼즐', '모형'],-->
+<!--        };-->
+<!--        categories[value].forEach(function(category) {-->
+<!--            var option = document.createElement('option');-->
+<!--            option.text = category;-->
+<!--            option.value = category;-->
+<!--            categoryLevel2Select.appendChild(option);-->
+<!--        });-->
+<!--        // 중분류 선택란 보이도록 변경-->
+<!--        document.getElementById('categoryLevel2Div').style.display = 'block';-->
+<!--        // 소분류 선택 초기화-->
+<!--        document.getElementById('selectedCategoryLevel2').value = '';-->
+<!--        document.getElementById('selectedCategoryLevel3').value = '';-->
+<!--    }-->
 
-    function selectCategoryLevel2(value) {
-        document.getElementById('selectedCategoryLevel2').value = value;
-        // 소분류 선택란 초기화
-        var categoryLevel3Select = document.getElementById('categoryLevel3');
-        categoryLevel3Select.innerHTML = '';
-        categoryLevel3Select.appendChild(document.createElement('option'));
+<!--    function selectCategoryLevel2(value) {-->
+<!--        document.getElementById('selectedCategoryLevel2').value = value;-->
+<!--        // 소분류 선택란 초기화-->
+<!--        var categoryLevel3Select = document.getElementById('categoryLevel3');-->
+<!--        categoryLevel3Select.innerHTML = '';-->
+<!--        categoryLevel3Select.appendChild(document.createElement('option'));-->
 
-        // 소분류 선택 옵션 추가
-        var categories = {
-            '의자': ['나무의자', '금속의자', '플라스틱의자'],
-            '테이블': ['목재테이블', '유리테이블', '금속테이블'],
-            '장식': ['조화', '그림', '시계'],
-            'TV': ['LCD TV', 'LED TV', 'OLED TV'],
-            '냉장고': ['일반 냉장고', '양문 냉장고', '김치 냉장고'],
-            '세탁기': ['일반 세탁기', '드럼 세탁기', '스팀 세탁기'],
-            '서랍장': ['목재 서랍장', '플라스틱 서랍장', '금속 서랍장'],
-            '옷걸이': ['목재 옷걸이', '플라스틱 옷걸이', '금속 옷걸이'],
-            '선반': ['목재 선반', '플라스틱 선반', '금속 선반'],
-            '휴지통': ['플라스틱 휴지통', '금속 휴지통', '유리 휴지통'],
-            '바구니': ['플라스틱 바구니', '금속 바구니', '목재 바구니'],
-            '화장품정리': ['화장품 거치대', '화장품 정리함', '화장품 케이스'],
-            '그림': ['유화', '수채화', '아크릴화'],
-            '퍼즐': ['1000조각', '500조각', '200조각'],
-            '모형': ['자동차', '비행기', '선박'],
-        };
-        categories[value].forEach(function(category) {
-            var option = document.createElement('option');
-            option.text = category;
-            option.value = category;
-            categoryLevel3Select.appendChild(option);
-        });
-        // 소분류 선택란 보이도록 변경
-        document.getElementById('categoryLevel3Div').style.display = 'block';
-    }
+<!--        // 소분류 선택 옵션 추가-->
+<!--        var categories = {-->
+<!--            '의자': ['나무의자', '금속의자', '플라스틱의자'],-->
+<!--            '테이블': ['목재테이블', '유리테이블', '금속테이블'],-->
+<!--            '장식': ['조화', '그림', '시계'],-->
+<!--            'TV': ['LCD TV', 'LED TV', 'OLED TV'],-->
+<!--            '냉장고': ['일반 냉장고', '양문 냉장고', '김치 냉장고'],-->
+<!--            '세탁기': ['일반 세탁기', '드럼 세탁기', '스팀 세탁기'],-->
+<!--            '서랍장': ['목재 서랍장', '플라스틱 서랍장', '금속 서랍장'],-->
+<!--            '옷걸이': ['목재 옷걸이', '플라스틱 옷걸이', '금속 옷걸이'],-->
+<!--            '선반': ['목재 선반', '플라스틱 선반', '금속 선반'],-->
+<!--            '휴지통': ['플라스틱 휴지통', '금속 휴지통', '유리 휴지통'],-->
+<!--            '바구니': ['플라스틱 바구니', '금속 바구니', '목재 바구니'],-->
+<!--            '화장품정리': ['화장품 거치대', '화장품 정리함', '화장품 케이스'],-->
+<!--            '그림': ['유화', '수채화', '아크릴화'],-->
+<!--            '퍼즐': ['1000조각', '500조각', '200조각'],-->
+<!--            '모형': ['자동차', '비행기', '선박'],-->
+<!--        };-->
+<!--        categories[value].forEach(function(category) {-->
+<!--            var option = document.createElement('option');-->
+<!--            option.text = category;-->
+<!--            option.value = category;-->
+<!--            categoryLevel3Select.appendChild(option);-->
+<!--        });-->
+<!--        // 소분류 선택란 보이도록 변경-->
+<!--        document.getElementById('categoryLevel3Div').style.display = 'block';-->
+<!--    }-->
 
-    function selectCategoryLevel3(value) {
-        document.getElementById('selectedCategoryLevel3').value = value;
-    }
+<!--    function selectCategoryLevel3(value) {-->
+<!--        document.getElementById('selectedCategoryLevel3').value = value;-->
+<!--    }-->
 </script>
 <!--------------카테고리 js end--------------------------------------->
 

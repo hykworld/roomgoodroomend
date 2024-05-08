@@ -1,8 +1,11 @@
 package com.room.good.entity;
 
 import com.room.good.constant.ItemSellStatus;
+import com.room.good.exception.OutOfStockException;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 import java.util.ArrayList;
@@ -31,9 +34,6 @@ public class Product extends BaseEntity {
     private Long stock; //재고
     private Long price;//가격
 
-    //4.25 enum으로
-    //private boolean isPresent;// 제품상태 itemSellSattus;
-
     @Lob//데이터를 어디에 저장할지 2가지 타입 중에 선택해서 외부저장
     // CLOB=텍스트 BLOB=미디어파일
     @Column(nullable = true)//(null가능)
@@ -47,9 +47,9 @@ public class Product extends BaseEntity {
     @Builder.Default
     private Set<Tag> tagSet = new HashSet<>();
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    private CategoryBig categoryBig;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cno") // CategoryBig 엔티티의 cno와 매핑
+    private CategoryBig categoryBig; // Product와 CategoryBig의 관계 매핑
 
     //@ManyToOne(fetch = FetchType.LAZY)
     //private Admin admin;
@@ -77,5 +77,15 @@ public class Product extends BaseEntity {
     @Builder.Default
     private List<ProductImage> images = new ArrayList<>();
 
+    @ManyToOne (fetch = FetchType.LAZY)
+    private ClubMember clubMember;
+
+    public void removeStock(Long stock){
+        Long restStock = this.stock - stock; // 상품의 재고수량에서 판매수량을 빼서 남은재고수량 구하기
+        if(restStock < 0){
+            throw new OutOfStockException("상품의 재고가 부족합니다.(현재 재고 수량:" + this.stock + ")");
+            // 상품의 재고가 주문 수량보다 작을 경우 재고 부족 예외처리
+        }this.stock = restStock; // 주문 후 남은 재고 수량을 상품의 현재 재고 값으로 할당
+    }
 
 }
