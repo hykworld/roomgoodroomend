@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 public class ProductListDTO {
+    private Long pno;
     private String pname;
     private Long price;
 }

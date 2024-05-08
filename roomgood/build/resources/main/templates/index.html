@@ -338,22 +338,11 @@
         <div class="container">
             <div class="row">
             </div>
-            <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix" th:each="list:${list}">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>[[${list.pname}]]</h6>
-                            <a href="#" class="add-cart">장바구니 추가</a>
-                            <h5>[[${list.price}]]원</h5>
-                        </div>
-                    </div>
-                </div>
+            <div class="row product__filter productLists">
+
+            </div>
+            <div class="pageFooter" style="text-align: center;">
+
             </div>
         </div>
     </section>
@@ -525,176 +514,118 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script>
-<!--        //여기부터-->
-<!--        let currentSlide = 0;-->
-<!--        const slides = document.querySelectorAll('.slide');-->
-<!--        const slideCount = slides.length;-->
+    $(function(){
+        function getProductList(pageNum){
+            $.ajax({
+                url:"/productList/"+pageNum+"/all",
+                type:"GET",
+                success: function(arr){
+                    var str ="";
+                    $.each(arr,function(idx,product){
+                        str += "<div class='col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix'>";
+                        str += "<div class='product__item'>";
+                        str += "<div class='product__item__pic set-bg' style='background-image:url(img/product/product-1.jpg)'>";
+                        str += "<ul class='product__hover'>";
+                        str += "<li><a href='#'><img src='img/icon/heart.png' alt=''></a></li>";
+                        str += "<li><a href='#'><img src='img/icon/search.png' alt=''></a></li>";
+                        str += "</ul>";
+                        str += "</div>";
+                        str += "<div class='product__item__text'>";
+                        str += "<h6>" + product.pname + "</h6>";
+                        str += "<a href='#' class='add-cart'>장바구니 추가</a>";
+                        str += "<h5>"+ product.price +"</h5>";
+                        str += "</div>";
+                        str += "</div>";
+                        str += "</div>";
+                    });
+                    $(".productLists").html(str);
 
-<!--        function showSlide(n) {-->
-<!--            slides.forEach(slide => slide.style.display = 'none');-->
-<!--            slides[n].style.display = 'block';-->
-<!--        }-->
+                    $.getJSON("/productList/count", function(count){
 
-<!--        function nextSlide() {-->
-<!--            currentSlide = (currentSlide + 1) % slideCount;-->
-<!--            showSlide(currentSlide);-->
-<!--        }-->
+                            var pageCount=count;   //전체리뷰수
+                            showPage(pageCount);   //리뷰페이징
+                        });
 
-<!--        function prevSlide() {-->
-<!--            currentSlide = (currentSlide - 1 + slideCount) % slideCount;-->
-<!--            showSlide(currentSlide);-->
-<!--        }-->
+                }
+            })
+        }
+        getProductList(1);
 
-<!--        document.addEventListener('DOMContentLoaded', () => {-->
-<!--            showSlide(currentSlide);-->
-<!--            setInterval(nextSlide, 3000); // 3초마다 자동 슬라이드-->
-<!--        });-->
-<!--        //여기까지 하나-->
+        //페이징 처리
+        var pageNum =1;
+        var pageFooter = $(".pageFooter");
 
-<!--         //여기부터-->
-<!--        let currentSlide2 = 0;-->
-<!--        const slides2 = document.querySelectorAll('.slide2');-->
-<!--        const slideCount2 = slides.length;-->
+        function showPage(pageCount){
+            var endNum = 5;
+            var startNum = endNum-4;
+            var prev=false;
+            var next=false;
+            var realCount = (pageCount/12)*10
+            if(endNum*10>=realCount){
+                endNum=Math.ceil(pageCount/12.0);
+            }
+            if(pageNum!=5){
+                next=true;
+            }
+            if(pageNum!=1){
+                prev=true
+            }
+            var str="<ul class='pagination justify-content-center'>";
 
-<!--        function showSlide2(n) {-->
-<!--            slides2.forEach(slide => slide.style.display = 'none');-->
-<!--            slides2[n].style.display = 'block';-->
-<!--        }-->
+            if(prev){
+            	      str+= "<li class='page-item'><a class='page-link' href='"+(parseInt(pageNum) - 1)+"'>이전</a></li>";
+            }
 
-<!--        function nextSlide2() {-->
-<!--            currentSlide2 = (currentSlide2 + 1) % slideCount2;-->
-<!--            showSlide2(currentSlide2);-->
-<!--        }-->
+            for(var i = startNum ; i <= endNum; i++){
+            	      var active = pageNum == i? "active":"";
+            	      str+= "<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+            }
 
-<!--        function prevSlide2() {-->
-<!--            currentSlide2 = (currentSlide2 - 1 + slideCount2) % slideCount2;-->
-<!--            showSlide2(currentSlide2);-->
-<!--        }-->
+            if(next){
+            	      str+= "<li class='page-item'><a class='page-link' href='"+(parseInt(pageNum) + 1)+"'>Next</a></li>";
+            }
 
-<!--        document.addEventListener('DOMContentLoaded', () => {-->
-<!--            showSlide2(currentSlide2);-->
-<!--            setInterval(nextSlide2, 3000); // 3초마다 자동 슬라이드-->
-<!--        });-->
-<!--        //여기까지 하나-->
+            str += "</ul>";
 
-        // 이벤트종료시점 기록
+            pageFooter.html(str);
+
+        }
+
+        pageFooter.on("click","li a", function(e){
+            e.preventDefault();
+            var target = $(this).attr("href");
+            pageNum = target;
+
+            getProductList(pageNum);
+        });
 
 
-<!--  function Slider(target, type) {-->
-<!--    // 상태-->
-<!--    let index = 1;-->
-<!--    let isMoved = true;-->
-<!--    const speed = 5000; // ms-->
 
-<!--    // 방향-->
-<!--    const transform = "transform " + speed / 1000 + "s";-->
-<!--    let translate = (i) => "translateX(-" + 100 * i + "%)";-->
-<!--    if (type === "V") {-->
-<!--      translate = (i) => "translateY(-" + 100 * i + "%)";-->
-<!--    }-->
 
-<!--    // 슬라이더-->
-<!--    const slider = document.querySelector(target);-->
-<!--    const sliderRects = slider.getClientRects()[0];-->
-<!--    slider.style["overflow"] = "hidden";-->
 
-<!--    // 슬라이더 화면 컨테이너-->
-<!--    const container = document.createElement("div");-->
-<!--    container.style["display"] = "flex";-->
-<!--    container.style["flex-direction"] = type === "V" ? "column" : "row";-->
-<!--    container.style["width"] = sliderRects.width + "px";-->
-<!--    container.style["height"] = sliderRects.height + "px";-->
-<!--    container.style["transform"] = translate(index);-->
 
-<!--    // 슬라이더 화면 목록-->
-<!--    let boxes = [].slice.call(slider.children);-->
-<!--    boxes = [].concat(boxes[boxes.length - 1], boxes, boxes[0]);-->
 
-<!--    // 슬라이더 화면 스타일-->
-<!--    const size = boxes.length;-->
-<!--    for (let i = 0; i < size; i++) {-->
-<!--      const box = boxes[i];-->
-<!--      box.style["flex"] = "none";-->
-<!--      box.style["flex-wrap"] = "wrap";-->
-<!--      box.style["height"] = "100%";-->
-<!--      box.style["width"] = "100%";-->
-<!--      container.appendChild(box.cloneNode(true));-->
-<!--    }-->
+        var swiper = new Swiper(".mySwiper", {
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
 
-<!--    // 처음/마지막 화면 눈속임 이벤트-->
-<!--    container.addEventListener("transitionstart", function () {-->
-<!--      isMoved = false;-->
-<!--      setTimeout(() => {-->
-<!--        isMoved = true;-->
-<!--      }, speed);-->
-<!--    });-->
-<!--    container.addEventListener("transitionend", function () {-->
-<!--      // 처음으로 순간이동-->
-<!--      if (index === size - 1) {-->
-<!--        index = 1;-->
-<!--        container.style["transition"] = "none";-->
-<!--        container.style["transform"] = translate(index);-->
-<!--      }-->
-<!--      // 끝으로 순간이동-->
-<!--      if (index === 0) {-->
-<!--        index = size - 2;-->
-<!--        container.style["transition"] = "none";-->
-<!--        container.style["transform"] = translate(index);-->
-<!--      }-->
-<!--    });-->
+    })
 
-<!--    // 슬라이더 붙이기-->
-<!--    slider.innerHTML = "";-->
-<!--    slider.appendChild(container);-->
 
-<!--    return {-->
-<!--      move: function (i) {-->
-<!--        if (isMoved === true) {-->
-<!--          index = i;-->
-<!--          container.style["transition"] = transform;-->
-<!--          container.style["transform"] = translate(index);-->
-<!--        }-->
-<!--      },-->
-<!--      next: function () {-->
-<!--        if (isMoved === true) {-->
-<!--          index = (index + 1) % size;-->
-<!--          container.style["transition"] = transform;-->
-<!--          container.style["transform"] = translate(index);-->
-<!--        }-->
-<!--      },-->
-<!--      prev: function () {-->
-<!--        if (isMoved === true) {-->
-<!--          index = index === 0 ? index + size : index;-->
-<!--          index = (index - 1) % size;-->
-<!--          container.style["transition"] = transform;-->
-<!--          container.style["transform"] = translate(index);-->
-<!--        }-->
-<!--      }-->
-<!--    };-->
-<!--  }-->
 
-<!--  const s1 = new Slider("#slider1", "H");-->
-
-<!--  setInterval(() => {-->
-<!--    s1.next();-->
-<!--  }, 5000)-->
-
-    var swiper = new Swiper(".mySwiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
 
     </script>
 </body>

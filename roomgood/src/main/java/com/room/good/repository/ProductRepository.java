@@ -36,4 +36,11 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // left outer join review on  Movie.bno = review.movie_mno
     // group by movie.mno;
 
+
+    //메인 창에 적용시킬 JPA 비동기 페이징처리 위함
+    Page<Product> findAll(Pageable pageable);
+
+    //메인 창 페이징 처리 위함
+    @Query("select count(pd) from Product pd")
+    Long countByAll();
 }
