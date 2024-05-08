@@ -34,6 +34,14 @@ public class EventImageDTO {
         }
         return "";
     }
+    public String getThumbnailURL2(){
+        try {
+            return URLEncoder.encode(path+"/ss_"+uuid+"_"+imgName,"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
 }
 

@@ -57,12 +57,12 @@ public class CartttServiceImpl implements CartttService{
         cartItem.setQuantity(count);
         //////////////////////////////////////////////////////////////////
         log.info("serviceimpl_cartItem : "+cartItem);
-        Optional<CartItem> byProductPno = cartttItemRepository.findByProductPno(pno);
-        if(byProductPno.isPresent()){
-            CartItem cartItem1 = byProductPno.get();
+        Optional<CartItem> byProductPnoAndCno = cartttItemRepository.findByProductPnoAndCartCno(pno, clubMember.getCartnumber());
+        if(byProductPnoAndCno.isPresent()){
+            CartItem cartItem1 = byProductPnoAndCno.get();
             cartItem1.setQuantity(cartItem1.getQuantity()+count);
-            log.info("ifififif"+byProductPno);
-            cartttItemRepository.save(byProductPno.get());
+            log.info("ifififif"+byProductPnoAndCno);
+            cartttItemRepository.save(byProductPnoAndCno.get());
         }else {
             log.info("elseelseelseelseelseelse");
             cartttItemRepository.save(cartItem);

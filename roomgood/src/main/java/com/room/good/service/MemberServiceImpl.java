@@ -54,19 +54,19 @@ public class MemberServiceImpl implements MemberService {
         Optional<ClubMember> clubMember = clubMemberRepository.findById(memberDTO.getId());
         // List<Object[]> a =
         if(clubMember.isPresent()){
-        ClubMember c = clubMember.get();
-        c.setName(memberDTO.getName());
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        c.setPassword(passwordEncoder.encode(memberDTO.getPassword()));
-        c.setPhone(memberDTO.getPhone());
-        c.setBirth(memberDTO.getBirth());
-        c.setNickname(memberDTO.getNickname());
-        c.setStreetaddress(memberDTO.getStreetaddress());
-        c.setDetailaddress(memberDTO.getDetailaddress());
-        c.setGrade(memberDTO.getGrade());
-        c.setMoney(memberDTO.getMoney());
-        c.setAdress(memberDTO.getAdress());
-        c.setMileage(memberDTO.getMileage());
+            ClubMember c = clubMember.get();
+            c.setName(memberDTO.getName());
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            c.setPassword(passwordEncoder.encode(memberDTO.getPassword()));
+            c.setPhone(memberDTO.getPhone());
+            c.setBirth(memberDTO.getBirth());
+            c.setNickname(memberDTO.getNickname());
+            c.setStreetaddress(memberDTO.getStreetaddress());
+            c.setDetailaddress(memberDTO.getDetailaddress());
+            c.setGrade(memberDTO.getGrade());
+            c.setMoney(memberDTO.getMoney());
+            c.setAdress(memberDTO.getAdress());
+            c.setMileage(memberDTO.getMileage());
 
             Cart cart1 = new Cart();
             cart1.setClubMember(c);
@@ -172,6 +172,7 @@ public class MemberServiceImpl implements MemberService {
         Optional<ClubMember> byId = clubMemberRepository.findByEmail2(email);
         ClubMember clubMember = byId.get();
         MemberDTO memberDTO = new MemberDTO().builder()
+                .id(clubMember.getId())
                 .email(clubMember.getEmail())
                 .name(clubMember.getName())
                 .phone(clubMember.getPhone())
@@ -184,6 +185,7 @@ public class MemberServiceImpl implements MemberService {
                 .mileage(clubMember.getMileage())
                 .nickname(clubMember.getNickname())
                 .birth(clubMember.getBirth())
+                .cartnumber(clubMember.getCartnumber())
                 .build();
         log.info(byId.get()+"byId.get()byId.get()byId.get()byId.get()");
         log.info(memberDTO+"service_memberDTO");
@@ -258,4 +260,4 @@ public class MemberServiceImpl implements MemberService {
 
     }
 
-    }
+}

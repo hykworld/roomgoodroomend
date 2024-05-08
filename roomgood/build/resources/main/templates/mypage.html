@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -109,7 +109,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-4 mb-3">비밀번호</div>
-                                <div class="col-md-8 mb-3">비밀번호변경버튼</div>
+                                <div class="col-md-8 mb-3"><a href="/resetpw">비밀번호 재설정하러 가기</a></div>
                                 <input type="hidden" name="id" value="리얼아이디">
                             </div>
                             <hr>
@@ -144,18 +144,30 @@
                     <div id="category1" style="display:none;">
                         <div class="mymember"  style="margin-left:50px; margin-top:150px; margin-bot:150px font-size:18px;">
                             <hr>
-                                <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>구매 목록</b></div>
+                            <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>구매 목록</b></div>
                             <hr>
                             <div class="row" style="background: #f3f2ee;">
-                                <div class="col-md-5 mb-3" style="text-align: center;"><b>상품 내역</b></div>
-                                <div class="col-md-3 mb-3" style="text-align: center;"><b>결제 금액</b></div>
-                                <div class="col-md-4 mb-3" style="text-align: center;"><b>주문 상세</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>상품</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>총 결제 금액</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>주문한 날짜</b></div>
+                                <div class="col-md-3 mb-3" style="text-align: center;"><b>상세 보기</b></div>
                             </div>
                             <!--반복될 애들-->
-                            <div class="row" style="border:1px solid #f3f2ee ;font-size:15px">
-                                <div class="col-md-5 mb-3" style="text-align: center;"><b>상품명</b></div>
-                                <div class="col-md-3 mb-3" style="text-align: center;"><b>10,000원</b></div>
-                                <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">조회</button></div>
+                            <div th:each="orderlist : ${orderlist}">
+                                <div  class="row" style="border:1px solid #f3f2ee ;font-size:15px ;padding-top:0px;">
+                                    <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderlist.orderItemDTO[0].proname}]] 외 [[${count}]]개의 상품</b></div>
+                                    <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderlist.price}]]</b></div>
+                                    <div class="col-md-3 mb-3" style="text-align: center;">[[${orderlist.regDate}]]</div>
+                                    <div class="col-md-3 mb-3 readbtndiv" style="text-align: center;"><button class="koobtn readbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">상세보기</button></div>
+                                    <div class="col-md-3 mb-3 foldbtndiv" style="text-align: center;display:none;"> <button class="koobtn foldbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">접기</button></div>
+
+                                </div>
+                                <div  th:each="orderItemDTO : ${orderlist.orderItemDTO}" class="row readdiv" style="border:1px solid #f3f2ee ;font-size:15px;padding-top:0px; display:none;">
+                                    <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.proname}]]</b></div>
+                                    <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.count}]]개</b></div>
+                                    <div class="col-md-3 mb-3" style="text-align: center;">[[${orderItemDTO.itemprice}]]원</div>
+                                    <div class="col-md-3 mb-3" style="text-align: center;">총 [[${orderItemDTO.totalitemprice}]]원</div>
+                                </div>
                             </div>
                             <!--반복될 애들.end-->
                         </div>
@@ -310,6 +322,19 @@
         $('#mypageresentlist').css('display','none')
     })
 
+    $('.readbtn').click(function() {
+        var row = $(this).closest('.row');
+        row.siblings('.readdiv').css('display', 'flex');
+        row.find('.readbtndiv').css('display','none');
+        row.find('.foldbtndiv').css('display', 'block');
+    });
+
+    $('.foldbtn').click(function() {
+        var row = $(this).closest('.row');
+        row.siblings('.readdiv').css('display', 'none');
+        row.find('.readbtndiv').css('display','block');
+        row.find('.foldbtndiv').css('display', 'none');
+    });
 
 </script>
 

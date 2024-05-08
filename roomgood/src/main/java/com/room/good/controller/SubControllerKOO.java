@@ -2,6 +2,7 @@ package com.room.good.controller;
 
 import com.room.good.dto.UploadResultDTO;
 import com.room.good.service.CartttService;
+import com.room.good.service.OrderrrService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -35,6 +36,7 @@ import java.util.UUID;
 public class SubControllerKOO {
 
     public final CartttService cartttService;
+    public final OrderrrService orderrrService;
 
     @Value("${com.room.upload.path}")
     private String uploadPath;
@@ -158,6 +160,15 @@ public class SubControllerKOO {
         return new ResponseEntity<>(true,HttpStatus.OK);
     };
 
+    @GetMapping("/testorder")
+    public ResponseEntity<Boolean> testorderget(Principal principal,String receiver){
 
+        String email = principal.getName();// 이메일일거임 아마
+
+        orderrrService.cartlistpay(email,receiver);
+        //
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    };
 
 }

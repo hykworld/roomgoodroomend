@@ -25,7 +25,10 @@ public class Order1 extends BaseEntity {
     private Date desireddate; // 배송희망일
     private String recipient; // 수령인
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private ClubMember clubMember;
+
+    private Long price;
 }
