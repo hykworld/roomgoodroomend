@@ -10,18 +10,17 @@ import org.springframework.data.domain.Sort;
 @Builder
 @AllArgsConstructor
 @Data
-public class PageRequestDTO {
+public class MainPagePageRequestDTO {
 
     private int page;
     private int size;
-    private Long cno;
     private String type;
     private String keyword;
 
 
-    public PageRequestDTO(){
+    public MainPagePageRequestDTO(){
         this.page = 1;
-        this.size = 10;
+        this.size = 12;
     }
 
     public Pageable getPageable(Sort sort){

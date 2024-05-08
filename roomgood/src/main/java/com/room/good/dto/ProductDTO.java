@@ -2,6 +2,7 @@ package com.room.good.dto;
 
 import com.room.good.constant.ItemSellStatus;
 import com.room.good.entity.CategoryBig;
+import com.room.good.entity.CategoryMiddle;
 import com.room.good.entity.Order1;
 import com.room.good.entity.ProductImage;
 import jakarta.persistence.*;
@@ -24,7 +25,7 @@ public class ProductDTO {
     private Long pno;
 
     private String pname;//상품명
-    private CategoryBig categoryBig; // 카테고리 대
+    //private CategoryBig categoryBig; // 카테고리 대
     //private CategoryBig categoryMiddle; // 카테고리 중
     //private CategoryBig categorySmall; // 카테고리 소
     private Long price;//가격
@@ -35,12 +36,11 @@ public class ProductDTO {
 
     private Order1 order1;
 
+    private CategoryBig categoryBig; // CategoryBig 객체로 변경
+//    private CategoryMiddle categoryMiddle; // CategoryMiddle 객체로 변경
+
     @Builder.Default
     private List<ProductImageDTO> imageDTOList= new ArrayList<>();
 
-
-
-
-    //이미지 어레이 리스트
     //태그 어레이 리스트
 }

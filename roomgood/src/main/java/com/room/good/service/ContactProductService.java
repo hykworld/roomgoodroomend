@@ -1,6 +1,7 @@
 package com.room.good.service;
 
 import com.room.good.dto.ContactProductDTO;
+import com.room.good.dto.PageRequestDTO;
 import com.room.good.entity.ClubMember;
 import com.room.good.entity.ContactProduct;
 import com.room.good.entity.Product;
@@ -8,7 +9,9 @@ import com.room.good.entity.Product;
 import java.util.List;
 
 public interface ContactProductService {
-    List<ContactProductDTO> getListOfProduct(Long pno);
+    List<ContactProductDTO> getListOfProduct(Long pno, PageRequestDTO pageRequestDTO);
+
+    Long getCountOfProduct(Long pno);
 
     Long register(ContactProductDTO contactProductDTO);
 
