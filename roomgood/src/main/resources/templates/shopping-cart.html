@@ -380,6 +380,32 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    <!-- Search End -->
+    <script>
+        async function requestPayment() {
+    try {
+        const response = await Bootpay.requestPayment({
+            "application_id": "59a4d323396fa607cbe75de4",
+            "price": 500,
+            "order_name": "테스트결제",
+            "order_id": "TEST_ORDER_ID",
+            "pg":  "",
+            "method": "",
+            "tax_free": 0,
+            "user": {
+                "id": "회원아이디",
+                "username": "회원이름",
+                "phone": "01000000000",
+                "email": "test@test.com"
+            },
+            "items": [
+                {
+                    "id": "item_id",
+                    "name": "테스트아이템",
+                    "qty": 1,
+                    "price": 500
+=======
 </footer>
 <!-- Footer Section End -->
 
@@ -427,6 +453,7 @@
                     "open_type": "iframe",
                     "card_quota": "0,2,3",
                     "escrow": false
+>>>>>>> 319b1cf89e84878f441a57cf9ec21c6d7e1bb906
                 }
             });
             console.log(response); // 결제 응답 처리

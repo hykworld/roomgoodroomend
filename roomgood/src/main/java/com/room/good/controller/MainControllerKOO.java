@@ -31,6 +31,7 @@ public class MainControllerKOO {
 
 
 
+
     @GetMapping("/blog")
     public void getblog(PageRequestDTO pageRequestDTO, Model model,HttpSession session ){
 
@@ -182,5 +183,12 @@ public class MainControllerKOO {
 
     @GetMapping("/resetpw")
     public void getCheckout(){};
+
+    @GetMapping("/ajaxtestpage")
+    public void getajaxtestpage(){};
+    @GetMapping("/fuckingmac")
+    public void getfuckingmac(){};
+
+
 
 }
