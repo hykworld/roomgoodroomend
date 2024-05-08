@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!--내가 추가.end-->
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         <!--        body {-->
@@ -96,8 +97,7 @@
             margin: 0 auto;
         }
         .imgBox_up{
-            width:45%;
-            margin-right:5%;
+            width:50%;
         }
         .product_nav{
             width:100%;
@@ -116,8 +116,14 @@
             width:20%;
         }
         .contentBox{
-            width:50%;
+            width:45%;
+            margin-left:5%;
+
         }
+        .star i,.star p {
+        color: #35C5F0;
+        }
+
     </style>
 </head>
 
@@ -169,10 +175,26 @@
             <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
             <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
             <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
-            <h2>플러피 매트 토퍼 12cm</h2>
-            <p>판매가 : 37,900원</p>
-            <p>배송비 : 10,000원 </p>
-            <p>총 가격 : 47,900원</p>
+            <h6 style="margin-bottom:7px; color:#777; font-weight:bold">카테고리 올것</h6>
+            <div style="margin-bottom:30px; display:flex; justify-content:space-between;">
+                <h4 style="color:#333; max-width:80%;">엑소 큐트베어 물티슈 캡형 100매 10팩 </h4>
+                <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
+            </div>
+            <div class="star" style="margin-bottom:20px;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <p style="display:inline">215개 리뷰</p>
+            </div>
+            <p style="font-size:40px; font-weight:bold; margin-bottom:40px;">37,900원</p>
+            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px;">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span style="font-weight:bold">JH택배</span>
+                <div>주문일로 부터 3일내 도착(15시까지 주문 시)</div>
+                <div>배송료 : 3,000원<span style="font-size:0.9em; margin-left:5px;">(50,000원 이상 구매 시 무료)</span></div>
+            </div>
+            <div style="border-top:1px solid #ccc;">
+
+            </div>
+
             <button class="btn btn-secondary">장바구니 추가</button><button class="btn btn-primary">바로 구매하기</button>
         </form>
     </div>

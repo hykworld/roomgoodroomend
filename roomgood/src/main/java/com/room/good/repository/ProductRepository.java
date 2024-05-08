@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -37,14 +38,13 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // group by movie.mno;
 
 
-<<<<<<< HEAD
+
     //메인 창에 적용시킬 JPA 비동기 페이징처리 위함
     Page<Product> findAll(Pageable pageable);
-
     //메인 창 페이징 처리 위함
     @Query("select count(pd) from Product pd")
     Long countByAll();
-=======
+
     // 카테고리에 따라 상품 목록을 가져오는 메서드
     @Query("SELECT p, pi FROM Product p " +
             "LEFT JOIN ProductImage pi ON pi.product = p " +
@@ -68,5 +68,4 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query("select p, pi from Product p left join ProductImage pi on pi.product = p where p.pno = :pno")
     List<Object[]> getProduct(Long pno);
 
->>>>>>> e6cd7af9dd0cf59d36090c2d59ddacbfa81433a0
 }
