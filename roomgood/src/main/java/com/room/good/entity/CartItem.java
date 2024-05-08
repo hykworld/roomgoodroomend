@@ -45,6 +45,11 @@ public class CartItem extends BaseEntity {
         cartItem.setQuantity(quantity);
         return cartItem;
     }
+    public CartItem(Cart cart, Product product, int quantity) { // 물품 하나의 정보
+        this.cart = cart;
+        this.product = product;
+        this.quantity = quantity;
+    }
 
     public void addQuantity(int quantity){ // 수량을 추가하는것
         this.quantity += quantity;

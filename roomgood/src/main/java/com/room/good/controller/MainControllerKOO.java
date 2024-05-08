@@ -196,8 +196,8 @@ public class MainControllerKOO {
 
     @GetMapping("/ajaxtestpage")
     public void getajaxtestpage(){};
-    @GetMapping("/fuckingmac")
-    public void getfuckingmac(){};
+    @GetMapping("/pay")
+    public void getpay(){};
 
 
 

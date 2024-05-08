@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <!--토큰 ----------------------->
@@ -299,7 +299,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6" th:each="dto : ${result.dtoList}">
                         <div  class="product__item sale">
                             <!--th:if="${dto.categoryBig.cno == 4}"-->
-                            <a th:href="@{/productread(pno=${dto.pno},
+                            <a th:href="@{/shop-details(pno=${dto.pno},
                             page=${result.page},
                             type=${pageRequestDTO.type} ,
                             keyword = ${pageRequestDTO.keyword})}">
