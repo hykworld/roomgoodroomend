@@ -1,14 +1,9 @@
 package com.room.good.controller;
 
 import com.querydsl.core.types.Order;
-import com.room.good.dto.EventDTO;
-import com.room.good.dto.MemberDTO;
-import com.room.good.dto.OrderDTO;
-import com.room.good.dto.PageRequestDTO;
+import com.room.good.dto.*;
 import com.room.good.entity.Order1;
-import com.room.good.service.EventService;
-import com.room.good.service.MemberService;
-import com.room.good.service.OrderrrService;
+import com.room.good.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -31,6 +26,8 @@ public class MainControllerKOO {
     private final EventService eventService;
     private final MemberService memberService;
     private final OrderrrService orderrrService;
+    private final CartttService cartttService;
+    private  final ProductService productService;
 
 
 
@@ -52,8 +49,16 @@ public class MainControllerKOO {
         EventDTO eventDTO = eventService.read(eno);
         model.addAttribute("event",eventDTO);
     };
+
     @GetMapping("/about")
-    public void getabout(){};
+    public String readshop(PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Long cno) {
+        if (cno != null) {
+            model.addAttribute("result", productService.categoryPage(cno, pageRequestDTO));
+        } else {
+            model.addAttribute("result", productService.getList(pageRequestDTO));
+        }
+        return "shop"; // shop.html로 이동
+    }
     @GetMapping("/contact")
     public void getcontact(){};
     @GetMapping("/main")
@@ -197,7 +202,14 @@ public class MainControllerKOO {
     @GetMapping("/ajaxtestpage")
     public void getajaxtestpage(){};
     @GetMapping("/pay")
-    public void getpay(){};
+    public void getpay(Principal principal,Model model){
+    String email = principal.getName();
+        MemberDTO memberDTO = memberService.findbyid(email);
+        CartttDTO findlist = cartttService.findlist(memberDTO.getCartnumber());
+        log.info("findlist"+findlist);
+        log.info("findlist"+findlist.getCartItems().get(0).getProduct());//잘넘어온다~
+        model.addAttribute("findlist",findlist);
+    };
 
 
 

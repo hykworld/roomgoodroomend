@@ -1,6 +1,8 @@
 package com.room.good.service;
 
 
+import com.room.good.dto.CartDTO;
+import com.room.good.dto.CartttDTO;
 import com.room.good.entity.Cart;
 import com.room.good.entity.CartItem;
 import com.room.good.entity.ClubMember;
@@ -14,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -71,5 +74,21 @@ public class CartttServiceImpl implements CartttService{
 
 
         return true;
+    }
+
+    @Override
+    @Transactional
+    public CartttDTO findlist(Long cno) {
+
+        Optional<Cart> byId = cartttRepository.findById(cno);
+        List<CartItem> byCartCno = cartttItemRepository.findByCartCno(cno);
+        Cart cart = byId.get();
+        CartttDTO cartDTO = new CartttDTO();
+        cartDTO.setCartItems(byCartCno);
+        cartDTO.setCno(cno);
+        cartDTO.setQuantity(cart.getQuantity());
+        cartDTO.setClubMemberId(byId.get().getClubMember().getId());
+
+        return cartDTO;
     }
 }

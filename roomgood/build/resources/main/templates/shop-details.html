@@ -178,7 +178,8 @@
             <h6 style="margin-bottom:7px; color:#777; font-weight:bold">[[${dto.categoryBig.cname}]]</h6>
             <div style="margin-bottom:30px; display:flex; justify-content:space-between;">
                 <h4 style="color:#333; max-width:80%;">[[${dto.pname}]]</h4>
-                <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
+                <i id="wishlist" class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
+
             </div>
             <div class="star" style="margin-bottom:20px;">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -198,8 +199,45 @@
                 </div>
                 <div style="width:90px; height:30px; background-color:#35C5F0; color:#fff; ">바로가기 <i class="fa-solid fa-angle-right"></i></div>
             </div>
+        <!--구씨 수정부분5월8일-->
+            <button type="button" class="btn btn-secondary" id="cartbtn">장바구니 추가</button><a href="/pay" class="btn btn-primary">바로 구매하기</a>
+            <script>
+                    var count = 1;
+                    var pno =[[${dto.pno}]];
+                        $('#cartbtn').on('click',function(){
 
-            <button class="btn btn-secondary">장바구니 추가</button><button class="btn btn-primary">바로 구매하기</button>
+                  $.ajax({
+                            url:"/cart", //서버주소
+                            data:{pno:pno , count:count}, //서버로 전송되는 데이터
+                            dataType:"boolean", //서버에서 넘어오는 데이터의 타입
+                            type:"get", //전송방식
+                            success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                                console.log(result);
+                            }
+                    });
+                                alert('장바구니에 추가되었습니다.');
+                });
+
+                    $('#wishlist').on('click',function(){
+
+
+                    $.ajax({
+                            url:"/addwish", //서버주소
+                            data:{pno:pno}, //서버로 전송되는 데이터
+                            dataType:"boolean", //서버에서 넘어오는 데이터의 타입
+                            type:"get", //전송방식
+                            success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                                console.log(result);
+                            }
+                    });
+                             alert('찜 목록에 추가되었습니다.');
+
+
+
+                    })
+
+            </script>
+        <!--구씨 수정부분5월8일.end-->
         </form>
     </div>
 </div>

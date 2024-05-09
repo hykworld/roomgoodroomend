@@ -76,7 +76,7 @@
                             </ul>
                         </li>
                         <li><a href="#">인기차트</a></li>
-                        <li><a href="/contact">만원이하</a></li>
+                        <li><a href="/about">만원이하</a></li>
 
                         <li><a href="/contact">딸기마켓</a></li>
                         <li ><a href="/blog">이벤트</a>
@@ -94,8 +94,11 @@
                     <!--로그인 한 상태-->
                     <a href="/wishlist" sec:authorize="isAuthenticated()"><img src="img/icon/heart.png" alt=""></a>
                     <!--로그인 안한 상태-->
-                    <a href="/Loginshop" sec:authorize="isAnonymous()" id="heart"><img src="img/icon/heart.png" alt=""></a>
-                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                    <a href="/Loginshop" sec:authorize="isAnonymous()" class="heart"><img src="img/icon/heart.png" alt=""></a>
+
+
+                    <a href="/shopping-cart" sec:authorize="isAuthenticated()"><img  src="img/icon/cart.png" alt=""><span>0</span></a>
+                    <a href="/Loginshop" sec:authorize="isAnonymous()" class="heart"><img  src="img/icon/cart.png" alt=""><span></span></a>
                 </div>
             </div>
         </div>
@@ -109,7 +112,7 @@
         return result;
     }
 
-    $('#heart').on('click',function(e){
+    $('.heart').on('click',function(e){
         if(!confirm("로그인 후 이용가능한 서비스입니다. 로그인 하시겠습니까?")){
             e.preventDefault();
         }
