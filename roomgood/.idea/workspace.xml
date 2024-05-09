@@ -144,7 +144,7 @@
       <recent name="com.room.good.security.handler" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.GoodApplication">
+  <component name="RunManager" selected="Application.GoodApplication">
     <configuration name="GoodApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.room.good.GoodApplication" />
       <module name="good.main" />

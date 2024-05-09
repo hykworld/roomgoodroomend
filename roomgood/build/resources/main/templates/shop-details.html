@@ -202,9 +202,15 @@
         <!--구씨 수정부분5월8일-->
             <button type="button" class="btn btn-secondary" id="cartbtn">장바구니 추가</button><a href="/pay" class="btn btn-primary">바로 구매하기</a>
             <script>
+<<<<<<< HEAD
                     var count = 1;
                     var pno =[[${dto.pno}]];
                         $('#cartbtn').on('click',function(){
+=======
+                        $('#cartbtn').on('click',function(){
+                    var count = 1;
+                    var pno =[[${dto.pno}]];
+>>>>>>> 4ff47e5fe9cb5d42fae8b7445ecd7cd3462ed7a0
 
                   $.ajax({
                             url:"/cart", //서버주소
@@ -217,6 +223,7 @@
                     });
                                 alert('장바구니에 추가되었습니다.');
                 });
+<<<<<<< HEAD
 
                     $('#wishlist').on('click',function(){
 
@@ -236,6 +243,8 @@
 
                     })
 
+=======
+>>>>>>> 4ff47e5fe9cb5d42fae8b7445ecd7cd3462ed7a0
             </script>
         <!--구씨 수정부분5월8일.end-->
         </form>
