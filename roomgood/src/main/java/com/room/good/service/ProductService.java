@@ -5,10 +5,7 @@ import com.room.good.dto.PageRequestDTO;
 import com.room.good.dto.PageResultDTO;
 import com.room.good.dto.ProductDTO;
 import com.room.good.dto.ProductImageDTO;
-import com.room.good.entity.CategoryBig;
-import com.room.good.entity.CategoryMiddle;
-import com.room.good.entity.Product;
-import com.room.good.entity.ProductImage;
+import com.room.good.entity.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -37,7 +34,7 @@ public interface ProductService {
         PageResultDTO<ProductDTO, Object[]> categoryPage(long cno, PageRequestDTO requestDTO);
 
         //////// 엔티티 투 디티오///////////////////////////////////////////////////
-        default ProductDTO entitiesToDTO(Product product, List<ProductImage> productImages) {
+        default ProductDTO entitiesToDTO(Product product, List<ProductImage> productImages, List<ProductImage2> productImages2) {
                 ProductDTO productDTO = ProductDTO.builder()
                         .pno(product.getPno())
                         .pname(product.getPname())
@@ -71,6 +68,26 @@ public interface ProductService {
                 }).collect(Collectors.toList());
 
                 productDTO.setImageDTOList(productImageDTOList);
+
+                List<ProductImageDTO> productImageDTOList2 = productImages2.stream().map(productImage2 -> {
+                        if (productImage2 != null) {
+                                return ProductImageDTO.builder()
+                                        .pinum(productImage2.getPinum())
+                                        .piuuid(productImage2.getPiuuid())
+                                        .piimgName(productImage2.getPiimgName())
+                                        .pipath(productImage2.getPipath())
+                                        .build();
+                        } else {
+                                // 대체 이미지 정보 설정
+                                return ProductImageDTO.builder()
+                                        .piuuid("default") // 대체 이미지의 UUID 또는 다른 식별자
+                                        .piimgName("noimage.png") // 대체 이미지 파일명
+                                        .pipath("img/noimage.png") // 대체 이미지 경로
+                                        .build();
+                        }
+                }).collect(Collectors.toList());
+
+                productDTO.setImageDTOList2(productImageDTOList2);
 
                 return productDTO;
         }
@@ -106,6 +123,22 @@ public interface ProductService {
                                 return productImage;
                         }).collect(Collectors.toList());
                         entityMap.put("imgList", productImageList);
+                }
+
+                List<ProductImageDTO> imageDTOList2 = productDTO.getImageDTOList2();
+
+                if (imageDTOList2 != null && imageDTOList2.size() > 0) {
+                        List<ProductImage2> productImageList2 = imageDTOList2.stream().map(productImageDTO -> {
+                                ProductImage2 productImage2 = ProductImage2.builder()
+                                        .pinum(productImageDTO.getPinum())
+                                        .pipath(productImageDTO.getPipath())
+                                        .piimgName(productImageDTO.getPiimgName())
+                                        .piuuid(productImageDTO.getPiuuid())
+                                        .product(product)
+                                        .build();
+                                return productImage2;
+                        }).collect(Collectors.toList());
+                        entityMap.put("imgList2", productImageList2);
                 }
 
                 entityMap.put("product", product); // 엔티티 맵에 제품 추가
