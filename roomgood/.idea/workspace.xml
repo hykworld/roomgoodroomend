@@ -13,41 +13,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerHong.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerHwang.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerKOO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerSumin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/SubControllerKOO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Cart$CartBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Cart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/CartItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/ClubMember$ClubMemberBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/ClubMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Product$ProductBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QCart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QClubMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QProduct.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/security/handler/ClubLoginSuccessHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/service/EventServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/service/MemberServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QCart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QClubMember.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/Loginshop.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/blog-details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/contact.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/eventRegister.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/join.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/memberJoin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerSumin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerSumin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/ClubMember$ClubMemberBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/ClubMember$ClubMemberBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/ClubMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/ClubMember.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QClubMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QClubMember.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QClubMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QClubMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerSumin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerSumin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/entity/ClubMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/entity/ClubMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/ContactProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/ContactProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/SoominServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/SoominServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/shop-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,8 +65,8 @@
       <list>
         <option value="HTML File" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -121,19 +102,21 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;soo&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/박한선/Desktop/realP/roomgood/src/main/resources/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/springboot_workspace/roomgoodroomend/roomgood/src/main/resources/templates&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\springboot_workspace\roomgoodroomend\roomgood\src\main\resources\templates" />
+      <recent name="D:\springboot_workspace\roomgoodroomend\roomgood\src\main\resources\static\js\editor" />
+      <recent name="D:\springboot_workspace\roomgoodroomend\roomgood\src\main\resources\static\js" />
       <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources" />
       <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources\templates" />
-      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\entity" />
-      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\service" />
-      <recent name="C:\git_kdigital\springboot_workspace\good\src\main\resources\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\springboot_workspace\roomgoodroomend\roomgood\src\main\resources\static\js\editor" />
+      <recent name="D:\springboot_workspace\roomgoodroomend\roomgood\src\main\resources\static\js" />
       <recent name="C:\Users\박한선\Desktop\realP\roomgood\src\main\resources\static\img" />
       <recent name="C:\git_kdigital\springboot_workspace\good\src\main\resources\templates\room" />
     </key>

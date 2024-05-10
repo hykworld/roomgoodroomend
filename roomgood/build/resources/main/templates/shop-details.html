@@ -38,25 +38,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        <!--        body {-->
-        <!--          min-height: 100vh;-->
 
-        <!--          background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));-->
-        <!--          background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);-->
-        <!--          background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);-->
-        <!--          background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);-->
-        <!--          background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);-->
-        <!--        }-->
-
-        <!--        body {-->
-        <!--          min-height: 100vh;-->
-
-        <!--          background: -webkit-gradient(linear, left bottom, right top, from(#F3F2EE), to(#F3F2EE));-->
-        <!--          background: -webkit-linear-gradient(bottom left, #F3F2EE 0%, #F3F2EE 100%);-->
-        <!--          background: -moz-linear-gradient(bottom left, #F3F2EE 0%, #F3F2EE 100%);-->
-        <!--          background: -o-linear-gradient(bottom left, #F3F2EE 0%, #F3F2EE 100%);-->
-        <!--          background: linear-gradient(to top right, #F3F2EE 0%, #F3F2EE 100%);-->
-        <!--        }-->
 
 
                 .input-form {
@@ -69,9 +51,7 @@
                   -webkit-border-radius: 10px;
                   -moz-border-radius: 10px;
                   border-radius: 10px;
-        <!--          -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);-->
-        <!--          -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);-->
-        <!--          box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)-->
+
                 }
 
 
@@ -102,20 +82,51 @@
         .product_nav{
             width:100%;
             margin-top:30px;
-            padding-top: 15px;
-            border-top:solid 1px #ccc;
-            border-bottom:solid 1px #ccc;
-            padding-bottom:15px;
+            height:50px;
+            border-top:solid 1px #ddd;
+            border-bottom:solid 1px #ddd;
+            background-color:#f7f9fa;
+        }
+        .main_contents{
+            width:100%;
+            max-width:1000px;
+            margin:0 auto;
         }
         .product_nav ul{
             width:100%;
-            margin:o auto;
+            max-width:1000px;
+            height:50px;
+            margin: 0 auto;
+            display:flex;
         }
         .product_nav ul li{
-            display:inline-block;
-            width:20%;
+            width:33.3%;
+            text-align:center;
+            line-height:50px;
         }
-        .contentBox{
+        .product_nav ul li:hover{
+            cursor:pointer;
+        }
+        .product_nav ul li a{
+            color:#333;
+        }
+        .product_nav ul li:hover a{
+            color:#35c5f0;
+        }
+
+        .nav-link{
+            padding:0 !important;
+            height:50px;
+            color:#333; !important;
+            text-transform: uppercase;
+        }
+        .nav-link.active{
+          color: #35C5F0 !important;
+          border-bottom:4px solid #35C5F0;
+          box-sizing:border-box !important;
+        }
+
+        #contentBox{
             width:45%;
             margin-left:5%;
 
@@ -123,11 +134,92 @@
         .star i,.star p {
         color: #35C5F0;
         }
+        .goCategory:hover{
+            cursor:pointer;
+        }
+        .goCategory:hover .goCategory_btn{
+            background-color:#19abd6 !important;
+        }
+
+        .displayNone{
+            display:none !important;
+        }
+        .toggle:hover{
+            cursor:pointer;
+        }
+
+
+        .toggle_banner:hover{
+            background-color:#f4f8ff !important;
+            border: 1px solid #35C5F0 !important;
+            cursor:pointer;
+        }
+        .product-minus,.product-plus{
+            cursor:pointer;
+        }
+        .count_banner_x_btn{
+            cursor:pointer;
+        }
+
+        .cart_btn, .buy_btn{
+            text-align:center;
+            width:48%;
+            height:60px;
+            box-sizing:border-box;
+            border-radius:7px;
+            font-weight:bold;
+            line-height:58px;
+        }
+        .cart_btn{
+            border:2px solid #35C5F0;
+            color:#35C5F0;
+        }
+
+        .buy_btn{
+            background-color:#35C5F0;
+            color:#fff;
+        }
+        .cart_btn:hover{
+            cursor:pointer;
+        }
+        .buy_btn:hover{
+            cursor:pointer;
+            background-color:#19abd6;
+        }
+
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        .Fixed{
+            position:fixed;
+            top:-30px;
+            z-index:9999;
+        }
+        #product_details{
+            margin-top:50px;
+        }
+        .page-link{
+            border:none !important;
+            border-radius: .25rem !important;
+            margin-left:5px;
+            color:#333 !important;
+        }
+        .reviewFooter{
+            margin-top:30px;
+        }
+        .page-item.active .page-link{
+            color:#fff !important;
+        }
 
     </style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
 <!--<div id="preloder">-->
 <!--    <div class="loader"></div>-->
 <!--</div>-->
@@ -170,67 +262,113 @@
             <li></li>
         </ul>
     </div>
-    <div class="contentBox">
+    <div id="contentBox">
         <form>
             <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
             <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
             <input type="hidden"/> <!-- 여기에 데이터 담아서 보내줄 예정임 -->
-            <h6 style="margin-bottom:7px; color:#777; font-weight:bold">카테고리 올것</h6>
+            <h6 style="margin-bottom:7px; color:#777; font-weight:bold">[[${dto.categoryBig.cname}]]</h6>
             <div style="margin-bottom:30px; display:flex; justify-content:space-between;">
-                <h4 style="color:#333; max-width:80%;">엑소 큐트베어 물티슈 캡형 100매 10팩 </h4>
+                <h4 style="color:#333; max-width:80%;">[[${dto.pname}]]</h4>
                 <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
             </div>
             <div class="star" style="margin-bottom:20px;">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 <p style="display:inline">215개 리뷰</p>
             </div>
-            <p style="font-size:40px; font-weight:bold; margin-bottom:40px;">37,900원</p>
+            <p style="font-size:40px; font-weight:bold; margin-bottom:40px;">[[${dto.price}]]원</p>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px;">
                 <i class="fa-solid fa-truck-fast"></i>
                 <span style="font-weight:bold">JH택배</span>
                 <div>주문일로 부터 3일내 도착(15시까지 주문 시)</div>
-                <div>배송료 : 3,000원<span style="font-size:0.9em; margin-left:5px;">(50,000원 이상 구매 시 무료)</span></div>
+                <div>배송료 : [[${dto.categoryBig.deliveryFee}]]원<span style="font-size:0.9em; margin-left:5px;">(50,000원 이상 구매 시 무료)</span></div>
             </div>
-            <div style="border-top:1px solid #ccc;">
-
+            <div class="goCategory" style="margin-bottom:20px; display:flex; justify-content:space-between; border-top:1px solid #ccc; height:50px; padding-left:10px; color:#777;">
+                <div style="line-height:50px;">
+                    <i class="fa-solid fa-right-to-bracket" style="color:#35C5F0; margin-right:5px"></i>
+                    <span style="font-weight:bold">[[${dto.categoryBig.cname}]]</span>
+                </div>
+                <div class="goCategory_btn" style="height:30px; line-height:30px; border-radius:7px; padding:0 10px; margin:10px 0; background-color:#35C5F0; color:#fff; ">바로가기 <i class="fa-solid fa-angle-right"></i></div>
             </div>
+            <div class="toggle" style="display:flex; justify-content:space-between; line-height:50px; width:100%; height:50px; box-sizing:border-box; border-radius:2px; border:1px solid #ccc;">
+            <div style="margin-left:20px;">상품을 선택해 주세요</div>
+            <i class="fa-solid fa-caret-down" style="margin-right:20px; line-height:48px;"></i>
+            </div>
+            <div class="toggle_banner displayNone" style="display:flex; justify-content:space-between; line-height:70px; margin-top:2px; background-color:#fff; height:70px; box-sizing:border-box; border-radius:2px; border:1px solid #ccc; position:absolute;">
+                <div style="display:flex; margin-left:20px;">
+                    <div style="width:30px; color:#333;">1</div>
+                    <img src="img/soomin/B.jpg" height="50px" style="margin-top:10px; margin-right:10px;" />
+                    <div style="color:#333;">[[${dto.pname}]]</div>
+                </div>
+                <div style="margin-right:20px; font-size:20px; font-weight:bold; color:#333;">
+                    [[${dto.price}]]원
+                </div>
+            </div>
+            <div class="product_count_banner displayNone" style="margin-top:15px; width:100%; height:100px; box-sizing:border-box; border-radius:2px; border:1px solid #ccc; background-color:#F7F9FA">
+                <div style="margin:10px 0 23px 10px; display:flex; justify-content:space-between;">
+                    <div style="color:#333; font-size:16px;">[[${dto.pname}]]</div>
+                    <div style="margin-right:10px;" class="count_banner_x_btn">&times;</div>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <div style="display:flex; justify-content:space-between; margin-left:10px; margin-top:3px; width:80px; height:30px; background-color:#fff; box-sizing:border-box; border-radius:4px; border:1px solid #ccc;">
+                        <i style="line-height:30px; margin-left:5px;" class="product-minus fa-solid fa-minus"></i><button class="product_count" style="color:#333; line-height:30px; border:none; background-color:#fff; font-weight:bold"></button><i style="line-height:30px; margin-right:5px;" class="product-plus fa-solid fa-plus"></i>
+                    </div>
+                    <div class="end_price" style="margin-right:10px; font-size:25px; font-weight:bold; color:#333;">
 
-            <button class="btn btn-secondary">장바구니 추가</button><button class="btn btn-primary">바로 구매하기</button>
+                    </div>
+                </div>
+            </div>
+            <div style="width:100%; margin-top:30px; justify-content:space-between; display:flex;">
+                <div class="cart_btn">장바구니 추가</div>
+                <div class="buy_btn">바로 구매하기</div>
+            </div>
         </form>
     </div>
 </div>
 <!--구매부분 작성 끝-->
 
 <!--상품 내비 바-->
-<div class="product_nav">
-    <ul>
-        <li><a>상품 구매</a></li>
-        <li><a>상세 정보</a></li>
-        <li><a>상품 후기</a></li>
-        <li><a>상품 문의</a></li>
+<div class="product_nav navbar navbar-expand-sm">
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#product_details">상품 정보</a></li>
+        <li class="nav-item"><a class="nav-link" href="#product_review">상품 후기</a></li>
+        <li class="nav-item"><a class="nav-link" href="#product_contact">상품 문의</a></li>
     </ul>
 </div>
 
 <!--상품 상세 설명-->
-<div class="product_details">
-    <div>
-        <img src="img/soomin/detail_banner.jpg" alt="이미지" />
+<div class="main_contents">
+    <div id="product_details" class="container-fluid">
+        <h4 style="margin-bottom:10px;">상품 정보</h4>
+        <div class="overflowHiddenBox" style="position: relative; height:1200px; overflow:hidden;">
+            <img src="img/soomin/detail_banner.jpg" width="100%" alt="이미지" />
+            <div class="white_grad" style="width:100%; position:absolute; bottom:-50px; left:0; height:250px; background-image:linear-gradient(to bottom, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.8));"></div>
+        </div>
+        <button class="white_grad_btn" style="margin-top:20px; font-weight:bold; width:100%; height:80px; box-sizing:border-box; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border:1px solid #35C5F0; background-color:#fff; color:#333;">상품 정보 펼쳐보기<i style="margin-left:15px;" class="fa-solid fa-chevron-down"></i></button>
     </div>
-    <div>
-        <button type="button" class="btn btn-info addReview">리뷰작성</button>
+    <div style="margin-top:50px;" id="product_review" class="container-fluid">
+        <div style="display:flex; justify-content:space-between; line-height:30px; height:30px;">
+            <div style="font-size:20px">상품 리뷰</div>
+            <div style="cursor:pointer;" class="addReview">리뷰 등록</div>
+        </div>
+        <div style="border-bottom:1px solid #ccc; border-top:1px solid #ccc; height:100px;"></div>
         <div class="list-group reviewList">
 
         </div>
-        <div class="reviewFooter">
+        <div style="margin-bottom:130px;" class="reviewFooter">
 
         </div>
     </div>
-    <div>
-        <button type="button" class="btn btn-info addContactProduct">제품문의</button>
+    <div id="product_contact" class="container-fluid">
+        <div style="display:flex; justify-content:space-between; line-height:30px; height:30px;">
+            <div style="font-size:20px">상품 문의</div>
+            <div style="cursor:pointer;" class="addContactProduct">문의하기</div>
+        </div>
+        <div style="border-bottom:1px solid #ccc; border-top:1px solid #ccc; height:100px;"></div>
         <div class="list-group contactProductList">
 
         </div>
-        <div class="cpPageFooter">
+        <div style="margin-top:30px; margin-bottom:130px;" class="cpPageFooter">
 
         </div>
     </div>
@@ -336,11 +474,133 @@
     </div>
 </div>
 
+<!--여기는 갯수 버튼 눌렀을때 모달이삼ㅇㅇ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+
+<div class="countModal modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">수량</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button><!--이건 x 모양 닫기 버튼-->
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>갯수</label>
+                    <input type="number" class="form-control" name="count12" placeholder="갯수" >
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary countBtn">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div th:insert="~{footer.html}"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 <script>
 
     $(function(){
+
+        //이건 상페 더보기---------------------------------------------
+        $(".white_grad_btn").click(function(e){
+            e.preventDefault();
+            $(".overflowHiddenBox").css("height","100%");
+            $(".white_grad_btn").addClass("displayNone");
+            $(".white_grad").addClass("displayNone");
+        });
+
+
+
+        //----------------------------------------------------------
+
+        //상품 갯수 증가ㅇㅇ;----------------------------------
+        var countInput = $("input[name='count12']");
+        var productCount = 1;
+        $(".product_count").html(productCount);
+        var dtoPrice = [[${dto.price}]];
+        var dtoCategoryFee = [[${dto.categoryBig.deliveryFee}]];
+        $(".end_price").html((dtoPrice*productCount+dtoCategoryFee)+"원");
+
+        $(".countBtn").click(function(e){
+            e.preventDefault();
+            console.log(countInput.val());
+            if(countInput.val() == ""){
+                alert("갯수를 입력해주세요.");
+            }else{
+                if(countInput.val()>99){
+                    alert("1~99개만 입력 가능합니다.");
+                }else if(countInput.val()<1){
+                    alert("1~99개만 입력 가능합니다.");
+                }else{
+                    productCount = countInput.val();
+                    $(".product_count").html(productCount);
+                    $(".end_price").html((dtoPrice*productCount+dtoCategoryFee)+"원");
+                    $(".countModal").modal("hide");
+                }
+            }
+        });
+
+        $(".product-minus").click(function(){
+            if(productCount == 1){
+                alert("1~99개만 입력 가능합니다.");
+            }else{
+                --productCount;
+            }
+            $(".product_count").html(productCount);
+            $(".end_price").html((dtoPrice*productCount+dtoCategoryFee)+"원");
+        });
+        $(".product-plus").click(function(){
+            if(productCount == 99){
+                alert("1~99개만 입력 가능합니다.");
+            }else{
+                ++productCount;
+            }
+            $(".product_count").html(productCount);
+            $(".end_price").html((dtoPrice*productCount+dtoCategoryFee)+"원");
+        });
+
+        $(".product_count").click(function(e){
+            e.preventDefault();
+            $(".countModal").modal("show");
+        });
+
+
+
+        $(".count_banner_x_btn").click(function(){
+            $(".product_count_banner").addClass("displayNone");
+            productCount = 1;
+            $(".product_count").html(productCount);
+            $(".end_price").html((dtoPrice*productCount+dtoCategoryFee)+"원");
+        });
+
+
+
+
+
+
+        //----------------------------------
+
+        $(".toggle").click(function(){
+        $(".toggle_banner").toggleClass("displayNone");
+        });
+
+        $(".toggle_banner").click(function(){
+            $(this).toggleClass("displayNone");
+            if($(".product_count_banner").hasClass("displayNone")==true){
+                $(".product_count_banner").removeClass("displayNone");
+            }
+        });
+
+        $(window).resize(function(){
+            $(".toggle_banner").width($(".toggle").width());
+        }).resize();
+
         $(window).resize(function(){
 
         $('.imgBox').each(function() {
@@ -355,6 +615,26 @@
 <!--        }else{-->
 <!--            mainImg.css("height","100%");-->
 <!--        }-->
+
+        // 여기는 매뉴바 관련------------------------------------------------------------
+        var scrollbar = $(".product_nav").offset();
+
+        $(window).scroll(function()
+		{
+			if ( $(document).scrollTop() > scrollbar.top )
+			{
+			   $('.product_nav').addClass('Fixed');
+			}
+			else
+			{
+			   $('.product_nav').removeClass('Fixed');
+			}
+
+		});
+
+
+
+        //-------------------------------------------------------------
 
 
 
@@ -410,7 +690,7 @@
             contactProductModal.modal('hide');
 
         });
-
+//-------------------------------------------------댓글 구현 부분------------------------------------------
         function getContactProducts(cpPageNum){
 
             function formatTime(str){
@@ -429,16 +709,31 @@
                     var str = "";
 
                     $.each(arr, function(idx, contactProduct){
-                        str += "<div class='card-body' data-cpnum=" + contactProduct.cpnum + " data-mid=" +contactProduct.mid+">";
-                        str += "<input type='hidden' value="+contactProduct.cpcontent+" class='cpcontentclass'/>";
-                        str += "<div class='card-title'>"+contactProduct.cptitle+"</div>";
-                        str += "<div class='card-subtitle mb-2 text-muted'>"+contactProduct.nickName+"</div>";
-                        str += "<div class='list-group contactProductAnswerList"+contactProduct.cpnum+"'></div>";
-                        str += "<button type='button' class='btn btn-warning modifyBtn'>수정</button>";
-                        str += "<button type='button' class='btn btn-danger removeBtn'>삭제</button>";
-                        str += "<button type='button' class='btn btn-primary answerLookBtn'>답변보기</button>"
-                        str += "<button type='button' class='btn btn-primary answerBtn'>답변</button>";
-                        str += "</div>";
+<!--                        str += "<div class='card-body' data-cpnum=" + contactProduct.cpnum + " data-mid=" +contactProduct.mid+">";-->
+<!--                        str += "<input type='hidden' value="+contactProduct.cpcontent+" class='cpcontentclass'/>";-->
+<!--                        str += "<div class='card-title'>"+contactProduct.cptitle+"</div>";-->
+<!--                        str += "<div class='card-subtitle mb-2 text-muted'>"+contactProduct.nickName+"</div>";-->
+<!--                        str += "<div class='list-group contactProductAnswerList"+contactProduct.cpnum+"'></div>";-->
+<!--                        str += "<button type='button' class='btn btn-warning modifyBtn'>수정</button>";-->
+<!--                        str += "<button type='button' class='btn btn-danger removeBtn'>삭제</button>";-->
+<!--                        str += "<button type='button' class='btn btn-primary answerLookBtn'>답변보기</button>"-->
+<!--                        str += "<button type='button' class='btn btn-primary answerBtn'>답변</button>";-->
+<!--                        str += "</div>";-->
+
+                            str +=  "<div class='contactProduct_card' style='width:100%; cursor:pointer; height:100%; margin-top:12px; border-bottom: 1px solid #ccc;' data-cpnum=" + contactProduct.cpnum + " data-mid=" +contactProduct.mid+">";
+                            str +=  "<div style='display:flex;'>";
+                            str +=  "<p style='margin-left:20px; color:#777;'>유저 닉네임</p><p style='margin-left:15px; color:#777;'>24.01.05</p></div>";
+                            str +=  "<div style='display:flex; justify-content:space-between; '>";
+                            str +=  "<div class='contactProduct_title' style='color:#777; margin-left:20px; margin-right:20px; '>"+contactProduct.cptitle+"</div>";
+                            str +=  "<div style='margin-bottom:10px; margin-right:27px; display:flex; justify-content: flex-end;'>";
+                            str +=  "<div class='modifyBtn' style='cursor:pointer; color:#777; margin-right:10px'>수정</div>";
+                            str +=  "<div class='removeBtn' style='cursor:pointer; color:#777;'>삭제</div>";
+                            str +=  "</div></div>";
+                            str +=  "<div class='q_and_a displayNone' style='background-color:#F7F8F9; padding-top:20px; padding-bottom:20px;'>";
+                            str +=  "<div style='display:flex; justify-content:space-between;'><div style='background-color:#FF6569; border-radius:5px; width:25px; height:25px; margin-left:20px; color:#fff; text-align:center; line-height:25px;'>Q</div><div class='answerBtn' style='cursor:pointer; margin-right:30px; color:#333;'>답변</div></div>";
+                            str +=  "<pre class='contactProduct_content' style='line-height:25px; background-color:#F7F8F9; margin-bottom:0; white-space: pre-wrap; word-wrap: break-word; color:#777; margin-top:10px; margin-left:30px; margin-right:30px; '>"+ contactProduct.cpcontent +"</pre>";
+                            str +=  "<div class='list-group contactProductAnswerList"+contactProduct.cpnum+"'>";
+                            str +=  "</div></div></div>";
                     });
 
                     $(".contactProductList").html(str);
@@ -510,11 +805,11 @@
             $(".contactProductSaveBtn").hide();
             $(".cpModifyBtn").show();
 
-            var target = $(this).parent();
+            var target = $(this).parent().parent().parent();
             console.log(target);
             cpnum = target.data("cpnum");
-            inputTitle.val(target.find('.card-title').text().trim());
-            inputContent.val(target.find('.cpcontentclass').val());
+            inputTitle.val(target.find('.contactProduct_title').text().trim());
+            inputContent.val(target.find('.contactProduct_content').text().trim());
 
             contactProductModal.modal('show');
 
@@ -539,7 +834,7 @@
         $(".contactProductList").on("click",".removeBtn",function(){
             var alert = confirm("삭제하시겠습니까?");
             if(alert){
-                cpnum = $(this).parent().data("cpnum");
+                cpnum = $(this).parent().parent().parent().data("cpnum");
                 var data={cpnum:cpnum};
                 $.ajax({
                     url:"/contactProduct/"+ pno +"/"+ cpnum,
@@ -725,12 +1020,21 @@
                     var str = "";
 
                     $.each(arr, function(idx, reviews){
-                        str += "<div class='card-body' data-rnum=" + reviews.rnum + " data-mid=" +reviews.mid+">";
-                        str += "<div class='card-title'>"+reviews.text+"</div>";
-                        str += "<div class='card-subtitle mb-2 text-muted'>"+reviews.nickName+"</div>";
-                        str += "<button type='button' class='btn btn-warning rvModifyBtn'>수정</button>";
-                        str += "<button type='button' class='btn btn-danger rvRemoveBtn'>삭제</button>";
-                        str += "</div>";
+<!--                        str += "<div class='card-body' data-rnum=" + reviews.rnum + " data-mid=" +reviews.mid+">";-->
+<!--                        str += "<div class='card-title'>"+reviews.text+"</div>";-->
+<!--                        str += "<div class='card-subtitle mb-2 text-muted'>"+reviews.nickName+"</div>";-->
+<!--                        str += "<button type='button' class='btn btn-warning rvModifyBtn'>수정</button>";-->
+<!--                        str += "<button type='button' class='btn btn-danger rvRemoveBtn'>삭제</button>";-->
+<!--                        str += "</div>";-->
+                            str += "<div style='width:100%; height:100%; border-bottom: 1px solid #ccc;' data-rnum=" + reviews.rnum + " data-mid=" +reviews.mid+">";
+                            str += "<div style='display:inline-block; margin-top:20px; margin-left:20px; margin-bottom:5px;'><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i><i class='fa-solid fa-star'></i></div>";
+                            str += "<div style='display:flex;'>";
+                            str += "<p style='margin-left:20px; color:#777;'>"+reviews.nickName+"</p><p style='margin-left:15px; color:#777;'>24.01.05</p></div>";
+                            str += "<pre class='review_text' style='white-space: pre-wrap; word-wrap: break-word; color:#777; margin-left:20px; margin-right:20px; '>" + reviews.text + "</pre>";
+                            str += "<div style='margin-bottom:10px; margin-right:27px; display:flex; justify-content: flex-end;'>";
+                            str += "<div class='rvModifyBtn' style='cursor:pointer; margin-right:10px'>수정</div>";
+                            str += "<div class='rvRemoveBtn' style='cursor:pointer;'>삭제</div>";
+                            str += "</div></div>";
                     });
 
                     $(".reviewList").html(str);
@@ -769,7 +1073,7 @@
             var str = "<ul class='pagination justify-content-center'>";
 
             if(prev){
-              str+= "<li class='page-item'><a class='page-link' href='"+(startNum -1)+"'>Previous</a></li>";
+              str+= "<li class='page-item'><a class='page-link' href='"+(startNum -1)+"'><i class='fa-solid fa-angle-left'></i> 이전</a></li>";
             }
 
             for(var i = startNum ; i <= endNum; i++){
@@ -778,7 +1082,7 @@
             }
 
             if(next){
-              str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
+              str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>다음 <i class='fa-solid fa-angle-right'></i></a></li>";
             }
 
             str += "</ul>";
@@ -802,9 +1106,9 @@
             $(".reviewSaveBtn").hide();
             $(".reviewModifyBtn").show();
 
-            var target = $(this).parent();
+            var target = $(this).parent().parent();
             rnum = target.data("rnum");
-            reviewText.val(target.find('.card-title').text().trim());
+            reviewText.val(target.find('.review_text').text().trim());
 
             $(".reviewModal").modal("show");
 
@@ -829,7 +1133,7 @@
         $(".reviewList").on("click",".rvRemoveBtn",function(){
             var alert = confirm("삭제하시겠습니까?");
             if(alert){
-                rnum = $(this).parent().data("rnum");
+                rnum = $(this).parent().parent().data("rnum");
                 var data={rnum:rnum};
                 $.ajax({
                     url:"/reviews/"+ pno +"/"+ rnum,
@@ -849,7 +1153,19 @@
 
 
 </script>
-
+<!--<div style="width:100%; height:100%; border-bottom: 1px solid #ccc;">-->
+<!--    <div style="display:inline-block; margin-top:20px; margin-left:20px; margin-bottom:5px;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>-->
+<!--    <div style="display:flex;">-->
+<!--        <p style="margin-left:20px; color:#777;">유저 닉네임</p><p style="margin-left:15px; color:#777;">24.01.05</p>-->
+<!--    </div>-->
+<!--    <pre style="white-space: pre-wrap; word-wrap: break-word; color:#777; margin-left:20px; margin-right:20px; ">-->
+<!--            </pre>-->
+<!--    <div style="margin-bottom:10px; margin-right:27px; display:flex; justify-content: flex-end;">-->
+<!--        &lt;!&ndash;            <div style="margin-left:20px; color:#333; margin-bottom:20px;">더보기</div>&ndash;&gt;-->
+<!--        <div style="cursor:pointer; margin-right:10px">수정</div>-->
+<!--        <div style="cursor:pointer;">삭제</div>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 
 </html>

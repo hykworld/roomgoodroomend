@@ -64,10 +64,10 @@ public class ClubMember extends BaseEntity {
     }
 
 
-    // 제품 삭제시 연관 댓글 삭제 구현을 위한 One To Many
-
-    @OneToMany(mappedBy = "clubMember", orphanRemoval = true)
-    private List<ContactProduct> contactProducts;
+//    // 제품 삭제시 연관 댓글 삭제 구현을 위한 One To Many
+//
+//    @OneToMany(mappedBy = "clubMember", orphanRemoval = true)
+//    private List<ContactProduct> contactProducts;
 
 
 
