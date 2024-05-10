@@ -14,13 +14,14 @@ public class PageRequestDTO {
 
     private int page;
     private int size;
+    private Long cno;
     private String type;
     private String keyword;
 
 
     public PageRequestDTO(){
         this.page = 1;
-        this.size = 9;
+        this.size = 10;
     }
 
     public Pageable getPageable(Sort sort){

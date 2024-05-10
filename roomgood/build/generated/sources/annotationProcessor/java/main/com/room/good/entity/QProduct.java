@@ -26,14 +26,16 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final QCategoryBig categoryBig;
 
+    public final QClubMember clubMember;
+
     public final StringPath content = createString("content");
 
-    public final BooleanPath isPresent = createBoolean("isPresent");
+    public final ListPath<ProductImage, QProductImage> images = this.<ProductImage, QProductImage>createList("images", ProductImage.class, QProductImage.class, PathInits.DIRECT2);
+
+    public final EnumPath<com.room.good.constant.ItemSellStatus> itemSellStatus = createEnum("itemSellStatus", com.room.good.constant.ItemSellStatus.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
-
-    public final QOrder1 order1;
 
     public final StringPath pname = createString("pname");
 
@@ -45,6 +47,8 @@ public class QProduct extends EntityPathBase<Product> {
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     public final NumberPath<Long> stock = createNumber("stock", Long.class);
+
+    public final StringPath subContent = createString("subContent");
 
     public final SetPath<Tag, EnumPath<Tag>> tagSet = this.<Tag, EnumPath<Tag>>createSet("tagSet", Tag.class, EnumPath.class, PathInits.DIRECT2);
 
@@ -67,7 +71,7 @@ public class QProduct extends EntityPathBase<Product> {
     public QProduct(Class<? extends Product> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.categoryBig = inits.isInitialized("categoryBig") ? new QCategoryBig(forProperty("categoryBig")) : null;
-        this.order1 = inits.isInitialized("order1") ? new QOrder1(forProperty("order1"), inits.get("order1")) : null;
+        this.clubMember = inits.isInitialized("clubMember") ? new QClubMember(forProperty("clubMember")) : null;
     }
 
 }

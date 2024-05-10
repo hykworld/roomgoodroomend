@@ -43,12 +43,29 @@
 
 
 
-
+.custom-file-input2 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    margin: 0;
+    opacity: 0;
+}
 
 
 /*구씨 추가내역*/
 #mypagemenu li {
     cursor:pointer;
+
+}
+/*구씨가 스는 버튼들 커스텀*/
+.koobtn{
+    color: #ffffff;
+    background: #111111;
+    border-color: #111111;
+     border-radius: 5px;
+
+
 
 }
 .mymember div div{

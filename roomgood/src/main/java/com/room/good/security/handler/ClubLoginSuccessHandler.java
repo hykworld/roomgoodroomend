@@ -54,19 +54,17 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
 
         log.info("authMember" + authMember);
         Optional<ClubMember> member = repository.findByEmail(authMember.getEmail(),true);
+
         HttpSession session = request.getSession();
         session.setAttribute("id", member.get().getId());
-        log.info("ididid : "+member);
         session.setAttribute("email", authMember.getEmail());
+
         boolean passwordResult = passwordEncoder.matches("1111", authMember.getPassword());//왼쪽은 입력값 , 오른쪽이 디비값
 
-        log.info("1 : "+member.get().getPassword());
-        log.info("2 : "+authMember.getPassword());
 
         if(member.get().getPhone()==null){
             log.info("here");
             redirectStratgy.sendRedirect(request, response, "/join");
-
         }
         else if(passwordResult && fromSocial){//초기 비밀번호를 1111입력 후 , 안바꿨을 때 ! 
             log.info("success!!");

@@ -1,10 +1,14 @@
 package com.room.good.controller;
 
+import com.querydsl.core.types.Order;
 import com.room.good.dto.EventDTO;
 import com.room.good.dto.MemberDTO;
+import com.room.good.dto.OrderDTO;
 import com.room.good.dto.PageRequestDTO;
+import com.room.good.entity.Order1;
 import com.room.good.service.EventService;
 import com.room.good.service.MemberService;
+import com.room.good.service.OrderrrService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @Log4j2
@@ -25,15 +30,17 @@ public class MainControllerKOO {
 
     private final EventService eventService;
     private final MemberService memberService;
-    @GetMapping("/index")
-    public void getIndex(){};
+    private final OrderrrService orderrrService;
+
+
 
 
 
 
 
     @GetMapping("/blog")
-    public void getblog(PageRequestDTO pageRequestDTO, Model model ){
+    public void getblog(PageRequestDTO pageRequestDTO, Model model,HttpSession session ){
+
         model.addAttribute("result",eventService.getList(pageRequestDTO));
         log.info("resultresult"+eventService.getList(pageRequestDTO));
     };
@@ -77,19 +84,14 @@ public class MainControllerKOO {
     }
 
     @PostMapping("/join")
-    public String joinPost(Long id,String email,String name,String phone, String password, RedirectAttributes redirectAttributes){
+    public String joinPost(String year,String month,String day,MemberDTO memberDTO, RedirectAttributes redirectAttributes){
+        memberDTO.setBirth(year+"-"+month+"-"+day);// 구분해서 넣으려고 나중에 - 이거 기준으로 잘라서 수정할거임
+        memberDTO.setGrade("일반회원");
+        log.info(memberDTO);
 
-        log.info("name = "+ name);
-        log.info("phone = "+ phone);
-        log.info("password = "+ password);
-        MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setId(id);
-        memberDTO.setEmail(email);
-        memberDTO.setName(name);
-        memberDTO.setPhone(phone);
-        memberDTO.setPassword(password);
         //그냥 memberDTO memberDTO 써도 됨 근데 이해하기쉽게 이래 서놔씀
         if (memberService.join(memberDTO)){
+            redirectAttributes.addFlashAttribute("msg","회원가입에 성공하셨습니다.");
             return "redirect:/blog";
         }else {
             redirectAttributes.addFlashAttribute("msg","이미 가입되어있는 핸드폰 번호입니다.");
@@ -139,6 +141,10 @@ public class MainControllerKOO {
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
         log.info("memberDTOmemberDTO"+memberDTO);
+        List<OrderDTO> orderDTO = orderrrService.orderlist(memberDTO.getId());
+        log.info("orderlistorderlist"+orderDTO);
+        model.addAttribute("orderlist",orderDTO);
+        model.addAttribute("count",orderDTO.size());
         model.addAttribute("memberDTO",memberDTO);
 
         model.addAttribute("category",category);
@@ -155,7 +161,7 @@ public class MainControllerKOO {
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
         String[] splitBirth = memberDTO.getBirth().split("-");
-
+        log.info(splitBirth+"splitBirthsplitBirth");
         model.addAttribute("memberDTO",memberDTO);
         model.addAttribute("birth1",splitBirth[0]);
         model.addAttribute("birth2",splitBirth[1]);
@@ -177,12 +183,22 @@ public class MainControllerKOO {
 
         return "redirect:/blog";
     };
-    @GetMapping("/checkout")
+    @GetMapping("/wishlist")
+    public void wishlist(Model model, Principal principal){
+        String email = principal.getName();
+        MemberDTO memberDTO = memberService.findbyid(email);
+        log.info("memberDTOmemberDTO"+memberDTO);
+        model.addAttribute("memberDTO",memberDTO);
+    };
+
+    @GetMapping("/resetpw")
     public void getCheckout(){};
-    @GetMapping("/shop")
-    public void getshop(){};
-    @GetMapping("/shop-details")
-    public void getSDetails(){};
-    @GetMapping("/shopping-cart")
-    public void getShoppingCart(){};
+
+    @GetMapping("/ajaxtestpage")
+    public void getajaxtestpage(){};
+    @GetMapping("/pay")
+    public void getpay(){};
+
+
+
 }

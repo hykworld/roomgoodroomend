@@ -1,6 +1,9 @@
 package com.room.good.controller;
 
 import com.room.good.dto.UploadResultDTO;
+import com.room.good.service.CartttService;
+import com.room.good.service.OrderrrService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +23,7 @@ import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -28,7 +32,11 @@ import java.util.UUID;
 
 @Log4j2
 @RestController
+@RequiredArgsConstructor
 public class SubControllerKOO {
+
+    public final CartttService cartttService;
+    public final OrderrrService orderrrService;
 
     @Value("${com.room.upload.path}")
     private String uploadPath;
@@ -52,6 +60,7 @@ public class SubControllerKOO {
             //현재 IE사용 불가, Edge는 크로미움으로 바뀌었기 때문에 필요없는 코드가 됨.
             String fileName =
                     originalName.substring(originalName.lastIndexOf("\\") + 1);
+            //파일 경로에서 마지막 \ 다음에 있는 문자열(즉, 파일 이름)을 추출하는 것입니다.
             log.info("fileName : " + fileName);
             log.info("originalName : " + originalName);
             String folderPath = makeFolder();
@@ -138,5 +147,28 @@ public class SubControllerKOO {
         }
     };
 
+
+
+    @GetMapping("/cart")
+    public ResponseEntity<Boolean> cartIn(Principal principal, Long pno,int count){
+
+        String email = principal.getName();// 이메일일거임 아마
+        log.info(email+"cartController_principal.getName()");
+        cartttService.additem(email,pno,count);
+        //
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    };
+
+    @GetMapping("/testorder")
+    public ResponseEntity<Boolean> testorderget(Principal principal,String receiver){
+
+        String email = principal.getName();// 이메일일거임 아마
+
+        orderrrService.cartlistpay(email,receiver);
+        //
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    };
 
 }

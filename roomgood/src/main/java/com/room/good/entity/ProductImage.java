@@ -10,16 +10,22 @@ import org.hibernate.annotations.OnDeleteAction;
 @RequiredArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "product")
 public class ProductImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pinum; // 엠리뷰 같음 지적하면 선생님한테 이름
-    private String piuuid;
-    private String piimgName;
-    private String pipath;
+    private String piuuid; // 이미지 파일명
+    private String piimgName; //원본 이미지 파일명
+    private String pipath; // 이미지 경로
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Product product;
+
+//    public void updateProductImage(String piimgName,String piuuid,String pipath){
+//        this.piimgName= piimgName; // 원본이름
+//        this.piuuid=piuuid; // 이미지 파일명
+//        this.pipath=pipath; // 경로
+//    }
 }

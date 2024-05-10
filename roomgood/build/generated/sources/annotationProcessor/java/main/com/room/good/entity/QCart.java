@@ -24,12 +24,16 @@ public class QCart extends EntityPathBase<Cart> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
+    public final ListPath<CartItem, QCartItem> cartItems = this.<CartItem, QCartItem>createList("cartItems", CartItem.class, QCartItem.class, PathInits.DIRECT2);
+
     public final QClubMember clubMember;
 
     public final NumberPath<Long> cno = createNumber("cno", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
+
+    public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;

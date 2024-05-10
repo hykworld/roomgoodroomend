@@ -1,4 +1,5 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="offcanvas-menu-overlay"></div>
 <div class="offcanvas-menu-wrapper">
     <div class="offcanvas__option">
@@ -25,7 +26,7 @@
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
-        <p>자취방 살아남기</p>
+        <a href="/index">자취방 살아남기</a>
     </div>
 </div>
 <!-- Offcanvas Menu End -->
@@ -37,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left">
-                        <p>자취방 살아남기</p>
+                        <p style="cursor:pointer"><b><a href="/index">자취방 살아남기</a></b></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -49,14 +50,6 @@
                             <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
                             <a href="/FAQ">고객센터</a>
                         </div>
-                        <!--                        <div class="header__top__hover">-->
-                        <!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
-                        <!--                            <ul>-->
-                        <!--                                <li>USD</li>-->
-                        <!--                                <li>EUR</li>-->
-                        <!--                                <li>USD</li>-->
-                        <!--                            </ul>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -65,12 +58,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3">
-                <div class="header__logo">
-                    <a href="/index"><img src="img/logo.png" alt=""></a>
+                <div class="" style="margin-left:30px; margin-top:5px; height:90px">
+                    <a href="/index"><img src="img/logo2.png"  style="height:100%" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
-                <nav class="header__menu mobile-menu">
+                <nav class="header__menu mobile-menu" style="padding-top:36px;">
                     <ul>
                         <li><a href="/shop">카테고리</a>
                             <ul class="dropdown">
@@ -98,7 +91,10 @@
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
+                    <!--로그인 한 상태-->
+                    <a href="/wishlist" sec:authorize="isAuthenticated()"><img src="img/icon/heart.png" alt=""></a>
+                    <!--로그인 안한 상태-->
+                    <a href="/Loginshop" sec:authorize="isAnonymous()" id="heart"><img src="img/icon/heart.png" alt=""></a>
                     <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                 </div>
             </div>
@@ -106,9 +102,16 @@
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
 </header>
+
 <script>
     function check() {
-    var result = confirm("로그아웃하시겠습니까?");
-    return result;
-}
+        var result = confirm("로그아웃하시겠습니까?");
+        return result;
+    }
+
+    $('#heart').on('click',function(e){
+        if(!confirm("로그인 후 이용가능한 서비스입니다. 로그인 하시겠습니까?")){
+            e.preventDefault();
+        }
+    })
 </script>

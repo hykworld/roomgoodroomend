@@ -103,7 +103,7 @@
                 <div class="blog__item" style="position: relative; z-index: 1;">
                     <div class="blog__item__pic set-bg" style="position: relative; z-index: -1;">
                         <img th:if="${dto.imageDTOList.size() > 0 && dto.imageDTOList[0].path != null }"
-                             th:src="|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|"
+                             th:src="|/display?fileName=${dto.imageDTOList[0].getThumbnailURL2()}|"
                              style="width: 100%; height:100%;border-radius: 5px;">
                     </div>
                     <div class="blog__item__text" style="position: relative; z-index: 2;border-radius: 5px;">
@@ -131,6 +131,7 @@
     </li>
 </ul>
 
+<a href="/ajaxtestpage">rr</a>
 
 <!-- Footer Section Begin -->
 <div th:insert="~{footer.html}"></div>

@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-7">
                 <div class="header__top__left">
-                    <p>자취방 살아남기</p>
+                    <a href="/index">자취방 살아남기</a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-5">
@@ -62,9 +62,9 @@
         </div>
     </div>
 </section>
-<div class="container">
+<div class="container" style="max-width: 530px;">
     <hr>
-    <form class="form-signin" method="post">
+    <form class="form-signin" method="post" style="max-width: 400px;">
         <h2 class="form-signin-heading">로그인</h2>
         <p>
             <label for="username" class="sr-only">Username</label>
@@ -77,10 +77,13 @@
         <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
         <button class="btn btn-lg btn-info btn-block" type="submit">계속하기</button>
         <hr/>
-        <div style="margin-left:10px;"> 계정이 없으신가요?  <a href="/memberJoin" style="margin-left:10px;" >회원가입</a></div>
+        <div class="row" style="font-size:14px; padding:0px; margin:0px;">
+        <div class="col-md-6" style="text-align:center"><a href="/memberJoin">회원가입</a></div>
+        <div class="col-md-6" style="text-align:center" ><a href="/resetpw">비밀번호 재설정</a></div>
+        </div>
         <hr/>
 
-        <tbody><tr><td><a href="/oauth2/authorization/google" class="btn btn-lg btn-light btn-block" style="width:300px; height"><img th:src="@{/img/google.png}" style="width:20px; height:25px; padding-bottom:5px;"> Google로 계속하기</a></td></tr></tbody>
+        <tbody><tr><td><a href="/oauth2/authorization/google" class="btn btn-lg btn-light btn-block"><img th:src="@{/img/google.png}" style="width:20px; height:25px; padding-bottom:5px;"> Google로 계속하기</a></td></tr></tbody>
         <label></label>
         <tbody><tr><td><a href="/oauth2/authorization/naver" class="btn btn-lg btn-success btn-block"><img th:src="@{/img/naver.png}" style="width:20px; height:25px; padding-bottom:5px;"> Naver로 계속하기</a></td></tr></tbody>
         <label></label>

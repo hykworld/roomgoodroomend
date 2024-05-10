@@ -39,6 +39,36 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
+    <style>
+        .filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+    .filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+        .filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+    </style>
 </head>
 <body>
 
@@ -86,13 +116,42 @@
             <input type="text" class="form-control" id="expired" name="expired" placeholder="이벤트 기간">
         </div>
 
+
+        <div class="form-group fileForm">
+            <label>썸네일 파일</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input2 files" id="fileInput2">
+                <label class="custom-file-label" data-browse="파일"></label>
+            </div>
+        </div>
+        <H4>미리보기 <span id="ThumnailViewbtn" style="cursor:pointer;"><i class="fa-solid fa-chevron-down"></i></span><span id="ThumnailViewbtn2" style="cursor:pointer; display:none;"><i class="fa-solid fa-chevron-up"></i></span></H4>
+        <hr>
+
+
+        <div id="ThumnailView" style="display:none;">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item" style="position: relative; z-index: 1;">
+                    <div class="blog__item__pic set-bg uploadResult2" style="position: relative; z-index: -1; ">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="blog__item__text" style="position: relative; z-index: 2;border-radius: 5px;">
+                        <span><img src="img/icon/calendar.png" alt=""> 기한</span>
+                        <h5>제목</h5>
+                        <a >상세보기링크</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="form-group fileForm">
             <label>이미지 파일</label>
             <div class="custom-file">
-                <input type="file" class="custom-file-input files" id="fileInput" multiple>
+                <input type="file" class="custom-file-input files" id="fileInput">
                 <label class="custom-file-label" data-browse="파일 선택"></label>
             </div>
         </div>
+
 
         <div class="box">
 
@@ -171,88 +230,91 @@
 
         </style>
 
-        <H2>미리보기</H2>
-
+        <H4>미리보기 <span id="imageViewbtn" style="cursor:pointer;"><i class="fa-solid fa-chevron-down"></i></span><span id="imageViewbtn2" style="cursor:pointer; display:none;"><i class="fa-solid fa-chevron-up"></i></span></H4>
         <hr>
+        <div id="imageView" style="display:none;">
 
-        <section class="blog-hero spad">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-9 text-center">
-                        <div class="blog__hero__text">
-                            <h2>이벤트 제목</h2>
-                            <ul>
-                                <li>By Deercreative</li>
-                                <li>이벤트 기한</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="blog-details spad">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-12">
-                        <div class="blog__details__pic uploadResult" style="width:100%;height:100%;">
-                            <ul>
-                                이미지 위치
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <!--                <div class="blog__details__content">-->
-                        <!--                    <div class="blog__details__share">-->
-                        <!--                        <span>share</span>-->
-                        <!--                        <ul>-->
-                        <!--                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
-                        <!--                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>-->
-                        <!--                            <li><a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a></li>-->
-                        <!--                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>-->
-                        <!--                        </ul>-->
-                        <!--                    </div>-->
-                        <!--                </div>-->
-                        <br>
-                        <hr>
-                        <!--                    <div class="blog__details__text">-->
-                        <!--                        <div class="container mt-5">-->
-                        <!--                            <div class="row justify-content-center">-->
-                        <!--                                <div class="col-md-auto">-->
-                        <!--                                    <div class="form-group">-->
-                        <!--                                        -->
-                        <!--                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                    </div>-->
-
-                        <label for="content">내용</label>
-                        <pre><textarea class="form-control" id="content" name="content" rows="20"></textarea></pre>
-
-                        <div class="blog__details__btns">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <a href="" class="blog__details__btns__item">
-                                        <p><span class="arrow_left"></span>이전 글</p>
-                                        <h5>It S Classified How To Utilize Free Classified Ad Sites</h5>
-                                    </a>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <a href="" class="blog__details__btns__item blog__details__btns__item--next">
-                                        <p>다음 글<span class="arrow_right"></span></p>
-                                        <h5>Tips For Choosing The Perfect Gloss For Your Lips</h5>
-                                    </a>
-                                </div>
+            <section class="blog-hero spad">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-9 text-center">
+                            <div class="blog__hero__text">
+                                <h2>이벤트 제목</h2>
+                                <ul>
+                                    <li>By Deercreative</li>
+                                    <li>이벤트 기한</li>
+                                </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <button type="submit" id="submitBtn" class="btn btn-primary float-right">글 등록</button>
-            </div>
-        </section>
+            </section>
+            <section class="blog-details spad">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-12">
+                            <div class="blog__details__pic uploadResult" style="width:100%;height:100%;">
+                                <ul>
+                                    이미지 위치
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <!--                <div class="blog__details__content">-->
+                            <!--                    <div class="blog__details__share">-->
+                            <!--                        <span>share</span>-->
+                            <!--                        <ul>-->
+                            <!--                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+                            <!--                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>-->
+                            <!--                            <li><a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a></li>-->
+                            <!--                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>-->
+                            <!--                        </ul>-->
+                            <!--                    </div>-->
+                            <!--                </div>-->
+                            <br>
+                            <hr>
+                            <!--                    <div class="blog__details__text">-->
+                            <!--                        <div class="container mt-5">-->
+                            <!--                            <div class="row justify-content-center">-->
+                            <!--                                <div class="col-md-auto">-->
+                            <!--                                    <div class="form-group">-->
+                            <!--                                        -->
+                            <!--                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                        </div>-->
+                            <!--                    </div>-->
+
+                            <label for="content">내용</label>
+                            <pre><textarea class="form-control" id="content" name="content" rows="20"></textarea></pre>
+
+                            <div class="blog__details__btns">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <a href="" class="blog__details__btns__item">
+                                            <p><span class="arrow_left"></span>이전 글</p>
+                                            <h5>It S Classified How To Utilize Free Classified Ad Sites</h5>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <a href="" class="blog__details__btns__item blog__details__btns__item--next">
+                                            <p>다음 글<span class="arrow_right"></span></p>
+                                            <h5>Tips For Choosing The Perfect Gloss For Your Lips</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <!-- Blog Details Section End -->
+    <button type="submit" id="submitBtn" class="btn btn-primary float-right">글 등록</button>
+        <br>
+        <br>
     </div>
 </form>
 <!-- Footer Section Begin -->
@@ -264,9 +326,9 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-<!--        <form class="search-model-form">-->
-<!--            <input type="text" id="search-input" placeholder="Search here.....">-->
-<!--        </form>-->
+        <!--        <form class="search-model-form">-->
+        <!--            <input type="text" id="search-input" placeholder="Search here.....">-->
+        <!--        </form>-->
     </div>
 </div>
 <!-- Search End -->
@@ -291,8 +353,8 @@
        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 
-<!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
-<!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
+<!--var csrfToken = /*[[${_csrf.token}]]*/ null;-->
+<!--var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
         $(document).ajaxSend(function (e, xhr, options) {
             xhr.setRequestHeader(csrfHeader, csrfToken);
         });
@@ -366,6 +428,58 @@
                 }
             }); //$.ajax
         }); //end change event
+
+        $(".custom-file-input2").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label2").addClass("selected").html(fileName);
+            //siblings는 형제 거기서 .custom-file-label얘를 찾아서 셀렉티드클래스를 주고 fileName으로 내용을 바꿔줘라
+            var formData = new FormData();
+
+            //이 두줄이 바뀜
+            var inputFile = $(this);
+            var files = inputFile[0].files;
+
+            var appended = false;
+
+            for (var i = 0; i < files.length; i++) {
+
+                if(!checkExtension(files[i].name, files[i].size) ){
+                    return false;
+                }
+
+                console.log(files[i]);
+                formData.append("uploadFiles", files[i]);
+                appended = true;
+
+            }
+
+            //upload를 하지 않는다.
+            if (!appended) {return;}
+
+            for (var value of formData.values()) {
+                console.log(value);
+            }
+            //실제 업로드 부분
+            //upload ajax
+            $.ajax({
+                url: '/uploadAjax2',
+                processData: false,
+                contentType: false,
+                data: formData,
+                type: 'POST',
+                dataType:'json',
+                success: function(result){
+                    console.log(result);
+                    showResult2(result);
+
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(textStatus);
+                }
+            }); //$.ajax
+        }); //end change event
+
+
         //////////////////////////////////등록버튼 클릭시.end (드래그앤드롭 xx)////////////////////////////////////////////
 
 
@@ -385,6 +499,22 @@
             });
 
             uploadUL.html(str);
+        }
+
+        function showResult2(uploadResultArr){
+            var uploadUL2 = $(".uploadResult2 ul");
+            var str ="";
+
+            $(uploadResultArr).each(function(i, obj) {
+                console.log("objobj"+obj);
+                str += "<li data-name='" + obj.fileName + "' data-path='"+obj.folderPath+"' data-uuid='"+obj.uuid+"'>";
+                str + " <div>";
+                str += "<img src='/display?fileName=" + obj.imageURL + "' style='width: 100%; height:100%;border-radius: 5px;'>";
+                str += "</div>";
+                str + "</li>";
+            });
+
+            uploadUL2.html(str);
         }
 
         //파일 지우기 -> 사진 x버튼
@@ -427,56 +557,55 @@
                 return;
             };
 
+            $(".uploadResult2 li").each(function(i,obj){
+                var target = $(obj);
+                str += "<input type='hidden' name='imageDTOList["+0+"].imgName' value='"+target.data('name') +"'>";
+                str += "<input type='hidden' name='imageDTOList["+0+"].path' value='"+target.data('path')+"'>";
+                str += "<input type='hidden' name='imageDTOList["+0+"].uuid' value='"+target.data('uuid')+"'>";
+            });
+
             $(".uploadResult li").each(function(i,obj){
                 var target = $(obj);
-                str += "<input type='hidden' name='imageDTOList["+i+"].imgName' value='"+target.data('name') +"'>";
-                str += "<input type='hidden' name='imageDTOList["+i+"].path' value='"+target.data('path')+"'>";
-                str += "<input type='hidden' name='imageDTOList["+i+"].uuid' value='"+target.data('uuid')+"'>";
+                str += "<input type='hidden' name='imageDTOList["+1+"].imgName' value='"+target.data('name') +"'>";
+                str += "<input type='hidden' name='imageDTOList["+1+"].path' value='"+target.data('path')+"'>";
+                str += "<input type='hidden' name='imageDTOList["+1+"].uuid' value='"+target.data('uuid')+"'>";
             });
+
             //태그들이 추가된 것을 확인한 후에 comment를 제거
             $(".box").html(str);
             $("form").submit();
-
         });
+
 
         $(".uploadResult").on("dragenter dragover",function(event){
             //기본이벤트 취소 , 새창열리는 거 방지
             event.preventDefault();
-
         });
-        //drop했을 때 파일의 목록을 구함
-        $(".uploadResult").on("drop",function(event){
-            event.preventDefault();
-            //FormData객체 생성. form태그에 대응하는 객체
-            var formData=new FormData();
 
-            //drop했을 때 파일의 목록을 구함 // 이렇게 바뀜?
-            var files=event.originalEvent.dataTransfer.files;
-            console.log(files);
-            for(var i=0;i<files.length;i++){
-                var file=files[i];
-                console.log(file);
-                //파일확장자,size체크
-                if(!checkExtension(files[i].name,files[i].size)){
-                    return; //중지
-                }
-                formData.append("uploadFile",files[i]);
-            }
-            console.log(formData);
-            $.ajax({
-                url: "/uploadAjaxAction",
-                processData: false, //QueryString(uploadAjaxAction?name=hkd)을 생성하지 않고
-                contentType: false, //multipart/form-data형식으로 보냄
-                data: formData,  //formData전송
-                type: "POST",
-                dataType: "json",
-                success: function(result){
-                    console.log(result);
+    $('#imageViewbtn').on('click',function(){
+        $('#imageView').css('display','block');
+        $('#imageViewbtn').css('display','none');
+        $('#imageViewbtn2').css('display','inline');
+    })
 
-                    showUploadedFile(result);//파일명출력
-                }
-            });
-        })
+    $('#imageViewbtn2').on('click',function(){
+        $('#imageView').css('display','none');
+        $('#imageViewbtn').css('display','inline');
+        $('#imageViewbtn2').css('display','none');
+    })
+
+    $('#ThumnailViewbtn').on('click',function(){
+        $('#ThumnailView').css('display','block');
+        $('#ThumnailViewbtn').css('display','none');
+        $('#ThumnailViewbtn2').css('display','inline');
+    })
+
+    $('#ThumnailViewbtn2').on('click',function(){
+        $('#ThumnailView').css('display','none');
+        $('#ThumnailViewbtn').css('display','inline');
+        $('#ThumnailViewbtn2').css('display','none');
+    })
+
 
     }); //document ready.end////////////////////////////////////////////////////////////////////////////////
 

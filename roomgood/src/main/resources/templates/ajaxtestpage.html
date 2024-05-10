@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <!--토큰 ----------------------->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}" />
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}" />
+    <!--토큰 ----------------------->
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RoomGoodRoomEnd</title>
+
+    <!--제이쿼리-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<!-----------윤기가 추가한 css--------------------------------->
+<body>
+
+<td class="quantity__item">
+    <div class="quantity">
+        <div class="pro-qty-2">
+            <input id="count" type="text" value="1">
+        </div>
+    </div>
+</td>
+
+<button id="cartbtn">상품추가</button>
+
+<script>
+
+        ////////////////csrf 토큰////////////////////////////////////////////////////////////////
+           var csrfToken = $("meta[name='_csrf']").attr("content");
+           var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+
+    <!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
+    <!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader(csrfHeader, csrfToken);
+            });
+        ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
+
+
+
+        var pno = 2;
+
+        $('#cartbtn').on('click',function(){
+            var count = $('#count').val();
+
+          $.ajax({
+                    url:"/cart", //서버주소
+                    data:{pno:pno , count:count}, //서버로 전송되는 데이터
+                    dataType:"boolean", //서버에서 넘어오는 데이터의 타입
+                    type:"get", //전송방식
+                    success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                        console.log(result);
+
+                    }
+
+            });
+
+                $('#count').val(1);
+
+        });
+
+
+
+</script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>

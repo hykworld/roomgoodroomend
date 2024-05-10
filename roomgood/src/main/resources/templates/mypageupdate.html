@@ -162,7 +162,7 @@
                         <label for="nickname">닉네임<span data-text-content="true"
                                                        style="font-weight: bold; font-size: 18px; text-align: right; color: rgb(231, 76, 60);"
                                                        class="">*</span></label>
-                        <input type="text" class="form-control" id="nickname" name="nickname" placeholder="" th:value="${memberDTO.name}"  required>
+                        <input type="text" class="form-control" id="nickname" name="nickname" placeholder="" th:value="${memberDTO.nickname}"  required>
                         <div class="invalid-feedback">
                             닉네임을 입력해주세요.
                         </div>
@@ -267,15 +267,15 @@
                 <div class="row">
                     <div class="col-md-2 mb-3">
                         <label for="year">출생연도</label>
-                        <input type="text" class="form-control" id="year" name="year" placeholder="1996" required>
-                        <div class="invalid-feedback"  th:value="${birth1}" >
+                        <input type="text" class="form-control" id="year" name="year"  th:value="${birth1}"  placeholder="1996" required>
+                        <div class="invalid-feedback" >
                             출생 연도를 입력하세요.
                         </div>
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="month">월</label>
                         <input type="text" class="form-control" id="month" name="month" placeholder="08"
-                               th:value="${birth2}"required>
+                               th:value="${birth2}" required>
 
                         <div class="invalid-feedback">
                             월을 입력하세요.
