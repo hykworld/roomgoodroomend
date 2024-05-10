@@ -6,7 +6,8 @@
             <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
             <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
             <a href="/loginshop" sec:authorize="isAnonymous()" class="active">회원가입</a>
-            <a href="#">고객센터</a>
+            <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
+            <a href="/FAQ">고객센터</a>
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -24,7 +25,7 @@
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
-        <p>Free shipping, 30-day return or refund guarantee.</p>
+        <p>자취방 살아남기</p>
     </div>
 </div>
 <!-- Offcanvas Menu End -->
@@ -43,10 +44,10 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
-                            <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
+                            <a href="/Logout" onclick="return check()" sec:authorize="isAuthenticated()">로그아웃</a>
                             <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
-                            <a href="/memberJoin" sec:authorize="isAuthenticated()">마이페이지</a>
-                            <a href="#">고객센터</a>
+                            <a href="/mypage" sec:authorize="isAuthenticated()">마이페이지</a>
+                            <a href="/FAQ">고객센터</a>
                         </div>
                         <!--                        <div class="header__top__hover">-->
                         <!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
@@ -105,3 +106,9 @@
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
 </header>
+<script>
+    function check() {
+    var result = confirm("로그아웃하시겠습니까?");
+    return result;
+}
+</script>

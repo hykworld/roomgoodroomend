@@ -33,6 +33,8 @@ public class QFAQ extends EntityPathBase<FAQ> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
+    public final DateTimePath<java.time.LocalDateTime> regdate = createDateTime("regdate", java.time.LocalDateTime.class);
+
     public final StringPath status = createString("status");
 
     public QFAQ(String variable) {
