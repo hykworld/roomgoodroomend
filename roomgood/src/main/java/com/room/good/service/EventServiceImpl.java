@@ -74,15 +74,23 @@ public class EventServiceImpl implements EventService{
     public EventDTO read(Long eno) {
         Optional<Event> byId = eventRepository.findById(eno);
         log.info(byId.get()+"byIdbyIdbyIdbyId");
-        Optional<EventImage> byIdImage = eventImageRepository.findById(eno);
-        EventImage eventImage = byIdImage.get();
+        List<EventImage> byEventEno = eventImageRepository.findByEventEno(eno);
+        EventImage thumnailImage = byEventEno.get(0);
+        EventImage mainImage = byEventEno.get(1);
+
         List<EventImageDTO> a = new ArrayList<>();
 
-        EventImageDTO eventImageDTO = new EventImageDTO();
-        eventImageDTO.setPath(eventImage.getEipath());
-        eventImageDTO.setUuid(eventImage.getEiuuid());
-        eventImageDTO.setImgName(eventImage.getEiimgName());
+        EventImageDTO eventImageDTO = new EventImageDTO(); // 썸넬
+        eventImageDTO.setPath(thumnailImage.getEipath());
+        eventImageDTO.setUuid(thumnailImage.getEiuuid());
+        eventImageDTO.setImgName(thumnailImage.getEiimgName());
         a.add(eventImageDTO);
+        EventImageDTO eventImageDTO2 = new EventImageDTO(); // 썸넬
+        eventImageDTO2.setPath(mainImage.getEipath());
+        eventImageDTO2.setUuid(mainImage.getEiuuid());
+        eventImageDTO2.setImgName(mainImage.getEiimgName());
+        a.add(eventImageDTO2);
+
         EventDTO eventDTO = EventDTO.builder().title(byId.get().getTitle())
                         .content(byId.get().getContent()).imageDTOList(a)
                                 .expired(byId.get().getExpired()).

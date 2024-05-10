@@ -16,10 +16,11 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // count() entity 총 갯수 반환
 
 
-    @Query("select p, pi" +
-            " from Product p left outer join ProductImage pi on pi.product = p " +
-            " where p.pno = :pno " +
-            "group by pi")
+    @Query("SELECT p, pi, pi2 FROM Product p " +
+            "LEFT JOIN ProductImage pi ON pi.product = p " +
+            "LEFT JOIN ProductImage2 pi2 ON pi2.product = p " +
+            "WHERE p.pno = :pno " +
+            "GROUP BY pi")
     List<Object[]> getProductAll(Long pno);
    /* SELECT p.*, pi.*
     FROM Product p
@@ -28,9 +29,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
 
-    @Query("select p, pi from Product p " +
-            "left outer join ProductImage pi on pi.product = p" +
-            " group by p ")
+    @Query("select p, pi, pi2 from Product p " +
+            "left outer join ProductImage pi on pi.product = p " +
+            "left outer join ProductImage2 pi2 on pi2.product = p " +
+            "group by p")
     Page<Object[]> getListPage(Pageable pageable);
     // select Movie.* ,MovieImage.* ,  avg(coalesce(Review.grade,0)), count(Review.rno)
     // from Movie left outer join MovieImage on Movie.mno = MovieImage.movie_mno
@@ -46,8 +48,9 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Long countByAll();
 
     // 카테고리에 따라 상품 목록을 가져오는 메서드
-    @Query("SELECT p, pi FROM Product p " +
+    @Query("SELECT p, pi, pi2 FROM Product p " +
             "LEFT JOIN ProductImage pi ON pi.product = p " +
+            "LEFT JOIN ProductImage2 pi2 ON pi2.product = p " +
             "WHERE p.categoryBig.cno = :cno " + // 카테고리 식별자로 필터링
             "GROUP BY p")
     Page<Object[]> getListPageByCategory(@Param("cno") Long cno, Pageable pageable);

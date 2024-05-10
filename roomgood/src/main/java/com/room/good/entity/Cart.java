@@ -45,6 +45,8 @@ public class Cart extends BaseEntity {
         cart.setClubMember(clubMember);
         return cart;
     }
+
+    private int quantity; // 수량
 }
 
 // OneToMany를 사용한 이유 == Cart와 관련된 CartItem을 쉽게 가져올수 있음,,

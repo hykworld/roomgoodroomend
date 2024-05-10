@@ -1,10 +1,9 @@
 package com.room.good.controller;
 
-import com.room.good.dto.EventDTO;
-import com.room.good.dto.MemberDTO;
-import com.room.good.dto.PageRequestDTO;
-import com.room.good.service.EventService;
-import com.room.good.service.MemberService;
+import com.querydsl.core.types.Order;
+import com.room.good.dto.*;
+import com.room.good.entity.Order1;
+import com.room.good.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @Log4j2
@@ -25,6 +25,9 @@ public class MainControllerKOO {
 
     private final EventService eventService;
     private final MemberService memberService;
+    private final OrderrrService orderrrService;
+    private final CartttService cartttService;
+    private  final ProductService productService;
 
 
 
@@ -46,8 +49,16 @@ public class MainControllerKOO {
         EventDTO eventDTO = eventService.read(eno);
         model.addAttribute("event",eventDTO);
     };
+
     @GetMapping("/about")
-    public void getabout(){};
+    public String readshop(PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Long cno) {
+        if (cno != null) {
+            model.addAttribute("result", productService.categoryPage(cno, pageRequestDTO));
+        } else {
+            model.addAttribute("result", productService.getList(pageRequestDTO));
+        }
+        return "shop"; // shop.html로 이동
+    }
     @GetMapping("/contact")
     public void getcontact(){};
     @GetMapping("/main")
@@ -135,6 +146,10 @@ public class MainControllerKOO {
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
         log.info("memberDTOmemberDTO"+memberDTO);
+        List<OrderDTO> orderDTO = orderrrService.orderlist(memberDTO.getId());
+        log.info("orderlistorderlist"+orderDTO);
+        model.addAttribute("orderlist",orderDTO);
+        model.addAttribute("count",orderDTO.size());
         model.addAttribute("memberDTO",memberDTO);
 
         model.addAttribute("category",category);
@@ -151,7 +166,7 @@ public class MainControllerKOO {
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
         String[] splitBirth = memberDTO.getBirth().split("-");
-
+        log.info(splitBirth+"splitBirthsplitBirth");
         model.addAttribute("memberDTO",memberDTO);
         model.addAttribute("birth1",splitBirth[0]);
         model.addAttribute("birth2",splitBirth[1]);
@@ -186,8 +201,15 @@ public class MainControllerKOO {
 
     @GetMapping("/ajaxtestpage")
     public void getajaxtestpage(){};
-    @GetMapping("/fuckingmac")
-    public void getfuckingmac(){};
+    @GetMapping("/pay")
+    public void getpay(Principal principal,Model model){
+    String email = principal.getName();
+        MemberDTO memberDTO = memberService.findbyid(email);
+        CartttDTO findlist = cartttService.findlist(memberDTO.getCartnumber());
+        log.info("findlist"+findlist);
+        log.info("findlist"+findlist.getCartItems().get(0).getProduct());//잘넘어온다~
+        model.addAttribute("findlist",findlist);
+    };
 
 
 

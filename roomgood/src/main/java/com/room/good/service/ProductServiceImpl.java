@@ -2,8 +2,10 @@ package com.room.good.service;
 
 
 
+import com.room.good.entity.ProductImage2;
 import com.room.good.repository.CategoryRepository;
 
+import com.room.good.repository.ProductImageRepository2;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +38,7 @@ import java.util.function.Function;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ProductImageRepository productImageRepository;
+    private final ProductImageRepository2 productImageRepository2;
     private final CategoryRepository categoryRepository;
 
     /*등록********************************************************************************/
@@ -45,11 +48,15 @@ public class ProductServiceImpl implements ProductService {
 
         Map<String, Object> entityMap = dtoToEntity(productDTO);
         Product product = (Product) entityMap.get("product");
-        List<ProductImage> poroductImageList=(List<ProductImage>)entityMap.get("imgList");
+        List<ProductImage> productImageList=(List<ProductImage>)entityMap.get("imgList");
+        List<ProductImage2> productImageList2=(List<ProductImage2>)entityMap.get("imgList2");
         productRepository.save(product); // Product 저장
 
-        poroductImageList.forEach(productImage -> {
-            ProductImage save = productImageRepository.save(productImage);// movie image insert
+        productImageList.forEach(productImage -> {
+            ProductImage save = productImageRepository.save(productImage);
+        });
+        productImageList2.forEach(productImage2 -> {
+            ProductImage2 save = productImageRepository2.save(productImage2);
         });
         return product.getPno();
     }
@@ -58,29 +65,63 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Long modify(ProductDTO productDTO) {
 
+        Optional<Product> product1=productRepository.findById(productDTO.getPno());
+
+        if(product1.isPresent()){
         Map<String, Object> entityMap = dtoToEntity(productDTO);
         Product product = (Product) entityMap.get("product");
-        List<ProductImage> poroductImageList=(List<ProductImage>)entityMap.get("imgList");
-        productRepository.save(product); // movie insert
+        List<ProductImage> productImageList=(List<ProductImage>)entityMap.get("imgList");
+        List<ProductImage2> productImageList2=(List<ProductImage2>)entityMap.get("imgList2");
+        productRepository.save(product); // Product 저장
 
-        poroductImageList.forEach(productImage -> {
-            ProductImage save = productImageRepository.save(productImage);
-            // movie image insert
+        productImageList.forEach(productImage -> {
+            Optional<ProductImage> byId = productImageRepository.findById(productImage.getPinum());
+            log.info("here11");
+            if(byId.isPresent()) {
+                ProductImage save = productImageRepository.save(byId.get());
+                log.info("here1");
+            }else {
+                ProductImage save = productImageRepository.save(productImage);
+            }
+        });
+        productImageList2.forEach(productImage2 -> {
+            Optional<ProductImage2> byId2 = productImageRepository2.findById(productImage2.getPinum());
+            log.info("here22");
+            if(byId2.isPresent()) {
+            ProductImage2 save2 = productImageRepository2.save(byId2.get());
+                log.info("here2");
+            }else {
+                ProductImage2 save = productImageRepository2.save(productImage2);
+            }
         });
         return product.getPno();
+        } else {
+            return null; // 혹은 다른 적절한 값을 반환할 수 있습니다.
+        }
     }
     /////////////////////리드//////////////////////////////////
     @Transactional
     @Override
     public ProductDTO read(Long pno) {
         List<Object[]> result = productRepository.getProductAll(pno);
+        log.info("result"+result);
         Product product=(Product) result.get(0)[0];
+
         List<ProductImage> productImageList=new ArrayList<>();
         result.forEach(arr->{
             ProductImage productImage=(ProductImage)arr[1];
             productImageList.add(productImage);
+            log.info("productImage"+productImage);
         });
-        return entitiesToDTO(product,productImageList);
+        log.info("productImageList");
+        List<ProductImage2> productImageList2=new ArrayList<>();
+        result.forEach(arr->{
+            ProductImage2 productImage=(ProductImage2)arr[2];
+            productImageList2.add(productImage);
+        });
+
+        log.info("productImageList"+productImageList);
+        return entitiesToDTO(product, productImageList, productImageList2);
     }
     ///////////// 삭제///////////////////////////////////////////////////////
     @Transactional
@@ -106,12 +147,9 @@ public class ProductServiceImpl implements ProductService {
         });
 
         Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
-                // fn은 지금 그릇 만드는중 -> 지금 arr에 뭐 들어가고 하는게 아니고
-                // 만약 <Object[], MovieDTO>여기안에 내용들 그득히
-                // 차있으면 그거에 따라서 밑에 방식으로 처리하겠다는 뜻.
                 (Product) arr[0],
-                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1]))));
-
+                (List<ProductImage>) Arrays.asList((ProductImage) arr[1]),
+                (List<ProductImage2>) Arrays.asList((ProductImage2) arr[2])));
         // PageResultDTO<DTO,EN> pageResult = new PageResultDTO<>(result, fn);
         // return pageResult; 이거랑 같은 뜻임 . -> 즉 pageResult에 저 생성자 정보들
         return new PageResultDTO<>(result, fn);
@@ -131,7 +169,8 @@ public class ProductServiceImpl implements ProductService {
 
         Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
                 (Product) arr[0],
-                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1]))));
+                (List<ProductImage>) Arrays.asList((ProductImage) arr[1]),
+                (List<ProductImage2>) Arrays.asList((ProductImage2) arr[2])));
 
         return new PageResultDTO<>(result, fn);
     }

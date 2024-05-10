@@ -24,6 +24,7 @@ public class MemberDTO {
     private Long mileage;
     private String grade;
     private String birth;
+    private Long cartnumber;
     public MemberDTO(String email, String password){
         this.email = email;
         this.password = password;

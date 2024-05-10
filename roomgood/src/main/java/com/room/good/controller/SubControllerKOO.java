@@ -1,6 +1,9 @@
 package com.room.good.controller;
 
 import com.room.good.dto.UploadResultDTO;
+import com.room.good.service.CartttService;
+import com.room.good.service.OrderrrService;
+import com.room.good.service.WishlistService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -33,13 +36,63 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SubControllerKOO {
 
-
+    public final CartttService cartttService;
+    public final OrderrrService orderrrService;
+    public final WishlistService wishlistService;
 
     @Value("${com.room.upload.path}")
     private String uploadPath;
 
     @PostMapping("/uploadAjax")
     public ResponseEntity<List<UploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
+        List<UploadResultDTO> resultDTOList = new ArrayList<>();
+
+
+        ///uploadFiles를 uploadFile여기에 하나씩 !
+        for (MultipartFile uploadFile : uploadFiles) {
+
+            if (uploadFile.getContentType().startsWith("image") == false) {
+                //이미지파일만 업로드가능
+                log.warn("이파일은 이미지타입이 아님");
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+
+            String originalName = uploadFile.getOriginalFilename();
+            //옛날 IE,Edge는 전체경로가 나오므로 파일명만 구한다.
+            //현재 IE사용 불가, Edge는 크로미움으로 바뀌었기 때문에 필요없는 코드가 됨.
+            String fileName =
+                    originalName.substring(originalName.lastIndexOf("\\") + 1);
+            //파일 경로에서 마지막 \ 다음에 있는 문자열(즉, 파일 이름)을 추출하는 것입니다.
+            log.info("fileName : " + fileName);
+            log.info("originalName : " + originalName);
+            String folderPath = makeFolder();
+            //UUID
+            String uuid = UUID.randomUUID().toString();
+
+            //저장할 파잏 이름 중간에 "_"를 이용해서 구분
+            String saveName = uploadPath + File.separator + folderPath + File.separator + uuid + "_" + fileName;
+            Path savePath = Paths.get(saveName);
+
+            try {
+
+                uploadFile.transferTo(savePath);
+                String thumbnailSaveName = uploadPath + File.separator + folderPath + File.separator
+                        +"s_" + uuid +"_" + fileName;
+                //섬네일 파일 이름은 중간에 s_로 시작하도록
+                File thumbnailFile = new File(thumbnailSaveName);
+                //썸네일 생성
+                Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile,360,270 );
+                resultDTOList.add(new UploadResultDTO(fileName,uuid,folderPath));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }//포문 끝
+
+        return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
+    }
+    @PostMapping("/uploadAjax2")
+    public ResponseEntity<List<UploadResultDTO>> uploadFile2(MultipartFile[] uploadFiles) {
         List<UploadResultDTO> resultDTOList = new ArrayList<>();
 
 
@@ -144,4 +197,38 @@ public class SubControllerKOO {
         }
     };
 
+
+
+    @GetMapping("/cart")
+    public ResponseEntity<Boolean> cartIn(Principal principal, Long pno,int count){
+
+        String email = principal.getName();// 이메일일거임 아마
+        log.info(email+"cartController_principal.getName()");
+        cartttService.additem(email,pno,count);
+        //
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    };
+
+    @GetMapping("/testorder")
+    public ResponseEntity<Boolean> testorderget(Principal principal,String receiver){
+
+        String email = principal.getName();// 이메일일거임 아마
+
+        orderrrService.cartlistpay(email,receiver);
+        //
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    };
+
+    @GetMapping("/addwish")
+    public ResponseEntity<Boolean> addwishget(Principal principal,Long pno){
+
+        String email = principal.getName();// 이메일일거임 아마
+
+        wishlistService.addwish(email,pno);
+        //
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    };
 }

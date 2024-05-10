@@ -12,16 +12,145 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
           rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/dbaea98925.js" crossorigin="anonymous"></script>
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        /* Custom styles */
+        .search-container {
+            margin-top: 20px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .search-input {
+            padding: 12px;
+            width: 200px;
+            height: 35px;
+            margin-right: 10px;
+            border-radius: 12px;
+            border: 1px solid #000000;
+        }
+
+        .search-btn {
+            padding: 7px 16px;
+            background-color: #000000;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 12px;
+            height: 35px;
+        }
+
+        .search-icon {
+            color: #fff;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+
+        .table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            padding: 10px;
+            text-align: left;
+            background-color: #000000;
+            color: #fff;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .faq-container {
+            margin-top: 20px;
+        }
+
+        .faq-table {
+            width: 100%;
+        }
+        .faq-table td{
+            padding:0;
+            border:0;
+        }
+
+         .btn_wrap {
+            margin-bottom: 50px;
+        }
+
+         .faq_wrap { /*테이블 푸터 간격*/
+            margin-bottom: 50px;
+            margin-top: 100px;
+        }
+
+        .faq-title {
+        margin-bottom: 20px;
+        }
+
+         .search-container {
+            margin-top: 50px;
+        }
+
+        .faq-subtitle {
+            font-size: 17px; /* 폰트 크기 조정 */
+            border-bottom: 1px solid #000; /* 밑줄 추가 */
+            padding-bottom: 10px; /* 밑줄 아래 여백 추가 */
+            margin-bottom: 25px; /* 밑줄과 다음 내용 사이 여백 추가 */
+        }
+        .card{border:0;}
+        .card-header{
+             background-color: #fff;
+             padding: 1.25rem 1.25rem;
+
+        }
+        .icon-question{
+            border:1px solid #ddd;
+            border-radius:50%;
+            padding: 4px 10px;
+            box-shadow: 0 2px 6px rgba(63, 71, 77, 0.05);
+        }
+        .acco-wrap{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .collapse.show .card-body{
+            border:0;
+            background-color: rgba(0, 0, 0, .125);
+
+        }
+    </style>
 </head>
 
 <body>
@@ -66,7 +195,8 @@
 <!-- Header Section Begin -->
 <div th:insert="~{header.html}"></div>
 <!-- Header Section End -->
-<!--살이 좀 빠졋네 -> 공지사항 노란 바-->
+
+<!-- 공지사항 노란 바 -->
 <section class="breadcrumb-option">
     <div class="container">
         <div class="row">
@@ -82,7 +212,322 @@
         </div>
     </div>
 </section>
-<!--살이 좀 빠졋네 -> 공지사항 노란 바.end-->
+<!-- 공지사항 노란 바 끝 -->
+
+<section>
+    <div class="notice_wrap">
+        <!-- 검색 -->
+        <div class="search_wrap">
+            <div class="container search-container">
+                <form id="searchForm" action="/FAQ" method="GET" class="search-form">
+                    <input onkeyup="enterkey()" type="search" name="searchValue" placeholder="검색어를 입력하세요"
+                           class="search-input">
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search search-icon"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- 검색 끝 -->
+
+        <!-- 첫 번째 테이블 -->
+        <div class="notice_table">
+            <div class="container table-container">
+                <table class="table">
+                    <colgroup>
+                        <col style="width: 60%;">
+                        <col style="width: 20%;">
+                        <col style="width: 20%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- FAQ 리스트 반복 -->
+                    <tr th:each="faq : ${list}">
+                        <!-- FAQ의 제목 (null 체크 추가) -->
+                        <td>
+                            <a th:href="@{/FAQ-detail/{id}(id=${faq.faqno})}">
+                                <span th:if="${faq.faqtitle != null}" th:text="${faq.faqtitle}" style="color: black;"></span>
+                                <span th:unless="${faq.faqtitle != null}" >Title not available</span>
+                            </a>
+                        </td>
+                        <!-- FAQ의 작성자 -->
+                        <td>관리자</td>
+                        <!-- FAQ의 작성일 -->
+                        <td th:text="${#temporals.format(faq.regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    </tr>
+                    <!-- FAQ 리스트 반복 끝 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 테이블 끝 -->
+
+        <!-- 글 작성 버튼 -->
+        <div class="btn_wrap">
+            <div class="container" style="margin-top: 20px;">
+                <div style="display: flex; justify-content: flex-end;">
+                    <a href="/FAQ-register" class="btn btn-secondary" style="background-color: #000000; color: #fff;">글 작성</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 글 작성 버튼 끝 -->
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous" style="color: black;">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+
+                <!-- Thymeleaf를 사용하여 페이지 버튼 생성 -->
+                <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+                    <li class="page-item">
+                        <a th:if="${page != nowPage}"
+                           th:href="@{/FAQ(page=${page - 1}, searchValue=${param.searchValue})}"
+                           class="page-link" th:text="${page}" style="color: black;"></a> <!-- 검정색으로 변경 -->
+                        <a th:if="${page == nowPage}"
+                           th:href="@{/FAQ(page=${page - 1}, searchValue=${param.searchValue})}"
+                           class="page-link" th:text="${page}" style="color: red;"></a>
+                    </li>
+                </th:block>
+                <!-- Thymeleaf를 사용하여 페이지 버튼 생성 끝 -->
+
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next" >
+                        <span aria-hidden="true" style="color: black;">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div class="faq_wrap">
+        <!-- 두 번째 테이블 (FAQ) -->
+        <div class="faq_table-wrap">
+            <div class="container faq-container">
+                <h2 class="faq-title">FAQ</h2>
+                <h4 class="faq-subtitle">자주 묻는 질문</h4>
+                <table class="table faq-table">
+                    <colgroup>
+                        <col style="width: 100%;">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>제목</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <!-- 첫 번째 아코디언 아이템 -->
+                            <div id="accordion1">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <span class="icon-question">Q</span> 111
+                                        </div>
+                                    </div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion1">
+                                        <div class="card-body">
+                                            내용 1
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 첫 번째 아코디언 아이템 끝 -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- 두 번째 아코디언 아이템 -->
+                            <div id="accordion2">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion2">
+                                        <div class="card-body">
+                                            내용 2
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 두 번째 아코디언 아이템 끝 -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="accordion3">
+                                <div class="card">
+                                    <div class="card-header" id="headingThree1">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseThree1" class="collapse" aria-labelledby="headingThree1" data-parent="#accordion3">
+                                        <div class="card-body">
+                                            내용 3
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion4">
+                                <div class="card">
+                                    <div class="card-header" id="headingFour">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion4">
+                                        <div class="card-body">
+                                            내용 4
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion5">
+                                <div class="card">
+                                    <div class="card-header" id="headingFive">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion5">
+                                        <div class="card-body">
+                                            내용 5
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion6">
+                                <div class="card">
+                                    <div class="card-header" id="headingSix">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion6">
+                                        <div class="card-body">
+                                            내용 6
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion7">
+                                <div class="card">
+                                    <div class="card-header" id="headingSeven">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion7">
+                                        <div class="card-body">
+                                            내용 7
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion8">
+                                <div class="card">
+                                    <div class="card-header" id="headingEight">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion8">
+                                        <div class="card-body">
+                                            내용 8
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion9">
+                                <div class="card">
+                                    <div class="card-header" id="headingNine">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion9">
+                                        <div class="card-body">
+                                            내용 9
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div id="accordion10">
+                                <div class="card">
+                                    <div class="card-header" id="headingTen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                            <span class="icon-question">Q</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion10">
+                                        <div class="card-body">
+                                            내용 10
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 테이블 끝 -->
+    </div>
+</section>
 
 <!-- Footer Section Begin -->
 <div th:insert="~{footer.html}"></div>

@@ -24,4 +24,6 @@ public interface MemberService {
 
     public boolean passwordChange(String email,String password);
 
+
+
 }

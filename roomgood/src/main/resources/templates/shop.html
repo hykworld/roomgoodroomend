@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <!--토큰 ----------------------->
@@ -294,9 +294,13 @@
                     </div>
                 </div>
                 <a th:href="@{/productregister}">글쓰기</a>
+
                 <!--상품 부분------------------------------------------------------------------------------------>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6" th:each="dto : ${result.dtoList}">
+                        <a th:href="@{/productmodify(pno=${dto.pno}, page=${result.page})}">
+                            <button type="button" class="">수정하기</button>
+                        </a>
                         <div  class="product__item sale">
                             <!--th:if="${dto.categoryBig.cno == 4}"-->
                             <a th:href="@{/shop-details(pno=${dto.pno},
@@ -358,7 +362,7 @@
                             style="height:50px !important">
                             <li class="page-item" th:if="${result.prev}">
                                 <a class="page-link"
-                                   th:href="@{/board/list(page= ${result.start -1},
+                                   th:href="@{/shop(page= ${result.start -1},
                                     type=${pageRequestDTO.type} ,
                                     keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">
                                     Previous</a>
@@ -367,7 +371,7 @@
                             <li th:class=" 'page-item ' + ${result.page == page?'active':''} "
                                 th:each="page: ${result.pageList}">
                                 <a class="page-link"
-                                   th:href="@{/board/list(page = ${page} ,
+                                   th:href="@{/shop(page = ${page} ,
                                    type=${pageRequestDTO.type} ,
                                    keyword = ${pageRequestDTO.keyword}  )}">
                                     [[${page}]]

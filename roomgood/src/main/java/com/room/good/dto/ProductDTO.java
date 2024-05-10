@@ -42,5 +42,8 @@ public class ProductDTO {
     @Builder.Default
     private List<ProductImageDTO> imageDTOList= new ArrayList<>();
 
+    @Builder.Default
+    private List<ProductImageDTO> imageDTOList2= new ArrayList<>();
+
     //태그 어레이 리스트
 }
