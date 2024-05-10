@@ -42,10 +42,10 @@ public class MainControllerJihyae {
         return "redirect:/FAQ";
     }
 
-    @GetMapping("/FAQ-modify/{faqno}")
-    public String getFAQModify() {
-        return "faq-modify";
-    }
+//    @GetMapping("/FAQ-modify/{faqno}")
+//    public String getFAQModify() {
+//        return "faq-modify";
+//    }
 
     @GetMapping("/FAQ-detail/{faqno}")
     public String getFAQDetail(@PathVariable Long faqno, Model model) {
