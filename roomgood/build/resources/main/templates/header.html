@@ -26,7 +26,11 @@
     </div>
     <div id="mobile-menu-wrap"></div>
     <div class="offcanvas__text">
+<<<<<<< HEAD
+        <p>자취방 살아남기</p>
+=======
         <a href="/index">자취방 살아남기</a>
+>>>>>>> 4ff47e5fe9cb5d42fae8b7445ecd7cd3462ed7a0
     </div>
 </div>
 <!-- Offcanvas Menu End -->
@@ -76,7 +80,7 @@
                             </ul>
                         </li>
                         <li><a href="#">인기차트</a></li>
-                        <li><a href="/contact">만원이하</a></li>
+                        <li><a href="/about">만원이하</a></li>
 
                         <li><a href="/contact">딸기마켓</a></li>
                         <li ><a href="/blog">이벤트</a>
@@ -94,14 +98,24 @@
                     <!--로그인 한 상태-->
                     <a href="/wishlist" sec:authorize="isAuthenticated()"><img src="img/icon/heart.png" alt=""></a>
                     <!--로그인 안한 상태-->
-                    <a href="/Loginshop" sec:authorize="isAnonymous()" id="heart"><img src="img/icon/heart.png" alt=""></a>
-                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                    <a href="/Loginshop" sec:authorize="isAnonymous()" class="heart"><img src="img/icon/heart.png" alt=""></a>
+
+
+                    <a href="/shopping-cart" sec:authorize="isAuthenticated()"><img  src="img/icon/cart.png" alt=""><span>0</span></a>
+                    <a href="/Loginshop" sec:authorize="isAnonymous()" class="heart"><img  src="img/icon/cart.png" alt=""><span></span></a>
                 </div>
             </div>
         </div>
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
 </header>
+<<<<<<< HEAD
+<script>
+    function check() {
+    var result = confirm("로그아웃하시겠습니까?");
+    return result;
+}
+=======
 
 <script>
     function check() {
@@ -109,9 +123,10 @@
         return result;
     }
 
-    $('#heart').on('click',function(e){
+    $('.heart').on('click',function(e){
         if(!confirm("로그인 후 이용가능한 서비스입니다. 로그인 하시겠습니까?")){
             e.preventDefault();
         }
     })
+>>>>>>> 4ff47e5fe9cb5d42fae8b7445ecd7cd3462ed7a0
 </script>

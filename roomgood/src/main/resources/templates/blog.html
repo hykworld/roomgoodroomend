@@ -103,10 +103,10 @@
                 <div class="blog__item" style="position: relative; z-index: 1;">
                     <div class="blog__item__pic set-bg" style="position: relative; z-index: -1;">
                         <img th:if="${dto.imageDTOList.size() > 0 && dto.imageDTOList[0].path != null }"
-                             th:src="|/display?fileName=${dto.imageDTOList[0].getThumbnailURL2()}|"
-                             style="width: 100%; height:100%;border-radius: 5px;">
+                             th:src="|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|"
+                             style="width: 100%; height:100%;border-radius: 10px;">
                     </div>
-                    <div class="blog__item__text" style="position: relative; z-index: 2;border-radius: 5px;">
+                    <div class="blog__item__text" style="position: relative; z-index: 2;border-radius: 20px; background-color: #fefefe">
                         <span><img src="img/icon/calendar.png" alt=""> [[${dto.expired}]]</span>
                         <h5>[[${dto.title}]]</h5>
                         <a th:href="@{/blog-details(eno = ${dto.eno}, page= ${result.page})}">상세보기링크</a>
@@ -116,6 +116,7 @@
         </div>
     </div>
 </section>
+
 <!-- Blog Section End -->
 <ul class="pagination h-100 justify-content-center align-items-center" style="height:50px !important">
     <li class="page-item" th:if="${result.prev}">
@@ -147,6 +148,7 @@
     </div>
 </div>
 <!-- Search End -->
+
 
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
