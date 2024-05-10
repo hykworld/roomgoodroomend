@@ -7,9 +7,10 @@ import com.room.good.repository.FaqRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,8 +25,8 @@ public class FaqServiceImpl implements FaqService {
     }
 
     @Override
-    public List<FAQ> getAllFAQs() {
-        return faqRepository.findAll();
+    public Page<FAQ> getAllFAQs(Pageable pageable) {
+        return faqRepository.findAll(pageable);
     }
 
     @Override
@@ -41,5 +42,9 @@ public class FaqServiceImpl implements FaqService {
     @Override
     public void deleteFAQ(Long faqno) {
         faqRepository.deleteById(faqno);
+    }
+
+    public Page<FAQ> findByFaqtitleContaining(String searchValue, Pageable pageable){
+        return faqRepository.findByFaqtitleContaining(searchValue, pageable);
     }
 }

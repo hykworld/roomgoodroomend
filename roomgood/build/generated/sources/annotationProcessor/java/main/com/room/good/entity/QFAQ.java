@@ -21,11 +21,11 @@ public class QFAQ extends EntityPathBase<FAQ> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final StringPath Faqcontent = createString("Faqcontent");
+    public final StringPath faqcontent = createString("faqcontent");
 
-    public final NumberPath<Long> Faqno = createNumber("Faqno", Long.class);
+    public final NumberPath<Long> faqno = createNumber("faqno", Long.class);
 
-    public final StringPath Faqtitle = createString("Faqtitle");
+    public final StringPath faqtitle = createString("faqtitle");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;

@@ -156,7 +156,11 @@
 
         .box1 {
     text-align: left;
-}
+    }
+
+        #contentbox {
+    height: 493.72px;
+    }
     </style>
 </head>
 
@@ -226,7 +230,7 @@
         <div class="input-form col-md-12 mx-auto">
             <div align="center">
                 <div class="form-group" id="titlebox">
-                    <div th:text="${faq.Faqtitle}" class="form-control box1" contenteditable="true" placeholder="제목을 입력하세요"></div>
+                    <div th:text="${faq.Faqtitle}" class="form-control box1" ></div>
                 </div>
             </div>
 
@@ -235,11 +239,11 @@
             </div>
 
             <div class="form-group" id="contentbox1">
-                <textarea th:text="${faq.Faqcontent}" class="form-control" contenteditable="true" id="contentbox" name="content" placeholder="내용을 입력하세요" cols="80" rows="20"></textarea>
+                <div th:text="${faq.Faqcontent}" class="form-control"id="contentbox" ></div>
             </div>
 
             <div class="btn-wrapper">
-                <input type="button" class="btn btn-md  mr-2" style="background-color: #000; color: white;" value="수정" th:href="@{/FAQ-modify/{id}(id=${faq.faqno})}">
+                <a th:href="@{/FAQ-modify/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #000; color: white;">수정</a>
             </div>
         </div>
     </div>

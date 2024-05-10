@@ -7,6 +7,8 @@ import com.room.good.dto.PageResultDTO;
 import com.room.good.entity.Event;
 import com.room.good.entity.EventImage;
 import com.room.good.entity.FAQ;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,11 +20,13 @@ public interface FaqService {
 
    void save(FAQ faq);
 
-   List<FAQ> getAllFAQs();
+   Page<FAQ> getAllFAQs(Pageable pageable);
 
    Optional<FAQ> getFAQById(Long faqno);
 
    void updateFAQ(FAQ faq);
 
    void deleteFAQ(Long faqno);
+
+   Page<FAQ> findByFaqtitleContaining(String searchValue, Pageable pageable);
 }
