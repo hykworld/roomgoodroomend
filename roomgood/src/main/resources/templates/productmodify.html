@@ -381,7 +381,7 @@
         <textarea class="form-control mb-3" name="content" rows="6">[[${dto.content}]] </textarea>
     </div>
     <!--이미지 박스-->
-    <div class="box">
+    <div class="box" style="background-color:red; height:100px">
     </div>
     <!--이미지 박스-->
     <button type="button" id="submitBtn" class="modifyBtn">수정하기</button>
@@ -592,6 +592,7 @@ if (itemSellStatus === 'SELL') {
 
     <!--수정하기-->
     var actionForm = $("form");
+
     $(".modifyBtn").click(function(){
      if(!confirm("수정하시겠습니까?")){
          return;
@@ -599,13 +600,15 @@ if (itemSellStatus === 'SELL') {
      // 이미지 정보 hidden input 태그 생성
 
      var str="";
+
      $(".uploadResult li").each(function(i,obj){
        console.log("wqewqewqe");
          var target=$(obj);
-         str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
-         str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
-         str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
+         str+="<input type='text' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
+         str+="<input type='text' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
+         str+="<input type='text' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
      });
+
      $(".box").html(str); // hidden태그 출력
      // 폼 속성 변경 및 전송
      actionForm.attr("action","/productmodify").attr("method","post").submit();

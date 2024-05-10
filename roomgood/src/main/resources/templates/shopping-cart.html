@@ -65,7 +65,7 @@
     </div>
 </div>
 <!-- Offcanvas Menu End -->
-
+<input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
@@ -204,8 +204,9 @@
                                 <input type="checkbox" name="cartChkBox" th:value="${cartItem.id}">
                             </td>
                             <td class="d-flex">
+
+                                <img th:src="|/display?fileName=${url}|" class="rounded repImg" th:alt="${cartItem.product.pno}">
                                 <div class="repImgDiv align-self-center">
-                                    <img th:src="${cartItem.product.images[0].pipath}" class="rounded repImg" th:alt="${cartItem.product.pno}">
                                 </div>
                                 <div class="align-self-center">
                                     <span th:text="${cartItem.product.pname}" class="fs24 font-weight-bold"></span>
@@ -466,6 +467,8 @@
 <th:block layout:fragment="script">
 
     <script th:inline="javascript">
+        var a = [[${cartItem.product.images[0].pipath}]];
+        console.log(a);
 
         $(document).ready(function () {
             $("input[name=cartChkBox]").change(function () {

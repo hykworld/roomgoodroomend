@@ -84,7 +84,7 @@ public class CartServiceImpl implements CartService {
                 CartDTO cartDTO = new CartDTO();
 
                 cartDTO.setCartItems( cart.getCartItems());
-
+                cartDTO.getCartItems().size();
 
 
 
