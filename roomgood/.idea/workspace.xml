@@ -5,37 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c55e45a2-36ce-4094-b78f-c2fe25fd5f2e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/room/good/repository/CartttRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/CartttService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/room/good/entity/ProductImage2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductImageRepository2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerKOO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerKOO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerSumin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerSumin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Cart$CartBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Cart$CartBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/CartItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/CartItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QCart.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/entity/QCart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/room/good/entity/QCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/mypage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/mypage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/eventRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/eventRegister.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerKOO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerKOO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerSumin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerSumin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/entity/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/entity/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/entity/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/entity/CartItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/MemberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ajaxtestpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ajaxtestpage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fuckingmac.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/shop-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerHwang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/controller/MainControllerHwang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/dto/PageRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/dto/PageRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/dto/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/dto/ProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/eventRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/eventRegister.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productmodify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productmodify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/productregister.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/productregister.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,27 +88,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.GoodApplication.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Gradle.Build good.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.good [:GoodApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.good [bootWar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.roomgood [:GoodApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;koo&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/박한선/Desktop/realP/roomgood/src/main/resources/templates&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GoodApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build good.executor": "Run",
+    "Gradle.good [:GoodApplication.main()].executor": "Run",
+    "Gradle.good [bootWar].executor": "Run",
+    "Gradle.roomgood [:GoodApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "yoon",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/git_kdigital/springboot_workspace/mreview_gun",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources" />
       <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources\templates" />
+      <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources" />
       <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\entity" />
       <recent name="C:\git_kdigital\springboot_workspace\good\src\main\java\com\room\good\service" />
       <recent name="C:\git_kdigital\springboot_workspace\good\src\main\resources\templates" />
@@ -132,10 +125,10 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.room.good.repository" />
+      <recent name="com.room.good.entity" />
       <recent name="com.room.good.controller" />
       <recent name="com.room.good.dto" />
       <recent name="com.room.good.security.handler" />
-      <recent name="com.room.good.security.dto" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GoodApplication">
@@ -228,13 +221,6 @@
         <item itemvalue="Gradle.good [bootWar]" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

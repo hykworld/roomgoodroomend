@@ -2,8 +2,6 @@ package com.room.good.repository;
 
 
 
-import com.room.good.dto.ProductDTO;
-import com.room.good.dto.ProductImageDTO;
 import com.room.good.entity.Product;
 import com.room.good.entity.ProductImage;
 import org.springframework.data.domain.Page;
