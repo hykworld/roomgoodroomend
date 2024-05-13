@@ -5,11 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c55e45a2-36ce-4094-b78f-c2fe25fd5f2e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/controller/SubControllerHong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/controller/SubControllerHong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/room/good/service/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/room/good/service/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/shopping-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/shopping-cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerHwang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerHwang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ-modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ-modify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ-register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/clone.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/clone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/eventRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/eventRegister.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resetpw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/resetpw.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

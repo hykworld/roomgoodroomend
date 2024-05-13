@@ -293,9 +293,10 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
                                 <p>Sort by Price:</p>
-                                <select id="sortByPrice" onchange="sortProducts()">
-                                    <option value="lowToHigh">Low To High</option>
-                                    <option value="highToLow">High To Low</option>
+                                <select>
+                                    <option value="">Low To High</option>
+                                    <option value="">$0 - $55</option>
+                                    <option value="">$55 - $100</option>
                                 </select>
                             </div>
                         </div>
@@ -346,7 +347,7 @@
                                     <i class="fa fa-star" style="color: #35C5F0;"></i>
                                     <i class="fa fa-star-o" style="color: #35C5F0;"></i>&nbsp;
                                     <span style="color: #35C5F0; font-weight: bold;" class="">(4)</span>&nbsp;&nbsp;
-                                    <span style="font-weight: bold; color: #35C5F0;" class="review-count">리뷰 30,000</span>
+                                    <span style="font-weight: bold; color: #35C5F0;" class="review-count">리뷰(300)</span>
                                 </div>
                                 <div>
                                     <h5 class="price" th:text="${dto.price}"></h5>
@@ -527,46 +528,7 @@
     function formatNumberWithCommas(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    <!--가격 올림 -->
 
-    function sortProducts() {
-    // 선택된 정렬 옵션을 가져옴
-    var sortByPrice = document.getElementById("sortByPrice");
-    var selectedOption = sortByPrice.options[sortByPrice.selectedIndex].value;
-
-    // 상품 목록을 가져옴
-    var productContainer = document.getElementById("productContainer");
-    var products = productContainer.querySelectorAll(".product");
-
-    // 선택된 옵션에 따라 상품을 정렬하는 로직을 작성
-    if (selectedOption === "lowToHigh") {
-        // 가격을 오름차순으로 정렬하는 로직
-        var sortedProducts = Array.from(products).sort((a, b) => {
-            var priceA = parseFloat(a.dataset.price); // 상품 A의 가격
-            var priceB = parseFloat(b.dataset.price); // 상품 B의 가격
-            return priceA - priceB; // 오름차순으로 정렬
-        });
-
-        // 정렬된 상품을 화면에 반영
-        productContainer.innerHTML = ""; // 목록 초기화
-        sortedProducts.forEach(product => {
-            productContainer.appendChild(product); // 정렬된 상품 추가
-        });
-    } else if (selectedOption === "highToLow") {
-        // 가격을 내림차순으로 정렬하는 로직
-        var sortedProducts = Array.from(products).sort((a, b) => {
-            var priceA = parseFloat(a.dataset.price); // 상품 A의 가격
-            var priceB = parseFloat(b.dataset.price); // 상품 B의 가격
-            return priceB - priceA; // 내림차순으로 정렬
-        });
-
-        // 정렬된 상품을 화면에 반영
-        productContainer.innerHTML = ""; // 목록 초기화
-        sortedProducts.forEach(product => {
-            productContainer.appendChild(product); // 정렬된 상품 추가
-        });
-    }
-}
 </script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
