@@ -2,6 +2,7 @@ package com.room.good.controller;
 
 
 import com.room.good.dto.PageRequestDTO;
+import com.room.good.dto.PageResultDTO;
 import com.room.good.dto.ProductDTO;
 import com.room.good.entity.CategoryBig;
 import com.room.good.entity.Product;
@@ -37,6 +38,10 @@ public class MainControllerHwang {
     public String readshop(PageRequestDTO pageRequestDTO, Model model,
                            @RequestParam(required = false) Long cno,
                            @RequestParam(name = "keyword", required = false, defaultValue = "") String keyword) {
+
+
+        model.addAttribute("productCount", productService.getProductCount());
+        System.out.println("aaaaa"+productService.getProductCount());
 
         if(keyword.isEmpty()){
             if (cno != null) {
