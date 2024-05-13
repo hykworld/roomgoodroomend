@@ -83,6 +83,12 @@ public class CartServiceImpl implements CartService {
 
             // 장바구니 관련 작업 수행
             if (cart != null) {
+                 cartDTO = new CartDTO();
+
+                cartDTO.setCartItems( cart.getCartItems());
+                cartDTO.getCartItems().size();
+
+
                 cartDTO.setCartItems(cart.getCartItems());
 //                cartDTO.setPipath(cartItem.get(0).getProduct().getImages().toString());
 //                cartDTO.setCno(cart.getCno());

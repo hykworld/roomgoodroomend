@@ -34,6 +34,9 @@ public class CartDTO {
 
     private int price; // 금액
 
+    
+    private ProductImageDTO productImageDTO;
+
     private String pipath; // 상품 이미지 경로
 
     private String pname; // 상품이름
