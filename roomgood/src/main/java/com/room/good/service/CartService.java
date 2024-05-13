@@ -20,4 +20,3 @@ public interface CartService {
 
 //    boolean validateCartItem(Long cartItemId, String email);
 }
-

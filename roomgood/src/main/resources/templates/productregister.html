@@ -172,18 +172,25 @@
         background-color: #f4f8ff
     }
 
-    .tag-button {
-            display: inline-block;
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            padding: 5px 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
+    .tag-button{
+
+        text-align:center;
+        box-sizing:border-box;
+        border-radius:7px;
+        font-weight:bold;
+        line-height:40px;
+        width: 100px;
+    }
         .tag-button.selected {
-            background-color: #3498db;
-            color: #ffffff;
-        }
+        background-color: #35C5F0; /* 선택된 경우 배경색을 빨간색으로 변경 */
+        color: #ffffff; /* 선택된 경우 텍스트 색상을 흰색으로 변경 */
+        text-align:center;
+        box-sizing:border-box;
+        border-radius:7px;
+        font-weight:bold;
+        line-height:45px;
+        width: 100px;
+    }
 </style>
 <!-------------------업로드 이미지 구역 css--------------------->
 <body>
@@ -236,7 +243,7 @@
                 <div class="breadcrumb__text">
                     <h4>상품 등록</h4>
                     <div class="breadcrumb__links">
-                        <a href="/index">상품 등록</a>
+                        <a href="/productregister">상품 등록</a>
                         <span>상품 등록 페이지</span>
                     </div>
                 </div>
@@ -277,7 +284,7 @@
             <div class="mb-3">
                 <div class="input-group" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                     <div class="col-lg-3">카테고리</div>
-                    <select class="custom-select" id="categoryLevel1" name="categoryBig" required>
+                    <select class="custom-select col-lg-11" id="categoryLevel1" name="categoryBig" required>
                         <option disabled selected>대분류 선택</option>
                         <option value="1">가구</option>
                         <option value="2">가전</option>
@@ -363,7 +370,7 @@
 
     <!--상품 내비 바-->
     <div class="container">
-        <div class="product_nav col-md-12">
+        <div class="product_nav col-md-12" >
             <ul>
                 <li><a>상품 상세 설명</a></li>
             </ul>

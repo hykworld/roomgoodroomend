@@ -40,6 +40,8 @@ public class PageResultDTO<DTO, EN> {
 
     public PageResultDTO(Page<EN> result, Function<EN,DTO> fn ){// 이 생성자를 부르면서 안에 인스턴스들 값 들어있는 거 전부 리턴해준다 .
 
+        // 총 데이터 수
+
         //아까 만들었던 fn그릇을 여기서 사용중 !
         dtoList = result.stream().map(fn).collect(Collectors.toList());
         //stream() = > 리스트를 스트림으로 바꾼단 뜻이고 , 스트림이란 자바에서 시퀀스를 뜻함 .-> 즉 연속적으로 리스트를 넣어준다는 거 같음

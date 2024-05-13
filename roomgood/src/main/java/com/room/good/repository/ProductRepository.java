@@ -29,7 +29,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
 
-    @Query("SELECT p, pi, pi2 FROM Product p " +
+    @Query("SELECT p, pi, pi2, COUNT(p) FROM Product p " +
             "LEFT JOIN ProductImage pi ON pi.product = p " +
             "LEFT JOIN ProductImage2 pi2 ON pi2.product = p " +
             " group by p ")
@@ -64,4 +64,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
             "WHERE p.pname LIKE %:keyword% " +
             "GROUP BY p")
     Page<Object[]> findByPnameContaining(@Param("keyword") String keyword, Pageable pageable);
+
+    // ProductRepository.java 에 쿼리 추가
+    @Query("SELECT COUNT(*) FROM Product")
+    long getProductCount();
 }

@@ -54,6 +54,9 @@ public class SoominServiceImpl implements SoominService{
                 .tno(timeSale.getTno())
                 .img(timeSale.getImg())
                 .url(timeSale.getUrl())
+                .sale(timeSale.getSale())
+                .originalPrice(timeSale.getOriginalPrice())
+                .price((long) (timeSale.getOriginalPrice()-Math.ceil((double) timeSale.getOriginalPrice()/100)*timeSale.getSale()))
                 .content(timeSale.getContent())
                 .endTime(timeSale.getEndTime())
                 .build()).collect(Collectors.toList());
