@@ -286,16 +286,21 @@
                 <h4 style="color:#333; max-width:80%;">[[${dto.pname}]]</h4>
                 <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
             </div>
-            <div class="star" style="margin-bottom:20px;">
+            <div class="star">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 <p style="display:inline">215개 리뷰</p>
             </div>
-            <p style="font-size:40px; font-weight:bold; margin-bottom:40px;">[[${dto.price}]]원</p>
+            <div style="display: inline-block;">
+                <div th:text="${dto.discount + '%'}" style="font-size:40px; font-weight:bold; color: #35C5F0; display: inline-block;"></div>
+                <p class="originalPrice" style="font-size:25px; color:#ccc; font-weight:bold; margin-bottom:20px; text-decoration: line-through; display: inline-block;">[[${dto.originalPrice}]]</p>
+            </div>
+            <p class="price" style="font-size:40px; font-weight:bold; margin-bottom:40px;">[[${dto.price}]]</p>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px;">
                 <i class="fa-solid fa-truck-fast"></i>
                 <span style="font-weight:bold">JH택배</span>
                 <div>주문일로 부터 3일내 도착(15시까지 주문 시)</div>
-                <div>배송료 : [[${dto.categoryBig.deliveryFee}]]<span style="font-size:0.9em; margin-left:5px;">(50,000원 이상 구매 시 무료)</span></div>
+                <div th:if="${dto.categoryBig.deliveryFee}!=0">배송료 : [[${dto.categoryBig.deliveryFee}]]원</div>
+                <div th:if="${dto.categoryBig.deliveryFee}==0">배송료 : 무료배송</div>
             </div>
             <div class="goCategory" style="margin-bottom:20px; display:flex; justify-content:space-between; border-top:1px solid #ccc; height:50px; padding-left:10px; color:#777;">
                 <div style="line-height:50px;">
@@ -316,8 +321,8 @@
                     </div>
                     <div style="color:#333;">[[${dto.pname}]]</div>
                 </div>
-                <div style="margin-right:20px; font-size:20px; font-weight:bold; color:#333;">
-                    [[${dto.price}]]원
+                <div class="price" style="margin-right:20px; font-size:20px; font-weight:bold; color:#333;">
+                    [[${dto.price}]]
                 </div>
             </div>
             <div class="product_count_banner displayNone" style="margin-top:15px; width:100%; height:100px; box-sizing:border-box; border-radius:2px; border:1px solid #ccc; background-color:#F7F9FA">
@@ -595,14 +600,20 @@
 <script>
     <!--이게 돈 단위 세주는거-->
     document.addEventListener("DOMContentLoaded", function() {
-        var priceElement = document.getElementById("price");
-        var originalPriceElement = document.getElementById("originalPrice");
+        var priceElements = document.getElementsByClassName("price");
+        var originalPriceElements = document.getElementsByClassName("originalPrice");
 
-        var price = priceElement.textContent;
-        var originalPrice = originalPriceElement.textContent;
+        for (var i = 0; i < priceElements.length; i++) {
+            var priceElement = priceElements[i];
+            var price = priceElement.textContent;
+            priceElement.textContent = formatNumberWithCommas(price) + '원';
+        }
 
-        priceElement.textContent = formatNumberWithCommas(price) + '원';
-        originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+        for (var i = 0; i < originalPriceElements.length; i++) {
+            var originalPriceElement = originalPriceElements[i];
+            var originalPrice = originalPriceElement.textContent;
+            originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+        }
     });
 
     function formatNumberWithCommas(number) {

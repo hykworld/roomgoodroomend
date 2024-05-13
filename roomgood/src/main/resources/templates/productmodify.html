@@ -380,7 +380,7 @@
         </div>
     </div>
     <!--이미지 박스-->
-    <div class="box" style="background-color:red; height:100px">
+    <div class="box">
     </div>
     <!--이미지 박스-->
     <div style="text-align: center; margin-bottom: 2rem;" class="md-3">
@@ -970,58 +970,6 @@ showimg2();
         //var type = $("input[name='type']");
        // var keyword = $("input[name='keyword']");
 
-<<<<<<< HEAD
-            $.ajax({
-                url:"/removeFile", //서버주소
-                data:{fileName:targetFile}, //서버로 전송되는 데이터
-                dataType:"text", //서버에서 넘어오는 데이터의 타입
-                type:"post", //전송방식
-                success:function(result){ //서버로 부터 정상적으로 응답이 올때
-                    if(result=="true"){
-                        alert("이미지가 삭제되었습니다");
-                    }
-                    targetLi.remove(); // 화면에서 썸네일삭제
-                }
-            });
-        });
-  <!--컨텐츠11111111111111-------------------------------------------------------------------------->
-    <!--수정하기-->
-    var actionForm = $("form");
-<<<<<<< HEAD
-
-    $(".modifyBtn").click(function(){
-=======
-    $("#submitBtn").click(function(e){
->>>>>>> fdbf9c38f3c985cd225bec74811ebf78699e07b6
-     if(!confirm("수정하시겠습니까?")){
-         return;
-     }
-     // 이미지 정보 hidden input 태그 생성
-
-     var str="";
-
-     $(".uploadResult li").each(function(i,obj){
-         var target=$(obj);
-         str+="<input type='text' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
-         str+="<input type='text' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
-         str+="<input type='text' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
-     });
-
-<<<<<<< HEAD
-=======
-      $(".uploadResult2 li").each(function(i,obj2){
-        var target2 = $(obj2);
-        str += "<input type='hidden' name='imageDTOList2["+i+"].piimgName' value='"+target2.data('name') +"'>";
-        str += "<input type='hidden' name='imageDTOList2["+i+"].pipath' value='"+target2.data('path')+"'>";
-        str += "<input type='hidden' name='imageDTOList2["+i+"].piuuid' value='"+target2.data('uuid')+"'>";
-      });
-      console.log("**************** "+str);
->>>>>>> fdbf9c38f3c985cd225bec74811ebf78699e07b6
-     $(".box").html(str); // hidden태그 출력
-     // 폼 속성 변경 및 전송
-   actionForm.attr("action","/productmodify").attr("method","post").submit();
- });
-=======
         actionForm.empty(); //form 태그의 모든 내용을 지우고
 
         actionForm.append(page);
@@ -1031,7 +979,6 @@ showimg2();
         actionForm
             .attr("action", "/shop")
             .attr("method", "get");
->>>>>>> a58e7b113d1b06a6e39bc0b03fc3ff9a06f5b17c
 
         actionForm.submit();
     })

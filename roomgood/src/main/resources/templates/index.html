@@ -30,7 +30,6 @@
             color:#fff !important;
             background-color:#35c5f0;
         }
-
     </style>
 </head>
 
@@ -342,7 +341,7 @@
 
     <!-- Product Section Begin -->
     <section class="product spad">
-        <h4 style="width:70%; color:#35c5f0; margin:0 auto 30px; padding-bottom:10px; border-bottom:1px solid #ccc;">상품 전체보기</h4>
+        <h4 style="min-width:70%; width:70%; color:#35c5f0; margin:0 auto 30px; padding-bottom:10px; border-bottom:1px solid #ccc;">상품 전체보기</h4>
         <div class="container">
             <div class="row">
             </div>
@@ -525,6 +524,8 @@
     <script src="js/main.js"></script>
     <script>
     $(function(){
+
+
         function getProductList(pageNum){
             $.ajax({
                 url:"/productList/"+pageNum+"/all",
@@ -533,8 +534,9 @@
                     var str ="";
 
                        $.each(arr.dtoList,function(idx,product){
+                            console.log(product);
                             str += "<div class='col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix'>";
-                            str += "<div class='product__item'>";
+                            str += "<div class='product__item' style='cursor:pointer;' data-pno='"+ product.pno +"'>";
                             str += "<div class='product__item__pic set-bg' style='background-image:url("+"/display?fileName="+product.imageDTOList[0].pipath+"/"+product.imageDTOList[0].piuuid+"_"+product.imageDTOList[0].piimgName+")'>";
                             str += "<ul class='product__hover'>";
                             str += "<li><a href='#'><img src='img/icon/heart.png' alt=''></a></li>";
@@ -542,9 +544,11 @@
                             str += "</ul>";
                             str += "</div>";
                             str += "<div class='product__item__text'>";
-                            str += "<h6>" + product.pname + "</h6>";
-                            str += "<a href='#' class='add-cart'>장바구니 추가</a>";
-                            str += "<h5>"+ product.price + "원</h5>";
+                            str += "<div style='font-size:13px;'>"+product.categoryBig.cname+"</div>";
+                            str += "<div style='font-size:23px; margin:0;'>" + product.pname + "</div>";
+                            str += "<h5 style='color:#35C5F0; font-size:23px; display:inline-block;'>"+product.discount+"%"+"</h5>";
+                            str += "<h5 class='originalPrice' style='color:#ccc; text-decoration: line-through; font-size:15px; margin-left:5px; display:inline-block;'>"+formatNumberWithCommas(product.originalPrice)+"원"+"</h5>";
+                            str += "<h5>"+ formatNumberWithCommas(product.price) + "원</h5>";
                             str += "</div>";
                             str += "</div>";
                             str += "</div>";
@@ -561,6 +565,11 @@
             })
         }
         getProductList(1);
+
+        $(".productLists").on("click",".product__item",function(){
+            var pno = $(this).data("pno");
+            location.href = "/shop-details?pno="+pno+"&page=1&type=&keyword=";
+        });
 
         //페이징 처리
         var pageNum =1;
@@ -635,7 +644,14 @@
 
     })
 
+    //==========================================================================================================
 
+
+    function formatNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    //=========================================================================================================
 
 
     </script>
