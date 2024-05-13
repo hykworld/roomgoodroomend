@@ -25,6 +25,13 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .link_btn:hover{
+            color:#fff !important;
+            background-color:#35c5f0;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -263,24 +270,24 @@
     <!-- 이벤트 부분 끝 -->
 
     <!-- Categories Section Begin -->
-    <div style="margin:30px; text-align:center">
-        <h2>Time Sale</h2>
+    <div style="width:70%; margin:30px auto 10px">
+        <h4 style="color:#35c5f0">타임딜</h4>
     </div>
-    <div class="swiper mySwiper" style="width:80%; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; margin:30px auto;">
-        <div class="swiper-wrapper" style="height:400px">
+    <div class="swiper mySwiper" style="width:70%; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; margin:0 auto 80px;">
+        <div class="swiper-wrapper" style="height:380px">
             <div class="swiper-slide" th:each="list:${time}">
                 <input type="hidden" th:class="'endTime' + ${list.tno}" th:value="${list.endTime}">
                 <div class="row">
-                    <div style="width:30%; margin:0 10%;">
+                    <div style="width:50%; padding-left:10%; border-right:1px solid #ccc">
                         <div class="categories__hot__deal" style="width:100%; height:100%">
                             <img th:src="${list.img}" alt="사진" style="max-height:380px; max-width:380px; min-width:0;" >
                         </div>
                     </div>
-                    <div style="width:40%; margin-right:10%;">
-                        <div class="categories__deal__countdown" style="height:280px;">
-                            <div th:id="${list.tno}" style="font-size:30px; font-weight:bold;"></div>
-                            <h3>[[${list.content}]]</h3>
-                            <a th:href="${list.url}" class="primary-btn">Shop now</a>
+                    <div style="width:50%; padding-left:30px;">
+                        <div class="categories__deal__countdown" style="height:280px; padding-right:10px; margin-top:50px;">
+                            <div th:id="${list.tno}" style="font-size:30px; display:inline-block; margin-top:20px; margin-bottom:5px; font-weight:bold;"></div>
+                            <h3 style="margin-bottom:20px;">[[${list.content}]]</h3>
+                            <a class="link_btn" th:href="${list.url}" style="color:#35c5f0; display:inline-block; text-align:center; line-height:56px; font-size:17px; width:170px; height:60px; box-sizing:border-box; border-radius:15px; border:3px solid #35c5f0;">바로가기</a>
                         </div>
                     </div>
                 </div>
@@ -335,6 +342,7 @@
 
     <!-- Product Section Begin -->
     <section class="product spad">
+        <h4 style="width:70%; color:#35c5f0; margin:0 auto 30px; padding-bottom:10px; border-bottom:1px solid #ccc;">상품 전체보기</h4>
         <div class="container">
             <div class="row">
             </div>
@@ -521,22 +529,23 @@
                 type:"GET",
                 success: function(arr){
                     var str ="";
-                    $.each(arr,function(idx,product){
-                        str += "<div class='col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix'>";
-                        str += "<div class='product__item'>";
-                        str += "<div class='product__item__pic set-bg' style='background-image:url(img/product/product-1.jpg)'>";
-                        str += "<ul class='product__hover'>";
-                        str += "<li><a href='#'><img src='img/icon/heart.png' alt=''></a></li>";
-                        str += "<li><a href='#'><img src='img/icon/search.png' alt=''></a></li>";
-                        str += "</ul>";
-                        str += "</div>";
-                        str += "<div class='product__item__text'>";
-                        str += "<h6>" + product.pname + "</h6>";
-                        str += "<a href='#' class='add-cart'>장바구니 추가</a>";
-                        str += "<h5>"+ product.price +"</h5>";
-                        str += "</div>";
-                        str += "</div>";
-                        str += "</div>";
+
+                       $.each(arr.dtoList,function(idx,product){
+                            str += "<div class='col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix'>";
+                            str += "<div class='product__item'>";
+                            str += "<div class='product__item__pic set-bg' style='background-image:url("+"/display?fileName="+product.imageDTOList[0].pipath+"/"+product.imageDTOList[0].piuuid+"_"+product.imageDTOList[0].piimgName+")'>";
+                            str += "<ul class='product__hover'>";
+                            str += "<li><a href='#'><img src='img/icon/heart.png' alt=''></a></li>";
+                            str += "<li><a href='#'><img src='img/icon/search.png' alt=''></a></li>";
+                            str += "</ul>";
+                            str += "</div>";
+                            str += "<div class='product__item__text'>";
+                            str += "<h6>" + product.pname + "</h6>";
+                            str += "<a href='#' class='add-cart'>장바구니 추가</a>";
+                            str += "<h5>"+ product.price + "원</h5>";
+                            str += "</div>";
+                            str += "</div>";
+                            str += "</div>";
                     });
                     $(".productLists").html(str);
 
