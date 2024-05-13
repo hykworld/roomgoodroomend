@@ -22,9 +22,9 @@ public class SubControllerHong {
         cartService.deleteCartItem(cartItemId);
         return new ResponseEntity<>(cartItemId, HttpStatus.OK);
     }
-//    @PatchMapping(value = "/cartItem/{cartItemId}")
-//    public @ResponseBody ResponseEntity<Long> updateCartItem(@PathVariable("cartItemId") Long cartItemId, int quantity, Principal principal){
-//        cartService.updateCartItemCount(cartItemId, quantity);
-//        return new ResponseEntity<>(cartItemId, HttpStatus.OK);
-//    }
+    @PatchMapping(value = "/cartItem/{cartItemId}")
+    public @ResponseBody ResponseEntity<Long> updateCartItem(@PathVariable("cartItemId") Long cartItemId, int quantity, Principal principal){
+        cartService.updateCartItemCount(cartItemId, quantity);
+        return new ResponseEntity<>(cartItemId, HttpStatus.OK);
+    }
 }

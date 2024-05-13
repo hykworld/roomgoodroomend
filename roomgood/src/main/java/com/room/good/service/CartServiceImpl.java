@@ -83,12 +83,6 @@ public class CartServiceImpl implements CartService {
 
             // 장바구니 관련 작업 수행
             if (cart != null) {
-                 cartDTO = new CartDTO();
-
-                cartDTO.setCartItems( cart.getCartItems());
-                cartDTO.getCartItems().size();
-
-
                 cartDTO.setCartItems(cart.getCartItems());
 //                cartDTO.setPipath(cartItem.get(0).getProduct().getImages().toString());
 //                cartDTO.setCno(cart.getCno());
@@ -104,14 +98,14 @@ public class CartServiceImpl implements CartService {
     }
 
     // 장바구니에 있는 상품의 수량 업데이트
-//    @Override
-//    @Transactional
-//    public void updateCartItemCount(Long pno, int quantity) {
-//        CartItem cartItem = cartItemRepository.findById(pno)
-//                .orElseThrow(EntityNotFoundException::new); // 객체 비어있을때 예외를 발생시키는 메서드
-//        System.out.println("업데이트 cartItem = " + cartItem);
-//        cartItem.updateQuantity(quantity);
-//    }
+    @Override
+    @Transactional
+    public void updateCartItemCount(Long pno, int quantity) {
+        CartItem cartItem = cartItemRepository.findById(pno)
+                .orElseThrow(EntityNotFoundException::new); // 객체 비어있을때 예외를 발생시키는 메서드
+        System.out.println("업데이트 cartItem = " + cartItem);
+        cartItem.updateQuantity(quantity);
+    }
 
     // 장바구니 상품 삭제
     @Override

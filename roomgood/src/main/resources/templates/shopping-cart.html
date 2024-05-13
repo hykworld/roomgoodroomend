@@ -15,6 +15,7 @@
     <title>Male-Fashion | Template</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
           rel="stylesheet">
@@ -62,7 +63,7 @@
     </div>
 </div>
 <!-- Offcanvas Menu End -->
-<input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
@@ -186,29 +187,6 @@
                             <td class="text-center align-middle">
                                 <input type="checkbox" name="cartChkBox" th:value="${cartItem.id}">
                             </td>
-<<<<<<< HEAD
-                            <td class="d-flex">
-
-                                <img th:src="|/display?fileName=${url}|" class="rounded repImg" th:alt="${cartItem.product.pno}">
-                                <div class="repImgDiv align-self-center">
-                                </div>
-                                <div class="align-self-center">
-                                    <span th:text="${cartItem.product.pname}" class="fs24 font-weight-bold"></span>
-                                    <div class="fs18 font-weight-light">
-                            <span class="input-group mt-2">
-                                <span th:id="'price_' + ${cartItem.id}"
-                                      th:data-price="${cartItem.product.price}"
-                                      th:text="${cartItem.product.price} + '원'" class="align-self-center mr-2">
-                                </span>
-                                <input type="number" name="count" th:id="'count_' + ${cartItem.id}"
-                                       th:value="${cartItem.quantity}" min="1"
-                                       onchange="changeCount(this)" class="form-control mr-2">
-                                <button type="button" class="close" aria-label="Close">
-                                    <span aria-hidden="true" th:data-id="${cartItem.id}"
-                                          onclick="deleteCartItem(this)">&times;</span>
-                                </button>
-                            </span>
-=======
                             <td style="display:flex">
                                 <!--                                <div th:each="cartItem : ${cartItems}" >-->
                                 <img th:src="${'/display?fileName=' +url}" class="rounded repImg"
@@ -221,7 +199,6 @@
                                     <div class="align-self-center" style="width:40%; padding-top:20px;">
                                     <span th:id="'price_' + ${cartItem.id}"th:data-price="${cartItem.product.price}" th:text="${cartItem.product.price} + '원'" class="align-self-center mr-2" style="font-weight:700; font-size:18px;">
                                     </span>
->>>>>>> a58e7b113d1b06a6e39bc0b03fc3ff9a06f5b17c
                                     </div>
                                 </div>
                             </td>
@@ -238,6 +215,71 @@
 
 
 
+                        <tr>
+                            <td class="text-center-align-low" style="height:300px; width:500px;">
+                                <div class="product-container">
+                                    <div class="product-image">
+                                        <a href="#">
+                                            <img src="img/soomin/profile.jpg"
+                                                 alt="" style="width:150px; height:150px;">
+                                        </a>
+                                    </div>
+
+                                    <div class="product-info">
+                                        <h1 class="product-title" style="font-size:20px;">Product Name</h1>
+
+                                        <div class="product-price">
+                                            <span class="price">₩10,000</span>
+                                            <span class="discount">-21%</span>
+                                        </div>
+
+                                        <div class="product-rating">
+                                            <span class="rating">4.7</span>
+                                            <span class="reviews">(80 reviews)</span>
+                                        </div>
+
+                                        <p class="product-description">
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <!--                        <tr>-->
+                        <!--                            <td class="text-center-align-low" style="height:300px; width:500px;">-->
+                        <!--                                <div class="product-wrapper" th:each="dto : ${result.dtoList}">-->
+                        <!--                                    &lt;!&ndash; 이미지와 상품 정보를 가로로 나열하는 Wrapper &ndash;&gt;-->
+                        <!--                                    <div class="product-item">-->
+                        <!--                                        <img th:src="@{${product.imageUrl}}" alt="상품 이미지" width="200" height="200">-->
+                        <!--                                        <div class="product-info">-->
+                        <!--                                            <p th:text="${product.name}"></p>-->
+                        <!--                                            <p th:text="${product.price} + '원'"></p>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    &lt;!&ndash; 다음 두 개의 상품을 표시 &ndash;&gt;-->
+                        <!--                                    <div class="product-item" th:if="${productList[iterStat.index + 1]}">-->
+                        <!--                                        <img th:src="@{${productList[iterStat.index + 1].imageUrl}}" alt="상품 이미지" width="200" height="200">-->
+                        <!--                                        <div class="product-info">-->
+                        <!--                                            <p th:text="${productList[iterStat.index + 1].name}"></p>-->
+                        <!--                                            <p th:text="${productList[iterStat.index + 1].price} + '원'"></p>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="product-item" th:if="${productList[iterStat.index + 2]}">-->
+                        <!--                                        <img th:src="@{${productList[iterStat.index + 2].imageUrl}}" alt="상품 이미지" width="200" height="200">-->
+                        <!--                                        <div class="product-info">-->
+                        <!--                                            <p th:text="${productList[iterStat.index + 2].name}"></p>-->
+                        <!--                                            <p th:text="${productList[iterStat.index + 2].price} + '원'"></p>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+
+
+
+
 
                         <!--------------------내가 하는거 끝!!!!!!!!!!!!!!!!------------------------------------------------------------->
                         </tbody>
@@ -249,28 +291,22 @@
                             <a href="/shop">Continue Shopping</a>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="continue__btn update__btn">
-                            <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="cart__discount">
-                    <h6>Discount codes</h6>
-                    <form action="#">
-                        <input type="text" placeholder="Coupon code">
-                        <button type="submit">Apply</button>
-                    </form>
-                </div>
                 <div class="cart__total">
                     <h6>Cart total</h6>
                     <ul>
+
+
+                        <li >총 할인금액 :</li>
+                        <li >총 배송비 :</li>
+                        <br>
                         <!--                        <li>Subtotal-->
                         <!--                            <span id="orderTotalPrice">$ 169.50</span>-->
                         <!--                        </li>-->
-                        <li>Total
+                        <li>총 결제금액 :
                             <span id="orderTotalPrice">0 원</span>
                         </li>
                     </ul>
@@ -390,6 +426,9 @@
 
     <script>
 
+
+
+
         var url= [[${url}]];
         console.log(url);
 
@@ -427,68 +466,10 @@
                         "card_quota": "0,2,3",
                         "escrow": false
                     }
-<<<<<<< HEAD
-                ],
-                "extra": {
-                    "open_type": "iframe",
-                    "card_quota": "0,2,3",
-                    "escrow": false
->>>>>>> 319b1cf89e84878f441a57cf9ec21c6d7e1bb906
-                }
-            });
-            console.log(response); // 결제 응답 처리
-        } catch (error) {
-            console.error(error); // 오류 처리
-        }
-    }
-</script>
-<!--    --------------------------------------------------------------------------------->
-<th:block layout:fragment="script">
-
-    <script th:inline="javascript">
-        var a = [[${cartItem.product.images[0].pipath}]];
-        console.log(a);
-
-        $(document).ready(function () {
-            $("input[name=cartChkBox]").change(function () {
-                getOrderTotalPrice();
-            });
-        });
-
-        function getOrderTotalPrice() {
-            var orderTotalPrice = 0;
-            $("input[name=cartChkBox]:checked").each(function () {
-                var cartItemId = $(this).val();
-                var price = $("#price_" + cartItemId).attr("data-price");
-                var count = $("#count_" + cartItemId).val();
-                orderTotalPrice += price * count;
-                console.log({cartItemId, price, count, orderTotalPrice});
-            });
-
-            $("#orderTotalPrice").html(orderTotalPrice + '원');
-        }
-
-        function changeCount(obj) {
-            var count = obj.value;
-            var cartItemId = obj.id.split('_')[1];
-            var price = $("#price_" + cartItemId).data("price");
-            var totalPrice = count * price;
-            $("#totalPrice_" + cartItemId).html(totalPrice + "원");
-            getOrderTotalPrice();
-            updateCartItemCount(cartItemId, count);
-        }
-
-        function checkAll() {
-            if ($("#checkall").prop("checked")) {
-                $("input[name=cartChkBox]").prop("checked", true);
-            } else {
-                $("input[name=cartChkBox]").prop("checked", false);
-=======
                 });
                 console.log(response); // 결제 응답 처리
             } catch (error) {
                 console.error(error); // 오류 처리
->>>>>>> a58e7b113d1b06a6e39bc0b03fc3ff9a06f5b17c
             }
         }
     </script>
@@ -522,25 +503,20 @@
                 var cartItemId = obj.id.split('_')[1];
                 var price = $("#price_" + cartItemId).data("price");
                 var totalPrice = count * price;
+
                 $("#totalPrice_" + cartItemId).html(totalPrice + "원");
                 getOrderTotalPrice();
                 updateCartItemCount(cartItemId, count);
             }
 
-            function checkAll() {
-                if ($("#checkall").prop("checked")) {
-                    $("input[name=cartChkBox]").prop("checked", true);
-                } else {
-                    $("input[name=cartChkBox]").prop("checked", false);
-                }
-                getOrderTotalPrice();
-            }
 
-            function updateCartItemCount(cartItemId, count) {
+
+
+            function updateCartItemCount(cartItemId, quantity) {
                 var token = $("meta[name='_csrf']").attr("content");
                 var header = $("meta[name='_csrf_header']").attr("content");
 
-                var url = "/cartItem/" + cartItemId + "?count=" + count;
+                var url = "/cartItem/" + cartItemId + "?quantity=" + quantity;
 
                 $.ajax({
                     url: url,
@@ -565,6 +541,17 @@
                     }
                 });
             }
+
+            function checkAll() {
+                if ($("#checkall").prop("checked")) {
+                    $("input[name=cartChkBox]").prop("checked", true);
+                } else {
+                    $("input[name=cartChkBox]").prop("checked", false);
+                }
+                getOrderTotalPrice();
+            }
+
+
 
             function deleteCartItem(event, obj){
                 var cartItemId = obj.dataset.id;
@@ -650,9 +637,9 @@
         </script>
 
     </th:block>
-    <!--    ---------------------------------------------------------------------------------->
+    <!—    —————————————————————————————————————————>
 
-    <!--    <script src="js/pay.js"></script>-->
+    <!—————————————————————————————————————————    <script src="js/pay.js"></script>—————————————————————————————————————————>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
