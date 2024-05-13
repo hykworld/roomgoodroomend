@@ -335,7 +335,7 @@
                                 <h5 th:text="${dto.pname}"></h5>
                                 <div style="display: inline-block;">
                                     <h5 th:text="${dto.discount + '%'}" style="color: #35C5F0; display: inline-block;"></h5>
-                                    <h5 th:text="${#numbers.formatDecimal(dto.originalPrice, 0, 'COMMA') + '원'}" style="color: #C3C3BD; display: inline-block; text-decoration: line-through;"></h5>
+                                    <h5 id="originalPrice" th:text="${dto.originalPrice}" style="color: #C3C3BD; display: inline-block; text-decoration: line-through;"></h5>
                                 </div>
                                 <div class="rating">
                                     <i class="fa fa-star"></i>
@@ -347,7 +347,7 @@
                                     <span style="font-weight: bold;" class="review-count">리뷰 30,000</span>
                                 </div>
                                 <div>
-                                    <h5 th:text="${dto.price + '원'}" ></h5>
+                                    <h5 id="price" th:text="${dto.price}"></h5>
                                     <h5 style="color: #35C5F0; text-align: right;">[[${dto.categoryBig.deliveryFee}]]</h5>
                                 </div>
                                 <div class="product__color__select">
@@ -503,9 +503,21 @@
     </div>
 </div>
 <!-- Search End -->
-
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    var priceElement = document.getElementById("price");
+    var originalPriceElement = document.getElementById("originalPrice");
 
+    var price = priceElement.textContent;
+    var originalPrice = originalPriceElement.textContent;
+
+    priceElement.textContent = formatNumberWithCommas(price) + '원';
+    originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+});
+
+function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 </script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
