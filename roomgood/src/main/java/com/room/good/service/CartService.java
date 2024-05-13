@@ -13,12 +13,11 @@ public interface CartService {
     CartDTO getCartList(String email);
 
     // 장바구니에 있는 상품의 수량 업데이트
-    void updateCartItemCount(Long pno, int quantity);
+//    void updateCartItemCount(Long pno, int quantity);
 
     // 장바구니에 있는 상품 삭제
     void deleteCartItem(Long pno);
 
 //    boolean validateCartItem(Long cartItemId, String email);
-
 }
 

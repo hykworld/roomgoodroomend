@@ -76,16 +76,9 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">FAQs</a>
-                        </div>
-                        <div class="header__top__hover">
-                            <span>Usd <i class="arrow_carrot-down"></i></span>
-                            <ul>
-                                <li>USD</li>
-                                <li>EUR</li>
-                                <li>USD</li>
-                            </ul>
+                            <a href="/Loginshop">로그인</a>
+                            <a href="/mypage">마이페이지</a>
+                            <a href="/FAQ">고객센터</a>
                         </div>
                     </div>
                 </div>
@@ -121,8 +114,8 @@
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option" style="margin-top:30px">
                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                    <a href="/wishlist"><img src="img/icon/heart.png" alt=""></a>
+                    <a href="/shopping-cart"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
                     <div class="price"></div>
                 </div>
             </div>
@@ -138,7 +131,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Shopping Cart</h4>
+                    <h4>장바구니</h4>
                     <div class="breadcrumb__links">
                         <a href="/index">Home</a>
                         <a href="/shop">Shop</a>
@@ -176,7 +169,8 @@
                                 <input type="checkbox" id="checkall" onclick="checkAll()"> 전체선택
                             </td>
                             <td style="width:500px;">상품정보</td>
-                            <td style="width:20%;">상품개수</td>
+                            <td>상품개수</td>
+
                         </tr>
                         </thead>
 
@@ -193,9 +187,10 @@
                                 <input type="checkbox" name="cartChkBox" th:value="${cartItem.id}">
                             </td>
                             <td style="display:flex">
-                                <div th:each="cartItem : ${cartItems}" >
-                                    <img src="/img/soomin/hanni.jpg" class="rounded repImg" style="margin-left:20px; height:200px; width:200px; padding-bottom:30px; padding-top:30px; margin-right:20px"><!--이미지 하드코딩한 부분이라 형이 수정해주세요-->
-                                </div>
+                                <!--                                <div th:each="cartItem : ${cartItems}" >-->
+                                <img th:src="${'/display?fileName=' +url}" class="rounded repImg"
+                                     style="height:200px; width:200px; float:left; padding-bottom:30px; padding-top:30px; margin-right:30px">
+                                <!--                                </div>-->
                                 <div style="width:230px; margin-right:30px; display:flex;">
                                     <div class="align-self-center" style="padding-top:21px; width:60%; padding-right:20px;">
                                         <span th:text="${cartItem.product.pname}" class="fs24 font-weight-bold" style="font-size:23px; font-weight:600px; margin-bottom:10px;"></span>
@@ -208,13 +203,16 @@
                             </td>
                             <td>
                                 <span class="input-group mt-2" style="">
-                                <input type="number" name="count" th:id="'count_' + ${cartItem.id}" th:value="${cartItem.quantity}" min="1" onchange="changeCount(this)" class="form-control mr-2">
+                                <input type="number" name="count" th:id="'count_' + ${cartItem.id}"
+                                       th:value="${cartItem.quantity}" min="1" onchange="changeCount(this)" class="form-control mr-2">
                                 <button type="button" class="close" aria-label="Close">
                                     <span aria-hidden="true" th:data-id="${cartItem.id}" onclick="deleteCartItem(event, this)">&times;</span>
                                 </button>
                                 </span>
                             </td>
                         </tr>
+
+
 
 
                         <!--------------------내가 하는거 끝!!!!!!!!!!!!!!!!------------------------------------------------------------->
@@ -570,9 +568,9 @@
         </script>
 
     </th:block>
-    <!—    —————————————————————————————————————————>
+    <!--    ---------------------------------------------------------------------------------->
 
-    <!—————————————————————————————————————————    <script src="js/pay.js"></script>—————————————————————————————————————————>
+    <!--    <script src="js/pay.js"></script>-->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
