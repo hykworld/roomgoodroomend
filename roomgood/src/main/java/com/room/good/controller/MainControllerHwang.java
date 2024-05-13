@@ -9,6 +9,7 @@ import com.room.good.service.MemberService;
 import com.room.good.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,13 +34,21 @@ public class MainControllerHwang {
 //    };
 
     @GetMapping("/shop")
-    public String readshop(PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Long cno) {
-        if (cno != null) {
-            model.addAttribute("result", productService.categoryPage(cno, pageRequestDTO));
-        } else {
-            model.addAttribute("result", productService.getList(pageRequestDTO));
+    public String readshop(PageRequestDTO pageRequestDTO, Model model,
+                           @RequestParam(required = false) Long cno,
+                           @RequestParam(name = "keyword", required = false, defaultValue = "") String keyword) {
+
+        if(keyword.isEmpty()){
+            if (cno != null) {
+                model.addAttribute("result", productService.categoryPage(cno, pageRequestDTO));
+            } else {
+                model.addAttribute("result", productService.getList(pageRequestDTO));
+            }
+        }else{
+            model.addAttribute("result", productService.findByPnameContaining(keyword, pageRequestDTO)); //검색리스트반환
         }
         return "shop"; // shop.html로 이동
+
     }
 
     @GetMapping("/productregister")
@@ -67,13 +76,12 @@ public class MainControllerHwang {
         // @ModelAttribute("requestDTO")
     };
 
-
     public void productregisterget(){}
 
     @PostMapping("/productmodify")
     public String productmodify(ProductDTO productDTO, PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
         Long pno=productService.modify(productDTO);
-
+        System.out.println("ssssss"+productDTO);
         redirectAttributes.addFlashAttribute("msg",pno);
         redirectAttributes.addAttribute("page",requestDTO.getPage());
         return "redirect:/shop";

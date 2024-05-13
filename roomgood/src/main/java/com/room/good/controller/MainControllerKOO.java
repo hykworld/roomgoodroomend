@@ -28,6 +28,7 @@ public class MainControllerKOO {
     private final OrderrrService orderrrService;
     private final CartttService cartttService;
     private  final ProductService productService;
+    private  final WishlistService wishlistService;
 
 
 
@@ -48,6 +49,8 @@ public class MainControllerKOO {
 
         EventDTO eventDTO = eventService.read(eno);
         model.addAttribute("event",eventDTO);
+        model.addAttribute("preno",eno-1);
+        model.addAttribute("nextno",eno+1);
     };
 
     @GetMapping("/about")
@@ -82,6 +85,8 @@ public class MainControllerKOO {
         log.info("session email : " + session.getAttribute("email"));
         log.info("session id : " + session.getAttribute("id"));
         log.info("session " + session);
+
+
         String email =(String)session.getAttribute("email");
         Long id = (Long)session.getAttribute("id");
         model.addAttribute("email",email);
@@ -192,8 +197,12 @@ public class MainControllerKOO {
     public void wishlist(Model model, Principal principal){
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
+        Long id = memberDTO.getId();
+        WishListDTO getlist = wishlistService.getlist(id);
+
         log.info("memberDTOmemberDTO"+memberDTO);
         model.addAttribute("memberDTO",memberDTO);
+        model.addAttribute("getlist",getlist);
     };
 
     @GetMapping("/resetpw")

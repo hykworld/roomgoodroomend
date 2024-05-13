@@ -96,10 +96,10 @@
             </div>
             <div class="row mywish" style="text-align:center;justify-content: center;">
                   <div id="mywish1" class="col-lg-2">전체</div>
-                  <div id="mywish2" class="col-lg-2">가전</div>
-                  <div id="mywish3" class="col-lg-2">옷정리/보관</div>
-                  <div id="mywish4" class="col-lg-2">생활용품</div>
-                  <div id="mywish5" class="col-lg-2">소품/취미</div>
+                  <div id="mywish2" class="col-lg-2">가구</div>
+                  <div id="mywish3" class="col-lg-2">가전</div>
+                  <div id="mywish4" class="col-lg-2">옷정리/보관</div>
+                  <div id="mywish5" class="col-lg-2">생활용품</div>
             </div>
             <hr>
                 <div class="mymember"  style="margin-left:50px;text-align: center; margin-bot:150px font-size:18px;">
@@ -111,31 +111,34 @@
                         <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
                         <div class="col-md-4 mb-3" style="text-align: center;"><b>상품 상세</b></div>
                     </div>
+<!--CategoryBig.cno-->
+
                     <!--반복될 애들-->
-                    <div class="row elect" style="border:1px solid #f3f2ee ;font-size:15px">
-                        <div class="col-md-5 mb-3" style="text-align: center;"><b>가전</b></div>
-                        <div class="col-md-3 mb-3" style="text-align: center;"><b>100,000원</b></div>
-                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    <!--th:if="${Wishlist.product.categoryBig.cno}.equals('2')"-->
+                    <div th:each="Wishlist : ${getlist.wishlist}" th:if="${Wishlist.product.categoryBig.cno}==1" class="row elect"  style="border:1px solid #f3f2ee  ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>[[${Wishlist.product.pname}]]</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${Wishlist.product.price}]]원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><a th:href="@{/shop-details(pno=${Wishlist.product.pno})}" class="koobtn btn" style="color: #ffffff; background: #111111;border-color: #111111; padding:3px">보러가기</a></div>
                     </div>
-                    <div class="row cloth" style="border:1px solid #f3f2ee ;font-size:15px">
-                        <div class="col-md-5 mb-3" style="text-align: center;"><b>옷정리/보관</b></div>
-                        <div class="col-md-3 mb-3" style="text-align: center;"><b>15,000원</b></div>
-                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    <div class="row cloth" th:each="Wishlist : ${getlist.wishlist}"  th:if="${Wishlist.product.categoryBig.cno}==2" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>[[${Wishlist.product.pname}]]</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${Wishlist.product.price}]]원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><a th:href="@{/shop-details(pno=${Wishlist.product.pno})}" class="koobtn btn" style="color: #ffffff; background: #111111;border-color: #111111; padding:3px">보러가기</a></div>
                     </div>
-                    <div class="row daily" style="border:1px solid #f3f2ee ;font-size:15px">
-                        <div class="col-md-5 mb-3" style="text-align: center;"><b>생활용품</b></div>
-                        <div class="col-md-3 mb-3" style="text-align: center;"><b>1,000원</b></div>
-                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    <div class="row daily" th:each="Wishlist : ${getlist.wishlist}"  th:if="${Wishlist.product.categoryBig.cno}==3" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>[[${Wishlist.product.pname}]]</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${Wishlist.product.price}]]원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><a th:href="@{/shop-details(pno=${Wishlist.product.pno})}" class="koobtn btn" style="color: #ffffff; background: #111111;border-color: #111111; padding:3px">보러가기</a></div>
                     </div>
-                    <div class="row good" style="border:1px solid #f3f2ee ;font-size:15px">
-                        <div class="col-md-5 mb-3" style="text-align: center;"><b>소품/취미</b></div>
-                        <div class="col-md-3 mb-3" style="text-align: center;"><b>1,000원</b></div>
-                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    <div class="row good" th:each="Wishlist : ${getlist.wishlist}" th:if="${Wishlist.product.categoryBig.cno}==4" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>[[${Wishlist.product.pname}]]</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${Wishlist.product.price}]]원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><a th:href="@{/shop-details(pno=${Wishlist.product.pno})}" class="koobtn btn" style="color: #ffffff; background: #111111;border-color: #111111; padding:3px">보러가기</a></div>
                     </div>
-                    <div class="row good" style="border:1px solid #f3f2ee ;font-size:15px">
-                        <div class="col-md-5 mb-3" style="text-align: center;"><b>소품/취미</b></div>
-                        <div class="col-md-3 mb-3" style="text-align: center;"><b>5,000원</b></div>
-                        <div class="col-md-4 mb-3" style="text-align: center;"><button class="koobtn" style="color: #ffffff; background: #111111;border-color: #111111;">보러가기</button></div>
+                    <div class="row good" th:each="Wishlist : ${getlist.wishlist}" th:if="${Wishlist.product.categoryBig.cno}==5" style="border:1px solid #f3f2ee ;font-size:15px">
+                        <div class="col-md-5 mb-3" style="text-align: center;"><b>[[${Wishlist.product.pname}]]</b></div>
+                        <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${Wishlist.product.price}]]원</b></div>
+                        <div class="col-md-4 mb-3" style="text-align: center;"><a th:href="@{/shop-details(pno=${Wishlist.product.pno})}" class="koobtn btn" style="color: #ffffff; background: #111111;border-color: #111111; padding:3px">보러가기</a></div>
                     </div>
 
                     <!--반복될 애들.end-->

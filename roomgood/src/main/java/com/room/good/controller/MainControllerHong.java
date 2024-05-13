@@ -30,8 +30,12 @@ public class MainControllerHong {
     public String shoppingCart(Principal principal, Model model){
         CartDTO cartDTO = cartService.getCartList(principal.getName());
         log.info("컨트롤러 "+principal.getName());
+        cartDTO.getCartItems().get(0).getProduct().getPname();
         log.info("=======================================================================");
+        String url =  cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPipath()+"/s_"+ cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiuuid()+"_" +cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiimgName();
+
         model.addAttribute("cartItems" , cartDTO.getCartItems());
+        model.addAttribute("url" , url);
         System.out.println("컨트롤러 shoppingcart   cartDTO.cartItems = " + cartDTO.getCartItems());
         return "shopping-cart";
     }

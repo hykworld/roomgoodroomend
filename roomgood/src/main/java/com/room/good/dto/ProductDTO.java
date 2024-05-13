@@ -45,5 +45,7 @@ public class ProductDTO {
     @Builder.Default
     private List<ProductImageDTO> imageDTOList2= new ArrayList<>();
 
+    private Long originalPrice;//할인된가격
+    private Long discount;//할인율
     //태그 어레이 리스트
 }

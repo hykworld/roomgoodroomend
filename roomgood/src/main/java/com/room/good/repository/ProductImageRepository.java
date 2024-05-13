@@ -15,15 +15,4 @@ public interface ProductImageRepository extends JpaRepository<ProductImage,Long>
     // save() 저장, findAll() 조회, FindById() 아이디로 조회, delete() 삭제 가 기본값
     // count() entity 총 갯수 반환
 
-
-    List<ProductImage> findByProduct(Product product);
-
-    @Query("select p, pi from Product p " +
-            "left outer join ProductImage pi on pi.product = p" +
-            " group by p ")
-    Page<Object[]> getListPage(Pageable pageable);
-    // select Movie.* ,MovieImage.* ,  avg(coalesce(Review.grade,0)), count(Review.rno)
-    // from Movie left outer join MovieImage on Movie.mno = MovieImage.movie_mno
-    // left outer join review on  Movie.bno = review.movie_mno
-    // group by movie.mno;
 }
