@@ -1,7 +1,9 @@
 package com.room.good.controller;
 
 import com.room.good.dto.CartDTO;
+import com.room.good.dto.PageRequestDTO;
 import com.room.good.service.CartService;
+import com.room.good.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,19 +27,37 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainControllerHong {
     private final CartService cartService;
+    private final ProductService productService;
 
     // 장바구니 목록
     @GetMapping(value = "/shopping-cart")
-    public String shoppingCart(Principal principal, Model model){
+    public String shoppingCart(Principal principal, Model model, PageRequestDTO pageRequestDTO) {
         CartDTO cartDTO = cartService.getCartList(principal.getName());
-        log.info("컨트롤러 "+principal.getName());
-        cartDTO.getCartItems().get(0).getProduct().getPname();
-        log.info("=======================================================================");
-        String url =  cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPipath()+"/s_"+ cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiuuid()+"_" +cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiimgName();
+        if (principal != null) { // 로그인했을때 // principal이 있을때
+            log.info("컨트롤러 " + principal.getName());
+            // cartDTO.getCartItems().get(0).getProduct().getPname();
+            log.info("=================ausdhfoasdhflhalsdf======================================================");
+            //        String url =  cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPipath()+"/s_"+ cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiuuid()+"_" +cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiimgName();
 
-        model.addAttribute("cartItems" , cartDTO.getCartItems());
-        model.addAttribute("url" , url);
-        System.out.println("컨트롤러 shoppingcart   cartDTO.cartItems = " + cartDTO.getCartItems());
+            List<String> urlList = new ArrayList<>();
+            for (int i = 0; i < cartDTO.getCartItems().size(); i++) {
+                String imageUrl = cartDTO.getCartItems().get(i).getProduct().getImages().get(0).getPipath() + "/s_" +
+                        cartDTO.getCartItems().get(i).getProduct().getImages().get(0).getPiuuid() + "_" +
+                        cartDTO.getCartItems().get(i).getProduct().getImages().get(0).getPiimgName();
+                log.info(imageUrl + " 잘 들어가고있나???????? imageUrl");
+                urlList.add(imageUrl);
+            }
+
+            log.info(urlList + "근데 왜 안나오냐고…………………..urlListurlList");
+            model.addAttribute("cartItems", cartDTO.getCartItems());
+            model.addAttribute("url", urlList);
+            model.addAttribute("result", productService.getList(pageRequestDTO));
+            System.out.println("productService =====================이것도 잘 나오는가??????????? 나와야 하는데????????????????????????????????????????? " + productService.getList(pageRequestDTO));
+            System.out.println("컨트롤러 shoppingcart 아 왜 안나오냐고………. cartDTO.cartItems = " + cartDTO.getCartItems());
+            return "shopping-cart";
+        } else if (principal == null) { // 로그인 안했을때
+            return "Loginshop";
+        }
         return "shopping-cart";
     }
 

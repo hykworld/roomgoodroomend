@@ -284,7 +284,10 @@
             <h6 style="margin-bottom:7px; color:#777; font-weight:bold">[[${dto.categoryBig.cname}]]</h6>
             <div style="margin-bottom:30px; display:flex; justify-content:space-between;">
                 <h4 style="color:#333; max-width:80%;">[[${dto.pname}]]</h4>
-                <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
+                <!--////구씨 수정부분5월9일-->
+                <i id="wishlist" class="fa-regular fa-heart" style="font-size:25px; line-height:26px; cursor:pointer"></i>
+                <i id="wishlist2" class="fa-solid fa-heart" style="font-size:25px; line-height:26px; display:none;"></i>
+                <!--////구씨 수정부분5월9일.end-->
             </div>
             <div class="star" style="margin-bottom:20px;">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -327,7 +330,7 @@
                 </div>
                 <div style="display:flex; justify-content:space-between;">
                     <div style="display:flex; justify-content:space-between; margin-left:10px; margin-top:3px; width:80px; height:30px; background-color:#fff; box-sizing:border-box; border-radius:4px; border:1px solid #ccc;">
-                        <i style="line-height:30px; margin-left:5px;" class="product-minus fa-solid fa-minus"></i><button class="product_count" style="color:#333; line-height:30px; border:none; background-color:#fff; font-weight:bold"></button><i style="line-height:30px; margin-right:5px;" class="product-plus fa-solid fa-plus"></i>
+                        <i style="line-height:30px; margin-left:5px;" class="product-minus fa-solid fa-minus"></i><button class="product_count" id="count" style="color:#333; line-height:30px; border:none; background-color:#fff; font-weight:bold"></button><i style="line-height:30px; margin-right:5px;" class="product-plus fa-solid fa-plus"></i>
                     </div>
                     <div class="end_price" style="margin-right:10px; font-size:25px; font-weight:bold; color:#333;">
 
@@ -335,9 +338,12 @@
                 </div>
             </div>
             <div style="width:100%; margin-top:30px; justify-content:space-between; display:flex;">
-                <div class="cart_btn">장바구니 추가</div>
-                <div class="buy_btn">바로 구매하기</div>
+                <div class="cart_btn" id="cartbtn" sec:authorize="isAuthenticated()">장바구니 추가</div>
+                <div class="buy_btn" id="directbtn" sec:authorize="isAuthenticated()"><a href="/pay">바로 구매하기</a></div>
+                <a class="cart_btn gologin" id="cartbtn2" sec:authorize="isAnonymous() " href="/Loginshop">장바구니 추가</a>
+                <a class="buy_btn gologin" sec:authorize="isAnonymous()" href="/Loginshop" >바로 구매하기</a>
             </div>
+
         </form>
     </div>
 </div>
@@ -1341,6 +1347,48 @@
 <!--        <div style="cursor:pointer;">삭제</div>-->
 <!--    </div>-->
 <!--</div>-->
+
+
+<!--구씨 수정부분5월8일-->
+<script>
+    $(function(){
+    $('.gologin').on('click',function(){
+        alert('로그인 후 이용가능한 서비스입니다. 로그인 페이지로 이동합니다.');
+    })
+    var pno =[[${dto.pno}]];
+        $('#cartbtn').on('click',function(){
+         var count = $(".product_count").html();
+
+            $.ajax({
+                    url:"/cart", //서버주소
+                    data:{pno:pno , count:count}, //서버로 전송되는 데이터
+                    dataType:"boolean", //서버에서 넘어오는 데이터의 타입
+                    type:"get", //전송방식
+                    success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                        console.log(result);
+                    }
+            });
+                alert('장바구니에 추가되었습니다.');
+});
+ ////구씨 수정부분5월9일
+    $('#wishlist').on('click',function(){
+
+        $('#wishlist2').css('display','block');
+        $('#wishlist').css('display','none');
+        $.ajax({
+                url:"/addwish", //서버주소
+                data:{pno:pno}, //서버로 전송되는 데이터
+                dataType:"boolean", //서버에서 넘어오는 데이터의 타입
+                type:"get", //전송방식
+                success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                    console.log(result);
+                }
+        });
+                 alert('찜 목록에 추가되었습니다.');
+    })
+})
+////구씨 수정부분5월9일.end
+</script>
 </body>
 
 </html>

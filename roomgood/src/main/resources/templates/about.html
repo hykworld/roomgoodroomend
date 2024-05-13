@@ -13,6 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RoomGoodRoomEnd</title>
 
+    <!--제이쿼리-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
           rel="stylesheet">
@@ -26,6 +31,45 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <style>
+        .col-lg-2 {
+          position: relative;
+          display: inline-block;
+          transition: color 0.3s ease; /* 호버 효과를 위한 색상 전환 효과 */
+          cursor:pointer;
+          padding-bottom:10px;
+        }
+
+      .col-lg-2::after {
+
+          content: '';
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 0;
+          width: 0; /* 초기에는 바텀 라인의 너비가 0 */
+          height: 2px;
+          background-color: rgb(53, 197, 240);
+          transition: width 0.3s ease; /* 너비 변화를 부드럽게 만듦 */
+      }
+
+      .col-lg-2:hover::after {
+          width: calc(100% - 40px); /* 호버 상태에서 바텀 라인의 너비를 조정하여 가운데에서부터 양옆으로 확장됨 */
+      }
+      a{
+        color: black;
+        font-size :18px;
+        font-weight :bold;
+      }
+      a:hover{
+        color:rgb(53, 197, 240);;
+      }
+
+        a:active {
+  color: red;
+}
+    </style>
 </head>
 
 <body>
@@ -75,10 +119,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Shop</h4>
+                    <h4>만원이하</h4>
                     <div class="breadcrumb__links">
                         <a href="/index">Home</a>
-                        <span>Shop</span>
+                        <span>만원이하</span>
                     </div>
                 </div>
             </div>
@@ -90,296 +134,146 @@
 <!-- Shop Section Begin -->
 <section class="shop spad">
     <div class="container">
+        <div class="row mywish" style="text-align:center;justify-content: center;">
+            <div  class="col-lg-2" th:if="${priceno}==0" style=" border-bottom:2px solid rgb(53, 197, 240); ">
+                <a href="/about?priceno=0" style="color:rgb(53, 197, 240)!important;">전체 보기</a></div>
+            <div class="col-lg-2" th:if="${priceno}!=0"><a href="/about?priceno=0">전체 보기</a></div>
+            <div  class="col-lg-2" th:if="${priceno}!=1"><a href="/about?priceno=1">천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}==1" style=" border-bottom:2px solid rgb(53, 197, 240); ">
+                <a href="/about?priceno=0" style="color:rgb(53, 197, 240)!important;">천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}!=2"><a href="/about?priceno=2">3천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}==2" style=" border-bottom:2px solid rgb(53, 197, 240); ">
+                <a href="/about?priceno=0" style="color:rgb(53, 197, 240)!important;">3천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}!=3"><a href="/about?priceno=3">5천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}==3" style=" border-bottom:2px solid rgb(53, 197, 240); ">
+                <a href="/about?priceno=0" style="color:rgb(53, 197, 240)!important;">5천원 코너</a></div>
+            <div class="col-lg-2" th:if="${priceno}!=4"><a href="/about?priceno=4">7천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}==4" style=" border-bottom:2px solid rgb(53, 197, 240); ">
+                <a href="/about?priceno=0" style="color:rgb(53, 197, 240)!important;">7천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}!=5"><a href="/about?priceno=5">9천원 코너</a></div>
+            <div  class="col-lg-2" th:if="${priceno}==5" style=" border-bottom:2px solid rgb(53, 197, 240); ">
+                <a href="/about?priceno=0" style="color:rgb(53, 197, 240)!important;">9천원 코너</a></div>
+        </div>
+        <hr>
+
+        <!--상품 옵션 바 -------------------------------------------------->
+
+        <!--상품 부분------------------------------------------------------------------------------------>
         <div class="row">
-            <div class="col-lg-3">
-                <div class="shop__sidebar">
-                    <div class="shop__sidebar__search">
-                        <form action="/shop" method="get" id="searchForm">
-                            <input type="hidden" name="page" value ="1">
-                            <div class="input-group-prepend">
-                                <select class="custom-select" name="type">
-                                    <option value="0" selected >전체</option>
-                                    <option value="1">가구</option>
-                                    <option value="2">가전</option>
-                                    <option value="3">정리/보관</option>
-                                    <option value="4">생활용품</option>
-                                    <option value="5">소품/취미</option>
-                                </select>
-                                <input  type="text"  class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="Search">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6" th:each="dto : ${result.dtoList}">
 
-                        </form>
-                    </div>
-                    <div class="shop__sidebar__accordion">
-                        <div class="accordion" id="accordionExample">
-                            <!--카테고리------------------->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                                </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__categories">
-                                            <ul class="nice-scroll">
-                                                <li><a href="/shop?">전체보기</a></li>
-                                                <li><a href="/shop?cno=1">가구</a></li>
-                                                <li><a href="/shop?cno=2">가전</a></li>
-                                                <li><a href="/shop?cno=3">정리/보관</a></li>
-                                                <li><a href="/shop?cno=4">생활용품</a></li>
-                                                <li><a href="/shop?cno=5">소품/취미</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--브랜드------------------->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
-                                </div>
-                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__brand">
-                                            <ul>
-                                                <li><a href="#">Louis Vuitton</a></li>
-                                                <li><a href="#">Chanel</a></li>
-                                                <li><a href="#">Hermes</a></li>
-                                                <li><a href="#">Gucci</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--가격-------------------->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
-                                </div>
-                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__price">
-                                            <ul>
-                                                <li><a href="#">$0.00 - $50.00</a></li>
-                                                <li><a href="#">$50.00 - $100.00</a></li>
-                                                <li><a href="#">$100.00 - $150.00</a></li>
-                                                <li><a href="#">$150.00 - $200.00</a></li>
-                                                <li><a href="#">$200.00 - $250.00</a></li>
-                                                <li><a href="#">250.00+</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--사이즈-------------------->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseFour">Size</a>
-                                </div>
-                                <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__size">
-                                            <label for="xs">xs
-                                                <input type="radio" id="xs">
-                                            </label>
-                                            <label for="sm">s
-                                                <input type="radio" id="sm">
-                                            </label>
-                                            <label for="md">m
-                                                <input type="radio" id="md">
-                                            </label>
-                                            <label for="xl">xl
-                                                <input type="radio" id="xl">
-                                            </label>
-                                            <label for="2xl">2xl
-                                                <input type="radio" id="2xl">
-                                            </label>
-                                            <label for="xxl">xxl
-                                                <input type="radio" id="xxl">
-                                            </label>
-                                            <label for="3xl">3xl
-                                                <input type="radio" id="3xl">
-                                            </label>
-                                            <label for="4xl">4xl
-                                                <input type="radio" id="4xl">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--컬러-------------------->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseFive">Colors</a>
-                                </div>
-                                <!--컬러-------------------->
-                                <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__color">
-                                            <label class="c-1" for="sp-1">
-                                                <input type="radio" id="sp-1">
-                                            </label>
-                                            <label class="c-2" for="sp-2">
-                                                <input type="radio" id="sp-2">
-                                            </label>
-                                            <label class="c-3" for="sp-3">
-                                                <input type="radio" id="sp-3">
-                                            </label>
-                                            <label class="c-4" for="sp-4">
-                                                <input type="radio" id="sp-4">
-                                            </label>
-                                            <label class="c-5" for="sp-5">
-                                                <input type="radio" id="sp-5">
-                                            </label>
-                                            <label class="c-6" for="sp-6">
-                                                <input type="radio" id="sp-6">
-                                            </label>
-                                            <label class="c-7" for="sp-7">
-                                                <input type="radio" id="sp-7">
-                                            </label>
-                                            <label class="c-8" for="sp-8">
-                                                <input type="radio" id="sp-8">
-                                            </label>
-                                            <label class="c-9" for="sp-9">
-                                                <input type="radio" id="sp-9">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseSix">Tags</a>
-                                </div>
-                                <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__tags">
-                                            <a href="#">Product</a>
-                                            <a href="#">Bags</a>
-                                            <a href="#">Shoes</a>
-                                            <a href="#">Fashio</a>
-                                            <a href="#">Clothing</a>
-                                            <a href="#">Hats</a>
-                                            <a href="#">Accessories</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9">
+                <div  class="product__item sale">
 
-                <!--상품 옵션 바 -------------------------------------------------->
-                <div class="shop__product__option">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-
-                        </div>
-                        <!--가격으로 정렬 , sort---------------------------------------------------------------------------------->
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-
-                        </div>
-                    </div>
-                </div>
-                <a th:href="@{/productregister}">글쓰기</a>
-
-                <!--상품 부분------------------------------------------------------------------------------------>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6" th:each="dto : ${result.dtoList}">
-                        <a th:href="@{/productmodify(pno=${dto.pno}, page=${result.page})}">
-                            <button type="button" class="">수정하기</button>
-                        </a>
-                        <div  class="product__item sale">
-                            <!--th:if="${dto.categoryBig.cno == 4}"-->
-                            <a th:href="@{/shop-details(pno=${dto.pno},
+                    <a th:href="@{/shop-details(pno=${dto.pno},
                             page=${result.page},
                             type=${pageRequestDTO.type} ,
                             keyword = ${pageRequestDTO.keyword})}">
-                                <div class="product__item__pic set-bg">
-                                    <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
-                                         th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
-                                         style="width: 100%; height:100%;border-radius: 5px;">
-                                    <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
-                                         src="img/noimage.png" style="width: 100%; height:100%;border-radius: 5px;">
-                                    <span class="label">Sale</span>
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt=""><span>Compare</span></a></li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                            </a>
-                            <div class="product__item__text">
-                                <a href="#" class="add-cart">+ Add To Cart</a>
-                                <h5>[[${dto.categoryBig.cname}]]</h5>
-                                <h5 th:text="${dto.pname}"></h5>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5 th:text="${dto.price}"></h5>
-                                <div class="product__color__select">
-                                    <label for="pc-31"><input type="radio" id="pc-31"></label>
-                                    <label class="active black" for="pc-32"><input type="radio" id="pc-32"></label>
-                                    <label class="grey" for="pc-33"><input type="radio" id="pc-33"></label>
-                                </div>
-                            </div>
+                        <div class="product__item__pic set-bg">
+                            <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                 th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
+                                 style="width: 100%; height:100%;border-radius: 5px;">
+                            <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                 src="img/noimage.png" style="width: 100%; height:100%;border-radius: 5px;">
+                            <span class="label">Sale</span>
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="img/icon/compare.png" alt=""><span>Compare</span></a></li>
+                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </a>
+                    <div class="product__item__text">
+                        <a href="#" class="add-cart">+ Add To Cart</a>
+                        <h5 style="color: #35C5F0; ">[[${dto.categoryBig.cname}]]</h5>
+                        <h7 th:text="${dto.subContent}" class="sub-content"></h7>
+                        <h5 th:text="${dto.pname}"></h5>
+                        <div style="display: inline-block;">
+                            <h5 th:text="${dto.discount + '%'}" style="color: #35C5F0; display: inline-block;"></h5>
+                            <h5 class="originalPrice" th:text="${dto.originalPrice}" style="color: #C3C3BD; display: inline-block; text-decoration: line-through;"></h5>
+                        </div>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>&nbsp;
+                            <span style="color: #F7941D; font-weight: bold;" class="">(4)</span>&nbsp;&nbsp;
+                            <span style="font-weight: bold;" class="review-count">리뷰 30,000</span>
+                        </div>
+                        <div>
+                            <h5 class="price" th:text="${dto.price}"></h5>
+                            <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}==0">무료배송</h5>
+                            <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}!=0">[[${dto.categoryBig.deliveryFee}]]원</h5>
+                        </div>
+                        <div class="product__color__select">
+                            <label for="pc-31"><input type="radio" id="pc-31"></label>
+                            <label class="active black" for="pc-32"><input type="radio" id="pc-32"></label>
+                            <label class="grey" for="pc-33"><input type="radio" id="pc-33"></label>
                         </div>
                     </div>
                 </div>
-                <!--상품 부분------------------------------------------------------------------------------------>
-                <!--페이징 부분------------------------------------------------------------------------------------>
-                <!--                    <div class="row">-->
-                <!--                        <div class="col-lg-12">-->
-                <!--                            <div class="product__pagination">-->
-                <!--                                <a class="active" href="#">1</a>-->
-                <!--                                <a href="#">2</a>-->
-                <!--                                <a href="#">3</a>-->
-                <!--                                <span>...</span>-->
-                <!--                                <a href="#">21</a>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
+            </div>
+        </div>
+        <!--상품 부분------------------------------------------------------------------------------------>
+        <!--페이징 부분------------------------------------------------------------------------------------>
+        <!--                    <div class="row">-->
+        <!--                        <div class="col-lg-12">-->
+        <!--                            <div class="product__pagination">-->
+        <!--                                <a class="active" href="#">1</a>-->
+        <!--                                <a href="#">2</a>-->
+        <!--                                <a href="#">3</a>-->
+        <!--                                <span>...</span>-->
+        <!--                                <a href="#">21</a>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
 
-                <!--ㅁ-->
-                <div class="product__pagination">
-                    <div class="product__pagination">
-                        <ul class="pagination h-100 justify-content-center align-items-center"
-                            style="height:50px !important">
-                            <li class="page-item" th:if="${result.prev}">
-                                <a class="page-link"
-                                   th:href="@{/shop(page= ${result.start -1},
+        <!--ㅁ-->
+        <div class="product__pagination">
+            <div class="product__pagination">
+                <ul class="pagination h-100 justify-content-center align-items-center"
+                    style="height:50px !important">
+                    <li class="page-item">
+                        <a class="page-link"
+                           th:href="@{/shop(page=1,
                                     type=${pageRequestDTO.type} ,
                                     keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">
-                                    Previous</a>
-                            </li>
+                            << </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link"
+                           th:href="@{/shop(page=${result.page - 1},
+                                   type=${pageRequestDTO.type},
+                                   keyword=${pageRequestDTO.keyword})}"
+                           tabindex="-1">   < </a>
+                    </li>
 
-                            <li th:class=" 'page-item ' + ${result.page == page?'active':''} "
-                                th:each="page: ${result.pageList}">
-                                <a class="page-link"
-                                   th:href="@{/shop(page = ${page} ,
+                    <li th:class=" 'page-item ' + ${result.page == page?'active':''} "
+                        th:each="page: ${result.pageList}">
+                        <a class="page-link"
+                           th:href="@{/shop(page = ${page} ,
                                    type=${pageRequestDTO.type} ,
                                    keyword = ${pageRequestDTO.keyword}  )}">
-                                    [[${page}]]
-                                </a>
-                            </li>
+                            [[${page}]]
+                        </a>
+                    </li>
 
-                            <li class="page-item" th:if="${result.next}">
-                                <a class="page-link" th:href="@{/board/list(page= ${result.end + 1} ,
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{/shop(page=${result.page + 1} ,
                                 type=${pageRequestDTO.type} ,
-                                keyword = ${pageRequestDTO.keyword} )}">Next</a>
-                            </li>
+                                keyword = ${pageRequestDTO.keyword} )}"> > </a>
+                    </li>
 
-                        </ul>
-                    </div>
-                </div>
+                    <li class="page-item">
+                        <a class="page-link"
+                           th:href="@{/shop(page=${result.totalPage},
+                                   type=${pageRequestDTO.type} ,
+                                   keyword=${pageRequestDTO.keyword})}"> >> </a>
+                    </li>
+                </ul>
             </div>
-            <!--페이징 부분------------------------------------------------------------------------------------>
         </div>
+    </div>
+    <!--페이징 부분------------------------------------------------------------------------------------>
     </div>
     </div>
 </section>
@@ -456,15 +350,35 @@
 <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+        <form class="search-model-form" action="/shop" method="get">
+            <input type="hidden" name="page" value="1">
+            <input type="text" id="search-input" name="keyword" placeholder="Search here.....">
+            <button type="submit"><span class="icon_search"></span></button>
         </form>
     </div>
 </div>
 <!-- Search End -->
-
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+var priceElements = document.getElementsByClassName("price");
+var originalPriceElements = document.getElementsByClassName("originalPrice");
 
+for (var i = 0; i < priceElements.length; i++) {
+var priceElement = priceElements[i];
+var price = priceElement.textContent;
+priceElement.textContent = formatNumberWithCommas(price) + '원';
+}
+
+for (var i = 0; i < originalPriceElements.length; i++) {
+var originalPriceElement = originalPriceElements[i];
+var originalPrice = originalPriceElement.textContent;
+originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+}
+});
+
+function formatNumberWithCommas(number) {
+return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 </script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
