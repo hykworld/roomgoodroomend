@@ -536,10 +536,8 @@
                        $.each(arr.dtoList,function(idx,product){
                             console.log(product);
                             str += "<div class='col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix'>";
-                            str += "<div class='product__item'>";
-                            str += "<a href='/shop-details?pno="+product.pno+"&page=1&type=&keyword='>";
+                            str += "<div class='product__item' style='cursor:pointer;' data-pno='"+ product.pno +"'>";
                             str += "<div class='product__item__pic set-bg' style='background-image:url("+"/display?fileName="+product.imageDTOList[0].pipath+"/"+product.imageDTOList[0].piuuid+"_"+product.imageDTOList[0].piimgName+")'>";
-                            str += "</a>";
                             str += "<ul class='product__hover'>";
                             str += "<li><a href='#'><img src='img/icon/heart.png' alt=''></a></li>";
                             str += "<li><a href='#'><img src='img/icon/search.png' alt=''></a></li>";
@@ -567,6 +565,11 @@
             })
         }
         getProductList(1);
+
+        $(".productLists").on("click",".product__item",function(){
+            var pno = $(this).data("pno");
+            location.href = "/shop-details?pno="+pno+"&page=1&type=&keyword=";
+        });
 
         //페이징 처리
         var pageNum =1;
