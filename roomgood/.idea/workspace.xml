@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c55e45a2-36ce-4094-b78f-c2fe25fd5f2e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerHwang.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/room/good/controller/MainControllerHwang.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/shop.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ-modify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ-modify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ-register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ-register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/FAQ.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/FAQ.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/clone.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/clone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/eventRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/eventRegister.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resetpw.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/resetpw.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,24 +70,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.GoodApplication.executor&quot;: &quot;Run&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Gradle.Build good.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.good [:GoodApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.good [bootWar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.roomgood [:GoodApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;yoon&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/박한선/Desktop/realP/roomgood/src/main/resources/templates&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;애플리케이션.GoodApplication.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GoodApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build good.executor": "Run",
+    "Gradle.good [:GoodApplication.main()].executor": "Run",
+    "Gradle.good [bootWar].executor": "Run",
+    "Gradle.roomgood [:GoodApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/박한선/Desktop/realP/roomgood/src/main/resources/templates",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "애플리케이션.GoodApplication.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources" />
