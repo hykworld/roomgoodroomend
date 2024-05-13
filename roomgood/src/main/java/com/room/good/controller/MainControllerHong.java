@@ -1,12 +1,7 @@
 package com.room.good.controller;
 
-<<<<<<< HEAD
 import com.room.good.dto.CartDTO;
 import com.room.good.dto.PageRequestDTO;
-=======
-import com.room.good.dto.*;
-import com.room.good.repository.OrderrrItemRepository;
->>>>>>> 360dc4249b1f0325cbf62d66babf76400d65a9a5
 import com.room.good.service.CartService;
 import com.room.good.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +23,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainControllerHong {
     private final CartService cartService;
-<<<<<<< HEAD
     private final ProductService productService;
 
     // 장바구니 목록
@@ -61,42 +55,7 @@ public class MainControllerHong {
             return "Loginshop";
         }
         return "shopping-cart";
-=======
-    private final OrderrrItemRepository orderrrItemRepository;
-
-    // 장바구니 목록
-    @GetMapping(value = "/shopping-cart")
-    public String shoppingCart(Principal principal, Model model){
-        if(principal != null) {
-            CartDTO cartDTO = cartService.getCartList(principal.getName());
-            log.info("컨트롤러 " + principal.getName());
-            // cartDTO.getCartItems().get(0).getProduct().getPname();
-            log.info("=================ausdhfoasdhflhalsdf======================================================");
-//        String url =  cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPipath()+"/s_"+ cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiuuid()+"_" +cartDTO.getCartItems().get(0).getProduct().getImages().get(0).getPiimgName();
-
-            List<String> urlList = new ArrayList<>();
-            for (int i = 0; i < cartDTO.getCartItems().size(); i++) {
-                String imageUrl = cartDTO.getCartItems().get(i).getProduct().getImages().get(0).getPipath() + "/s_" +
-                        cartDTO.getCartItems().get(i).getProduct().getImages().get(0).getPiuuid() + "_" +
-                        cartDTO.getCartItems().get(i).getProduct().getImages().get(0).getPiimgName();
-                log.info(imageUrl + " 잘 들어가고있나????????        imageUrl");
-                urlList.add(imageUrl);
-            }
-
-
-            log.info(urlList + "근데 왜 안나오냐고.......................urlListurlList");
-            model.addAttribute("cartItems", cartDTO.getCartItems());
-            model.addAttribute("url", urlList);
-            System.out.println("컨트롤러 shoppingcart 아 왜 안나오냐고.......... cartDTO.cartItems = " + cartDTO.getCartItems());
-            return "shopping-cart";
-        }else{
-
-            return "Loginshop";
-        }
-
->>>>>>> 360dc4249b1f0325cbf62d66babf76400d65a9a5
     }
-
     // 장바구니 담기
     @PostMapping(value = "/add")
     public @ResponseBody ResponseEntity<?> addCartProduct(@RequestBody CartDTO cartDTO, BindingResult bindingResult, Principal principal){

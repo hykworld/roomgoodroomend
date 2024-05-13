@@ -243,8 +243,7 @@
                     <div th:each="CartItem : ${findlist}">
                     <div class="row">
                         <div class="col-md-2">
-                            <img
-                                    th:src="|/display?fileName=${CartItem.product.images[0].pipath}/${CartItem.product.images[0].piuuid}_${CartItem.product.images[0].piimgName}|"
+                            <img th:src="|/display?fileName=${CartItem.product.images[0].pipath}/${CartItem.product.images[0].piuuid}_${CartItem.product.images[0].piimgName}|"
                                  alt="">
                         </div>
                         <div class="col-md-4"

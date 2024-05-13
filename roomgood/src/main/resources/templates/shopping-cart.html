@@ -188,7 +188,9 @@
                                 <input type="checkbox" name="cartChkBox" th:value="${cartItem.id}">
                             </td>
                             <td style="display:flex">
-                                <img th:src="|/display?fileName=${url}|" class="rounded repImg"
+                                <img  th:src="|/display?fileName=${cartItem.product.images[0].pipath}/${cartItem.product.images[0].piuuid}_${cartItem.product.images[0].piimgName}|"
+
+                                     class="rounded repImg"
                                      style="height:200px; width:200px; float:left; padding-bottom:30px; padding-top:30px; margin-right:30px">
                                 <div style="width:230px; margin-right:30px; display:flex;">
                                     <div class="align-self-center" style="padding-top:21px; width:60%; padding-right:20px;">
@@ -243,45 +245,6 @@
                                 </div>
                             </td>
                         </tr>
-
-
-<<<<<<< HEAD
-=======
-                        <!--                        <tr>-->
-                        <!--                            <td class="text-center-align-low" style="height:300px; width:500px;">-->
-                        <!--                                <div class="product-wrapper" th:each="dto : ${result.dtoList}">-->
-                        <!--                                    &lt;!&ndash; 이미지와 상품 정보를 가로로 나열하는 Wrapper &ndash;&gt;-->
-                        <!--                                    <div class="product-item">-->
-                        <!--                                        <img th:src="@{${product.imageUrl}}" alt="상품 이미지" width="200" height="200">-->
-                        <!--                                        <div class="product-info">-->
-                        <!--                                            <p th:text="${product.name}"></p>-->
-                        <!--                                            <p th:text="${product.price} + '원'"></p>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                    &lt;!&ndash; 다음 두 개의 상품을 표시 &ndash;&gt;-->
-                        <!--                                    <div class="product-item" th:if="${productList[iterStat.index + 1]}">-->
-                        <!--                                        <img th:src="@{${productList[iterStat.index + 1].imageUrl}}" alt="상품 이미지" width="200" height="200">-->
-                        <!--                                        <div class="product-info">-->
-                        <!--                                            <p th:text="${productList[iterStat.index + 1].name}"></p>-->
-                        <!--                                            <p th:text="${productList[iterStat.index + 1].price} + '원'"></p>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                    <div class="product-item" th:if="${productList[iterStat.index + 2]}">-->
-                        <!--                                        <img th:src="@{${productList[iterStat.index + 2].imageUrl}}" alt="상품 이미지" width="200" height="200">-->
-                        <!--                                        <div class="product-info">-->
-                        <!--                                            <p th:text="${productList[iterStat.index + 2].name}"></p>-->
-                        <!--                                            <p th:text="${productList[iterStat.index + 2].price} + '원'"></p>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </td>-->
-                        <!--                        </tr>-->
->>>>>>> 360dc4249b1f0325cbf62d66babf76400d65a9a5
-
-
-
-
-
                         <!--------------------내가 하는거 끝!!!!!!!!!!!!!!!!------------------------------------------------------------->
                         </tbody>
                     </table>
@@ -304,12 +267,6 @@
                         <li >총 할인금액 :</li>
                         <li >총 배송비 :</li>
                         <br>
-<<<<<<< HEAD
-=======
-                        <!--                        <li>Subtotal-->
-                        <!--                            <span id="orderTotalPrice">$ 169.50</span>-->
-                        <!--                        </li>-->
->>>>>>> 360dc4249b1f0325cbf62d66babf76400d65a9a5
                         <li>총 결제금액 :
                             <span id="orderTotalPrice">0 원</span>
                         </li>
