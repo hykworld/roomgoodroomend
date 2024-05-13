@@ -382,14 +382,14 @@
                                    th:href="@{/shop(page=1,
                                     type=${pageRequestDTO.type} ,
                                     keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">
-                                    <<</a>
+                                    << </a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
                                    th:href="@{/shop(page=${result.page - 1},
                                    type=${pageRequestDTO.type},
                                    keyword=${pageRequestDTO.keyword})}"
-                                   tabindex="-1">   <</a>
+                                   tabindex="-1">   < </a>
                             </li>
 
                             <li th:class=" 'page-item ' + ${result.page == page?'active':''} "
@@ -412,7 +412,7 @@
                                 <a class="page-link"
                                    th:href="@{/shop(page=${result.totalPage},
                                    type=${pageRequestDTO.type} ,
-                                   keyword=${pageRequestDTO.keyword})}"> >></a>
+                                   keyword=${pageRequestDTO.keyword})}"> >> </a>
                             </li>
                         </ul>
                     </div>
