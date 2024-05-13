@@ -20,6 +20,15 @@ public class TimeSaleDTO {
     //상품페이지 어디로 이동될껀지 url
     private String url;
 
+    //오리지널 가격
+    private Long originalPrice;
+
+    //할인율
+    private Long sale;
+
+    //할인가격
+    private Long price;
+
     //끝나는 시간 년 월 일 시간순으로 입력해야하고 이건 일단 하드코딩할 예정
     private String endTime;
 

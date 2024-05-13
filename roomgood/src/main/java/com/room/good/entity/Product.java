@@ -53,7 +53,7 @@ public class Product extends BaseEntity {
     @Builder.Default
     private Set<Tag> tagSet = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cno") // CategoryBig 엔티티의 cno와 매핑
     private CategoryBig categoryBig; // Product와 CategoryBig의 관계 매핑
 

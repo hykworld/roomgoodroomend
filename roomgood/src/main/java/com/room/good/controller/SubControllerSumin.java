@@ -1,8 +1,7 @@
 package com.room.good.controller;
 
-import com.room.good.dto.MainPagePageRequestDTO;
-import com.room.good.dto.PageRequestDTO;
-import com.room.good.dto.ProductListDTO;
+import com.room.good.dto.*;
+import com.room.good.service.ProductService;
 import com.room.good.service.SoominService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,14 +19,17 @@ import java.util.List;
 @RequestMapping("/productList")
 @RequiredArgsConstructor
 public class SubControllerSumin {
+    private final ProductService productService;
     private final SoominService soominService;
 
     @GetMapping("/{page}/all")
-    public ResponseEntity<List<ProductListDTO>> getProductList(PageRequestDTO pageRequestDTO){
+    public ResponseEntity<PageResultDTO<ProductDTO, Object[]>> getProductList(PageRequestDTO pageRequestDTO){
         pageRequestDTO.setSize(12);
-        List<ProductListDTO> productListDTOList = soominService.getProductList(pageRequestDTO);
+        PageResultDTO<ProductDTO, Object[]> pageResultDTO = productService.getList(pageRequestDTO);
+        log.info("===================="+pageResultDTO);
 
-        return new ResponseEntity<>(productListDTOList, HttpStatus.OK);
+
+        return new ResponseEntity<>(pageResultDTO, HttpStatus.OK);
     }
 
     @GetMapping("/count")

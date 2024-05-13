@@ -314,23 +314,23 @@ input[type=number]::-webkit-outer-spin-button {
                 <i class="fa-solid fa-caret-down" style="margin-right:20px; line-height:48px;"></i>
             </div>
             <div class="toggle_banner displayNone" style="display:flex; justify-content:space-between; line-height:70px; margin-top:2px; background-color:#fff; height:70px; box-sizing:border-box; border-radius:2px; border:1px solid #ccc; position:absolute;">
-                <div style="display:flex; margin-left:20px;">
+                <div style="width:70%; display:flex; margin-left:20px;">
                     <div style="width:30px; color:#333;">1</div>
                     <div style="height:50px; width:50px;margin-top:10px; margin-right:10px; overflow:hidden;">
                         <img th:src="|/display?fileName=${dto.imageDTOList[0].thumbnailURL}|" style="display: block; width:100%; height:100%;object-fit:cover;" />
                     </div>
-                    <div style="color:#333;">[[${dto.pname}]]</div>
+                    <div style="color:#333; width:70%; height:68px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; ">[[${dto.pname}]]</div>
                 </div>
                 <div class="price" style="margin-right:20px; font-size:20px; font-weight:bold; color:#333;">
                     [[${dto.price}]]
                 </div>
             </div>
-            <div class="product_count_banner displayNone" style="margin-top:15px; width:100%; height:100px; box-sizing:border-box; border-radius:2px; border:1px solid #ccc; background-color:#F7F9FA">
+            <div class="product_count_banner displayNone" style="margin-top:15px; width:100%; box-sizing:border-box; border-radius:2px; border:1px solid #ccc; background-color:#F7F9FA">
                 <div style="margin:10px 0 23px 10px; display:flex; justify-content:space-between;">
                     <div style="color:#333; font-size:16px;">[[${dto.pname}]]</div>
                     <div style="margin-right:10px;" class="count_banner_x_btn">&times;</div>
                 </div>
-                <div style="display:flex; justify-content:space-between;">
+                <div style="margin-bottom:10px;display:flex; justify-content:space-between;">
                     <div style="display:flex; justify-content:space-between; margin-left:10px; margin-top:3px; width:80px; height:30px; background-color:#fff; box-sizing:border-box; border-radius:4px; border:1px solid #ccc;">
                         <i style="line-height:30px; margin-left:5px;" class="product-minus fa-solid fa-minus"></i><button class="product_count" style="color:#333; line-height:30px; border:none; background-color:#fff; font-weight:bold"></button><i style="line-height:30px; margin-right:5px;" class="product-plus fa-solid fa-plus"></i>
                     </div>
@@ -738,17 +738,17 @@ input[type=number]::-webkit-outer-spin-button {
         var scrollbar = $(".product_nav").offset();
 
         $(window).scroll(function()
-      {
-         if ( $(document).scrollTop() > scrollbar.top )
-         {
-            $('.product_nav').addClass('Fixed');
-         }
-         else
-         {
-            $('.product_nav').removeClass('Fixed');
-         }
+		{
+			if ( $(document).scrollTop() > scrollbar.top )
+			{
+			   $('.product_nav').addClass('Fixed');
+			}
+			else
+			{
+			   $('.product_nav').removeClass('Fixed');
+			}
 
-      });
+		});
 
 
 
@@ -1127,7 +1127,7 @@ input[type=number]::-webkit-outer-spin-button {
             //.starrr초기화
             var star=$(".starrr").clone();
             $(".starrr").remove();
-            $("#divGrade").append;
+            $("#divGrade").append(star);
             $('.starrr').starrr({
                  rating: grade,
                  change: function(e, value){
@@ -1283,7 +1283,7 @@ input[type=number]::-webkit-outer-spin-button {
             //.starrr초기화
             var star=$(".starrr").clone();
             $(".starrr").remove();
-            $("#divGrade").append;
+            $("#divGrade").append(star);
 
             $(".starrr").starrr({
                 rating:grade2,
