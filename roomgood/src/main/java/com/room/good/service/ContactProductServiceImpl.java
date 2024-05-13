@@ -28,7 +28,7 @@ public class ContactProductServiceImpl implements ContactProductService {
     public List<ContactProductDTO> getListOfProduct(Long pno, PageRequestDTO pageRequestDTO) {
         Product product = Product.builder().pno(pno).build();
 
-        Pageable pageable = pageRequestDTO.getPageable(Sort.by("cpnum"));
+        Pageable pageable = pageRequestDTO.getPageable(Sort.by("cpnum").descending());
 
         List<ContactProduct> result = contactProductRepository.findByProduct(product,pageable);
 

@@ -31,11 +31,12 @@ public class MainControllerSumin {
 
     @GetMapping("/shop-details")
     public void getSDetails(Long pno, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO, Model model){
-
         ProductDTO productDTO=productService.read(pno);
         model.addAttribute("result",productService.getList(pageRequestDTO));
         model.addAttribute("dto",productDTO);
 
 
     };
+
+
 }
