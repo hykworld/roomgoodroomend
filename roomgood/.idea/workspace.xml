@@ -87,24 +87,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.GoodApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Build good.executor": "Run",
-    "Gradle.good [:GoodApplication.main()].executor": "Run",
-    "Gradle.good [bootWar].executor": "Run",
-    "Gradle.roomgood [:GoodApplication.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "koo",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/박한선/Desktop/realP/roomgood/src/main/resources/templates",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "애플리케이션.GoodApplication.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.GoodApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Build good.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.good [:GoodApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.good [bootWar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.roomgood [:GoodApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;koo&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/박한선/Desktop/realP/roomgood/src/main/resources/templates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;애플리케이션.GoodApplication.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\git_kdigital\springboot_workspace\finalproject\roomgood\src\main\resources" />
@@ -131,7 +131,7 @@
       <recent name="com.room.good.security.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.GoodApplication">
+  <component name="RunManager" selected="Application.GoodApplication">
     <configuration name="GoodApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.room.good.GoodApplication" />
       <module name="good.main" />
@@ -215,7 +215,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.GoodApplication" />
         <item itemvalue="Gradle.good [bootWar]" />
         <item itemvalue="Gradle.ProductRepositoryTest.createProductTest" />
         <item itemvalue="Gradle.ProductRepositoryTest.createItemTest" />

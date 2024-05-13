@@ -348,7 +348,8 @@
                                 </div>
                                 <div>
                                     <h5 id="price" th:text="${dto.price}"></h5>
-                                    <h5 style="color: #35C5F0; text-align: right;">[[${dto.categoryBig.deliveryFee}]]</h5>
+                                    <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}==0">무료배송</h5>
+                                    <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}!=0">[[${dto.categoryBig.deliveryFee}]]</h5>
                                 </div>
                                 <div class="product__color__select">
                                     <label for="pc-31"><input type="radio" id="pc-31"></label>
