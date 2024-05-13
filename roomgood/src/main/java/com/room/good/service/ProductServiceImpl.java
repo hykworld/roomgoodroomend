@@ -65,39 +65,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Long modify(ProductDTO productDTO) {
 
-        Optional<Product> product1=productRepository.findById(productDTO.getPno());
+            Map<String, Object> entityMap = dtoToEntity(productDTO);
+            Product product = (Product) entityMap.get("product");
+            List<ProductImage> productImageList=(List<ProductImage>)entityMap.get("imgList");
+            List<ProductImage2> productImageList2=(List<ProductImage2>)entityMap.get("imgList2");
+            productRepository.save(product); // Product 저장
 
-        if(product1.isPresent()){
-        Map<String, Object> entityMap = dtoToEntity(productDTO);
-        Product product = (Product) entityMap.get("product");
-        List<ProductImage> productImageList=(List<ProductImage>)entityMap.get("imgList");
-        List<ProductImage2> productImageList2=(List<ProductImage2>)entityMap.get("imgList2");
-        productRepository.save(product); // Product 저장
-
-        productImageList.forEach(productImage -> {
-            Optional<ProductImage> byId = productImageRepository.findById(productImage.getPinum());
-            log.info("here11");
-            if(byId.isPresent()) {
-                ProductImage save = productImageRepository.save(byId.get());
-                log.info("here1");
-            }else {
+            productImageList.forEach(productImage -> {
                 ProductImage save = productImageRepository.save(productImage);
-            }
-        });
-        productImageList2.forEach(productImage2 -> {
-            Optional<ProductImage2> byId2 = productImageRepository2.findById(productImage2.getPinum());
-            log.info("here22");
-            if(byId2.isPresent()) {
-            ProductImage2 save2 = productImageRepository2.save(byId2.get());
-                log.info("here2");
-            }else {
+            });
+            productImageList2.forEach(productImage2 -> {
                 ProductImage2 save = productImageRepository2.save(productImage2);
-            }
-        });
-        return product.getPno();
-        } else {
-            return null; // 혹은 다른 적절한 값을 반환할 수 있습니다.
-        }
+            });
+            return product.getPno();
     }
     /////////////////////리드//////////////////////////////////
     @Transactional
@@ -133,7 +113,27 @@ public class ProductServiceImpl implements ProductService {
         productImageRepository.deleteById(pno);
     }
 
-    /*페이징*******************************************************************************/
+    /*검색*******************************************************************************/
+    @Transactional
+    @Override
+    public PageResultDTO<ProductDTO, Object[]>findByPnameContaining(String pname, PageRequestDTO requestDTO){
+        Pageable pageable = requestDTO.getPageable(Sort.by("pno").descending());
+        Page<Object[]> result = productRepository.findByPnameContaining(pname, pageable);
+
+        log.info("==============================================");
+        result.getContent().forEach(arr -> {
+            log.info(Arrays.toString(arr));
+        });
+
+        Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
+                (Product) arr[0],
+                (List<ProductImage>) Arrays.asList((ProductImage) arr[1]),
+                (List<ProductImage2>) Arrays.asList((ProductImage2) arr[2])));
+        // PageResultDTO<DTO,EN> pageResult = new PageResultDTO<>(result, fn);
+        // return pageResult; 이거랑 같은 뜻임 . -> 즉 pageResult에 저 생성자 정보들
+        return new PageResultDTO<>(result, fn);
+        // 위에서 만들었던 펑션 -> <Object[], MovieDTO> 이 그릇을 가지고있는 fn과 result를 가지고 생성자를 호출중
+    }
     /*페이징*******************************************************************************/
     @Transactional
     @Override
@@ -174,73 +174,4 @@ public class ProductServiceImpl implements ProductService {
 
         return new PageResultDTO<>(result, fn);
     }
-
-//    @Transactional
-//    @Override
-//    public PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO requestDTO) {
-//
-//        Page<Object[]> result = null;
-//        if(requestDTO.getType()==null){
-//            Pageable pageable = requestDTO.getPageable(Sort.by("pno").descending());// mno 기준으로 솔팅!
-//            result = productRepository.getListPage(pageable); // 리스트를 페이징처리해서 가져옴
-//        }else if (requestDTO.getType().equals("0")) {
-//            result = productRepository.searchPageForAll(
-//                    requestDTO.getType(),
-//                    requestDTO.getKeyword(),
-//                    requestDTO.getPageable(Sort.by("pno").descending()));
-//        }else {
-//            result = productRepository.searchPage(
-//                    requestDTO.getType(),
-//                    requestDTO.getKeyword(),
-//                    requestDTO.getPageable(Sort.by("pno").descending()));
-//        }
-//        log.info("==============================================");
-//        result.getContent().forEach(arr -> {
-//            log.info(Arrays.toString(arr));
-//        });
-//
-//        Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
-//
-//                (Product) arr[0],
-//                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1]))));
-//
-//        return new PageResultDTO<>(result, fn);
-//    }
-//
-//    @Transactional
-//    @Override
-//    public PageResultDTO<ProductDTO, Object[]> categoryPage(long cno, PageRequestDTO requestDTO) {
-//
-//        Page<Object[]> result =null;
-//        if (requestDTO.getType() != null && requestDTO.getKeyword() != null) {
-//            // 검색 조건이 있는 경우
-//            if (requestDTO.getType() == null || requestDTO.getType().equals("0")) {
-//                // 전체 검색인 경우
-//                result = productRepository.searchPageForAll(
-//                        requestDTO.getType(),
-//                        requestDTO.getKeyword(), // 검색어 설정
-//                        requestDTO.getPageable(Sort.by("pno").descending()) // 페이지와 정렬 설정
-//                );
-//            } else {
-//                // 특정 타입에 따른 검색인 경우
-//                result = productRepository.searchPage(
-//                        requestDTO.getType(), // 타입 설정
-//                        requestDTO.getKeyword(), // 검색어 설정
-//                        requestDTO.getPageable(Sort.by("pno").descending()) // 페이지와 정렬 설정
-//                );
-//            }
-//        } else {
-//            // 검색 조건이 없는 경우
-//            result = productRepository.getListPageByCategory(cno, requestDTO.getPageable(Sort.by("pno").descending()));
-//        }
-//        Function<Object[], ProductDTO> fn = (arr -> entitiesToDTO(
-//                (Product) arr[0],
-//                (List<ProductImage>) (Arrays.asList((ProductImage) arr[1])))
-//        );
-//
-//        return new PageResultDTO<>(result, fn);
-//    }
-
-
-
 }
