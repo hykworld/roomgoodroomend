@@ -30,12 +30,16 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final StringPath content = createString("content");
 
+    public final NumberPath<Long> discount = createNumber("discount", Long.class);
+
     public final ListPath<ProductImage, QProductImage> images = this.<ProductImage, QProductImage>createList("images", ProductImage.class, QProductImage.class, PathInits.DIRECT2);
 
     public final EnumPath<com.room.good.constant.ItemSellStatus> itemSellStatus = createEnum("itemSellStatus", com.room.good.constant.ItemSellStatus.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
+
+    public final NumberPath<Long> originalPrice = createNumber("originalPrice", Long.class);
 
     public final StringPath pname = createString("pname");
 
