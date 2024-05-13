@@ -49,7 +49,7 @@ public class Product extends BaseEntity {
     private ItemSellStatus itemSellStatus; // 상품 판매 상태
 
 // 이미지는 따로 하는건가?
-    @ElementCollection(fetch = FetchType.LAZY)
+    @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private Set<Tag> tagSet = new HashSet<>();
 

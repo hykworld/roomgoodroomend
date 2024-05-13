@@ -22,7 +22,7 @@ public class CartDTO {
     private int totalPrice; // 총 가격
 
 
-    //    List<CartItemDTO> cartItemDTOList = new ArrayList<>();
+    //        List<CartItemDTO> cartItemDTOList = new ArrayList<>();
     @Builder.Default
     private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
 
@@ -33,9 +33,6 @@ public class CartDTO {
     private int quantity; // 총 수량 알기위해
 
     private int price; // 금액
-
-    
-    private ProductImageDTO productImageDTO;
 
     private String pipath; // 상품 이미지 경로
 

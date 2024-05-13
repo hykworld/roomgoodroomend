@@ -174,4 +174,9 @@ public class ProductServiceImpl implements ProductService {
 
         return new PageResultDTO<>(result, fn);
     }
+
+    public long getProductCount() {
+        return productRepository.getProductCount(); // 혹은 필요한 쿼리를 직접 호출하여 상품 수를 가져옴
+
+    }
 }
