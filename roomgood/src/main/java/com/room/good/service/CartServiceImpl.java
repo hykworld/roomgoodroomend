@@ -83,14 +83,12 @@ public class CartServiceImpl implements CartService {
 
             // 장바구니 관련 작업 수행
             if (cart != null) {
-<<<<<<< HEAD
-                CartDTO cartDTO = new CartDTO();
+                 cartDTO = new CartDTO();
 
                 cartDTO.setCartItems( cart.getCartItems());
                 cartDTO.getCartItems().size();
 
 
-=======
                 cartDTO.setCartItems(cart.getCartItems());
 //                cartDTO.setPipath(cartItem.get(0).getProduct().getImages().toString());
 //                cartDTO.setCno(cart.getCno());
@@ -98,7 +96,6 @@ public class CartServiceImpl implements CartService {
 //                cartDTO.setPname(cartItem.get(0).getProduct().getPname());
 //                cartDTO.setPrice(Math.toIntExact(cartItem.get(0).getProduct().getPrice()));
 //                cartDTO.setPipath(cart.getCartItems().get(0).getProduct().getImages().toString());
->>>>>>> a58e7b113d1b06a6e39bc0b03fc3ff9a06f5b17c
 
                 return cartDTO;
             }
