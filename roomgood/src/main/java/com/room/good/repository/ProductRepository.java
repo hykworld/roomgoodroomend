@@ -29,10 +29,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
 
-    @Query("select p, pi, pi2 from Product p " +
-            "left outer join ProductImage pi on pi.product = p " +
-            "left outer join ProductImage2 pi2 on pi2.product = p " +
-            "group by p")
+    @Query("SELECT p, pi, pi2 FROM Product p " +
+            "LEFT JOIN ProductImage pi ON pi.product = p " +
+            "LEFT JOIN ProductImage2 pi2 ON pi2.product = p " +
+            " group by p ")
     Page<Object[]> getListPage(Pageable pageable);
     // select Movie.* ,MovieImage.* ,  avg(coalesce(Review.grade,0)), count(Review.rno)
     // from Movie left outer join MovieImage on Movie.mno = MovieImage.movie_mno
@@ -51,24 +51,17 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query("SELECT p, pi, pi2 FROM Product p " +
             "LEFT JOIN ProductImage pi ON pi.product = p " +
             "LEFT JOIN ProductImage2 pi2 ON pi2.product = p " +
-            "WHERE p.categoryBig.cno = :cno " + // 카테고리 식별자로 필터링
-            "GROUP BY p")
+            "WHERE p.categoryBig.cno = :cno " +
+            " group by p ")
     Page<Object[]> getListPageByCategory(@Param("cno") Long cno, Pageable pageable);
-
-    @Query("SELECT p, pi FROM Product p " +
-            "LEFT JOIN ProductImage pi ON pi.product = p " +
-            "WHERE p.categoryBig.cno = :type and p.pname like %:keyword% " +
-            "GROUP BY p")
-    Page<Object[]> searchPage(String type,@Param("keyword")  String keyword, Pageable pageable);
-
-    @Query("SELECT p, pi FROM Product p " +
-            "LEFT JOIN ProductImage pi ON pi.product = p " +
-            "WHERE (coalesce(:type, '0') = '0' OR p.categoryBig.cno = :type) " + // 변경된 부분
-            "AND p.pname LIKE %:keyword% " +
-            "GROUP BY p")
-    Page<Object[]> searchPageForAll(@Param("type") String type, @Param("keyword") String keyword, Pageable pageable);
 
     @Query("select p, pi from Product p left join ProductImage pi on pi.product = p where p.pno = :pno")
     List<Object[]> getProduct(Long pno);
 
+    @Query("SELECT p, pi, pi2 FROM Product p " +
+            "LEFT OUTER JOIN ProductImage pi ON pi.product = p " +
+            "LEFT OUTER JOIN ProductImage2 pi2 ON pi2.product = p " + // 추가
+            "WHERE p.pname LIKE %:keyword% " +
+            "GROUP BY p")
+    Page<Object[]> findByPnameContaining(@Param("keyword") String keyword, Pageable pageable);
 }

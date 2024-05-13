@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.NumberFormat;
 
 
 import java.util.ArrayList;
@@ -32,7 +33,12 @@ public class Product extends BaseEntity {
 
     @Column(nullable = false)// null값 안됨
     private Long stock; //재고
+
     private Long price;//가격
+
+    private Long originalPrice;//할인된가격
+
+    private Long discount;//할인율
 
     @Lob//데이터를 어디에 저장할지 2가지 타입 중에 선택해서 외부저장
     // CLOB=텍스트 BLOB=미디어파일
@@ -71,7 +77,6 @@ public class Product extends BaseEntity {
 
 //    @OneToMany(mappedBy = "product", orphanRemoval = true)
 //    private List<ContactProduct> contactProducts;
-
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default

@@ -171,6 +171,19 @@
         height: 180px;
         background-color: #f4f8ff
     }
+
+    .tag-button {
+            display: inline-block;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .tag-button.selected {
+            background-color: #3498db;
+            color: #ffffff;
+        }
 </style>
 <!-------------------업로드 이미지 구역 css--------------------->
 <body>
@@ -264,7 +277,7 @@
             <div class="mb-3">
                 <div class="input-group" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                     <div class="col-lg-3">카테고리</div>
-                    <select class="custom-select" id="categoryLevel1" name="categoryBig">
+                    <select class="custom-select" id="categoryLevel1" name="categoryBig" required>
                         <option disabled selected>대분류 선택</option>
                         <option value="1">가구</option>
                         <option value="2">가전</option>
@@ -277,18 +290,26 @@
             <!--카테고리-->
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <div class="col-lg-2">상품명</div>
-                <input type="text" class="form-control mb-3" style="color:#333; max-width:80%;" name="pname" placeholder="상품명(필수)">
+                <input type="text" class="form-control mb-3" style="color:#333; max-width:80%;" name="pname" placeholder="상품명(필수)" required>
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <input type="text" class="form-control col-lg-10" name="price" placeholder="판매가(필수)">
-                <div class="col-lg-2">판매가</div>
+                <input type="text" class="form-control col-lg-10" id="originalPrice" name="originalPrice" placeholder="판매원가" required>
+                <div class="col-lg-2">원</div>
+            </div>
+            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-10" id="discount" name="discount" placeholder="할인(0~99%) ">
+                <div class="col-lg-2">할인</div>
+            </div>
+            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-10" id="price" name="price" placeholder="소비자 판매가" readonly>
+                <div class="col-lg-2">원</div>
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <input type="text" class="form-control col-lg-10" name="stock" placeholder="수량">
-                <div class="col-lg-2">수량</div>
+                <div class="col-lg-2">개</div>
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <div class="col-lg-2">상품명</div>
+                <div class="col-lg-3">요약 설명</div>
                 <input type="text" class="form-control mb-3" name="subContent" placeholder="상품 요약 설명">
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
@@ -306,41 +327,33 @@
 
             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
             <div class="form-check" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; ">
-                <div class="col-lg-4">제품 태그 </div>
+                <div class="">제품 태그 </div>
+                <br>
                 <div class="row">
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag1" name="tag1">
-                        <label class="form-check-label" for="tag1">태그 1</label>
+                        <button class="tag-button" id="tag1">여름가전</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag2" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 2</label>
+                        <button class="tag-button" id="tag2">여름세일</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag3" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 3</label>
+                        <button class="tag-button" id="tag3">반짝세일</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag4" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 4</label>
+                        <button class="tag-button" id="tag4">마감세일</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag5" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 5</label>
+                        <button class="tag-button" id="tag5">추천아이템</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag6" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 6</label>
+                        <button class="tag-button" id="tag6">여름밤바다</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag7" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 7</label>
+                        <button class="tag-button" id="tag7">장마대비</button>
                     </div>
                     <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag8" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 8</label>
+                        <button class="tag-button" id="tag8">세일상품</button>
                     </div>
-                    <!-- 나머지 체크 박스들도 동일한 방법으로 추가 -->
                 </div>
             </div>
             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
@@ -375,10 +388,12 @@
     <div class="box">
     </div>
     <!--이미지 박스-->
+    <div style="text-align: center; margin-bottom: 2rem;" class="md-3">
     <button id="submitBtn" type="submit">상품등록</button>
     <a th:href="@{/shop}">
         <button type="button" class="listBtn">리스트</button>
     </a>
+    </div>
 </form>
 
 <!---------------------- 상품 등록 구간 end---------------------------------------------------------------------------------------------------->
@@ -413,6 +428,27 @@
     };
 </script>
 <script src="js/main.js"></script>
+<!--할인률 계산----------------------->
+<script>
+    function calculateDiscount() {
+    var originalPrice = parseFloat(document.getElementById("originalPrice").value);
+    var discount = parseFloat(document.getElementById("discount").value);
+
+    if (!isNaN(originalPrice) && !isNaN(discount)) {
+        var discountedPrice = originalPrice - (originalPrice * (discount / 100));
+        // 할인된 가격이 0 이하인 경우 null 대신 0을 사용하려면 아래와 같이 처리할 수 있습니다.
+        document.getElementById("price").value = Math.floor(discountedPrice);
+    } else {
+        // 입력값이 없을 때는 할인된 가격 필드를 빈 문자열로 설정
+        document.getElementById("price").value = "";
+    }
+}
+
+document.getElementById("originalPrice").addEventListener("input", calculateDiscount);
+document.getElementById("discount").addEventListener("input", calculateDiscount);
+
+</script>
+
 <!--------------제품 상태 체크 박스--------------------------------------------------->
 <script>
     const checkboxes = document.querySelectorAll('input[name="itemSellStatus"]');
@@ -425,11 +461,19 @@
             });
         });
     });
+
+
+    // 버튼 클릭 시 선택 상태 변경
+    document.querySelectorAll('.tag-button').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // 기본 동작(서밋) 방지
+            this.classList.toggle('selected'); // 선택 상태 토글
+        });
+    });
 </script>
 <!-- 이미지 업로드 ----js------------------------------------------------>
 <script>
     $(document).ready(function(){
-
 /// 이미지 박스  컨텐츠 박스에 맞게
     $(".imgUpBox").height($(".contentBox")
     .height()-$(".custom-file-input")-$(".uploadResul").height());
@@ -444,7 +488,8 @@
         $(document).ajaxSend(function (e, xhr, options) {
             xhr.setRequestHeader(csrfHeader, csrfToken);
         });
-    ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
+ ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
+
 
 /////////////이미지 체크////////////
 var regex = new RegExp("(.*?\.(jpg|png|gif))$");
@@ -676,9 +721,73 @@ $(".custom-file-input2").on("change", function () {
             removeImage(targetFile); // 이미지 삭제 함수 호출
             targetLi.remove(); // 화면에서 썸네일 삭제
         });
+
 ////////////등록버튼클릭//////////////////////////////////////
         $("#submitBtn").on("click",function(e){
             e.preventDefault();  //전송방지
+
+            // 카테고리 선택 확인
+            var categoryValue = $("#categoryLevel1").val();
+            if (!categoryValue) {
+                alert("카테고리를 선택해주세요.");
+                return; // 전송 중단
+            }
+
+            // 상품명 입력 확인
+            var productName = $("input[name='pname']").val();
+            if (!productName) {
+                alert("상품명을 입력해주세요.");
+                return; // 전송 중단
+            }
+
+            // 판매원가 입력 확인
+            var originalPrice = $("input[name='originalPrice']").val();
+            if (!originalPrice) {
+                alert("판매원가를 입력해주세요.");
+                return; // 전송 중단
+            }
+
+        // 숫자만 입력되도록 제한
+            if (!/^[0-9]+$/.test(originalPrice)) {
+                alert("가격은 숫자만 입력하세요.");
+                return; // 전송 중단
+            }
+
+            // 할인 입력 확인
+            var discount = $("input[name='discount']").val();
+            if (!discount) {
+                alert("할인률을 확인해주세요.");
+                return; // 전송 중단
+            }
+
+            // 할인 입력 확인
+            var discount = $("input[name='discount']").val();
+            if (discount && (!/^[0-9]+$/.test(discount) || discount < 0 || discount > 99)) {
+                alert("할인은 0부터 99까지의 숫자만 입력하세요.");
+                return; // 전송 중단
+            }
+
+            // 판매수량 입력 확인
+            var stock = $("input[name='stock']").val();
+            if (!stock) {
+                alert("제품 수량을 입력해주세요.");
+                return; // 전송 중단
+            }
+            // 요약 설명 입력 확인
+            var subContent = $("input[name='subContent']").val();
+            if (!subContent) {
+                alert("요약 설명을 입력해주세요.");
+                return; // 전송 중단
+            }
+
+            // 제품 상태 입력 확인
+            var itemSellStatus = $("input[name='itemSellStatus']:checked").val();
+            if (!itemSellStatus) {
+                alert("제품 상태를 선택해주세요.");
+                return; // 전송 중단
+            }
+
+// 이미지 데이터
             var str="";
             $(".uploadResult li").each(function(i,obj){
                 var target=$(obj);
@@ -689,10 +798,10 @@ $(".custom-file-input2").on("change", function () {
             });
 
              $(".uploadResult2 li").each(function(i,obj){
-                var target = $(obj);
-                str += "<input type='hidden' name='imageDTOList2["+i+"].piimgName' value='"+target.data('name') +"'>";
-                str += "<input type='hidden' name='imageDTOList2["+i+"].pipath' value='"+target.data('path')+"'>";
-                str += "<input type='hidden' name='imageDTOList2["+i+"].piuuid' value='"+target.data('uuid')+"'>";
+                var target=$(obj);
+                str+="<input type='hidden' name='imageDTOList2["+i+"].piimgName' value='"+target.data('name')+"'>";
+                str+="<input type='hidden' name='imageDTOList2["+i+"].pipath' value='"+target.data('path')+"'>";
+                str+="<input type='hidden' name='imageDTOList2["+i+"].piuuid' value='"+target.data('uuid')+"'>";
             });
 
             $(".box").html(str); // hidden태그 출력

@@ -31,7 +31,7 @@ public class SoominServiceImpl implements SoominService{
     @Override
     public List<ProductListDTO> getProductList(PageRequestDTO pageRequestDTO) {
 
-        Pageable pageable = pageRequestDTO.getPageable(Sort.by("pno"));
+        Pageable pageable = pageRequestDTO.getPageable(Sort.by("pno").descending());
 
         Page<Product> result = productRepository.findAll(pageable);
 
@@ -65,7 +65,7 @@ public class SoominServiceImpl implements SoominService{
     @Override
     public List<ReviewDTO> getReviewListAll(Long pno, PageRequestDTO pageRequestDTO) {
 
-        Pageable pageable = pageRequestDTO.getPageable(Sort.by("rnum"));
+        Pageable pageable = pageRequestDTO.getPageable(Sort.by("rnum").descending());
 
         return reviewRepository.findByProduct(Product.builder().pno(pno).build(),pageable).stream().map(review ->
                 ReviewDTO.builder()

@@ -32,13 +32,16 @@ public interface ProductService {
         PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO requestDTO); //목록 처리!
         //////// 카테고리///////////////////////////////////////////////////
         PageResultDTO<ProductDTO, Object[]> categoryPage(long cno, PageRequestDTO requestDTO);
-
+        //////// 카테고리///////////////////////////////////////////////////
+        PageResultDTO<ProductDTO, Object[]>findByPnameContaining(String keyword, PageRequestDTO requestDTO);
         //////// 엔티티 투 디티오///////////////////////////////////////////////////
         default ProductDTO entitiesToDTO(Product product, List<ProductImage> productImages, List<ProductImage2> productImages2) {
                 ProductDTO productDTO = ProductDTO.builder()
                         .pno(product.getPno())
                         .pname(product.getPname())
                         .price(product.getPrice())
+                        .discount(product.getDiscount())
+                        .originalPrice(product.getOriginalPrice())
                         .stock(product.getStock())
                         .itemSellStatus(product.getItemSellStatus())
                         .content(product.getContent())
@@ -100,6 +103,8 @@ public interface ProductService {
                         .pno(productDTO.getPno())
                         .pname(productDTO.getPname())
                         .price(productDTO.getPrice())
+                        .discount(productDTO.getDiscount())
+                        .originalPrice(productDTO.getOriginalPrice())
                         .stock(productDTO.getStock())
                         .itemSellStatus(productDTO.getItemSellStatus())
                         .content(productDTO.getContent())
@@ -144,7 +149,6 @@ public interface ProductService {
                 entityMap.put("product", product); // 엔티티 맵에 제품 추가
                 return entityMap;
         }
-
         /*클라이언트에 받은 값을 엔티티로 바꿔서 db에 저장
          ***********************************************************************/
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>상품등록</title>
+    <title>상품수정</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -223,7 +223,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>상품 등록</h4>
+                    <h4>상품 수정</h4>
                     <div class="breadcrumb__links">
                         <a href="/index">상품 수정</a>
                         <span>상품 수정 페이지</span>
@@ -284,16 +284,26 @@
                        th:value="${dto.pname}">
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <input type="text" class="form-control col-lg-11" name="price" placeholder="수량"
+                <input type="text" class="form-control col-lg-11" id="originalPrice" name="originalPrice" placeholder="판매원가"
+                       th:value="${dto.originalPrice}">
+                <div class="col-lg-2">원</div>
+            </div>
+            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-11" id="discount" name="discount" placeholder="할인(%)"
+                       th:value="${dto.discount}">
+                <div class="col-lg-2">할인</div>
+            </div>
+            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-11" id="price" name="price" placeholder="소비자 판매가" readonly
                        th:value="${dto.price}">
-                <div class="col-lg-1">원</div>
+                <div class="col-lg-2">원</div>
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <input type="text" class="form-control col-lg-11" name="stock" placeholder="수량" th:value="${dto.stock}">
-                <div class="col-lg-2">수량</div>
+                <div class="col-lg-2">개</div>
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <div class="col-lg-2">요약 설명</div>
+                <div class="col-lg-3">요약 설명</div>
                 <input type="text" class="form-control mb-3" name="subContent" placeholder="상품 요약 설명" th:value="${dto.subContent}">
             </div>
             <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
@@ -311,41 +321,35 @@
 
             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
             <div class="form-check" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; ">
-                <div class="col-lg-4">제품 태그 </div>
+                <div class="">제품 태그 </div>
+                <br>
                 <div class="row">
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag1" name="tag1">
-                        <label class="form-check-label" for="tag1">태그 1</label>
+                    <div class="row">
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag1">여름가전</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag2">여름세일</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag3">반짝세일</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag4">마감세일</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag5">추천아이템</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag6">여름밤바다</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag7">장마대비</button>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <button class="tag-button" id="tag8">세일상품</button>
+                        </div>
                     </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag2" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 2</label>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag3" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 3</label>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag4" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 4</label>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag5" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 5</label>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag6" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 6</label>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag7" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 7</label>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input class="form-check-input" type="checkbox" id="tag8" name="tag2">
-                        <label class="form-check-label" for="tag2">태그 8</label>
-                    </div>
-                    <!-- 나머지 체크 박스들도 동일한 방법으로 추가 -->
                 </div>
             </div>
             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
@@ -368,18 +372,22 @@
                 </ul>
             </div>
         </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input2 files" id="fileInput2" multiple>
-            <label class="custom-file-label" data-browse="파일첨부"></label>
+        <div class="form-group fileForm">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input2 files" id="fileInput2" multiple>
+                <label class="custom-file-label" data-browse="파일첨부"></label>
+            </div>
         </div>
     </div>
     <!--이미지 박스-->
     <div class="box" style="background-color:red; height:100px">
     </div>
     <!--이미지 박스-->
-    <button type="button" id="submitBtn" class="submitBtn">수정하기</button>
-    <button type="button" class="listBtn">리스트</button>
-    <button type="button" class="removeBtn">Remove</button>
+    <div style="text-align: center; margin-bottom: 2rem;" class="md-3">
+        <button type="button" id="submitBtn" class="submitBtn">수정하기</button>
+        <button type="button" class="listBtn">리스트</button>
+        <button type="button" class="removeBtn">Remove</button>
+    </div>
 </form>
 <!---------------------- 상품 등록 구간 end---------------------------------------------------------------------------------------------------->
 <!-- Footer Section Begin -->
@@ -413,7 +421,26 @@
     };
 </script>
 <script src="js/main.js"></script>
+<!--할인률 계산----------------------->
+<script>
+    function calculateDiscount() {
+    var originalPrice = parseFloat(document.getElementById("originalPrice").value);
+    var discount = parseFloat(document.getElementById("discount").value);
 
+    if (!isNaN(originalPrice) && !isNaN(discount)) {
+        var discountedPrice = originalPrice - (originalPrice * (discount / 100));
+        // 할인된 가격이 0 이하인 경우 null 대신 0을 사용하려면 아래와 같이 처리할 수 있습니다.
+        document.getElementById("price").value = Math.floor(discountedPrice);
+    } else {
+        // 입력값이 없을 때는 할인된 가격 필드를 빈 문자열로 설정
+        document.getElementById("price").value = "";
+    }
+}
+
+document.getElementById("originalPrice").addEventListener("input", calculateDiscount);
+document.getElementById("discount").addEventListener("input", calculateDiscount);
+
+</script>
 <!--------------제품 상태 체크 박스--------------------------------------------------->
 <script>
     const checkboxes = document.querySelectorAll('input[name="itemSellStatus"]');
@@ -449,321 +476,501 @@ if (itemSellStatus === 'SELL') {
 <!-----------------------제품 상태 체크 박스end------------------------------------------>
 <!-- 이미지 업로드 ----js------------------------------------------------>
 <script th:inline="javascript">
-    $(document).ready(function(){
+    // 버튼 클릭 시 선택 상태 변경
+   document.querySelectorAll('.tag-button').forEach(function(button) {
+       button.addEventListener('click', function(event) {
+           event.preventDefault(); // 기본 동작(서밋) 방지
+           this.classList.toggle('selected'); // 선택 상태 토글
+       });
+   });
 
-        $(window).resize(function(){
+   $(document).ready(function(){
 
-    $('.img_Upload_Box').each(function() {
-    $(this).height($(this).width());
-    });
-    }).resize();
+       $(window).resize(function(){
 
-/// 이미지 박스  컨텐츠 박스에 맞게
-    $(".imgUpBox").height($(".contentBox")
-    .height()-$(".custom-file-input").height());
+   $('.img_Upload_Box').each(function() {
+   $(this).height($(this).width());
+   });
+   }).resize();
 
 ////////////////csrf 토큰////////////////////////////////////////////////////////////////
-       var csrfToken = $("meta[name='_csrf']").attr("content");
-       var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+      var csrfToken = $("meta[name='_csrf']").attr("content");
+      var csrfHeader = $("meta[name='_csrf_header']").attr("content");
 <!--            var csrfToken = /*[[${_csrf.token}]]*/ null;-->
 <!--            var csrfHeader = /*[[${_csrf.headerName}]]*/ null;-->
-        $(document).ajaxSend(function (e, xhr, options) {
-            xhr.setRequestHeader(csrfHeader, csrfToken);
-        });
+       $(document).ajaxSend(function (e, xhr, options) {
+           xhr.setRequestHeader(csrfHeader, csrfToken);
+       });
 ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
 ////////////이미지 체크///////////////////////
-    var regex = new RegExp("(.*?\.(jpg|png|gif))$");
-    var maxSize = 10 * 1024 * 1024; //10MB
+   var regex = new RegExp("(.*?\.(jpg|png|gif))$");
+   var maxSize = 10 * 1024 * 1024; //10MB
 
-    function checkExtension(fileName, fileSize) {
-        if (fileSize > maxSize) {
-            alert("파일사이즈가 10MB를 초과했습니다");
-            return false;
-        }
-        if (!regex.test(fileName)) {
-            alert("이미지만 업로드할 수 있습니다");
-            return false;
-        }
-        return true;
-    }
+   function checkExtension(fileName, fileSize) {
+       if (fileSize > maxSize) {
+           alert("파일사이즈가 10MB를 초과했습니다");
+           return false;
+       }
+       if (!regex.test(fileName)) {
+           alert("이미지만 업로드할 수 있습니다");
+           return false;
+       }
+       return true;
+   }
 
 $(".custom-file-input").on("change", function () {
-    var fileName = $(this).val().split("\\").pop(); //파일명만 구하기
-    $(this).siblings(".custom-file-label").html(fileName);
+   var fileName = $(this).val().split("\\").pop(); // 파일명만 구하기
+   $(this).siblings(".custom-file-label").html(fileName);
 
-    var formData = new FormData(); // form에 대응되는 객체
-    var inputFile = $(this); // 들어간 파일
-    var files = inputFile[0].files;
+   var formData = new FormData(); // form에 대응되는 객체
+   var inputFile = $(this); // 들어간 파일
+   var files = inputFile[0].files;
 
-    var appended = false; // 첨부파일 선택 여부 체크 플래그
+   var appended = false; // 첨부파일 선택 여부 체크 플래그
 
-    for (var i = 0; i < files.length; i++) {
-        if (!checkExtension(files[i].name, files[i].size)) {
-            return false;
-        }
-        console.log(files[i]);
-        formData.append("uploadFiles", files[i]);
-        appended = true; // 첨부파일 선택 true
-    }
+   for (var i = 0; i < files.length; i++) {
+       if (!checkExtension(files[i].name, files[i].size)) {
+           return false;
+       }
+       console.log(files[i]);
+       formData.append("uploadFiles", files[i]);
+       appended = true; // 첨부파일 선택 true
+   }
 
-    // 첨부파일 선택하지 않았으면 종료
-    if (!appended) {
-        return;
-    }
-    // ajax방식으로 파일 전송
-    $.ajax({
-        url: "/uploadAjax", // 서버 주소
-        processData: false, // 파일 전송 시 설정
-        contentType: false, // 파일 전송 시 설정
-        data: formData, // 서버로 전송되는 데이터
-        type: "post", // 전송 방식
-        dataType: "json", // 서버에서 넘어오는 데이터의 형식
-        success: function (result) { // 서버에서 데이터가 정상적으로 넘어오면
+   // 첨부파일 선택하지 않았으면 종료
+   if (!appended) {
+       return;
+   }
+   // ajax방식으로 파일 전송
+   $.ajax({
+       url: "/uploadAjax", // 서버 주소
+       processData: false, // 파일 전송 시 설정
+       contentType: false, // 파일 전송 시 설정
+       data: formData, // 서버로 전송되는 데이터
+       type: "post", // 전송 방식
+       dataType: "json", // 서버에서 넘어오는 데이터의 형식
+       success: function (result) { // 서버에서 데이터가 정상적으로 넘어오면
+           console.log("qqqw"+result);
+           showResult(result); // 썸네일 목록 출력
 
-           console.log(result);
-            showResult(result); // 썸네일 목록 출력
-            $(".custom-file-input").val(""); // input type="file"
            $(".custom-file-label").html(""); // input type="file" 실제 화면 초기화
-        }
-    });
-});
- ///////////////////////////////// 상세내용 이미지/////////
-$(".custom-file-input2").on("change", function () {
-    var fileName = $(this).val().split("\\").pop(); //파일명만 구하기
-    $(this).siblings(".custom-file-label").html(fileName);
-
-    var formData = new FormData(); // form에 대응되는 객체
-    var inputFile = $(this); // 들어간 파일
-    var files = inputFile[0].files;
-
-    var appended = false; // 첨부파일 선택 여부 체크 플래그
-
-    for (var i = 0; i < files.length; i++) {
-        if (!checkExtension(files[i].name, files[i].size)) {
-            return false;
-        }
-        console.log(files[i]);
-        formData.append("uploadFiles", files[i]);
-        appended = true; // 첨부파일 선택 true
-    }
-
-    // 첨부파일 선택하지 않았으면 종료
-    if (!appended) {
-        return;
-    }
-    // ajax방식으로 파일 전송
-    $.ajax({
-        url: "/uploadAjax", // 서버 주소
-        processData: false, // 파일 전송 시 설정
-        contentType: false, // 파일 전송 시 설정
-        data: formData, // 서버로 전송되는 데이터
-        type: "post", // 전송 방식
-        dataType: "json", // 서버에서 넘어오는 데이터의 형식
-        success: function (result) { // 서버에서 데이터가 정상적으로 넘어오면
-
-           console.log(result);
-            showResult3(result); // 썸네일 목록 출력
-            $(".custom-file-input").val(""); // input type="file"
-           $(".custom-file-label").html(""); // input type="file" 실제 화면 초기화
-        }
-    });
+       }
+   });
 });
 //////////////////////////////////등록버튼 클릭시.end (드래그앤드롭 xx)////////////////////////////////
-      var firstImageData = null; // 첫 번째 이미지 정보를 저장할 변수
-      function showResult2(uploadResultArr){
-      var uploadURL=$(".uploadResult ul"); // 썸네일이 출력되는 위치
-      var viewImageURL = $(".viewimage ul"); // 첫 번째 이미지를 출력할 위치
+     var firstImageData = null; // 첫 번째 이미지 정보를 저장할 변수
+     function showResult2(uploadResultArr){
+     var uploadURL=$(".uploadResult ul"); // 썸네일이 출력되는 위치
+     var viewImageURL = $(".viewimage ul"); // 첫 번째 이미지를 출력할 위치
 
-        var str="";
-        var isFirstImage = true; // 첫 번째 이미지 여부를 확인하기 위한 변수
-        $(uploadResultArr).each(function(i,obj){
-            str+="<li data-name='"+obj.piimgName+"' data-path='"+obj.pipath+"' data-uuid='"+obj.piuuid+"'>";
-            str+="<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
-            str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
-            str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
-            str+="</div>";
-            str+="</li>";
+       var str="";
+       var isFirstImage = true; // 첫 번째 이미지 여부를 확인하기 위한 변수
+       $(uploadResultArr).each(function(i,obj){
+           str+="<li data-name='"+obj.piimgName+"' data-path='"+obj.pipath+"' data-uuid='"+obj.piuuid+"'>";
+           str+="<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
+           str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
+           str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
+           str+="</div>";
+           str+="</li>";
 
 
-            if(isFirstImage){
-                    var firstImage ="<li data-name='" + obj.piimgName + "' data-path='" + obj.pipath + "' data-uuid='" + obj.piuuid + "'>";
-                    firstImage += "<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
-                    firstImage += "<img src='/display?fileName=" + obj.imageURL + "' style='width: auto; height: 100%; max-height: 400px; margin:0px;'>";
-                    firstImage += "</div>";
-                    firstImage += "</li>";
+           if(isFirstImage){
+                   var firstImage ="<li data-name='" + obj.piimgName + "' data-path='" + obj.pipath + "' data-uuid='" + obj.piuuid + "'>";
+                   firstImage += "<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
+                   firstImage += "<img src='/display?fileName=" + obj.imageURL + "' style='width: auto; height: 100%; max-height: 400px; margin:0px;'>";
+                   firstImage += "</div>";
+                   firstImage += "</li>";
 
-                    viewImageURL.html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
-                    firstImageData = obj; // 첫 번째 이미지 정보 저장
-                    isFirstImage = false; // 첫 번째 이미지를 추가했음을 표시
-                }
-        });
-        uploadURL.append(str);
-    }
-    var testimg =[[${dto.imageDTOList}]];
-    console.log(testimg);
+                   viewImageURL.html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
+                   firstImageData = obj; // 첫 번째 이미지 정보 저장
+                   isFirstImage = false; // 첫 번째 이미지를 추가했음을 표시
+               }
+       });
+       uploadURL.append(str);
+   }
+   var testimg =[[${dto.imageDTOList}]];
+   console.log(testimg);
 
-    function showimg(){
-        showResult2(testimg);
-    }
-    showimg();
-    });
+   function showimg(){
+       showResult2(testimg);
+   }
+   showimg();
+   });
 
-    // 이미지 삭제 이벤트 핸들러
-        $(".uploadResult").on("click", "li img", function(){
-            var targetFile = $(this).closest("li").find(".imageURL").val();  // 이미지 파일 경로를 가져옵니다.
-            var targetLi = $(this).closest("li"); // 클릭한 이미지의 부모 li 요소
+   // 이미지 삭제 이벤트 핸들러
+$(".uploadResult").on("click", "li img", function() {
+   var targetFile = $(this).closest("li").find(".imageURL").val(); // 이미지 파일 경로를 가져옵니다.
+   var targetLi = $(this).closest("li"); // 클릭한 이미지의 부모 li 요소
 
-            removeImage(targetFile); // 이미지 삭제 함수 호출
-            targetLi.remove(); // 화면에서 썸네일 삭제
-        });
- function removeImage(targetFile){
-            // 서버로 이미지 삭제 요청을 보냅니다.
-            $.ajax({
-                url: "/removeFile", // 서버 주소
-                data: { fileName: targetFile }, // 서버로 전송되는 데이터
-                dataType: "text", // 서버에서 넘어오는 데이터의 타입
-                type: "post", // 전송 방식
-                success: function(result){ // 서버로부터 정상적으로 응답이 올 때
-                    if(result == "true"){
-                        alert("이미지가 삭제되었습니다");
-                    }
+   removeImage(targetFile); // 이미지 삭제 함수 호출
+   targetLi.remove(); // 화면에서 썸네일 삭제
+});
 
-                    // 삭제한 이미지가 첫 번째 이미지와 동일한 경우, 첫 번째 이미지 영역도 삭제합니다.
-                    if(firstImageData && targetFile == firstImageData.imageURL){
-                        $(".viewimage ul").empty(); // 첫 번째 이미지 영역 비우기
+function removeImage(targetFile) {
+   // 서버로 이미지 삭제 요청을 보냅니다.
+   $.ajax({
+       url: "/removeFile", // 서버 주소
+       data: { fileName: targetFile }, // 서버로 전송되는 데이터
+       dataType: "text", // 서버에서 넘어오는 데이터의 타입
+       type: "post", // 전송 방식
+       success: function(result) { // 서버로부터 정상적으로 응답이 올 때
+           if (result == "true") {
+               alert("이미지가 삭제되었습니다");
+           }
 
-                        // 다음 이미지가 있을 경우 첫 번째 이미지로 설정합니다.
-                        var nextImageLi = $(".uploadResult ul li").first(); // 다음 이미지의 <li> 요소 가져오기
-                        if(nextImageLi.length > 0){
-                            var nextImageData = {
-                                fileName: nextImageLi.data("name"),
-                                folderPath: nextImageLi.data("path"),
-                                uuid: nextImageLi.data("uuid"),
-                                thumbnailURL: nextImageLi.find("img").attr("src"),
-                                imageURL: nextImageLi.find(".imageURL").val()
-                            };
-                            var firstImage = "<li data-name='" + nextImageData.piimgName + "' data-path='" + nextImageData.pipath + "' data-uuid='" + nextImageData.piuuid + "'>";
-                            firstImage += "<div class='viewimage' style='position: relative; display: flex; flex-direction: column; overflow: hidden;'>"; // .viewimage 요소 추가
-                            firstImage += "<img src='" + nextImageData.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
-                            firstImage += "</div>";
-                            firstImage += "</li>";
-                            $(".viewimage ul").html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
-                            firstImageData = nextImageData; // 첫 번째 이미지 정보 업데이트
-                        }
-                    }
-                }
-            });
-        }
+           // 삭제한 이미지가 첫 번째 이미지와 동일한 경우, 첫 번째 이미지 영역도 삭제합니다.
+           if (firstImageData && targetFile == firstImageData.imageURL) {
+               $(".viewimage ul").empty(); // 첫 번째 이미지 영역 비우기
 
-    <!--ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ-->
-         //uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
-        var firstImageData = null; // 첫 번째 이미지 정보를 저장할 변수
+               // 다음 이미지가 있을 경우 첫 번째 이미지로 설정합니다.
+               var nextImageLi = $(".uploadResult ul li").first(); // 다음 이미지의 <li> 요소 가져오기
+               if (nextImageLi.length > 0) {
+                   var nextImageData = {
+                       fileName: nextImageLi.data("name"),
+                       folderPath: nextImageLi.data("path"),
+                       uuid: nextImageLi.data("uuid"),
+                       thumbnailURL: nextImageLi.find("img").attr("src"),
+                       imageURL: nextImageLi.find(".imageURL").val()
+                   };
+                   var firstImage = "<li data-name='" + nextImageData.fileName + "' data-path='" + nextImageData.folderPath + "' data-uuid='" + nextImageData.uuid + "'>";
+                   firstImage += "<div class='viewimage' style='position: relative; display: flex; flex-direction: column; overflow: hidden;'>"; // .viewimage 요소 추가
+                   firstImage += "<img src='" + nextImageData.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
+                   firstImage += "</div>";
+                   firstImage += "</li>";
+                   $(".viewimage ul").html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
+                   firstImageData = nextImageData; // 첫 번째 이미지 정보 업데이트
+               }
+           }
+       }
+   });
+}
+   <!--ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ-->
+        //uploadResultArr는 업로드 결과값을 담고 잇는 배열 / 각 이미지 정보를 순회하면서 HTML 문자열을 생성합니다.
+       var firstImageData = null; // 첫 번째 이미지 정보를 저장할 변수
 
-        function showResult(uploadResultArr){
-            var uploadURL = $(".uploadResult ul"); // 썸네일이 출력되는 위치
-            var viewImageURL = $(".viewimage ul"); // 첫 번째 이미지를 출력할 위치
+       function showResult(uploadResultArr){
+           var uploadURL = $(".uploadResult ul"); // 썸네일이 출력되는 위치
+           var viewImageURL = $(".viewimage ul"); // 첫 번째 이미지를 출력할 위치
 
-            var str = "";
-            var isFirstImage = true; // 첫 번째 이미지 여부를 확인하기 위한 변수
+           var str = "";
+           var isFirstImage = true; // 첫 번째 이미지 여부를 확인하기 위한 변수
 
-            $(uploadResultArr).each(function(i, obj){
-                str += "<li data-name='" + obj.fileName + "' data-path='" + obj.folderPath + "' data-uuid='" + obj.uuid + "'>";
-                str += "<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
-                str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
-                str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
-                str += "</div>";
-                str += "</li>";
+           $(uploadResultArr).each(function(i, obj){
+               str += "<li data-name='" + obj.fileName + "' data-path='" + obj.folderPath + "' data-uuid='" + obj.uuid + "'>";
+               str += "<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
+               str += "<img src='/display?fileName=" + obj.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
+               str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
+               str += "</div>";
+               str += "</li>";
 
-                if(isFirstImage){
-                    var firstImage = "<li data-name='" + obj.fileName + "' data-path='" + obj.folderPath + "' data-uuid='" + obj.uuid + "'>";
-                    firstImage += "<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
-                    firstImage += "<img src='/display?fileName=" + obj.imageURL + "' style='width: auto; height: 100%; max-height: 400px; margin:0px;'>";
-                    firstImage += "</div>";
-                    firstImage += "</li>";
+               if(isFirstImage){
+                   var firstImage = "<li data-name='" + obj.fileName + "' data-path='" + obj.folderPath + "' data-uuid='" + obj.uuid + "'>";
+                   firstImage += "<div style='position: relative; display: flex; flex-direction: column;'>"; // 세로로 배치
+                   firstImage += "<img src='/display?fileName=" + obj.imageURL + "' style='width: auto; height: 100%; max-height: 400px; margin:0px;'>";
+                   firstImage += "</div>";
+                   firstImage += "</li>";
 
-                    viewImageURL.html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
-                    firstImageData = obj; // 첫 번째 이미지 정보 저장
-                    isFirstImage = false; // 첫 번째 이미지를 추가했음을 표시
-                }
-            });
-            uploadURL.append(str);
-        }
+                   viewImageURL.html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
+                   firstImageData = obj; // 첫 번째 이미지 정보 저장
+                   isFirstImage = false; // 첫 번째 이미지를 추가했음을 표시
+               }
+           });
+           uploadURL.append(str);
+       }
 
-         // 이미지 삭제 이벤트 핸들러
-        $(".uploadResult").on("click", "li img", function(){
-            var targetFile = $(this).closest("li").find(".imageURL").val();  // 이미지 파일 경로를 가져옵니다.
-            var targetLi = $(this).closest("li"); // 클릭한 이미지의 부모 li 요소
+        // 이미지 삭제 이벤트 핸들러
+       $(".uploadResult").on("click", "li img", function(){
+           var targetFile = $(this).closest("li").find(".imageURL").val();  // 이미지 파일 경로를 가져옵니다.
+           var targetLi = $(this).closest("li"); // 클릭한 이미지의 부모 li 요소
 
-            removeImage(targetFile); // 이미지 삭제 함수 호출
-            targetLi.remove(); // 화면에서 썸네일 삭제
-        });
-        // 이미지 삭제 함수
-        function removeImage(targetFile){
-            // 서버로 이미지 삭제 요청을 보냅니다.
-            $.ajax({
-                url: "/removeFile", // 서버 주소
-                data: { fileName: targetFile }, // 서버로 전송되는 데이터
-                dataType: "text", // 서버에서 넘어오는 데이터의 타입
-                type: "post", // 전송 방식
-                success: function(result){ // 서버로부터 정상적으로 응답이 올 때
-                    if(result == "true"){
-                        alert("이미지가 삭제되었습니다");
-                    }
+           removeImage(targetFile); // 이미지 삭제 함수 호출
+           targetLi.remove(); // 화면에서 썸네일 삭제
+       });
+       // 이미지 삭제 함수
+       function removeImage(targetFile){
+           // 서버로 이미지 삭제 요청을 보냅니다.
+           $.ajax({
+               url: "/removeFile", // 서버 주소
+               data: { fileName: targetFile }, // 서버로 전송되는 데이터
+               dataType: "text", // 서버에서 넘어오는 데이터의 타입
+               type: "post", // 전송 방식
+               success: function(result){ // 서버로부터 정상적으로 응답이 올 때
+                   if(result == "true"){
+                       alert("이미지가 삭제되었습니다");
+                   }
 
-                    // 삭제한 이미지가 첫 번째 이미지와 동일한 경우, 첫 번째 이미지 영역도 삭제합니다.
-                    if(firstImageData && targetFile == firstImageData.imageURL){
-                        $(".viewimage ul").empty(); // 첫 번째 이미지 영역 비우기
+                   // 삭제한 이미지가 첫 번째 이미지와 동일한 경우, 첫 번째 이미지 영역도 삭제합니다.
+                   if(firstImageData && targetFile == firstImageData.imageURL){
+                       $(".viewimage ul").empty(); // 첫 번째 이미지 영역 비우기
 
-                        // 다음 이미지가 있을 경우 첫 번째 이미지로 설정합니다.
-                        var nextImageLi = $(".uploadResult ul li").first(); // 다음 이미지의 <li> 요소 가져오기
-                        if(nextImageLi.length > 0){
-                            var nextImageData = {
-                                fileName: nextImageLi.data("name"),
-                                folderPath: nextImageLi.data("path"),
-                                uuid: nextImageLi.data("uuid"),
-                                thumbnailURL: nextImageLi.find("img").attr("src"),
-                                imageURL: nextImageLi.find(".imageURL").val()
-                            };
-                            var firstImage = "<li data-name='" + nextImageData.fileName + "' data-path='" + nextImageData.folderPath + "' data-uuid='" + nextImageData.uuid + "'>";
-                            firstImage += "<div class='viewimage' style='position: relative; display: flex; flex-direction: column; overflow: hidden;'>"; // .viewimage 요소 추가
-                            firstImage += "<img src='" + nextImageData.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
-                            firstImage += "</div>";
-                            firstImage += "</li>";
-                            $(".viewimage ul").html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
-                            firstImageData = nextImageData; // 첫 번째 이미지 정보 업데이트
-                        }
-                    }
-                }
-            });
-        }
+                       // 다음 이미지가 있을 경우 첫 번째 이미지로 설정합니다.
+                       var nextImageLi = $(".uploadResult ul li").first(); // 다음 이미지의 <li> 요소 가져오기
+                       if(nextImageLi.length > 0){
+                           var nextImageData = {
+                               fileName: nextImageLi.data("name"),
+                               folderPath: nextImageLi.data("path"),
+                               uuid: nextImageLi.data("uuid"),
+                               thumbnailURL: nextImageLi.find("img").attr("src"),
+                               imageURL: nextImageLi.find(".imageURL").val()
+                           };
+                           var firstImage = "<li data-name='" + nextImageData.fileName + "' data-path='" + nextImageData.folderPath + "' data-uuid='" + nextImageData.uuid + "'>";
+                           firstImage += "<div class='viewimage' style='position: relative; display: flex; flex-direction: column; overflow: hidden;'>"; // .viewimage 요소 추가
+                           firstImage += "<img src='" + nextImageData.thumbnailURL + "'>"; // 이미지 크기에 맞게 설정
+                           firstImage += "</div>";
+                           firstImage += "</li>";
+                           $(".viewimage ul").html(firstImage); // 첫 번째 이미지를 출력 위치에 추가
+                           firstImageData = nextImageData; // 첫 번째 이미지 정보 업데이트
+                       }
+                   }
+               }
+           });
+       }
 
-  <!--컨텐츠11111111111111-->
+ <!--컨텐츠11111111111111-->
 /////////// 컨텐츠 이미지//// 보여주기///
-    function showResult3(uploadResultArr){
-    var uploadURL=$(".uploadResult2 ul"); // 썸네일이 출력되는 위치
-    var str="";
-     $(uploadResultArr).each(function(i, obj) {
-        str += "<li data-name='" + obj.piimgName + "' data-path='" + obj.pipath + "' data-uuid='" + obj.piuuid + "'>";
-        str += " <div>";
-        str += "<img src='/display?fileName=" + obj.imageURL + "'>"; // 여기서 닫는 큰 따옴표가 추가됨
-        str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
-        str += "</div>";
-        str += "</li>";
+   var regex = new RegExp("(.*?\.(jpg|png|gif))$");
+   var maxSize = 10 * 1024 * 1024; //10MB
+
+   function checkExtension(fileName, fileSize) {
+       if (fileSize > maxSize) {
+           alert("파일사이즈가 10MB를 초과했습니다");
+           return false;
+       }
+       if (!regex.test(fileName)) {
+           alert("이미지만 업로드할 수 있습니다");
+           return false;
+       }
+       return true;
+   }
+
+ ////////////////////컨텐츠
+
+$(".custom-file-input2").on("change", function () {
+   var fileName = $(this).val().split("\\").pop(); // 파일명만 구하기
+   $(this).siblings(".custom-file-label").html(fileName);
+
+   var formData = new FormData(); // form에 대응되는 객체
+   var inputFile = $(this); // 들어간 파일
+   var files = inputFile[0].files;
+
+   var appended = false; // 첨부파일 선택 여부 체크 플래그
+
+   for (var i = 0; i < files.length; i++) {
+       if (!checkExtension(files[i].name, files[i].size)) {
+           return false;
+       }
+       console.log(files[i]);
+       formData.append("uploadFiles", files[i]);
+       appended = true; // 첨부파일 선택 true
+   }
+
+   // 첨부파일 선택하지 않았으면 종료
+   if (!appended) {
+       return;
+   }
+   // ajax방식으로 파일 전송
+   $.ajax({
+       url: "/uploadAjax", // 서버 주소
+       processData: false, // 파일 전송 시 설정
+       contentType: false, // 파일 전송 시 설정
+       data: formData, // 서버로 전송되는 데이터
+       type: "post", // 전송 방식
+       dataType: "json", // 서버에서 넘어오는 데이터의 형식
+       success: function (result) { // 서버에서 데이터가 정상적으로 넘어오면
+           console.log("fffff"+result);
+           showResult4(result); // 썸네일 목록 출력
+
+           $(".custom-file-label").html(""); // input type="file" 실제 화면 초기화
+       },
+       error: function (jqXHR, textStatus, errorThrown) {
+           console.log(textStatus);
+       }
+   });
+});
+//컨텐츠 이미지 넣기
+/// 새이미지//
+       function showResult4(uploadResultArr){
+           var uploadURL=$(".uploadResult2 ul"); //썸네일이 출력되는 위치
+           var str="";
+           $(uploadResultArr).each(function(i,obj){
+               str+="<li data-name='"+obj.fileName+"' data-path='"+obj.folderPath+"' data-uuid='"+obj.uuid+"'>";
+               str+="<div>";
+               str += "<img src='/display?fileName=" + obj.imageURL + "'>"; // 이미지 크기에 맞게 설정
+               str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
+               str+="</div>";
+               str+="</li>";
+           });
+
+           uploadURL.append(str);
+            // 이미지가 로드될 때마다 adjustHeight() 함수 호출
+       $(".uploadResult2 ul li img").on("load", function() {
+           adjustHeight();
+       });
+       }
+       function adjustHeight() {
+           var ulHeight = 0;
+           $(".uploadResult2 ul li img").each(function() {
+               ulHeight += $(this).height(); // 각 이미지의 높이를 더함
+           });
+           $(".uploadResult2 ul").height(ulHeight); // ul 요소의 높이를 이미지 높이의 합으로 설정
+       }
+
+///// 기존 이미지 불러오기
+function showResult3(uploadResultArr) {
+   var uploadURL = $(".uploadResult2 ul"); // 썸네일이 출력되는 위치
+   var str = "";
+   $(uploadResultArr).each(function(i, obj) {
+       str += "<li data-name='" + obj.piimgName + "' data-path='" + obj.pipath + "' data-uuid='" + obj.piuuid + "'>";
+       str += "<div>"; // 세로로 배치
+       str += "<img src='/display?fileName=" + obj.imageURL + "'>"; // 이미지 크기에 맞게 설정
+       str += "<input type='hidden' class='imageURL' value='" + obj.imageURL + "'>";
+       str += "</div>";
+       str += "</li>";
+   });
+   uploadURL.append(str);
+
+   // 이미지가 로드될 때마다 adjustHeight() 함수 호출
+   $(".uploadResult2 ul li img").on("load", function() {
+       adjustHeight();
+   });
+}
+
+// adjustHeight 함수 정의
+function adjustHeight() {
+   var ulHeight = 0;
+   $(".uploadResult2 ul li img").each(function() {
+       ulHeight += $(this).height(); // 각 이미지의 높이를 더함
+   });
+   $(".uploadResult2 ul").height(ulHeight); // ul 요소의 높이를 이미지 높이의 합으로 설정
+}
+
+// testimg2 변수에 이미지 정보를 담아서 showResult3 함수 호출
+var testimg2 = [[${dto.imageDTOList2[0]}]];
+function showimg2() {
+   showResult3(testimg2);
+}
+showimg2();
+
+
+       // 이미지 삭제 버튼 클릭
+       $(".uploadResult2").on("click","li img",function(){
+           var targetFile = $(this).closest("li").find(".imageURL").val();  // 이미지 파일 경로를 가져옵니다.
+           var targetLi = $(this).closest("li"); // 클릭한 이미지의 부모 li 요소
+
+           $.ajax({
+               url:"/removeFile", //서버주소
+               data:{fileName:targetFile}, //서버로 전송되는 데이터
+               dataType:"text", //서버에서 넘어오는 데이터의 타입
+               type:"post", //전송방식
+               success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                   if(result=="true"){
+                       alert("이미지가 삭제되었습니다");
+                   }
+                   targetLi.remove(); // 화면에서 썸네일삭제
+               }
+           });
+       });
+ <!--컨텐츠11111111111111-------------------------------------------------------------------------->
+   <!--수정하기-->
+   var actionForm = $("form");
+   $("#submitBtn").click(function(e){
+    if(!confirm("수정하시겠습니까?")){
+        return;
+    }
+    // 이미지 정보 hidden input 태그 생성
+
+           // 카테고리 선택 확인
+           var categoryValue = $("#categoryLevel1").val();
+           if (!categoryValue) {
+               alert("카테고리를 선택해주세요.");
+               return; // 전송 중단
+           }
+
+           // 상품명 입력 확인
+           var productName = $("input[name='pname']").val();
+           if (!productName) {
+               alert("상품명을 입력해주세요.");
+               return; // 전송 중단
+           }
+
+           // 판매원가 입력 확인
+           var originalPrice = $("input[name='originalPrice']").val();
+           if (!originalPrice) {
+               alert("판매원가를 입력해주세요.");
+               return; // 전송 중단
+           }
+
+       // 숫자만 입력되도록 제한
+           if (!/^[0-9]+$/.test(originalPrice)) {
+               alert("가격은 숫자만 입력하세요.");
+               return; // 전송 중단
+           }
+
+           // 할인 입력 확인
+           var discount = $("input[name='discount']").val();
+           if (!discount) {
+               alert("할인률을 확인해주세요.");
+               return; // 전송 중단
+           }
+
+           // 할인 입력 확인
+           var discount = $("input[name='discount']").val();
+           if (discount && (!/^[0-9]+$/.test(discount) || discount < 0 || discount > 99)) {
+               alert("할인은 0부터 99까지의 숫자만 입력하세요.");
+               return; // 전송 중단
+           }
+
+           // 판매수량 입력 확인
+           var stock = $("input[name='stock']").val();
+           if (!stock) {
+               alert("제품 수량을 입력해주세요.");
+               return; // 전송 중단
+           }
+           // 요약 설명 입력 확인
+           var subContent = $("input[name='subContent']").val();
+           if (!subContent) {
+               alert("요약 설명을 입력해주세요.");
+               return; // 전송 중단
+           }
+
+           // 제품 상태 입력 확인
+           var itemSellStatus = $("input[name='itemSellStatus']:checked").val();
+           if (!itemSellStatus) {
+               alert("제품 상태를 선택해주세요.");
+               return; // 전송 중단
+           }
+   var str="";
+   $(".uploadResult li").each(function(i,obj){
+       var target=$(obj);
+       str+="<input type='hidden' name='imageDTOList["+i+"].piimgName' value='"+target.data('name')+"'>";
+       str+="<input type='hidden' name='imageDTOList["+i+"].pipath' value='"+target.data('path')+"'>";
+       str+="<input type='hidden' name='imageDTOList["+i+"].piuuid' value='"+target.data('uuid')+"'>";
+   });
+   $(".uploadResult2 li").each(function(i,obj){
+       var target = $(obj);
+       str += "<input type='hidden' name='imageDTOList2["+i+"].piimgName' value='"+target.data('name')+"'>";
+       str += "<input type='hidden' name='imageDTOList2["+i+"].pipath' value='"+target.data('path')+"'>";
+       str += "<input type='hidden' name='imageDTOList2["+i+"].piuuid' value='"+target.data('uuid')+"'>";
+   });
+    $(".box").html(str);
+    // 폼 속성 변경 및 전송
+ actionForm.attr("action","/productmodify").attr("method","post").submit();
+});
+  // 삭제////////////////////////////////
+    $(".removeBtn").click(function(){
+        if(!confirm("삭제하시겠습니까?")){
+            return;
+        }
+        actionForm.attr("action","/productremove").attr("method","post").submit();
     });
-    uploadURL.append(str);
-    }
-    var testimg2 = [[${dto.imageDTOList2[0]}]];
-    console.log(testimg2);
 
-    function showimg2(){
-        showResult3(testimg2);
-    }
-    showimg2();
-////////// 삭제/////////
-            $(".uploadResult2").on("click","li img",function(){
-            var targetFile = $(this).closest("li").find(".imageURL").val();  // 이미지 파일 경로를 가져옵니다.
-            var targetLi = $(this).closest("li"); // 클릭한 이미지의 부모 li 요소
+     // 리스트로가기///////////////////////////////
+    $(".listBtn").click(function() {
+        var page = $("input[name='page']");
+        //var type = $("input[name='type']");
+       // var keyword = $("input[name='keyword']");
 
+<<<<<<< HEAD
             $.ajax({
                 url:"/removeFile", //서버주소
                 data:{fileName:targetFile}, //서버로 전송되는 데이터
@@ -814,33 +1021,20 @@ $(".custom-file-input2").on("change", function () {
      // 폼 속성 변경 및 전송
    actionForm.attr("action","/productmodify").attr("method","post").submit();
  });
+=======
+        actionForm.empty(); //form 태그의 모든 내용을 지우고
 
-   // 삭제////////////////////////////////
-     $(".removeBtn").click(function(){
-         if(!confirm("삭제하시겠습니까?")){
-             return;
-         }
-         actionForm.attr("action","/productremove").attr("method","post").submit();
-     });
+        actionForm.append(page);
+        //actionForm.append(type);
+        //actionForm.append(keyword);
 
-      // 리스트로가기///////////////////////////////
-     $(".listBtn").click(function() {
-         var page = $("input[name='page']");
-         //var type = $("input[name='type']");
-        // var keyword = $("input[name='keyword']");
+        actionForm
+            .attr("action", "/shop")
+            .attr("method", "get");
+>>>>>>> a58e7b113d1b06a6e39bc0b03fc3ff9a06f5b17c
 
-         actionForm.empty(); //form 태그의 모든 내용을 지우고
-
-         actionForm.append(page);
-         //actionForm.append(type);
-         //actionForm.append(keyword);
-
-         actionForm
-             .attr("action", "/shop")
-             .attr("method", "get");
-
-         actionForm.submit();
-     })
+        actionForm.submit();
+    })
 </script>
 <!----------- 이미지 업로드 js---end--------------------------->
 </body>

@@ -6,10 +6,7 @@ import com.room.good.entity.Cart;
 import com.room.good.entity.CartItem;
 import com.room.good.entity.ClubMember;
 import com.room.good.entity.Product;
-import com.room.good.repository.CartItemRepository;
-import com.room.good.repository.CartRepository;
-import com.room.good.repository.ClubMemberRepository;
-import com.room.good.repository.ProductRepository;
+import com.room.good.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +27,7 @@ public class CartServiceImpl implements CartService {
     private final CartItemRepository cartItemRepository;
     private final ClubMemberRepository clubMemberRepository;
     private final ProductRepository productRepository;
+    private final ProductImageRepository productImageRepository;
 
     @Override
     @Transactional
@@ -78,33 +76,45 @@ public class CartServiceImpl implements CartService {
             ClubMember clubMember = clubMemberOptional.get();
             System.out.println("이프문 clubMember = " + clubMember);
             Cart cart = cartRepository.findByClubMemberId(clubMember.getId());
+            List<CartItem> cartItem = cartItemRepository.findByCartId(cart.getCno());
             System.out.println("이프문 cart = " + cart);
+
+            CartDTO cartDTO = new CartDTO();
+
             // 장바구니 관련 작업 수행
             if (cart != null) {
+<<<<<<< HEAD
                 CartDTO cartDTO = new CartDTO();
 
                 cartDTO.setCartItems( cart.getCartItems());
                 cartDTO.getCartItems().size();
 
 
+=======
+                cartDTO.setCartItems(cart.getCartItems());
+//                cartDTO.setPipath(cartItem.get(0).getProduct().getImages().toString());
+//                cartDTO.setCno(cart.getCno());
+//                cartDTO.setQuantity(cart.getQuantity());
+//                cartDTO.setPname(cartItem.get(0).getProduct().getPname());
+//                cartDTO.setPrice(Math.toIntExact(cartItem.get(0).getProduct().getPrice()));
+//                cartDTO.setPipath(cart.getCartItems().get(0).getProduct().getImages().toString());
+>>>>>>> a58e7b113d1b06a6e39bc0b03fc3ff9a06f5b17c
 
                 return cartDTO;
-            } else {
-                return null;
             }
         }
         return null;
     }
 
     // 장바구니에 있는 상품의 수량 업데이트
-    @Override
-    @Transactional
-    public void updateCartItemCount(Long pno, int quantity) {
-        CartItem cartItem = cartItemRepository.findById(pno)
-                .orElseThrow(EntityNotFoundException::new); // 객체 비어있을때 예외를 발생시키는 메서드
-        System.out.println("업데이트 cartItem = " + cartItem);
-        cartItem.updateQuantity(quantity);
-    }
+//    @Override
+//    @Transactional
+//    public void updateCartItemCount(Long pno, int quantity) {
+//        CartItem cartItem = cartItemRepository.findById(pno)
+//                .orElseThrow(EntityNotFoundException::new); // 객체 비어있을때 예외를 발생시키는 메서드
+//        System.out.println("업데이트 cartItem = " + cartItem);
+//        cartItem.updateQuantity(quantity);
+//    }
 
     // 장바구니 상품 삭제
     @Override
@@ -116,10 +126,6 @@ public class CartServiceImpl implements CartService {
         cartItemRepository.delete(cartItem);
     }
 
-//    @Override
-//    public boolean validateCartItem(Long cartItemId, String email) {
-//        return false;
-//    }
 
 
 }
