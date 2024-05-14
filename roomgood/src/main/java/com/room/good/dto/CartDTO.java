@@ -26,6 +26,9 @@ public class CartDTO {
     @Builder.Default
     private List<CartItem> cartItems = new ArrayList<>(); // 상품목록
 
+    @Builder.Default
+    List<String> urlList = new ArrayList<>();
+
 
     ///////////////////////////////////////////////////////////////////////
     private Long pno; // 상품번호

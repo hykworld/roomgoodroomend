@@ -525,11 +525,11 @@ if (itemSellStatus === 'SELL') {
 ////////////////csrf 토큰.end////////////////////////////////////////////////////////////////
 ////////////이미지 체크///////////////////////
    var regex = new RegExp("(.*?\.(jpg|png|gif))$");
-   var maxSize = 10 * 1024 * 1024; //10MB
+   var maxSize = 20 * 1024 * 1024; //10MB
 
    function checkExtension(fileName, fileSize) {
        if (fileSize > maxSize) {
-           alert("파일사이즈가 10MB를 초과했습니다");
+           alert("파일사이즈가 20MB를 초과했습니다");
            return false;
        }
        if (!regex.test(fileName)) {

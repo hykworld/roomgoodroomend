@@ -76,6 +76,12 @@ public class OrderrrServiceImpl implements OrderrrService{
         order1.setPrice(plusprice);
         orderrrRepository.save(order1);
         log.info("herecome?");
+
+
+        for(int j=0;j<byCartCno.size();j++){
+        cartttItemRepository.deleteById(byCartCno.get(j).getId());
+        }
+
         return true;
     }
 

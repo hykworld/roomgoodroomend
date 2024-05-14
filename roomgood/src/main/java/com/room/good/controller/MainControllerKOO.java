@@ -7,6 +7,7 @@ import com.room.good.service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.jmx.export.naming.IdentityNamingStrategy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class MainControllerKOO {
     private final OrderrrService orderrrService;
     private final CartttService cartttService;
     private  final ProductService productService;
+    private  final ProductttService productttService;
     private  final WishlistService wishlistService;
 
 
@@ -54,13 +56,11 @@ public class MainControllerKOO {
     };
 
     @GetMapping("/about")
-    public String readshop(PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Long cno) {
-        if (cno != null) {
-            model.addAttribute("result", productService.categoryPage(cno, pageRequestDTO));
-        } else {
-            model.addAttribute("result", productService.getList(pageRequestDTO));
-        }
-        return "shop"; // shop.html로 이동
+    public void about(PageRequestDTO pageRequestDTO, Model model,@RequestParam(defaultValue = "0") String priceno) {
+
+        model.addAttribute("result", productttService.getListtt(pageRequestDTO,priceno));
+        model.addAttribute("priceno",priceno);
+
     }
     @GetMapping("/contact")
     public void getcontact(){};
@@ -210,6 +210,8 @@ public class MainControllerKOO {
 
     @GetMapping("/ajaxtestpage")
     public void getajaxtestpage(){};
+    @GetMapping("/payfinish")
+    public void getpayfinish(){};
     @GetMapping("/pay")
     public void getpay(Principal principal,Model model){
     String email = principal.getName();
@@ -217,8 +219,27 @@ public class MainControllerKOO {
         CartttDTO findlist = cartttService.findlist(memberDTO.getCartnumber());
         log.info("findlist"+findlist);
         log.info("findlist"+findlist.getCartItems().get(0).getProduct());//잘넘어온다~
-        model.addAttribute("findlist",findlist);
+            int paymoney =0;
+            int discount =0;
+        for (int i =0; i<findlist.getCartItems().size();i++){
+            paymoney+= (int) (findlist.getCartItems().get(i).getProduct().getOriginalPrice()*findlist.getCartItems().get(i).getQuantity());
+            discount+= (int) (findlist.getCartItems().get(i).getProduct().getPrice()*findlist.getCartItems().get(i).getQuantity());
+        }
+        String pipath= findlist.getCartItems().get(0).getProduct().getImages().get(0).getPipath();
+        String piuuid=findlist.getCartItems().get(0).getProduct().getImages().get(0).getPiuuid();
+        String piimgName= findlist.getCartItems().get(0).getProduct().getImages().get(0).getPiimgName();
+       String url= pipath+"/"+piuuid+"_"+piimgName;
+        int dicountmoney = paymoney-discount;
+            log.info(paymoney+"paymoneypaymoney");
+            log.info(discount+"discountdiscount");
+        model.addAttribute("findlist",findlist.getCartItems());
+        model.addAttribute("paymoney",paymoney);
+        model.addAttribute("discount",discount);
+        model.addAttribute("dicountmoney",dicountmoney);
+        model.addAttribute("ordercount",findlist.getCartItems().size());
+        model.addAttribute("url",url);
     };
+
 
 
 
