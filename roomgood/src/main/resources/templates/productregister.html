@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>상품등록</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -209,7 +208,7 @@
             <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
             <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
             <a href="/loginshop" sec:authorize="isAnonymous()">회원가입</a>
-            <a href="#">고객센터</a>
+            <a href="/FAQ">고객센터</a>
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -500,11 +499,11 @@ document.getElementById("discount").addEventListener("input", calculateDiscount)
 
 /////////////이미지 체크////////////
 var regex = new RegExp("(.*?\.(jpg|png|gif))$");
-var maxSize = 10 * 1024 * 1024; //10MB
+var maxSize = 20 * 1024 * 1024; //10MB
 
 function checkExtension(fileName, fileSize) {
     if (fileSize > maxSize) {
-        alert("파일사이즈가 10MB를 초과했습니다");
+        alert("파일사이즈가 20MB를 초과했습니다");
         return false;
     }
     if (!regex.test(fileName)) {

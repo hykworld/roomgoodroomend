@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+          rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -26,180 +26,170 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <style>
+        ul,li,ol{
+        list-style:none;
+        }
         .link_btn:hover{
             color:#fff !important;
             background-color:#35c5f0;
         }
+        .cate_li{
+            box-sizing:border-box;
+            border:3px solid RGB(25,171,214,0);
+        }
+        .cate_li:hover{
+            border:3px solid RGB(25,171,214,1)
+        }
+        .page-link{
+            border:none !important;
+            border-radius: .25rem !important;
+            margin-left:5px;
+            color:#333 !important;
+        }
+        .page-item.active .page-link{
+            color:#fff !important;
+        }
+        .displayNone{
+            display:none;
+        }
+        .hover_btn:hover{
+            background-color:#35c5f0;
+            color:#fff !important;
+        }
+
     </style>
 </head>
 
 <body>
-    <!-- 페이지 로딩 부분 별다른거 없으니 나중에 삭제할지 논의 -->
+<!-- 페이지 로딩 부분 별다른거 없으니 나중에 삭제할지 논의 -->
 <!--    <div id="preloder">-->
 <!--        <div class="loader"></div>-->
 <!--    </div>-->
 
-    <!-- 모바일 메뉴바전체 -->
-    <div class="offcanvas-menu-overlay"></div> <!--모바일에서 메뉴 열때 검정색-->
-    <!--모바일 메뉴바 옆에서 튀어나옴ㅇㅇ;;;;;;-->
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
-                <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
-                <a href="/loginshop" sec:authorize="isAnonymous()" class="active">회원가입</a>
-                <a href="#">고객센터</a>
-            </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
+<!-- 모바일 메뉴바전체 -->
+<div class="offcanvas-menu-overlay"></div> <!--모바일에서 메뉴 열때 검정색-->
+<!--모바일 메뉴바 옆에서 튀어나옴ㅇㅇ;;;;;;-->
+<div class="offcanvas-menu-wrapper">
+    <div class="offcanvas__option">
+        <div class="offcanvas__links">
+            <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
+            <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
+            <a href="/loginshop" sec:authorize="isAnonymous()" class="active">회원가입</a>
+            <a href="#">고객센터</a>
         </div>
-        <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
+        <div class="offcanvas__top__hover">
+            <span>Usd <i class="arrow_carrot-down"></i></span>
+            <ul>
+                <li>USD</li>
+                <li>EUR</li>
+                <li>USD</li>
+            </ul>
         </div>
     </div>
-    <!--종료-->
-    <!-- 모바일 메뉴바 전체 끝 -->
+    <div class="offcanvas__nav__option">
+        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+        <a href="#"><img src="img/icon/heart.png" alt=""></a>
+        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+    </div>
+    <div id="mobile-menu-wrap"></div>
+    <div class="offcanvas__text">
+        <p>Free shipping, 30-day return or refund guarantee.</p>
+    </div>
+</div>
+<!--종료-->
+<!-- 모바일 메뉴바 전체 끝 -->
 
-    <!-- 해더 전체-->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                            <p>자취방 살아남기</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
-                                <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
-                                <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
-                                <a href="/memberJoin" sec:authorize="isAuthenticated()">마이페이지</a>
-                                <a href="#">고객센터</a>
-                            </div>
-                            <!--                        <div class="header__top__hover">-->
-                            <!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
-                            <!--                            <ul>-->
-                            <!--                                <li>USD</li>-->
-                            <!--                                <li>EUR</li>-->
-                            <!--                                <li>USD</li>-->
-                            <!--                            </ul>-->
-                            <!--                        </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- 해더 전체-->
+<header class="header">
+    <div class="header__top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="/index"><img src="img/logo.png" alt=""></a>
+                <div class="col-lg-6 col-md-7">
+                    <div class="header__top__left">
+                        <p>자취방 살아남기</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li><a href="/shop">카테고리</a>
-                                <ul class="dropdown">
-                                    <li><a href="/about" style="background-color:gray;">전체보기</a></li>
-                                    <li><a href="/about">가구</a></li>
-                                    <li><a href="/shop-details">가전</a></li>
-                                    <li><a href="/shopping-cart">옷정리/보관</a></li>
-                                    <li><a href="/checkout">생활용품</a></li>
-                                    <li><a href="/blog-details">소품/취미</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">인기차트</a></li>
-                            <li><a href="/contact">만원이하</a></li>
-
-                            <li><a href="/contact">딸기마켓</a></li>
-                            <li ><a href="/blog">이벤트</a>
-                                <ul class="dropdown">
-                                    <li><a href="/eventRegister">글등록</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
-    </header>
-    <!-- 해더 전체 끝 -->
-
-    <!-- 메인 배너 -->
-    <section class="hero">
-        <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2030</h2>
-                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
-                                <div class="hero__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                </div>
-                            </div>
+                <div class="col-lg-6 col-md-5">
+                    <div class="header__top__right">
+                        <div class="header__top__links">
+                            <a href="/Loginshop" sec:authorize="isAnonymous()">로그인</a>
+                            <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
+                            <a href="/memberJoin" sec:authorize="isAnonymous()">회원가입</a>
+                            <a href="/memberJoin" sec:authorize="isAuthenticated()">마이페이지</a>
+                            <a href="#">고객센터</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h6>Summer Collection</h6>
-                                <h2>Fall - Winter Collections 2030</h2>
-                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
-                                commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
-                                <div class="hero__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                        <!--                        <div class="header__top__hover">-->
+                        <!--                            <span>Usd <i class="arrow_carrot-down"></i></span>-->
+                        <!--                            <ul>-->
+                        <!--                                <li>USD</li>-->
+                        <!--                                <li>EUR</li>-->
+                        <!--                                <li>USD</li>-->
+                        <!--                            </ul>-->
+                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- 메인 배너 끝-->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="header__logo">
+                    <a href="/index"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <nav class="header__menu mobile-menu">
+                    <ul>
+                        <li><a href="/shop">카테고리</a>
+                            <ul class="dropdown">
+                                <li><a href="/about" style="background-color:gray;">전체보기</a></li>
+                                <li><a href="/about">가구</a></li>
+                                <li><a href="/shop-details">가전</a></li>
+                                <li><a href="/shopping-cart">옷정리/보관</a></li>
+                                <li><a href="/checkout">생활용품</a></li>
+                                <li><a href="/blog-details">소품/취미</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">인기차트</a></li>
+                        <li><a href="/contact">만원이하</a></li>
 
-    <!-- 이벤트 부분 -->
+                        <li><a href="/contact">딸기마켓</a></li>
+                        <li ><a href="/blog">이벤트</a>
+                            <ul class="dropdown">
+                                <li><a href="/eventRegister">글등록</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="header__nav__option">
+                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                    <a href="#"><img src="img/icon/heart.png" alt=""></a>
+                    <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open"><i class="fa fa-bars"></i></div>
+    </div>
+</header>
+<!-- 해더 전체 끝 -->
+
+<!-- 메인 배너 -->
+<div class="swiper mySwiper" style="width:100%;">
+    <div class="swiper-wrapper">
+        <img class="swiper-slide" src="/img/soomin/banner1.jpg" style="width:100%;"/>
+        <img class="swiper-slide" src="/img/soomin/banner2.jpg" style="width:100%;"/>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
+<!-- 메인 배너 끝-->
+
+<!-- 이벤트 부분 -->
 <!--    <section style="width:100%; height:700px; margin-top:100px;">-->
 <!--        <div style="text-align:center; font-size:30px; margin-bottom:10px;">EVENT</div>-->
 <!--        <div style="height:500px; float:left;">-->
@@ -266,263 +256,280 @@
 <!--            </div>-->
 <!--        </div>-->
 <!--    </section>-->
-    <!-- 이벤트 부분 끝 -->
+<!-- 이벤트 부분 끝 -->
 
-    <!-- Categories Section Begin -->
-    <div style="width:70%; margin:30px auto 10px">
-        <h4 style="color:#35c5f0">타임딜</h4>
-    </div>
-    <div class="swiper mySwiper" style="width:70%; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; margin:0 auto 80px;">
-        <div class="swiper-wrapper" style="height:380px">
-            <div class="swiper-slide" th:each="list:${time}">
-                <input type="hidden" th:class="'endTime' + ${list.tno}" th:value="${list.endTime}">
-                <div class="row">
-                    <div style="width:50%; padding-left:10%; border-right:1px solid #ccc">
-                        <div class="categories__hot__deal" style="width:100%; height:100%">
-                            <img th:src="${list.img}" alt="사진" style="max-height:380px; max-width:380px; min-width:0;" >
-                        </div>
-                    </div>
-                    <div style="width:50%; padding-left:30px;">
-                        <div class="categories__deal__countdown" style="height:280px; padding-right:10px; margin-top:50px;">
-                            <div th:id="${list.tno}" style="font-size:30px; display:inline-block; margin-top:20px; margin-bottom:5px; font-weight:bold;"></div>
-                            <h3 style="margin-bottom:20px;">[[${list.content}]]</h3>
-                            <a class="link_btn" th:href="${list.url}" style="color:#35c5f0; display:inline-block; text-align:center; line-height:56px; font-size:17px; width:170px; height:60px; box-sizing:border-box; border-radius:15px; border:3px solid #35c5f0;">바로가기</a>
-                        </div>
-                    </div>
-                </div>
-                <script>
-                    $(function(){
-                    var x = setInterval(function() {
-
-                      var element = [[${list.tno}]]
-
-                      var endTime = $(".endTime" + element).val();
-
-
-                      var countDownDate = new Date(endTime).getTime();
-
-                      var now = new Date().getTime();
-                      var distance = countDownDate - now;
-
-                      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                      if ( hours < 10 ){hours = "0" + hours; }
-                      else if ( hours > 9 ){ hours = hours; }
-
-                      if ( minutes < 10 ){minutes = "0" + minutes; }
-                      else if ( minutes > 9 ){ minutes = minutes; }
-
-                      if ( seconds < 10 ){seconds = "0" + seconds; }
-                      else if ( seconds > 9 ){ seconds = seconds; }
-
-
-
-
-                  // 타임이벤트 진행 타이머
-                      document.getElementById(element).innerHTML = days + " : " + hours + " : "
-                      + minutes + " : " + seconds;
-                    }, 1000);
-                    });
-
-                </script>
-            </div>
+<!-- Categories Section Begin -->
+<div style="width:70%; margin:50px auto 30px">
+    <ul style="display:flex;">
+        <li style="width:16%;"><div class="cate_li" style="margin:0 auto; position:relative; transition:1s; overflow:hidden; width:230px; height:85px; border-radius:85px; background-color:rgb(232, 239, 250);"><div style="position:absolute; left:15px; top:0px;"><a href="/shop?cno=1"><img src="/img/soomin/cate_1.png" width="90%" alt="카테고리사진"/></a></div></div><div style="width:85px; text-align:center; font-size:20px; color:#777; font-weight:bold; margin:15px auto;">가구</div></li>
+        <li style="width:16%; margin-left:5%;"><div class="cate_li" style="margin:0 auto; position:relative; transition:1s; overflow:hidden; width:230px; height:85px; border-radius:85px; background-color:rgb(232, 239, 250);"><div style="position:absolute; left:13px; top:-10px;"><a href="/shop?cno=2"><img src="/img/soomin/cate_2.png" width="90%" alt="카테고리사진"/></a></div></div><div style="width:100px; text-align:center; font-size:20px; color:#777; font-weight:bold; margin:15px auto;">가전</div></li>
+        <li style="width:16%; margin-left:5%;"><div class="cate_li" style="margin:0 auto; position:relative; transition:1s; overflow:hidden; width:230px; height:85px; border-radius:85px; background-color:rgb(232, 239, 250);"><div style="position:absolute; left:10px; top:0px;"><a href="/shop?cno=3"><img src="/img/soomin/cate_3.png" width="90%" alt="카테고리사진"/></a></div></div><div style="width:100px; text-align:center; font-size:20px; color:#777; font-weight:bold; margin:15px auto;">정리/보관</div></li>
+        <li style="width:16%; margin-left:5%;"><div class="cate_li" style="margin:0 auto; position:relative; transition:1s; overflow:hidden; width:230px; height:85px; border-radius:85px; background-color:rgb(232, 239, 250);"><div style="position:absolute; left:10px; top:0px;"><a href="/shop?cno=4"><img src="/img/soomin/cate_4.png" width="90%" alt="카테고리사진"/></a></div></div><div style="width:100px; text-align:center; font-size:20px; color:#777; font-weight:bold; margin:15px auto;">생활용품</div></li>
+        <li style="width:16%; margin-left:5%;"><div class="cate_li" style="margin:0 auto; position:relative; transition:1s; overflow:hidden; width:230px; height:85px; border-radius:85px; background-color:rgb(232, 239, 250);"><div style="position:absolute; left:25px; top:5px;"><a href="/shop?cno=5"><img src="/img/soomin/cate_5.png" width="90%" alt="카테고리사진"/></a></div></div><div style="width:100px; text-align:center; color:#777; font-weight:bold; font-size:20px; margin:15px auto;">소품/취미</div></li>
+    </ul>
+</div>
+<div style="width:70%; margin:0px auto 30px">
+    <h4 style="color:#35c5f0; margin:0; font-weight:bold;">이런 제품은 어떠세요?</h4>
+    <div style="color:#777; font-size:20px;">오늘의 MD 강력 추천 상품</div>
+</div>
+<div style="width:70%; display:flex; justify-content:space-between;  margin:0px auto 50px">
+    <div style="width:22%;aspect-ratio:2/3; border-radius:10px; overflow:hidden; background-color:#fff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div style="width:100%;  position:relative;  aspect-ratio:1; overflow:hidden;">
+            <img src="/img/soomin/sample.jpg" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" />
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div style="width:90%; aspect-ratio:9/1; overflow:hidden; font-size:20px; margin:10px auto 18px; color:#333; font-weight:bold; padding-bottom:5px; border-bottom:1px solid #ddd;">소리노 센서휴지통</div>
+        <div  style="width:90%; aspect-ratio:9/1; margin:0 auto; color:#777; font-size:17px; overflow:hidden; font-weight:bold;">더 편리하고 더 조용한 센서 휴지통!</div>
+        <a class="hover_btn" style="width:90%; display:block; text-align:center; line-height:40px; color:#35c5f0; font-weight:bold; margin:10px auto 0; aspect-ratio:8/1; border-radius:15px; box-sizing:border-box; border:1px solid #35c5f0;">
+            제품 보로가기
+        </a>
     </div>
 
+    <div style="width:22%; aspect-ratio:1; border-radius:25px; background-color:red; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-    <!-- Categories Section End -->
+    </div>
+    <div style="width:22%; aspect-ratio:1; border-radius:25px; background-color:red; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    </div>
+    <div style="width:22%; aspect-ratio:1; border-radius:25px; background-color:red; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    </div>
+</div>
 
 
-    <!-- Product Section Begin -->
-    <section class="product spad">
-        <h4 style="min-width:70%; width:70%; color:#35c5f0; margin:0 auto 30px; padding-bottom:10px; border-bottom:1px solid #ccc;">상품 전체보기</h4>
-        <div class="container">
+<div style="width:70%; margin:30px auto 10px">
+    <h4 style="color:#35c5f0; font-weight:bold;">타임딜</h4>
+</div>
+<div class="swiper mySwiper" style="width:70%; border-top:solid 1px #ccc; border-bottom:solid 1px #ccc; margin:0 auto 80px;">
+    <div class="swiper-wrapper" style="height:380px">
+        <div class="swiper-slide" th:each="list:${time}">
+            <input type="hidden" th:class="'endTime' + ${list.tno}" th:value="${list.endTime}">
             <div class="row">
-            </div>
-            <div class="row product__filter productLists">
-
-            </div>
-            <div class="pageFooter" style="text-align: center;">
-
-            </div>
-        </div>
-    </section>
-    <!-- Product Section End -->
-
-
-
-    <!-- Instagram Section Begin -->
-    <section class="instagram spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="instagram__pic">
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-1.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-2.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-3.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-4.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-5.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-6.jpg"></div>
+                <div style="width:37%; padding-left:10%;">
+                    <div class="categories__hot__deal" style="width:100%; height:100%">
+                        <img th:src="${list.img}" alt="사진" style="max-height:380px; max-width:380px; width:100%; height:100%; min-width:0;" >
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="instagram__text">
-                        <h2>Instagram</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                        <h3>#Male_Fashion</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Instagram Section End -->
-
-    <!-- Latest Blog Section Begin -->
-    <section class="latest spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Latest News</span>
-                        <h2>Fashion New Trends</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 16 February 2020</span>
-                            <h5>What Curling Irons Are The Best Ones</h5>
-                            <a href="#">Read More</a>
+                <div style="width:63%; padding-left:30px;">
+                    <div class="categories__deal__countdown" style="height:280px; padding-right:10px;">
+                        <div th:id="${list.tno}" style="font-size:30px; display:inline-block; color:#FF0038; margin-top:20px; margin-bottom:5px; font-weight:bold;"></div>
+                        <h3 style="margin-bottom:10px;">[[${list.content}]]</h3>
+                        <div style="font-size:30px; color:#35c5f0; display:inline-block;">[[${list.sale}]]%</div>
+                        <div style="margin-left:5px; font-size:20px; display:inline-block; color:#aaa; text-decoration: line-through;">[[${list.originalPrice}]]원</div>
+                        <div style="margin-bottom:15px;">
+                            <div style="display:inline-block; font-size:25px; color:#FF0038; font-weight:bold;">타임딜가</div>
+                            <div style="margin-left:5px; display:inline-block; font-size:35px; font-weight:bold;">[[${list.price}]]원</div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
-                            <h5>Eternity Bands Do Last Forever</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-3.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 28 February 2020</span>
-                            <h5>The Health Benefits Of Sunglasses</h5>
-                            <a href="#">Read More</a>
-                        </div>
+                        <a class="link_btn" th:href="${list.url}" style="color:#35c5f0; display:inline-block; text-align:center; line-height:56px; font-size:17px; width:170px; height:60px; box-sizing:border-box; border-radius:15px; border:3px solid #35c5f0;">바로가기</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Latest Blog Section End -->
+            <script>
+                $(function(){
+                var x = setInterval(function() {
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
-                        </div>
-                        <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Clothing Store</a></li>
-                            <li><a href="#">Trending Shoes</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Sale</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Delivary</a></li>
-                            <li><a href="#">Return & Exchanges</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <button type="submit"><span class="icon_mail_alt"></span></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
+                  var element = [[${list.tno}]]
 
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form" action="/shop" method="get">
-                <input type="hidden" name="page" value="1">
-                <input type="text" id="search-input" name="keyword" placeholder="Search here.....">
-                <button type="submit"><span class="icon_search"></span></button>
-            </form>
+                  var endTime = $(".endTime" + element).val();
+
+
+                  var countDownDate = new Date(endTime).getTime();
+
+                  var now = new Date().getTime();
+                  var distance = countDownDate - now;
+
+                  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                  if ( hours < 10 ){hours = "0" + hours; }
+                  else if ( hours > 9 ){ hours = hours; }
+
+                  if ( minutes < 10 ){minutes = "0" + minutes; }
+                  else if ( minutes > 9 ){ minutes = minutes; }
+
+                  if ( seconds < 10 ){seconds = "0" + seconds; }
+                  else if ( seconds > 9 ){ seconds = seconds; }
+
+
+
+
+              // 타임이벤트 진행 타이머
+                  document.getElementById(element).innerHTML = days + "일 " + hours + "시 "
+                  + minutes + "분 " + seconds + "초";
+                }, 1000);
+                });
+
+            </script>
         </div>
     </div>
-    <!-- Search End -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</div>
 
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script>
+
+<!-- Categories Section End -->
+
+
+<!-- Product Section Begin -->
+<section class="product spad">
+    <h4 style="min-width:70%; font-weight:bold; width:70%; color:#35c5f0; margin:0 auto 30px; padding-bottom:10px; border-bottom:1px solid #ccc;">상품 전체보기</h4>
+    <div class="container">
+        <div class="row">
+        </div>
+        <div class="row product__filter productLists">
+
+        </div>
+        <div class="pageFooter" style="text-align: center;">
+
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+
+
+
+
+<!-- Latest Blog Section Begin -->
+<section class="latest spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Latest News</span>
+                    <h2>Fashion New Trends</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
+                    <div class="blog__item__text">
+                        <span><img src="img/icon/calendar.png" alt=""> 16 February 2020</span>
+                        <h5>What Curling Irons Are The Best Ones</h5>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
+                    <div class="blog__item__text">
+                        <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
+                        <h5>Eternity Bands Do Last Forever</h5>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="blog__item">
+                    <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-3.jpg"></div>
+                    <div class="blog__item__text">
+                        <span><img src="img/icon/calendar.png" alt=""> 28 February 2020</span>
+                        <h5>The Health Benefits Of Sunglasses</h5>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Latest Blog Section End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                    </div>
+                    <p>The customer is at the heart of our unique business model, which includes design.</p>
+                    <a href="#"><img src="img/payment.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Clothing Store</a></li>
+                        <li><a href="#">Trending Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivary</a></li>
+                        <li><a href="#">Return & Exchanges</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                    <h6>NewLetter</h6>
+                    <div class="footer__newslatter">
+                        <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                        <form action="#">
+                            <input type="text" placeholder="Your email">
+                            <button type="submit"><span class="icon_mail_alt"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <p>Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>2020
+                        All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                                                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form" action="/shop" method="get">
+            <input type="hidden" name="page" value="1">
+            <input type="text" id="search-input" name="keyword" placeholder="Search here.....">
+            <button type="submit"><span class="icon_search"></span></button>
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- Js Plugins -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.nice-select.min.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/mixitup.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+<script>
     $(function(){
 
 
@@ -654,7 +661,7 @@
     //=========================================================================================================
 
 
-    </script>
+</script>
 </body>
 
 </html>

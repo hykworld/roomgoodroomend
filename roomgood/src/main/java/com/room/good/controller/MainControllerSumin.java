@@ -4,6 +4,7 @@ import com.room.good.dto.PageRequestDTO;
 import com.room.good.dto.ProductDTO;
 import com.room.good.service.ProductService;
 import com.room.good.service.SoominService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -31,4 +32,17 @@ public class MainControllerSumin {
         return "/index";
     };
 
+    @GetMapping("/shop-details")
+    public void getSDetails(Long pno, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Principal principal ){
+        if(principal != null){
+            String email = principal.getName();
+            log.info("====================================================================="+email);
+        }
+
+        ProductDTO productDTO=productService.read(pno);
+        model.addAttribute("result",productService.getList(pageRequestDTO));
+        model.addAttribute("dto",productDTO);
+
+
+    };
 }
