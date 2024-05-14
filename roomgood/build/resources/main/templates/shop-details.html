@@ -352,11 +352,17 @@ input[type=number]::-webkit-outer-spin-button {
             <h6 style="margin-bottom:7px; color:#777; font-weight:bold">[[${dto.categoryBig.cname}]]</h6>
             <div style="margin-bottom:30px; display:flex; justify-content:space-between;">
                 <h4 style="color:#333; max-width:80%;">[[${dto.pname}]]</h4>
+<<<<<<< HEAD
+                <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
+
+=======
                 <!--////구씨 수정부분5월9일-->
                 <i id="wishlist" class="fa-regular fa-heart" style="font-size:25px; line-height:26px; cursor:pointer"></i>
                 <i id="wishlist2" class="fa-solid fa-heart" style="font-size:25px; line-height:26px; display:none;"></i>
                 <!--////구씨 수정부분5월9일.end-->
+>>>>>>> 5c36c5bfefd31a45778b519dc6f288c9f261dd13
             </div>
+            <h7 th:text="${dto.subContent}" class="sub-content" style="font-weight: bold;"></h7>
             <div class="star">
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 <p style="display:inline">215개 리뷰</p>
@@ -830,17 +836,17 @@ input[type=number]::-webkit-outer-spin-button {
         var scrollbar = $(".product_nav").offset();
 
         $(window).scroll(function()
-		{
-			if ( $(document).scrollTop() > scrollbar.top )
-			{
-			   $('.product_nav').addClass('Fixed');
-			}
-			else
-			{
-			   $('.product_nav').removeClass('Fixed');
-			}
+      {
+         if ( $(document).scrollTop() > scrollbar.top )
+         {
+            $('.product_nav').addClass('Fixed');
+         }
+         else
+         {
+            $('.product_nav').removeClass('Fixed');
+         }
 
-		});
+      });
 
 
 
@@ -1219,7 +1225,7 @@ input[type=number]::-webkit-outer-spin-button {
             //.starrr초기화
             var star=$(".starrr").clone();
             $(".starrr").remove();
-            $("#divGrade").append(star);
+            $("#divGrade").append;
             $('.starrr').starrr({
                  rating: grade,
                  change: function(e, value){
@@ -1375,7 +1381,7 @@ input[type=number]::-webkit-outer-spin-button {
             //.starrr초기화
             var star=$(".starrr").clone();
             $(".starrr").remove();
-            $("#divGrade").append(star);
+            $("#divGrade").append;
 
             $(".starrr").starrr({
                 rating:grade2,
