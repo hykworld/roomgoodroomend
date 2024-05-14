@@ -4,13 +4,17 @@ import com.room.good.dto.PageRequestDTO;
 import com.room.good.dto.ProductDTO;
 import com.room.good.service.ProductService;
 import com.room.good.service.SoominService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.security.Principal;
 
 @Controller
 @Log4j2
@@ -30,7 +34,12 @@ public class MainControllerSumin {
 
 
     @GetMapping("/shop-details")
-    public void getSDetails(Long pno, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO, Model model){
+    public void getSDetails(Long pno, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO, Model model, @RequestParam(required = false) Principal principal ){
+        if(principal != null){
+            String email = principal.getName();
+            log.info("====================================================================="+email);
+        }
+
         ProductDTO productDTO=productService.read(pno);
         model.addAttribute("result",productService.getList(pageRequestDTO));
         model.addAttribute("dto",productDTO);
