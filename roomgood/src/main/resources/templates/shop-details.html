@@ -352,7 +352,10 @@ input[type=number]::-webkit-outer-spin-button {
             <h6 style="margin-bottom:7px; color:#777; font-weight:bold">[[${dto.categoryBig.cname}]]</h6>
             <div style="margin-bottom:30px; display:flex; justify-content:space-between;">
                 <h4 style="color:#333; max-width:80%;">[[${dto.pname}]]</h4>
-                <i class="fa-regular fa-heart" style="font-size:25px; line-height:26px"></i>
+                <!--////구씨 수정부분5월9일-->
+                <i id="wishlist" class="fa-regular fa-heart" style="font-size:25px; line-height:26px; cursor:pointer"></i>
+                <i id="wishlist2" class="fa-solid fa-heart" style="font-size:25px; line-height:26px;cursor:pointer; display:none;"></i>
+                <!--////구씨 수정부분5월9일.end-->
             </div>
             <h7 th:text="${dto.subContent}" class="sub-content" style="font-weight: bold;"></h7>
             <div class="star">
@@ -409,8 +412,10 @@ input[type=number]::-webkit-outer-spin-button {
                 </div>
             </div>
             <div style="width:100%; margin-top:30px; justify-content:space-between; display:flex;">
-                <div class="cart_btn">장바구니 추가</div>
-                <div class="buy_btn">바로 구매하기</div>
+                <div class="cart_btn" id="cartbtn" sec:authorize="isAuthenticated()">장바구니 추가</div>
+                <div class="buy_btn" id="directbtn" sec:authorize="isAuthenticated()"><a href="/pay">바로 구매하기</a></div>
+                <a class="cart_btn gologin" id="cartbtn2" sec:authorize="isAnonymous() " href="/Loginshop">장바구니 추가</a>
+                <a class="buy_btn gologin" sec:authorize="isAnonymous()" href="/Loginshop" >바로 구매하기</a>
             </div>
         </form>
     </div>
@@ -1441,8 +1446,7 @@ input[type=number]::-webkit-outer-spin-button {
 <!--</div>-->
 
 
-<!--구씨 수정부분5월8일-->
-<script>
+<<script>
     $(function(){
     $('.gologin').on('click',function(){
         alert('로그인 후 이용가능한 서비스입니다. 로그인 페이지로 이동합니다.');
@@ -1486,7 +1490,7 @@ input[type=number]::-webkit-outer-spin-button {
         $('#wishlist').css('display','block');
         $.ajax({
                 url:"/deletewish", //서버주소
-                data:{pno:pno}, //서버로 전송되는 데이터
+                data:{wno:pno}, //서버로 전송되는 데이터
                 dataType:"boolean", //서버에서 넘어오는 데이터의 타입
                 type:"get", //전송방식
                 success:function(result){ //서버로 부터 정상적으로 응답이 올때

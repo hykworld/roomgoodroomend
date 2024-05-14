@@ -61,9 +61,9 @@ public class WishlistServiceImpl implements WishlistService{
     @Override
     @Transactional
     public boolean delete(Long wno) {
-
-        wishRepository.deleteById(wno);
-
+        log.info("wnownownownowno"+wno);
+        wishRepository.deleteAllByProductPno(wno);
+        log.info("aaaaaaaaaaaaaaaaaaaaaaa");
         return true;
     }
 

@@ -9,4 +9,6 @@ public interface WishRepository extends JpaRepository<WishList, Long> {
 
 
     List<WishList> findByClubMemberId(Long clubmemberid);
+
+    void deleteAllByProductPno(Long pno);
 }

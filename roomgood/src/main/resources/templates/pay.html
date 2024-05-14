@@ -253,9 +253,9 @@
                              style="text-align:left ;align-items: center; justify-content: center;display: flex; font-size:15px;">
                             [[${CartItem.quantity}]]개
                         </div>
-                        <div class="col-md-3"
+                        <div class="col-md-3 price"
                              style="text-align:left ;align-items: center; justify-content: center;display: flex; font-size:15px;">
-                            [[${CartItem.quantity}*${CartItem.product.price}]]원
+                            [[${CartItem.quantity}*${CartItem.product.price}]]
                         </div>
                     </div>
                     <hr>
@@ -344,16 +344,16 @@
                          style="position: fixed;width:350px; border-radius: 15px; padding:20px">
                         <h4>결제 금액</h4>
                         <br>
-                        총 상품 금액<span class="float-right">[[${paymoney}]]원</span>
+                        총 상품 금액<span class="float-right originalPrice">[[${paymoney}]]</span>
                         <br>
-                        할인 금액<span class="float-right">- [[${dicountmoney}]]원</span>
+                        할인 금액<span class="float-right price">- [[${dicountmoney}]]</span>
                         <br>
                         쿠폰 사용<span class="float-right">0원</span>
                         <br>
                         포인트 사용<span class="float-right">0원</span>
                         <br>
                         <hr>
-                        <b>결제금액<span class="float-right" style="font-size:20px;">[[${discount}]]원</span></b>
+                        <b>결제금액<span class="float-right price" style="font-size:20px;">[[${discount}]]</span></b>
                         <br>
                         <span class="float-right" style="text-align:right ;width:100%;font-size:12px;">[[${discount}/100]]p 적립예정</span>
                         <br>
@@ -393,7 +393,7 @@
                         <div style="text-align: center;position: fixed;width:350px; margin-top:50px; ">
                             <!-- Js Plugins -->
                             <button  class="btn btn-primary float-left" style=" width:90%; "
-                                     onclick="requestPayment()">[[${discount}]]원 결제하기
+                                     onclick="requestPayment()"> <span class="price">[[${discount}]]</span> 결제하기
                             </button> <!-- 버튼 클릭 시 결제 요청 함수 호출 -->
                             <script src="https://js.bootpay.co.kr/bootpay-4.3.4.min.js"
                                     type="application/javascript"></script>
@@ -566,7 +566,29 @@ $('#header').css('display','block');
 
 
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var priceElements = document.getElementsByClassName("price");
+        var originalPriceElements = document.getElementsByClassName("originalPrice");
 
+        for (var i = 0; i < priceElements.length; i++) {
+            var priceElement = priceElements[i];
+            var price = priceElement.textContent;
+            priceElement.textContent = formatNumberWithCommas(price) + '원';
+        }
+
+        for (var i = 0; i < originalPriceElements.length; i++) {
+            var originalPriceElement = originalPriceElements[i];
+            var originalPrice = originalPriceElement.textContent;
+            originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+        }
+    });
+
+    function formatNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+</script>
 <!--    <script src="js/pay.js"></script>-->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
