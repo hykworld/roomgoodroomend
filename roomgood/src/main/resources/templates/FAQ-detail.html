@@ -7,12 +7,16 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>RoomGoodRoomEnd</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
           rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbaea98925.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <!-- Css Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -156,10 +160,12 @@
 
         .box1 {
     text-align: left;
+    font-family: "Jua", sans-serif;
     }
 
         #contentbox {
     height: 493.72px;
+    font-family: "Jua", sans-serif;
     }
     </style>
 </head>
@@ -180,7 +186,7 @@
             <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
             <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
             <a href="/loginshop" sec:authorize="isAnonymous()">회원가입</a>
-            <a href="#">고객센터</a>
+            <a href="/FAQ">고객센터</a>
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -239,11 +245,12 @@
             </div>
 
             <div class="form-group" id="contentbox1">
-                <div th:text="${faq.Faqcontent}" class="form-control"id="contentbox" ></div>
+                <pre><div th:text="${faq.Faqcontent}" class="form-control"id="contentbox" ></div></pre>
             </div>
 
             <div class="btn-wrapper">
-                <a th:href="@{/FAQ-modify/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #000; color: white;">수정</a>
+                <a th:href="@{/FAQ-modify/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">수정</a>
+                <a th:href="@{/FAQ}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">이전</a>
             </div>
         </div>
     </div>

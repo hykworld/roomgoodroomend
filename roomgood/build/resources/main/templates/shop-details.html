@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>회원가입 화면 샘플 - Bootstrap</title>
+    <title>RoomGoodRoomEnd</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -418,19 +418,22 @@ input[type=number]::-webkit-outer-spin-button {
                         <li><strong>배송비:</strong>[[${dto.categoryBig.deliveryFee}]]원</li>
                         <li><strong>결제 방식:</strong>선불</li>
                         <li><strong>배송 타입:</strong>택배</li>
+
                     </ul>
-                    <p><strong>도서산간:</strong> 제주 및 도서산간 지역은 배송비가 별도로 부과됩니다.</p>
-                    <ul style="color:#777; margin-left:10px;">
-                        <li>제주도: 3,000원 추가</li>
-                        <li>그 외 도서산간 지역: 3,000원 추가</li>
+
+                    <ul style="color:#777; margin-left:10px; margin-top:10px">
+                        <li><strong>도서산간:</strong> 제주 및 도서산간 지역은 배송비가 별도로 부과됩니다.</li>
+                        <li><strong>제주도:</strong> 3,000원 추가</li>
+                        <li><strong>그 외 도서산간 지역:</strong> 3,000원 추가</li>
                     </ul>
 
                     <div class="deli_name" style="font-size:18px; font-weight:bold;">교환/반품 정보</div>
                     <ul style="color:#777; margin-left:10px;">
                         <li><strong>교환 배송비:</strong> 왕복 [[${dto.categoryBig.deliveryFee}]]원</li>
                         <li><strong>반품 배송비:</strong> 편도 [[${dto.categoryBig.deliveryFee}]]원</li>
+                        <li><strong>보내실 곳:</strong>서울특별시 관악구 남부순환로 1820 에그엘로우 14층 14C </li>
                     </ul>
-                    <p><strong>보내실 곳:</strong>서울특별시 관악구 남부순환로 1820 에그엘로우 14층 14C반 </p>
+
 
                     <div class="deli_name" style="font-size:18px; font-weight:bold;">배송 안내</div>
                     <ul style="color:#777; margin-left:10px;">
@@ -744,17 +747,17 @@ input[type=number]::-webkit-outer-spin-button {
         var scrollbar = $(".product_nav").offset();
 
         $(window).scroll(function()
-		{
-			if ( $(document).scrollTop() > scrollbar.top )
-			{
-			   $('.product_nav').addClass('Fixed');
-			}
-			else
-			{
-			   $('.product_nav').removeClass('Fixed');
-			}
+      {
+         if ( $(document).scrollTop() > scrollbar.top )
+         {
+            $('.product_nav').addClass('Fixed');
+         }
+         else
+         {
+            $('.product_nav').removeClass('Fixed');
+         }
 
-		});
+      });
 
 
 
@@ -1133,7 +1136,7 @@ input[type=number]::-webkit-outer-spin-button {
             //.starrr초기화
             var star=$(".starrr").clone();
             $(".starrr").remove();
-            $("#divGrade").append(star);
+            $("#divGrade").append;
             $('.starrr').starrr({
                  rating: grade,
                  change: function(e, value){
@@ -1289,7 +1292,7 @@ input[type=number]::-webkit-outer-spin-button {
             //.starrr초기화
             var star=$(".starrr").clone();
             $(".starrr").remove();
-            $("#divGrade").append(star);
+            $("#divGrade").append;
 
             $(".starrr").starrr({
                 rating:grade2,
