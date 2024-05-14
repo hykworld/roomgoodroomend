@@ -7,12 +7,18 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>RoomGoodRoomEnd</title>
+    <!-- 파비콘 추가 -->
+
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
           rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbaea98925.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <!-- Css Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -41,16 +47,17 @@
             height: 35px;
             margin-right: 10px;
             border-radius: 12px;
-            border: 1px solid #000000;
+            border: 3px solid #35C5F0;
         }
 
         .search-btn {
             padding: 7px 16px;
-            background-color: #000000;
+            background-color: #35C5F0;
             color: #fff;
             cursor: pointer;
             border-radius: 12px;
             height: 35px;
+            border: 3px solid #35C5F0;
         }
 
         .search-icon {
@@ -69,8 +76,9 @@
         th {
             padding: 10px;
             text-align: left;
-            background-color: #000000;
+            background-color: #35C5F0;
             color: #fff;
+            font-family: "Jua", sans-serif;
         }
 
         th:first-child {
@@ -85,6 +93,7 @@
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            font-family: "Jua", sans-serif;
         }
 
         .button-container {
@@ -132,7 +141,7 @@
         .card-header{
              background-color: #fff;
              padding: 1.25rem 1.25rem;
-
+             font-family: "Jua", sans-serif;
         }
         .icon-question{
             border:1px solid #ddd;
@@ -144,12 +153,52 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
+            font-family: "Jua", sans-serif;
         }
         .collapse.show .card-body{
             border:0;
-            background-color: rgba(0, 0, 0, .125);
+            background-color: #F7F9FA;
 
         }
+        .card-body{
+        font-family: "Jua", sans-serif;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-family: "Jua", sans-serif;
+        }
+
+        .button-group button {
+            background-color: #F7F9FA;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 35px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-group button.active {
+            background-color: #35C5F0;
+            color: white;
+        }
+
+        .button-group button:hover {
+            background-color: #EAEDEF;
+        }
+
+        .bold-text {
+            color: #35C5F0;
+        }
+
     </style>
 </head>
 
@@ -215,13 +264,13 @@
 <!-- 공지사항 노란 바 끝 -->
 
 <section>
-    <div class="notice_wrap">
+    <div class="notice_wrap" >
         <!-- 검색 -->
         <div class="search_wrap">
             <div class="container search-container">
                 <form id="searchForm" action="/FAQ" method="GET" class="search-form">
                     <input onkeyup="enterkey()" type="search" name="searchValue" placeholder="검색어를 입력하세요"
-                           class="search-input">
+                           class="search-input" style="font-family: 'Jua', sans-serif;">
                     <button type="submit" class="search-btn">
                         <i class="fas fa-search search-icon"></i>
                     </button>
@@ -272,7 +321,7 @@
         <div class="btn_wrap">
             <div class="container" style="margin-top: 20px;">
                 <div style="display: flex; justify-content: flex-end;">
-                    <a href="/FAQ-register" class="btn btn-secondary" style="background-color: #000000; color: #fff;">글 작성</a>
+                    <a href="/FAQ-register" class="btn btn-secondary" style="background-color: #35C5F0; color: #fff; border: 3px solid #35C5F0;">글 작성</a>
                 </div>
             </div>
         </div>
@@ -296,51 +345,59 @@
                            class="page-link" th:text="${page}" style="color: black;"></a> <!-- 검정색으로 변경 -->
                         <a th:if="${page == nowPage}"
                            th:href="@{/FAQ(page=${page - 1}, searchValue=${param.searchValue})}"
-                           class="page-link" th:text="${page}" style="color: red;"></a>
+                           class="page-link" th:text="${page}" style="color: #35C5F0;"></a>
                     </li>
                 </th:block>
                 <!-- Thymeleaf를 사용하여 페이지 버튼 생성 끝 -->
 
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Next" >
-                        <span aria-hidden="true" style="color: black;">&raquo;</span>
+                        <span aria-hidden="true" style="color: black, font-family: 'Jua', sans-serif;">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
                 </li>
             </ul>
         </nav>
-
     </div>
 
     <div class="faq_wrap">
         <!-- 두 번째 테이블 (FAQ) -->
         <div class="faq_table-wrap">
             <div class="container faq-container">
-                <h2 class="faq-title">FAQ</h2>
-                <h4 class="faq-subtitle">자주 묻는 질문</h4>
+                <h5 class="faq-title" style="font-family: 'Jua', sans-serif;">FAQ 자주 묻는 질문</h5>
+<!--                <h4 class="faq-subtitle">자주 묻는 질문</h4>-->
+                <div class="button-group">
+                    <button onclick="showAll()" id="allButton" class="active">전체</button>
+                    <button onclick="showRange([1, 2, 3, 4, 5])" id="orderButton">주문/결제</button>
+                    <button onclick="showRange([6, 7, 8, 9, 10])" id="deliveryButton">배송관련</button>
+                    <button onclick="showRange([11, 12, 13, 14, 15])" id="cancelButton">취소/환불</button>
+                    <button onclick="showRange([16, 17, 18, 19, 20])" id="loginButton">로그인/회원정보</button>
+                </div>
                 <table class="table faq-table">
                     <colgroup>
                         <col style="width: 100%;">
                     </colgroup>
                     <thead>
-                    <tr>
-                        <th>제목</th>
-                    </tr>
+<!--                    <tr>-->
+<!--                        <th>제목</th>-->
+<!--                    </tr>-->
                     </thead>
                     <tbody>
-                    <tr>
+                    <!--주문/결제-->
+                    <tr class="faq-item" data-index="1">
                         <td>
                             <!-- 첫 번째 아코디언 아이템 -->
                             <div id="accordion1">
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                            <span class="icon-question">Q</span> 111
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text"> 주문 내역은 어떻게 확인할 수 있나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion1">
                                         <div class="card-body">
-                                            내용 1
+                                            우측 상단 프로필 사진을 클릭 후 [마이페이지]를 통해 확인 가능합니다
                                         </div>
                                     </div>
                                 </div>
@@ -348,19 +405,20 @@
                             <!-- 첫 번째 아코디언 아이템 끝 -->
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="faq-item" data-index="2">
                         <td>
                             <!-- 두 번째 아코디언 아이템 -->
                             <div id="accordion2">
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">결제 방법은 어떤 것이 있나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion2">
                                         <div class="card-body">
-                                            내용 2
+                                            신용카드 및 체크카드, 무통장 입금, 휴대폰 소액결제, 네이버페이를 이용해 결제 가능합니다.
                                         </div>
                                     </div>
                                 </div>
@@ -368,165 +426,390 @@
                             <!-- 두 번째 아코디언 아이템 끝 -->
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="faq-item" data-index="3">
                         <td>
                             <div id="accordion3">
                                 <div class="card">
                                     <div class="card-header" id="headingThree1">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">신용카드 무이자 할부가 되나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseThree1" class="collapse" aria-labelledby="headingThree1" data-parent="#accordion3">
                                         <div class="card-body">
-                                            내용 3
+                                            각 카드사 별로 상이하며, 카드사를 통해 확인 가능합니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <tr class="faq-item" data-index="4">
                         <td>
                             <div id="accordion4">
                                 <div class="card">
                                     <div class="card-header" id="headingFour">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">신용카드 무이자 할부가 되나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion4">
                                         <div class="card-body">
-                                            내용 4
+                                            한번 발급 받은 계좌번호는 변경이 불가능합니다.<br>
+                                            재주문을 통해 새로운 계좌를 발급 받으신 후 입금 부탁드립니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <tr class="faq-item" data-index="5">
                         <td>
                             <div id="accordion5">
                                 <div class="card">
                                     <div class="card-header" id="headingFive">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">신용카드 결제 후 할부 개월 수를 변경 가능한가요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion5">
                                         <div class="card-body">
-                                            내용 5
+                                            결제 후 결제 정보 변경은 불가능 합니다.<br>
+                                            단, 결제 완료 단계에서는 취소 후 재주문을 통해 변경 가능합니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <!--배송관련-->
+                    <tr class="faq-item" data-index="6">
                         <td>
                             <div id="accordion6">
                                 <div class="card">
                                     <div class="card-header" id="headingSix">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">배송비는 얼마인가요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion6">
                                         <div class="card-body">
-                                            내용 6
+                                            오늘의집은 상품정보 중계 및 판매 매체이며, 판매 업체 별로 배송비 정책이 상이합니다<br>
+                                            각 상품상세페이지에서 배송비를 확인하실 수 있습니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <tr class="faq-item" data-index="7">
                         <td>
                             <div id="accordion7">
                                 <div class="card">
                                     <div class="card-header" id="headingSeven">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">배송확인은 어떻게 하나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion7">
                                         <div class="card-body">
-                                            내용 7
+                                            우측 상단 프로필의 [나의쇼핑]을 통해 배송단계를 한눈에 보실 수 있습니다.<br>
+                                            또한 배송이 시작되면 카카오톡 알림톡 또는 SMS로 안내메시지가 발송됩니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <tr class="faq-item" data-index="8">
                         <td>
                             <div id="accordion8">
                                 <div class="card">
                                     <div class="card-header" id="headingEight">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">배송은 얼마나 걸리나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion8">
                                         <div class="card-body">
-                                            내용 8
+                                            상품 배송 기간은 배송 유형에 따라 출고 일자 차이가 있습니다.자세한 사항은 구매하신 상품의 상세 페이지에서 확인 가능하며, 배송 유형 별 기본 출고 기간은 아래와 같습니다.<br>
+                                            ∙ 일반 택배 / 화물 택배 : 결제 후 1~3 영업일 이내 출고됩니다.<br>
+                                            ∙ 업체 직접 배송 : 배송 지역에 따라 배송 일자가 상이할 수 있으므로 상품 상세 페이지에서 확인 해주세요.<br>
+                                            ※ 영업일은 주말, 공휴일을 제외한 기간입니다.<br>
+                                            ※ 제조사의 사정에 따라 출고일은 지연될 수 있는 점 양해 부탁드립니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <tr class="faq-item" data-index="9">
                         <td>
                             <div id="accordion9">
                                 <div class="card">
                                     <div class="card-header" id="headingNine">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">여러 상품을 묶음 배송 받으려면 어떻게 해야하나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion9">
                                         <div class="card-body">
-                                            내용 9
+                                            각 상품별로 배송처가 상이할 수 있기 때문에 묶음 배송은 어렵습니다.<br>
+                                            단, 배송처가 같은 경우 배송처의 정책에 따라 가능 할 수 있습니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                    <tr>
+                    <tr class="faq-item" data-index="10">
                         <td>
                             <div id="accordion10">
                                 <div class="card">
                                     <div class="card-header" id="headingTen">
-                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen" onclick="toggleBold(event, this)">
                                             <span class="icon-question">Q</span>
+                                            <span class="text">원하는 날짜로 맞춰서 배송을 받을수 있나요?</span>
                                         </div>
                                     </div>
                                     <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion10">
                                         <div class="card-body">
-                                            내용 10
+                                            각 배송처 정책에 따라 상이할 수 있습니다.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
+                    <!--취소/환불-->
+                    <tr class="faq-item" data-index="11">
+                        <td>
+                            <div id="accordion11">
+                                <div class="card">
+                                    <div class="card-header" id="headingEleven">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">주문 취소는 어떻게 하나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion11">
+                                        <div class="card-body">
+                                            판매처에서 주문을 확인하기 전이라면 언제든 취소하실 수 있으며, [나의 쇼핑 > 주문배송내역 조회 > 주문상세보기]에서 직접 주문취소하실 수 있습니다.<br>
+                                            ※ 이미 판매처에서 상품을 확인해 준비 중이라면, 직접 취소가 어렵습니다. 상세 페이지에 확인되는 판매자 연락처 또는 오늘의집 고객센터로 문의 부탁드립니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="faq-item" data-index="12">
+                        <td>
+                            <div id="accordion12">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwelve">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">취소 후 환불은 언제되나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion12">
+                                        <div class="card-body">
+                                            신용카드 및 체크카드의 경우 카드사에서 확인 절차를 거치는 관계로 평균 3~7일 영업일 이내 환불처리가 완료됩니다.<br>
+                                            무통장 입금의 경우 평균 5영업일 이내 요청 하신 계좌로 환불됩니다.<br>
+                                            휴대폰 소액결제의 경우 평균 3영업일 이내 환불 또는 취소 처리가 완료됩니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="faq-item" data-index="13">
+                        <td>
+                            <div id="accordion13">
+                                <div class="card">
+                                    <div class="card-header" id="headingThirteen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">여러 개의 상품을 주문했는데, 일부만 취소할 수도 있나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordion13">
+                                        <div class="card-body">
+                                            신용카드 및 체크카드 또는 무통장 입금의 경우 배송 상태에 따라 결제후 부분 취소가 가능하며,배송상태에 따른 취소 가능 여부는 아래와 같습니다.<br>
+                                            - 입금대기 및 결제완료 단계: 우측 상단 프로필 사진을 클릭 후 [나의쇼핑 > 주문배송내역 조회]에서 즉시취소가능합니다.<br>
+                                            - 배송준비중: 우측 상단 프로필 사진을 클릭 후 [나의쇼핑 > 고객센터 > 1:1 카톡 상담하기]로 취소 가능 여부 문의 부탁드립니다.<br>
+                                            - 배송중 : 주문 취소가 불가능합니다. 수령후 반품 처리 부탁드립니다.<br>
+                                            ※ 단, 가상계좌로 입금 전이라면 부분 취소처리가 불가능하므로 재주문 부탁드립니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+<!--                    <tr class="faq-item" data-index="14">-->
+<!--                        <td>-->
+<!--                            <div id="accordion14">-->
+<!--                                <div class="card">-->
+<!--                                    <div class="card-header" id="headingFourteen">-->
+<!--                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen" onclick="toggleBold(event, this)">-->
+<!--                                            <span class="icon-question">Q</span>-->
+<!--                                            <span class="text"></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordion14">-->
+<!--                                        <div class="card-body">-->
+<!--                                            내용 14-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr class="faq-item" data-index="15">-->
+<!--                        <td>-->
+<!--                            <div id="accordion15">-->
+<!--                                <div class="card">-->
+<!--                                    <div class="card-header" id="headingFifteen">-->
+<!--                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen" onclick="toggleBold(event, this)">-->
+<!--                                            <span class="icon-question">Q</span>-->
+<!--                                            <span class="text"></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen" data-parent="#accordion15">-->
+<!--                                        <div class="card-body">-->
+<!--                                            내용 15-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+                    <!--로그인/회원정보-->
+                    <tr class="faq-item" data-index="16">
+                        <td>
+                            <div id="accordion16">
+                                <div class="card">
+                                    <div class="card-header" id="headingSixteen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">제품이 불량입니다. 반품 혹은 교환은 어떻게 하나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen" data-parent="#accordion16">
+                                        <div class="card-body">
+                                            업체(브랜드)마다 발송처 및 반품절차가 다릅니다.<br>
 
+                                            - 우측 상단 프로필 사진을 클릭 후 [마이페이지]에서 원하는 주문의 상세보기 버튼을 클릭 후 교환/반품 접수 후 진행 할수 있습니다. <br>
+                                            교환/반품 접수 없이 임의로 반송한 경우에는 처리가 늦어질 수 있습니다.<br>
+
+                                            - 교환/반품 접수 시 원활한 처리를 위해 불량 사진이 필요하오니, 가급적 사진을 첨부하여 주시기 바랍니다.<br>
+
+                                            단, 구매확정 이후 교환/반품을 원하시는 경우 판매 업체에 교환/반품 가능 여부를 먼저 문의 부탁드립니다.<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="faq-item" data-index="17">
+                        <td>
+                            <div id="accordion17">
+                                <div class="card">
+                                    <div class="card-header" id="headingSeventeen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">제품의 교환 또는 반품을 할 수 있나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseSeventeen" class="collapse" aria-labelledby="headingSeventeen" data-parent="#accordion17">
+                                        <div class="card-body">
+                                            상품을 수령하신 후 7일 이내에 교환, 반품이 가능하며, 고객님의 변심에 의한 교환/반품의 경우 배송비용이 부과될 수 있습니다.<br>
+                                            ※ 단, 아래의 경우 교환/반품이 불가능합니다.<br>
+                                            - 고객님의 책임 사유로 인해 상품 등이 멸실 또는 훼손된 경우<br>
+                                            - 개봉 및 포장이 훼손으로 상품가치가 현저히 상실된 경우<br>
+                                            - 시간 경과에 의해 재판매가 어려울정도로 상품 가치가 현저히 저하된 경우<br>
+                                            - 고객주문 확인 후 상품제작에 들어가는 주문 제작 상품<br>
+                                            - 직접 조립하는(DIY) 상품을 조립 한 경우
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="faq-item" data-index="18">
+                        <td>
+                            <div id="accordion18">
+                                <div class="card">
+                                    <div class="card-header" id="headingEighteen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">제품의 교환 또는 반품은 어떻게 신청 할 수 있나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseEighteen" class="collapse" aria-labelledby="headingEighteen" data-parent="#accordion18">
+                                        <div class="card-body">
+                                            업체(브랜드)마다 발송처 및 반품절차가 다릅니다.<br>
+                                            - 우측 상단 프로필 사진을 클릭 후 [나의쇼핑 > 주문 상세보기] 페이지에서 원하는 주문의 상세보기 버튼을 클릭 후 교환/반품 접수 후 진행 할수 있습니다.<br>
+                                            교환/반품 접수 없이 임의로 반송한 경우에는 처리가 늦어질 수 있습니다.<br>
+                                            - 반품을 보내실때는 제품이 훼손되지 않도록 안전하게 충분히 포장 부탁드립니다.<br>
+                                            단, 구매확정 이후 교환/반품을 원하시는 경우 판매 업체에 교환/반품 가능 여부를 먼저 문의 부탁드립니다.<br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="faq-item" data-index="19">
+                        <td>
+                            <div id="accordion19">
+                                <div class="card">
+                                    <div class="card-header" id="headingNineteen">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">반품 시, 사은품도 같이 반품해야 하나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseNineteen" class="collapse" aria-labelledby="headingNineteen" data-parent="#accordion19">
+                                        <div class="card-body">
+                                            사은품도 같이 동봉하여 반품해 주셔야 반품처리가 완료됩니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="faq-item" data-index="20">
+                        <td>
+                            <div id="accordion20">
+                                <div class="card">
+                                    <div class="card-header" id="headingTwenty">
+                                        <div class="collapsed" data-toggle="collapse" data-target="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty" onclick="toggleBold(event, this)">
+                                            <span class="icon-question">Q</span>
+                                            <span class="text">주문한 것과 다른 상품이 왔습니다. 어떻게 해아하나요?</span>
+                                        </div>
+                                    </div>
+                                    <div id="collapseTwenty" class="collapse" aria-labelledby="headingTwenty" data-parent="#accordion20">
+                                        <div class="card-body">
+                                            우측 상단 프로필 사진을 클릭 후 [나의쇼핑 > 고객센터 > 1:1 카톡 상담하기]를 통해 문의 주시면 확인 도움드리겠습니다.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     <!-- 테이블 끝 -->
-    </div>
 </section>
 
 <!-- Footer Section Begin -->
@@ -563,7 +846,53 @@
     alert(message)
     };
 </script>
-<script src="js/main.js"></script>
+<script src="js/main.js">
+
+</script>
+<script>
+    function showAll() {
+    // 모든 버튼에서 active 클래스 제거
+    document.querySelectorAll('.button-group button').forEach(btn => btn.classList.remove('active'));
+    // 전체 버튼에 active 클래스 추가
+    document.getElementById('allButton').classList.add('active');
+    // FAQ 아이템 모두를 보여주는 함수 호출
+    showAllItems();
+}
+
+function showRange(indices) {
+    // 모든 버튼에서 active 클래스 제거
+    document.querySelectorAll('.button-group button').forEach(btn => btn.classList.remove('active'));
+    // 현재 클릭된 버튼에 active 클래스 추가
+    event.currentTarget.classList.add('active');
+    // 특정 범위 내용을 보여주는 함수 호출
+    showItemsInRange(indices);
+}
+
+function showAllItems() {
+    // 모든 FAQ 아이템을 보여줍니다.
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.style.display = '';
+    });
+}
+
+function showItemsInRange(indices) {
+    // 주어진 인덱스 범위에 해당하는 FAQ 아이템만 보여줍니다.
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const index = parseInt(item.getAttribute('data-index'));
+        if (indices.includes(index)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+    //누르면 글씨 굵게
+     function toggleBold(event, element) {
+    const textElement = element.querySelector('.text');
+    textElement.classList.toggle('bold-text');
+}
+</script>
 </body>
 
 </html>

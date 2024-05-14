@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public interface  CategoryRepository extends JpaRepository<CategoryBig, Long> {
-
+    boolean existsByCname(String cname);
 //    @Query("SELECT c, cm " +
 //            "FROM CategoryBig c LEFT OUTER JOIN c.categoryMiddles cm " +
 //            "WHERE c.cbno = :cbno")

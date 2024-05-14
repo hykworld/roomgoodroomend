@@ -7,12 +7,16 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>RoomGoodRoomEnd</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
           rel="stylesheet">
     <script src="https://kit.fontawesome.com/dbaea98925.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <!-- Css Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
@@ -148,15 +152,16 @@
         }
     .input-form-backgroud{margin-top : 40px;}
 
-        .btn-wrapper {
+    .btn-wrapper {
     display: flex;
     justify-content: center; /* Center the buttons horizontally */
     margin-bottom: 30px; /* Adjust margin as needed */
     }
 
-        .box1 {
+    .box1 {
     text-align: left;
-}
+    font-family: "Jua", sans-serif;
+    }
     </style>
 </head>
 
@@ -177,7 +182,7 @@
             <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
             <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
             <a href="/loginshop" sec:authorize="isAnonymous()">회원가입</a>
-            <a href="#">고객센터</a>
+            <a href="/FAQ">고객센터</a>
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -232,7 +237,7 @@
                 <div align="center">
                     <div class="form-group" id="titlebox">
                         <input class="form-control box1" type="text" name="faqtitle" placeholder="제목을 입력하세요"
-                               th:value="${faq.faqtitle}">
+                               th:value="${faq.faqtitle}" >
                     </div>
 
                     <div>
@@ -241,14 +246,15 @@
 
                     <div class="form-group" id="contentbox1">
                         <textarea th:text="${faq.faqcontent}" class="form-control" cols="80" rows="20" id="contentbox"
-                                  name="faqcontent" placeholder="내용을 입력하세요"></textarea>
+                                  name="faqcontent" placeholder="내용을 입력하세요"
+                                  style="font-family: 'Jua', sans-serif;"></textarea>
                     </div>
 
                     <div class="btn-wrapper">
-                        <input type="submit" class="btn btn-md  mr-2" style="background-color: #000; color: white;"
+                        <input type="submit" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;"
                                value="수정" onclick="">
-                        <a th:href="@{/FAQ-delete/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #000; color: white;">삭제</a>
-                        <a th:href="@{/FAQ-detail/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #000; color: white;">취소</a>
+                        <a th:href="@{/FAQ-delete/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">삭제</a>
+                        <a th:href="@{/FAQ-detail/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">취소</a>
                     </div>
                 </div>
             </form>

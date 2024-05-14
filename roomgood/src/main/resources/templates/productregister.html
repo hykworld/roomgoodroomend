@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>상품등록</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -209,7 +208,7 @@
             <a href="/loginshop" sec:authorize="isAnonymous()">로그인</a>
             <a href="/Logout" sec:authorize="isAuthenticated()">로그아웃</a>
             <a href="/loginshop" sec:authorize="isAnonymous()">회원가입</a>
-            <a href="#">고객센터</a>
+            <a href="/FAQ">고객센터</a>
         </div>
         <div class="offcanvas__top__hover">
             <span>Usd <i class="arrow_carrot-down"></i></span>
@@ -282,9 +281,9 @@
         <div class="contentBox">
             <!--카테고리-->
             <div class="mb-3">
-                <div class="input-group" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <div class="input-group row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                     <div class="col-lg-3">카테고리</div>
-                    <select class="custom-select col-lg-11" id="categoryLevel1" name="categoryBig" required>
+                    <select class="custom-select col-lg-9" id="categoryLevel1" name="categoryBig" required>
                         <option disabled selected>대분류 선택</option>
                         <option value="1">가구</option>
                         <option value="2">가전</option>
@@ -295,32 +294,32 @@
                 </div>
             </div>
             <!--카테고리-->
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <div class="col-lg-2">상품명</div>
-                <input type="text" class="form-control mb-3" style="color:#333; max-width:80%;" name="pname" placeholder="상품명(필수)" required>
+            <div class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <div class="col-lg-3">상품명</div>
+                <input  type="text" class="form-control col-lg-9" style="color:#333; max-width:80%;" name="pname" placeholder="상품명(필수)" required>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <input type="text" class="form-control col-lg-10" id="originalPrice" name="originalPrice" placeholder="판매원가" required>
                 <div class="col-lg-2">원</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <input type="text" class="form-control col-lg-10" id="discount" name="discount" placeholder="할인(0~99%) ">
                 <div class="col-lg-2">할인</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <input type="text" class="form-control col-lg-10" id="price" name="price" placeholder="소비자 판매가" readonly>
                 <div class="col-lg-2">원</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <input type="text" class="form-control col-lg-10" name="stock" placeholder="수량">
                 <div class="col-lg-2">개</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+            <div class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <div class="col-lg-3">요약 설명</div>
-                <input type="text" class="form-control mb-3" name="subContent" placeholder="상품 요약 설명">
+                <input type="text" class="form-control col-lg-9" name="subContent" placeholder="상품 요약 설명">
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <div class="col-lg-4">제품 상태 </div>
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <div class="col-lg-3">제품 상태 </div>
                 <div class="col-lg-3">
                     <input class="form-check-input" type="checkbox" id="tag11" name="itemSellStatus" value=SELL>
                     <label for="tag11">SELL</label>
@@ -334,7 +333,7 @@
 
             <!-- 태그 수량에 맞게 일단 위치만 ------------------------------------------->
             <div class="form-check" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; ">
-                <div class="">제품 태그 </div>
+                <div>제품 태그 </div>
                 <br>
                 <div class="row">
                     <div class="col-md-3 mb-2">
@@ -500,11 +499,11 @@ document.getElementById("discount").addEventListener("input", calculateDiscount)
 
 /////////////이미지 체크////////////
 var regex = new RegExp("(.*?\.(jpg|png|gif))$");
-var maxSize = 10 * 1024 * 1024; //10MB
+var maxSize = 20 * 1024 * 1024; //10MB
 
 function checkExtension(fileName, fileSize) {
     if (fileSize > maxSize) {
-        alert("파일사이즈가 10MB를 초과했습니다");
+        alert("파일사이즈가 20MB를 초과했습니다");
         return false;
     }
     if (!regex.test(fileName)) {

@@ -36,7 +36,6 @@
 
 
 
-
 /* 윤기 추가 */
 /* 기본 색상 */
 .sub-content {
@@ -3897,4 +3896,16 @@ ol {
 	.categories__text:before {
 		height: 250px;
 	}
+}
+
+/*종효 추가*/
+.set-bg{
+    position: relative;
+    overflow: hidden;
+}
+.set-bg img{
+    transition: transform 0.3s ease;
+}
+.product__item__pic.set-bg:hover img{
+    transform: scale(1.2);
 }
