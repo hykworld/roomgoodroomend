@@ -11,4 +11,6 @@ public interface WishlistService {
 
     WishListDTO getlist(Long id);
 
+    boolean delete(Long wno);
+
 }

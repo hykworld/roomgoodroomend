@@ -155,7 +155,7 @@
                             <!--반복될 애들-->
                             <div th:each="orderlist : ${orderlist}">
                                 <div  class="row" style="border:1px solid #f3f2ee ;font-size:15px ;padding-top:0px;">
-                                    <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderlist.orderItemDTO[0].proname}]] 외 [[${count}]]개의 상품</b></div>
+                                    <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderlist.orderItemDTO[0]}]] 외 [[${count}-1]]개의 상품</b></div>
                                     <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderlist.price}]]원</b></div>
                                     <div class="col-md-3 mb-3" style="text-align: center;">[[${orderlist.regDate}]]</div>
                                     <div class="col-md-3 mb-3 readbtndiv" style="text-align: center;"><button class="koobtn readbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">상세보기</button></div>
@@ -344,6 +344,13 @@
         row.find('.foldbtndiv').css('display', 'none');
     });
 
+</script>
+
+<script th:inline="javascript">
+    var message = [[${msg}]];
+    if(message){
+    alert(message)
+    };
 </script>
 
 <!--    <script src="js/pay.js"></script>-->

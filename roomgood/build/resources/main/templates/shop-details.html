@@ -239,7 +239,7 @@ input[type=number]::-webkit-outer-spin-button {
 <!--</div>-->
 
 <!-- Breadcrumb Section Begin -->
-<div th:include="header.html"></div>
+<div th:insert="~{header.html}"></div>
 <section class="breadcrumb-option">
     <div class="container">
         <div class="row">
@@ -1396,6 +1396,23 @@ input[type=number]::-webkit-outer-spin-button {
                 }
         });
                  alert('찜 목록에 추가되었습니다.');
+    })
+
+
+    $('#wishlist2').on('click',function(){
+
+        $('#wishlist2').css('display','none');
+        $('#wishlist').css('display','block');
+        $.ajax({
+                url:"/deletewish", //서버주소
+                data:{pno:pno}, //서버로 전송되는 데이터
+                dataType:"boolean", //서버에서 넘어오는 데이터의 타입
+                type:"get", //전송방식
+                success:function(result){ //서버로 부터 정상적으로 응답이 올때
+                    console.log(result);
+                }
+        });
+                 alert('찜 목록에서 삭제되었습니다.');
     })
 })
 ////구씨 수정부분5월9일.end

@@ -14,4 +14,6 @@ public interface EventImageRepository extends JpaRepository<EventImage,Long> {
     // select p ,pi from product p left join product_Image pi on p.pno = pi.product_pno;
 
     List<EventImage> findByEventEno(Long eno);
+
+    void deleteAllByEventEno(Long eno);
 }

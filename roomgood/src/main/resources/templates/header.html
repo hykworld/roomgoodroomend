@@ -67,20 +67,19 @@
                     <ul>
                         <li><a href="/shop">카테고리</a>
                             <ul class="dropdown">
-                                <li><a href="/about?priceno=0" style="background-color:gray;">전체보기</a></li>
-                                <li><a href="/about">가구</a></li>
-                                <li><a href="/shop-details">가전</a></li>
-                                <li><a href="/shopping-cart">옷정리/보관</a></li>
-                                <li><a href="/checkout">생활용품</a></li>
-                                <li><a href="/blog-details">소품/취미</a></li>
+                                <li><a href="/shop?" style="background-color:gray;">전체보기</a></li>
+                                <li><a href="/shop?cno=1">가구</a></li>
+                                <li><a href="/shop?cno=2">가전</a></li>
+                                <li><a href="/shop?cno=3">옷정리/보관</a></li>
+                                <li><a href="/shop?cno=4">생활용품</a></li>
+                                <li><a href="/shop?cno=5">소품/취미</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">인기차트</a></li>
                         <li><a href="/about?priceno=0">만원이하</a></li>
 
                         <li><a href="/contact">딸기마켓</a></li>
                         <li ><a href="/blog">이벤트</a>
-                            <ul class="dropdown">
+                            <ul class="dropdown" th:if="${#authorization.expression('hasRole(''ROLE_VIP'')')}">
                                 <li><a href="/eventRegister">글등록</a></li>
                             </ul>
                         </li>

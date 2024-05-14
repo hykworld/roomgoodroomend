@@ -4,6 +4,7 @@ import com.room.good.dto.UploadResultDTO;
 import com.room.good.service.CartttService;
 import com.room.good.service.OrderrrService;
 import com.room.good.service.WishlistService;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -231,4 +232,12 @@ public class SubControllerKOO {
 
         return new ResponseEntity<>(true,HttpStatus.OK);
     };
+
+    @GetMapping("/deletewish")
+    public ResponseEntity<Boolean> deletewish(Long wno){
+
+        wishlistService.delete(wno);
+
+        return new ResponseEntity<>(true,HttpStatus.OK);
+    }
 }

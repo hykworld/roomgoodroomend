@@ -58,5 +58,14 @@ public class WishlistServiceImpl implements WishlistService{
         return wishListDTO;
     }
 
+    @Override
+    @Transactional
+    public boolean delete(Long wno) {
+
+        wishRepository.deleteById(wno);
+
+        return true;
+    }
+
     ;
 }

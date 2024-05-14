@@ -102,4 +102,14 @@ public class EventServiceImpl implements EventService{
         log.info(eventDTO+"eventDTOeventDTOeventDTO");
         return eventDTO;
     }
+
+    @Override
+    @Transactional
+    public boolean delete(Long eno) {
+        eventImageRepository.deleteAllByEventEno(eno);
+        eventRepository.deleteById(eno);
+
+
+        return true;
+    }
 }

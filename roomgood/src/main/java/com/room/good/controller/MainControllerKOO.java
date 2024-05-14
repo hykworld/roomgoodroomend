@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.jmx.export.naming.IdentityNamingStrategy;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,6 @@ public class MainControllerKOO {
 
 
 
-
     @GetMapping("/blog")
     public void getblog(PageRequestDTO pageRequestDTO, Model model,HttpSession session ){
 
@@ -51,6 +51,7 @@ public class MainControllerKOO {
 
         EventDTO eventDTO = eventService.read(eno);
         model.addAttribute("event",eventDTO);
+        model.addAttribute("eno",eno);
         model.addAttribute("preno",eno-1);
         model.addAttribute("nextno",eno+1);
     };
@@ -66,7 +67,6 @@ public class MainControllerKOO {
     public void getcontact(){};
     @GetMapping("/main")
     public void getmain(){};
-
 
     @GetMapping("/eventRegister")
     public void eventRegisterGet(){
@@ -85,7 +85,6 @@ public class MainControllerKOO {
         log.info("session email : " + session.getAttribute("email"));
         log.info("session id : " + session.getAttribute("id"));
         log.info("session " + session);
-
 
         String email =(String)session.getAttribute("email");
         Long id = (Long)session.getAttribute("id");
@@ -207,6 +206,14 @@ public class MainControllerKOO {
 
     @GetMapping("/resetpw")
     public void getCheckout(){};
+    @GetMapping("/eventdelete")
+    public String geteventdelete(Long eno){
+
+
+         eventService.delete(eno);
+
+         return "redirect:/blog";
+    };
 
     @GetMapping("/ajaxtestpage")
     public void getajaxtestpage(){};

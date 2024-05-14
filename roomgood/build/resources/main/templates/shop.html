@@ -292,23 +292,19 @@
                         <!--가격으로 정렬 , sort---------------------------------------------------------------------------------->
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
-                                <p>Sort by Price:</p>
-                                <select>
-                                    <option value="">Low To High</option>
-                                    <option value="">$0 - $55</option>
-                                    <option value="">$55 - $100</option>
-                                </select>
+                                <a th:href="@{/productregister}" >상품 등록하기</a>
+
                             </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
-                <a th:href="@{/productregister}">글쓰기</a>
 
 
                 <!--상품 부분------------------------------------------------------------------------------------>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6" th:each="dto : ${result.dtoList}">
-                        <a th:href="@{/productmodify(pno=${dto.pno}, page=${result.page})}">
+                        <a th:href="@{/productmodify(pno=${dto.pno}, page=${result.page})}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" >
                             <button type="button" class="">modify</button>
                         </a>
                         <div  class="product__item sale">
@@ -332,7 +328,6 @@
                                 </div>
                             </a>
                             <div class="product__item__text">
-                                <a href="#" class="add-cart">+ Add To Cart</a>
                                 <h5 style="color: #35C5F0; ">[[${dto.categoryBig.cname}]]</h5>
                                 <h7 th:text="${dto.subContent}" class="sub-content" style="font-weight: bold;"></h7>
                                 <h5 th:text="${dto.pname}"></h5>
@@ -531,6 +526,8 @@
 
 </script>
 <!-- Js Plugins -->
+
+
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>

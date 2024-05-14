@@ -20,6 +20,8 @@ public interface EventService {
 
     EventDTO read(Long eno);
 
+    boolean delete(Long eno);
+
 
 
     default EventDTO entitiesToDTO(Event event, List<EventImage> EventImages){

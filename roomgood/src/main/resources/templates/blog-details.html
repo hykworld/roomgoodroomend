@@ -26,10 +26,7 @@
 </head>
 
 <body>
-<!-- Page Preloder -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
+
 
 <!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-overlay"></div>
@@ -105,8 +102,7 @@
                                 <li><a href="/blog-details">소품/취미</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">인기차트</a></li>
-                        <li><a href="/contact">만원이하</a></li>
+                       <li><a href="/contact">만원이하</a></li>
 
                         <li><a href="/contact">딸기마켓</a></li>
                         <li ><a href="/blog">이벤트</a>
@@ -169,11 +165,11 @@
                         <!--                            </div>-->
                         <div class="blog__details__text">
                             <p>[[${event.content}]]</p>
-
                         </div>
 
-                    </div>
 
+                    <a class="float-right" th:href="@{/eventdelete(eno=${eno})}">글 삭제</a>
+                    </div>
                 </div>
 
 
@@ -191,6 +187,7 @@
                         <a id="kakaotalk-sharing-btn" href="javascript:;" class="btn btn-light" style=" width:45%"> <i class="fa-regular fa-share-from-square"></i> 공유하기</a>
                         <a href="/shop-details?pno=4" class="btn btn-primary float-right" style=" width:45%;">상품 보러 가기</a>
                     </div>
+
                 </div>
 
             </div>
