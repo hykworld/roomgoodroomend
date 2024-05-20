@@ -15,7 +15,7 @@
 - Development Tool : IntelliJ, VSCODE, HeidiSQL
 - Framework : Bootstrap5, SpringBoot(JPA)
 - Language/Skills : html. css, Javascript, java, mvc, Ajax
-- DB : MySQL , Oracle, Apache Tomcat, MariaDB![image](https://github.com/hykworld/roomgoodroomend/assets/151594104/df2e68d7-5f7f-46f4-a10f-809d5a90a265)
+- DB : MySQL , Oracle, Apache Tomcat, MariaDB
 
 📣구현기능
 
