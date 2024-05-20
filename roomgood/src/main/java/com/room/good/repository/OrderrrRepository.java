@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrderrrRepository extends JpaRepository<Order1,Long> {
 
     List<Order1> findByClubMemberId(Long id);
+
+    List<Order1> findAllByStatus(String status);
 }

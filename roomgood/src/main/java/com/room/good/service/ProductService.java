@@ -1,13 +1,11 @@
 package com.room.good.service;
 
 
-import com.room.good.dto.PageRequestDTO;
-import com.room.good.dto.PageResultDTO;
-import com.room.good.dto.ProductDTO;
-import com.room.good.dto.ProductImageDTO;
+import com.room.good.dto.*;
 import com.room.good.entity.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 
 import java.util.ArrayList;
@@ -154,4 +152,71 @@ public interface ProductService {
 
         //상품 수 구하기
         long getProductCount();
+
+        //수민 추가
+        ProductDTO read2(Long pno);
+
+        ReviewCountDTO reviewCount(Long pno);
+
+        default ProductDTO entitiesToDTO2(Product product, List<ProductImage> productImages, List<ProductImage2> productImages2, double avg, Long count) {
+                ProductDTO productDTO = ProductDTO.builder()
+                        .pno(product.getPno())
+                        .pname(product.getPname())
+                        .price(product.getPrice())
+                        .discount(product.getDiscount())
+                        .originalPrice(product.getOriginalPrice())
+                        .stock(product.getStock())
+                        .avg(avg)
+                        .reviewCount(count)
+                        .itemSellStatus(product.getItemSellStatus())
+                        .content(product.getContent())
+                        .subContent(product.getSubContent())
+                        .build();
+
+                // 카테고리 정보 추가
+                CategoryBig categoryBig = product.getCategoryBig();
+                productDTO.setCategoryBig(categoryBig);
+
+                List<ProductImageDTO> productImageDTOList = productImages.stream().map(productImage -> {
+                        if (productImage != null) {
+                                return ProductImageDTO.builder()
+                                        .pinum(productImage.getPinum())
+                                        .piuuid(productImage.getPiuuid())
+                                        .piimgName(productImage.getPiimgName())
+                                        .pipath(productImage.getPipath())
+                                        .build();
+                        } else {
+                                // 대체 이미지 정보 설정
+                                return ProductImageDTO.builder()
+                                        .piuuid("default") // 대체 이미지의 UUID 또는 다른 식별자
+                                        .piimgName("noimage.png") // 대체 이미지 파일명
+                                        .pipath("img/noimage.png") // 대체 이미지 경로
+                                        .build();
+                        }
+                }).collect(Collectors.toList());
+
+                productDTO.setImageDTOList(productImageDTOList);
+
+                List<ProductImageDTO> productImageDTOList2 = productImages2.stream().map(productImage2 -> {
+                        if (productImage2 != null) {
+                                return ProductImageDTO.builder()
+                                        .pinum(productImage2.getPinum())
+                                        .piuuid(productImage2.getPiuuid())
+                                        .piimgName(productImage2.getPiimgName())
+                                        .pipath(productImage2.getPipath())
+                                        .build();
+                        } else {
+                                // 대체 이미지 정보 설정
+                                return ProductImageDTO.builder()
+                                        .piuuid("default") // 대체 이미지의 UUID 또는 다른 식별자
+                                        .piimgName("noimage.png") // 대체 이미지 파일명
+                                        .pipath("img/noimage.png") // 대체 이미지 경로
+                                        .build();
+                        }
+                }).collect(Collectors.toList());
+
+                productDTO.setImageDTOList2(productImageDTOList2);
+
+                return productDTO;
+        }
 }

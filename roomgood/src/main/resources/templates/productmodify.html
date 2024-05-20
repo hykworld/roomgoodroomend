@@ -86,35 +86,45 @@
         .star i,.star p {
         color: #35C5F0;
         }
-        #submitBtn{
-            background-color:#fff;
-            border:2px solid #35C5F0;
-            border-radius:5px;
-            padding:2px 5px;
+         .submitBtn {
+        background-color: #35C5F0;
+        color: #fff;
+        border-radius: 5px;
+        border: 2px solid #35C5F0;
+        transition: background-color 0.3s, color 0.3s;
         }
-        #submitBtn:hover{
-            background-color:#35C5F0 !important;
-            color:#fff !important;
+
+        .submitBtn:hover {
+        background-color: #fff;
+        color: #35C5F0;
+        border: 2px solid #35C5F0;
+        border-radius: 5px;
         }
-        .listBtn{
-            background-color:#fff;
-            border:2px solid #35C5F0;
-            border-radius:5px;
-            padding:2px 5px;
+        .listBtn {
+            background-color: #35C5F0;
+            color: #fff;
+            border-radius: 5px;
+            border: 2px solid #35C5F0;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .listBtn:hover{
-            background-color:#35C5F0 !important;
-            color:#fff !important;
+        .listBtn:hover {
+            background-color: #fff;
+            color: #35C5F0;
+            border: 2px solid #35C5F0;
+            border-radius: 5px;
         }
         .removeBtn{
-            background-color:#fff;
-            border:2px solid #35C5F0;
-            border-radius:5px;
-            padding:2px 5px;
+            background-color: #35C5F0;
+            color: #fff;
+            border-radius: 5px;
+            border: 2px solid #35C5F0;
+            transition: background-color 0.3s, color 0.3s;
         }
         .removeBtn:hover{
-            background-color:#35C5F0 !important;
-            color:#fff !important;
+            background-color: #fff;
+            color: #35C5F0;
+            border: 2px solid #35C5F0;
+            border-radius: 5px;
         }
         .img_Upload_Box{
             overflow:hidden;
@@ -283,9 +293,9 @@
         <div class="contentBox">
             <!--카테고리-->
             <div class="mb-3">
-                <div class="input-group" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <div class="input-group row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                     <div class="col-lg-3">카테고리</div>
-                    <select class="custom-select col-lg-11" id="categoryLevel1" name="categoryBig">
+                    <select class="custom-select col-lg-9" id="categoryLevel1" name="categoryBig">
                         <option disabled selected>대분류 선택</option>
                         <option value="1" th:selected="${dto.categoryBig.cno == 1}">가구</option>
                         <option value="2" th:selected="${dto.categoryBig.cno == 2}">가전</option>
@@ -297,36 +307,36 @@
             </div>
             <!--카테고리-->
             <input type="hidden" name="pno" th:value="${dto.pno}">
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <div class="col-lg-2">상품명</div>
-                <input type="text" class="form-control col-lg-10 mb-3" name="pname" placeholder="상품명(필수)"
+            <div class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <div class="col-lg-3">상품명</div>
+                <input type="text" class="form-control col-lg-9" name="pname" placeholder="상품명(필수)"
                        th:value="${dto.pname}">
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <input type="text" class="form-control col-lg-11" id="originalPrice" name="originalPrice" placeholder="판매원가"
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-10" id="originalPrice" name="originalPrice" placeholder="판매원가"
                        th:value="${dto.originalPrice}">
                 <div class="col-lg-2">원</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <input type="text" class="form-control col-lg-11" id="discount" name="discount" placeholder="할인(%)"
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-10" id="discount" name="discount" placeholder="할인(%)"
                        th:value="${dto.discount}">
                 <div class="col-lg-2">할인</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <input type="text" class="form-control col-lg-11" id="price" name="price" placeholder="소비자 판매가" readonly
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-10" id="price" name="price" placeholder="소비자 판매가" readonly
                        th:value="${dto.price}">
                 <div class="col-lg-2">원</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <input type="text" class="form-control col-lg-11" name="stock" placeholder="수량" th:value="${dto.stock}">
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <input type="text" class="form-control col-lg-10" name="stock" placeholder="수량" th:value="${dto.stock}">
                 <div class="col-lg-2">개</div>
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+            <div class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
                 <div class="col-lg-3">요약 설명</div>
-                <input type="text" class="form-control mb-3" name="subContent" placeholder="상품 요약 설명" th:value="${dto.subContent}">
+                <input type="text" class="form-control col-lg-9" name="subContent" placeholder="상품 요약 설명" th:value="${dto.subContent}">
             </div>
-            <div style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
-                <div class="col-lg-4">제품 상태 </div>
+            <div  class="row" style="background-color:#f4f8ff; color:#09609C; width:100%; font-size:15px; padding:10px 20px; margin-bottom:30px; display: flex; align-items: center;">
+                <div class="col-lg-3">제품 상태 </div>
                 <div class="col-lg-3">
                     <input class="form-check-input" type="checkbox" id="tag11" name="itemSellStatus" value="SELL" th:checked="${dto.itemSellStatus =='SELL'}">
                     <label for="tag11">SELL</label>
@@ -405,7 +415,7 @@
     <div style="text-align: center; margin-bottom: 2rem;" class="md-3">
         <button type="button" id="submitBtn" class="submitBtn">수정하기</button>
         <button type="button" class="listBtn">리스트</button>
-        <button type="button" class="removeBtn">Remove</button>
+        <button type="button" class="removeBtn">삭제</button>
     </div>
 </form>
 <!---------------------- 상품 등록 구간 end---------------------------------------------------------------------------------------------------->

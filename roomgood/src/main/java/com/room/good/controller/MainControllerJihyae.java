@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,7 @@ public class MainControllerJihyae {
         return "faq";
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/FAQ-register")
     public String getFAQRegister() {
 
@@ -74,7 +75,7 @@ public class MainControllerJihyae {
         return "FAQ-detail";
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/FAQ-modify/{faqno}")
     public String modifyFAQ(@PathVariable Long faqno, Model model) {
         Optional<FAQ> optionalFaq = faqService.getFAQById(faqno);
@@ -83,7 +84,7 @@ public class MainControllerJihyae {
         model.addAttribute("faq", faq);
         return "FAQ-modify";
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/FAQ-update")
     public String updateFAQ(@ModelAttribute FAQ faq) {
         System.out.println("faq!!!!!!!!!!!"+faq);

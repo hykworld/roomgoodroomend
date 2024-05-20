@@ -2,6 +2,8 @@
 <html lang="zxx" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
     <meta name="description" content="Male_Fashion Template">
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
@@ -187,7 +189,7 @@
                         <div class="col-lg-2"
                              style="text-align:center;align-items: center; justify-content: center;display: flex;">전화번호
                         </div>
-                        <div class="col-lg-4"><input class="form-control"></div>
+                        <div class="col-lg-4"><input class="form-control" id="phonenumber"></div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-2"
@@ -230,7 +232,7 @@
                              style="text-align:center;align-items: center; justify-content: center;display: flex;">
                             요청사항
                         </div>
-                        <div class="col-lg-8"><input type="text" class="form-control" placeholder="배송시 요청사항을 적어주세요.">
+                        <div class="col-lg-8"><input id="hopestring" type="text" class="form-control" placeholder="배송시 요청사항을 적어주세요.">
                         </div>
                     </div>
                     <hr>
@@ -352,10 +354,12 @@
                         <br>
                         포인트 사용<span class="float-right">0원</span>
                         <br>
-                        <hr>
-                        <b>결제금액<span class="float-right price" style="font-size:20px;">[[${discount}]]</span></b>
+                        택배비<span class="float-right price">+ [[${fee}]]</span>
                         <br>
-                        <span class="float-right" style="text-align:right ;width:100%;font-size:12px;">[[${discount}/100]]p 적립예정</span>
+                        <hr>
+                        <b>총 결제금액<span class="float-right price" style="font-size:20px;">[[${discount+fee}]]</span></b>
+                        <br>
+                        <span class="float-right" style="text-align:right ;width:100%;font-size:12px;">[[${discount+fee}/100]]p 적립예정</span>
                         <br>
                         <hr>
                         <div id="accordion">
@@ -410,6 +414,8 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -455,6 +461,9 @@
 </script>
 
 <script>
+
+
+
     //"kcp","naverpay" 네이버페이
     // "kcp","kakao" 카카오페이
     // "danal","card" 신용카드
@@ -483,6 +492,7 @@ try {
     }else if(selectedValue==5){
     pg = "kcp";
     method = "kakao";
+    pricee = pricee-1000;
     }else if(selectedValue==6){
     pg = "kcp";
     method = "naverpay";
@@ -490,20 +500,25 @@ try {
     pg = "kcp";
     method = "payco";
     }
-    var pricee =[[${discount}]];
-    var data = {receiver : $('#receiver').val()};
-       $.ajax({
-                    url:"/testorder", //서버주소
-                    dataType:"boolean", //서버에서 넘어오는 데이터의 타입
-                    data:data,
-                    type:"get", //전송방식
-                    success:function(result){ //서버로 부터 정상적으로 응답이 올때
-                        console.log(result);
-                        console.log('aa')
-
-                    }
-
-          });
+        var pricee =[[${discount}]];
+        var data = {
+    receiver: $('#receiver').val(),
+    hopestring: $('#hopestring').val(),
+    phonenumber: $('#phonenumber').val(),
+    address: $('#sample6_detailAddress').val(),
+    detailaddress: $('#sample6_address').val()
+};
+console.log(data);
+var queryString = Object.keys(data).map(key => key + '=' + encodeURIComponent(data[key])).join('&');
+$.ajax({
+    url: '/testorder?'+queryString,
+    type: "get",
+    dataType: "boolean",
+    success: function(result) {
+        console.log(result);
+        console.log('aa');
+    }
+});
 
 
     const response = await Bootpay.requestPayment({
@@ -543,6 +558,8 @@ try {
 }
 $('#header').css('display','block');
 }
+
+
 
 </script>
 

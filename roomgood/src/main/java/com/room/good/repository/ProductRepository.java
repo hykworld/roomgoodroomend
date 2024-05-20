@@ -1,6 +1,8 @@
 package com.room.good.repository;
 
 
+
+import com.room.good.dto.RatingSummaryDTO;
 import com.room.good.entity.Product;
 import com.room.good.entity.ProductImage;
 import org.springframework.data.domain.Page;
@@ -68,4 +70,42 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     // ProductRepository.java 에 쿼리 추가
     @Query("SELECT COUNT(*) FROM Product")
     long getProductCount();
+
+    //박수민 추가
+
+    @Query("select avg(coalesce(r.grade,0)),  count(r)" +
+            " from Product p left outer join Review r on r.product = p" +
+            " where p.pno = :pno group by p")
+    List<Object[]> getProductWithReview(Long pno);
+
+    @Query("select count(r)" +
+            " from Product p left outer join Review r on r.product = p" +
+            " where p.pno = :pno" +
+            " and r.grade = 1 group by p")
+    List<Object[]> getProductWithOneGrade(Long pno);
+
+    @Query("select count(r)" +
+            " from Product p left outer join Review r on r.product = p" +
+            " where p.pno = :pno" +
+            " and r.grade = 2 group by p")
+    List<Object[]> getProductWithTwoGrade(Long pno);
+
+    @Query("select count(r)" +
+            " from Product p left outer join Review r on r.product = p" +
+            " where p.pno = :pno" +
+            " and r.grade = 3 group by p")
+    List<Object[]> getProductWithThreeGrade(Long pno);
+
+    @Query("select count(r)" +
+            " from Product p left outer join Review r on r.product = p" +
+            " where p.pno = :pno" +
+            " and r.grade = 4 group by p")
+    List<Object[]> getProductWithFourGrade(Long pno);
+
+    @Query("select count(r)" +
+            " from Product p left outer join Review r on r.product = p" +
+            " where p.pno = :pno" +
+            " and r.grade = 5 group by p")
+    List<Object[]> getProductWithFiveGrade(Long pno);
 }
+

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.model.IModel;
 
 import java.security.Principal;
 import java.util.List;
@@ -56,6 +57,25 @@ public class MainControllerKOO {
         model.addAttribute("nextno",eno+1);
     };
 
+//    @GetMapping("/eventmodify")
+//    public void geteventmodify(Long eno, @ModelAttribute PageRequestDTO pageRequestDTO, Model model){
+//
+//        EventDTO eventDTO = eventService.read(eno);
+//        model.addAttribute("event",eventDTO);
+//        model.addAttribute("eno",eno);
+//        model.addAttribute("preno",eno-1);
+//        model.addAttribute("nextno",eno+1);
+//    };
+//
+//    @PostMapping("/eventmodify")
+//    public String posteventmodify(EventDTO eventDTO , RedirectAttributes redirectAttributes){
+//        log.info("EventDTO: " + eventDTO);
+//        Long mno = eventService.register(eventDTO);
+//        redirectAttributes.addFlashAttribute("msg", mno+"번 글이 수정되었습니다.");
+//        return "redirect:/blog";
+//    };
+
+
     @GetMapping("/about")
     public void about(PageRequestDTO pageRequestDTO, Model model,@RequestParam(defaultValue = "0") String priceno) {
 
@@ -69,6 +89,7 @@ public class MainControllerKOO {
     public void getmain(){};
 
     @GetMapping("/eventRegister")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void eventRegisterGet(){
 
     };
@@ -101,10 +122,10 @@ public class MainControllerKOO {
         //그냥 memberDTO memberDTO 써도 됨 근데 이해하기쉽게 이래 서놔씀
         if (memberService.join(memberDTO)){
             redirectAttributes.addFlashAttribute("msg","회원가입에 성공하셨습니다.");
-            return "redirect:/blog";
+            return "redirect:/index";
         }else {
             redirectAttributes.addFlashAttribute("msg","이미 가입되어있는 핸드폰 번호입니다.");
-            return "redirect:/join";
+            return "redirect:/index";
         }
 
     };
@@ -130,7 +151,7 @@ public class MainControllerKOO {
             log.info("sessionsession" + session.getId());
 
             redirectAttributes.addFlashAttribute("msg", "회원가입에 성공하셨습니다.");
-            return "redirect:/blog";
+            return "redirect:/index";
         }
 
     }
@@ -151,9 +172,31 @@ public class MainControllerKOO {
         MemberDTO memberDTO = memberService.findbyid(email);
         log.info("memberDTOmemberDTO"+memberDTO);
         List<OrderDTO> orderDTO = orderrrService.orderlist(memberDTO.getId());
+        int count1 =0;
+        int count2 =0;
+        int count3 =0;
+        int count4 =0;
+        for(int i = 0 ; i<orderDTO.size();i++){
+            Long count = (long) orderDTO.get(i).getOrderItemDTO().size();
+            orderDTO.get(i).setCount(count);
+            if(orderDTO.get(i).getStatus().equals("결제완료")){
+                count1++;
+            }else if(orderDTO.get(i).getStatus().equals("배송준비중")){
+                count2++;
+            }else if(orderDTO.get(i).getStatus().equals("배송중")){
+                count3++;
+            }else if(orderDTO.get(i).getStatus().equals("배송완료")){
+                count4++;
+            }
+        }
+
         log.info("orderlistorderlist"+orderDTO);
         model.addAttribute("orderlist",orderDTO);
         model.addAttribute("count",orderDTO.size());
+        model.addAttribute("count1",count1);
+        model.addAttribute("count2",count2);
+        model.addAttribute("count3",count3);
+        model.addAttribute("count4",count4);
         model.addAttribute("memberDTO",memberDTO);
 
         model.addAttribute("category",category);
@@ -190,64 +233,114 @@ public class MainControllerKOO {
     public String getLogout(HttpSession session){
         session.invalidate();
 
-        return "redirect:/blog";
+        return "redirect:/index";
     };
+
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/wishlist")
     public void wishlist(Model model, Principal principal){
         String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
         Long id = memberDTO.getId();
-        WishListDTO getlist = wishlistService.getlist(id);
 
-        log.info("memberDTOmemberDTO"+memberDTO);
-        model.addAttribute("memberDTO",memberDTO);
-        model.addAttribute("getlist",getlist);
+        if(wishlistService.findwish(id)){
+            WishListDTO getlist = wishlistService.getlist(id);
+            model.addAttribute("getlist",getlist);
+            model.addAttribute("memberDTO",memberDTO);
+        }else{
+            model.addAttribute("getlist","0");
+            log.info("memberDTOmemberDTO"+memberDTO);
+            model.addAttribute("memberDTO",memberDTO);
+        };
+
+
     };
 
     @GetMapping("/resetpw")
     public void getCheckout(){};
     @GetMapping("/eventdelete")
-    public String geteventdelete(Long eno){
+    public String geteventdelete(Long eno,RedirectAttributes redirectAttributes){
 
-
-         eventService.delete(eno);
-
-         return "redirect:/blog";
+        eventService.delete(eno);
+        redirectAttributes.addFlashAttribute("msg","글이 삭제되었습니다.");
+        return "redirect:/blog";
     };
 
     @GetMapping("/ajaxtestpage")
     public void getajaxtestpage(){};
     @GetMapping("/payfinish")
     public void getpayfinish(){};
+
+
+
     @GetMapping("/pay")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public void getpay(Principal principal,Model model){
-    String email = principal.getName();
+        String email = principal.getName();
         MemberDTO memberDTO = memberService.findbyid(email);
         CartttDTO findlist = cartttService.findlist(memberDTO.getCartnumber());
         log.info("findlist"+findlist);
         log.info("findlist"+findlist.getCartItems().get(0).getProduct());//잘넘어온다~
-            int paymoney =0;
-            int discount =0;
+        int paymoney =0;
+        int discount =0;
+        int fee = 0;
         for (int i =0; i<findlist.getCartItems().size();i++){
             paymoney+= (int) (findlist.getCartItems().get(i).getProduct().getOriginalPrice()*findlist.getCartItems().get(i).getQuantity());
             discount+= (int) (findlist.getCartItems().get(i).getProduct().getPrice()*findlist.getCartItems().get(i).getQuantity());
+            if(findlist.getCartItems().get(i).getProduct().getCategoryBig().getCno()==1L || findlist.getCartItems().get(i).getProduct().getCategoryBig().getCno()==2L){
+                fee += 5000;
+            }
         }
         String pipath= findlist.getCartItems().get(0).getProduct().getImages().get(0).getPipath();
         String piuuid=findlist.getCartItems().get(0).getProduct().getImages().get(0).getPiuuid();
         String piimgName= findlist.getCartItems().get(0).getProduct().getImages().get(0).getPiimgName();
-       String url= pipath+"/"+piuuid+"_"+piimgName;
+        String url= pipath+"/"+piuuid+"_"+piimgName;
         int dicountmoney = paymoney-discount;
-            log.info(paymoney+"paymoneypaymoney");
-            log.info(discount+"discountdiscount");
+        log.info(paymoney+"paymoneypaymoney");
+        log.info(discount+"discountdiscount");
+
         model.addAttribute("findlist",findlist.getCartItems());
         model.addAttribute("paymoney",paymoney);
         model.addAttribute("discount",discount);
         model.addAttribute("dicountmoney",dicountmoney);
         model.addAttribute("ordercount",findlist.getCartItems().size());
         model.addAttribute("url",url);
+        model.addAttribute("fee",fee);
     };
 
 
+    @GetMapping("adminpage")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public void adminpageget(Model model){
+
+        List<OrderDTO> orderlistall = orderrrService.orderlistall();
+        for(int i = 0 ; i<orderlistall.size();i++){
+            Long count = (long) orderlistall.get(i).getOrderItemDTO().size();
+            orderlistall.get(i).setCount(count);
+        }
+        log.info(orderlistall+"orderlistallorderlistall");
+        model.addAttribute("orderlistall",orderlistall);
+
+    }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("passreadyproduct")
+    public String passreadyproduct(Long ono){
+        orderrrService.modifystatus(ono);
+
+        return "redirect:/adminpage";
+    }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("passreadyproduct2")
+    public String passreadyproduct2(Long ono){
+        orderrrService.modifystatus2(ono);
+        return "redirect:/adminpage";
+    }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("passreadyproduct3")
+    public String passreadyproduct3(Long ono){
+        orderrrService.modifystatus3(ono);
+        return "redirect:/adminpage";
+    }
 
 
 }

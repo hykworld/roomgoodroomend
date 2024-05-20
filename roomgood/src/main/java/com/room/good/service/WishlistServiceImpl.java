@@ -67,5 +67,20 @@ public class WishlistServiceImpl implements WishlistService{
         return true;
     }
 
+    @Override
+    public boolean findwish(Long id) {
+        List<WishList> byClubMemberId = wishRepository.findByClubMemberId(id);
+
+        if(byClubMemberId.isEmpty()){
+
+            return false;
+        }else {
+
+            return true;
+        }
+
+
+    }
+
     ;
 }

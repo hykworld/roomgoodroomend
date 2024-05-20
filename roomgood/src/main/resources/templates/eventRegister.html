@@ -40,33 +40,46 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <style>
-        .filebox .upload-name {
-    display: inline-block;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
-}
-    .filebox label {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #fff;
-    vertical-align: middle;
-    background-color: #999999;
-    cursor: pointer;
-    height: 40px;
-    margin-left: 10px;
-}
-        .filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
+        @font-face {
+                font-family: 'KCC-Hanbit';
+                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+                font-weight: normal;
+                font-style: normal;
+            }
+            *{
+                font-family: 'KCC-Hanbit';
+            }
+            h1,h2,h3,h4,h5,h6{
+                font-family: 'KCC-Hanbit';
+            }
+
+            .filebox .upload-name {
+        display: inline-block;
+        height: 40px;
+        padding: 0 10px;
+        vertical-align: middle;
+        border: 1px solid #dddddd;
+        width: 78%;
+        color: #999999;
+    }
+        .filebox label {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        vertical-align: middle;
+        background-color: #999999;
+        cursor: pointer;
+        height: 40px;
+        margin-left: 10px;
+    }
+            .filebox input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+    }
 
     </style>
 </head>
@@ -103,7 +116,7 @@
 </section>
 <form action="/eventRegister" method="post">
     <div class="container">
-        <h2 class="mt-4">이벤트 등록</h2>
+       <HR>
 
         <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
         <div class="form-group">
@@ -113,7 +126,7 @@
 
         <div class="form-group">
             <label>기한</label>
-            <input type="text" class="form-control" id="expired" name="expired" placeholder="이벤트 기간">
+            <input type="text" class="form-control" id="expired" name="expired" placeholder="2014-01-01~2033-01-01">
         </div>
 
 

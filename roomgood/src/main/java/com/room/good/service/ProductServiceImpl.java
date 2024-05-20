@@ -2,24 +2,21 @@ package com.room.good.service;
 
 
 
+import com.room.good.dto.*;
 import com.room.good.entity.ProductImage2;
 import com.room.good.repository.CategoryRepository;
 
 import com.room.good.repository.ProductImageRepository2;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.log4j.Log4j2;
 
-import com.room.good.dto.PageRequestDTO;
-import com.room.good.dto.PageResultDTO;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-
-import com.room.good.dto.ProductDTO;
-import com.room.good.dto.ProductImageDTO;
 
 import com.room.good.entity.Product;
 import com.room.good.entity.ProductImage;
@@ -179,4 +176,64 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.getProductCount(); // 혹은 필요한 쿼리를 직접 호출하여 상품 수를 가져옴
 
     }
+    //수민 추가
+    @Transactional
+    @Override
+    public ProductDTO read2(Long pno) {
+        List<Object[]> result = productRepository.getProductAll(pno);
+        log.info("result"+result);
+        Product product=(Product) result.get(0)[0];
+
+        List<ProductImage> productImageList=new ArrayList<>();
+        result.forEach(arr->{
+            ProductImage productImage=(ProductImage)arr[1];
+            productImageList.add(productImage);
+            log.info("productImage"+productImage);
+        });
+        log.info("productImageList");
+        List<ProductImage2> productImageList2=new ArrayList<>();
+        result.forEach(arr->{
+            ProductImage2 productImage=(ProductImage2)arr[2];
+            productImageList2.add(productImage);
+        });
+
+        List<Object[]> review = productRepository.getProductWithReview(pno);
+
+        double avg = (double) Math.round(((double) review.get(0)[0]) * 10) / 10;
+        Long count =(Long) review.get(0)[1];
+
+        log.info("avgavgavgavgavgavgavgavgavgavgavgavgavgavgavgavg" + avg);
+        log.info("countcountcountcountcountcountcountcountcountcount"+ count);
+
+        log.info("productImageList"+productImageList);
+        return entitiesToDTO2(product, productImageList, productImageList2,avg,count);
+    }
+
+    @Override
+    public ReviewCountDTO reviewCount(Long pno) {
+        List<Object[]> one = productRepository.getProductWithOneGrade(pno);
+        List<Object[]> two = productRepository.getProductWithTwoGrade(pno);
+        List<Object[]> three = productRepository.getProductWithThreeGrade(pno);
+        List<Object[]> four = productRepository.getProductWithFourGrade(pno);
+        List<Object[]> five = productRepository.getProductWithFiveGrade(pno);
+        Long ones;
+        Long twos;
+        Long threes;
+        Long fours;
+        Long fives;
+        if(!one.isEmpty()){ones =(Long) one.get(0)[0];}else{ones = 0L;}
+        if(!two.isEmpty()){twos =(Long) two.get(0)[0];}else{twos = 0L;}
+        if(!three.isEmpty()){threes =(Long) three.get(0)[0];}else{threes = 0L;}
+        if(!four.isEmpty()){fours =(Long) four.get(0)[0];}else{fours = 0L;}
+        if(!five.isEmpty()){fives =(Long) five.get(0)[0];}else{fives = 0L;}
+
+        return ReviewCountDTO.builder()
+                .oneStar(ones)
+                .twoStar(twos)
+                .threeStar(threes)
+                .fourStar(fours)
+                .fiveStar(fives)
+                .build();
+    }
+
 }

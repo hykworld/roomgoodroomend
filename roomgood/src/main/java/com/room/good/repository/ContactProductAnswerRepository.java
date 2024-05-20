@@ -7,7 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ContactProductAnswerRepository extends JpaRepository<ContactProductAnswer,Long> {
+public interface
+ContactProductAnswerRepository extends JpaRepository<ContactProductAnswer,Long> {
 
     @EntityGraph(attributePaths = {"contactProduct"},type = EntityGraph.EntityGraphType.FETCH)
     List<ContactProductAnswer> findByContactProduct(ContactProduct contactProduct);

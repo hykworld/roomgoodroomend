@@ -30,6 +30,20 @@
 
 
     <style>
+        /*15일 추가*/
+        @font-face {
+            font-family: 'KCC-Hanbit';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: 'KCC-Hanbit' !important;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'KCC-Hanbit';
+        }
+
         /* Custom styles */
         .search-container {
             margin-top: 20px;
@@ -249,7 +263,7 @@
             </div>
 
             <div class="btn-wrapper">
-                <a th:href="@{/FAQ-modify/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">수정</a>
+                <a th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" th:href="@{/FAQ-modify/{id}(id=${faq.faqno})}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">수정</a>
                 <a th:href="@{/FAQ}" class="btn btn-md  mr-2" style="background-color: #35C5F0; color: white; font-family: 'Jua', sans-serif;">이전</a>
             </div>
         </div>

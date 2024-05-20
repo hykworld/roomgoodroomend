@@ -102,7 +102,7 @@
                   <div id="mywish5" class="col-lg-2">생활용품</div>
             </div>
             <hr>
-                <div class="mymember"  style="margin-left:50px;text-align: center; margin-bot:150px font-size:18px;" th:if="getlist!=null">
+                <div class="mymember" style="margin-left:50px;text-align: center; margin-bot:150px font-size:18px;" th:if="${getlist} != 0">
                     <hr>
                     <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>찜 목록</b></div>
                     <hr>
@@ -143,12 +143,17 @@
 
                     <!--반복될 애들.end-->
                 </div>
+            <div th:if="${getlist} == 0" style="height: 300px; text-align:center; line-height:300px; " >
+                위시리스트가 존재하지 않습니다.
+
+            </div>
+
         </div>
     </section>
 </form>
 <!-- Shopping Cart Section End -->
 <div th:insert="~{footer.html}"></div>
-<script>
+<script th:if="${getlist} != 0">
     $('#mywish1').on('click',function(){
 
         $('.all').css('display','flex')

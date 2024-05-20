@@ -48,4 +48,8 @@ public class ProductDTO {
     private Long originalPrice;//할인된가격
     private Long discount;//할인율
     //태그 어레이 리스트
+
+    //수민 추가
+    private double avg; //별점 평균
+    private Long reviewCount; //리뷰 갯수
 }

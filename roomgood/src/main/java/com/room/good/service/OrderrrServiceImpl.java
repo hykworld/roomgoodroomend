@@ -28,7 +28,7 @@ public class OrderrrServiceImpl implements OrderrrService{
     private final OrderrrItemRepository orderrrItemRepository;
     @Override
     @Transactional
-    public boolean cartlistpay(String email, String receiver) {
+    public boolean cartlistpay(String email, String receiver, String hopestring, String phonenumber, String finaladdress) {
 
         Optional<ClubMember> byEmail2 = clubMemberRepository.findByEmail2(email);//일단 이메일로 정보찾기
         ClubMember clubMember = byEmail2.get();// 카트번호 찾아야돼서
@@ -44,8 +44,11 @@ public class OrderrrServiceImpl implements OrderrrService{
 
         Order1 order1 = new Order1();
         order1.setClubMember(clubMember);
-        order1.setStatus("배송준비중");
+        order1.setStatus("결제완료");
         order1.setRecipient(receiver);
+        order1.setPhonenumber(phonenumber);
+        order1.setAddress(finaladdress);
+        order1.setHopestring(hopestring);
         orderrrRepository.save(order1);
         log.info(byCartCno.size()+"byCartCno.size()");
         List<OrderItem> orderItemList = new ArrayList<>();
@@ -97,6 +100,7 @@ public class OrderrrServiceImpl implements OrderrrService{
             orderDTO.setRegDate(byClubMemberId.get(i).getRegDate().toLocalDate().toString());
             orderDTO.setOno(byClubMemberId.get(i).getOno());
             orderDTO.setPrice(byClubMemberId.get(i).getPrice());
+            orderDTO.setStatus(byClubMemberId.get(i).getStatus());
             List<OrderItem> byOrder1Ono = orderrrItemRepository.findByOrder1Ono(byClubMemberId.get(i).getOno());
             List<OrderItemDTO> orderItemDTOs = new ArrayList<>();
             log.info("byOrder1OnobyOrder1Ono"+byOrder1Ono);
@@ -120,4 +124,74 @@ public class OrderrrServiceImpl implements OrderrrService{
         log.info(orderDTOList+"orderDTOListorderDTOListorderDTOList");
         return orderDTOList;
     }
+
+    @Override
+    @Transactional
+    public List<OrderDTO> orderlistall() {
+        List<OrderDTO> orderDTOList = new ArrayList<>();
+
+        List<Order1> Orderlistall = orderrrRepository.findAll();
+        for (int i=0;i<Orderlistall.size();i++){
+            OrderDTO orderDTO = new OrderDTO();
+            orderDTO.setRegDate(Orderlistall.get(i).getRegDate().toLocalDate().toString());
+            orderDTO.setOno(Orderlistall.get(i).getOno());
+            orderDTO.setPrice(Orderlistall.get(i).getPrice());
+            orderDTO.setAddress(Orderlistall.get(i).getAddress());
+            orderDTO.setHopestring(Orderlistall.get(i).getHopestring());
+            orderDTO.setPhonenumber(Orderlistall.get(i).getPhonenumber());
+            orderDTO.setRecipient(Orderlistall.get(i).getRecipient());
+            orderDTO.setStatus(Orderlistall.get(i).getStatus());
+            orderDTO.setModDate(Orderlistall.get(i).getModDate().toLocalDate().toString());
+            List<OrderItem> byOrder1Ono = orderrrItemRepository.findByOrder1Ono(Orderlistall.get(i).getOno());
+            List<OrderItemDTO> orderItemDTOs = new ArrayList<>();
+            log.info("byOrder1OnobyOrder1Ono"+byOrder1Ono);
+            for(int j=0;j<byOrder1Ono.size();j++) {
+                OrderItemDTO orderItemDTO = new OrderItemDTO();
+                orderItemDTO.setCount(byOrder1Ono.get(j).getCount());
+                orderItemDTO.setProname(byOrder1Ono.get(j).getProname());
+                orderItemDTO.setOino(byOrder1Ono.get(j).getOino());
+                orderItemDTO.setItemno(byOrder1Ono.get(j).getItemno());
+                orderItemDTO.setItemprice(byOrder1Ono.get(j).getItemprice());
+                orderItemDTO.setTotalitemprice(byOrder1Ono.get(j).getTotalitemprice());
+                orderItemDTOs.add(orderItemDTO);
+            }
+            log.info(orderItemDTOs+"orderItemDTOsorderItemDTOs");
+            orderDTO.setOrderItemDTO(orderItemDTOs);
+            orderDTOList.add(orderDTO);
+            log.info(orderDTO+"orderDTOorderDTO");
+            log.info(orderDTOList+"infororderDTOList");
+        }
+
+        log.info(orderDTOList+"orderDTOListorderDTOListorderDTOList");
+        return orderDTOList;
+    }
+
+    @Override
+    @Transactional
+    public boolean modifystatus(Long ono) {
+        Optional<Order1> byId = orderrrRepository.findById(ono);
+        byId.get().setStatus("배송준비중");
+        orderrrRepository.save(byId.get());
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public boolean modifystatus2(Long ono) {
+        Optional<Order1> byId = orderrrRepository.findById(ono);
+        byId.get().setStatus("배송중");
+        orderrrRepository.save(byId.get());
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public boolean modifystatus3(Long ono) {
+        Optional<Order1> byId = orderrrRepository.findById(ono);
+        byId.get().setStatus("배송완료");
+        orderrrRepository.save(byId.get());
+        return true;
+    }
+
+
 }

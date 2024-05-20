@@ -8,7 +8,14 @@ import java.util.List;
 
 public interface OrderrrService {
 
-    boolean cartlistpay(String email,String receiver);
+    boolean cartlistpay(String email, String receiver, String hopestring, String phonenumber, String finaladdress);
 
     List<OrderDTO> orderlist (Long id);
+
+    List<OrderDTO> orderlistall();
+
+    boolean modifystatus(Long ono);
+
+    boolean modifystatus2(Long ono);
+    boolean modifystatus3(Long ono);
 }

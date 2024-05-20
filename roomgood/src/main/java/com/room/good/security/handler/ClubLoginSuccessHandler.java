@@ -72,7 +72,7 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
         }
         else {
             log.info("nosuccess!!");// 바꿔서 1111과 같지 않을 때 ! 아 이제야 알겟다
-        redirectStratgy.sendRedirect(request, response, "/blog");//수정페이지로 가라
+        redirectStratgy.sendRedirect(request, response, "/index");//수정페이지로 가라
         }
     }
 

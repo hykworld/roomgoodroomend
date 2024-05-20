@@ -13,4 +13,6 @@ public interface WishlistService {
 
     boolean delete(Long wno);
 
+    boolean findwish(Long id);
+
 }

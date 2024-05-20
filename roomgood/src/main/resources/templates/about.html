@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RoomGoodRoomEnd</title>
 
+    <!--폰트어썸-->
+    <script src="https://kit.fontawesome.com/07c0459639.js" crossorigin="anonymous"></script>
     <!--제이쿼리-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -33,6 +35,34 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <style>
+        /*5월 15일 새로추가*/
+        @font-face {
+            font-family: 'KCC-Hanbit';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: 'KCC-Hanbit';
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'KCC-Hanbit';
+        }
+        .page-link{
+            border:none !important;
+            border-radius: .25rem !important;
+            margin-left:5px;
+            color:#333 !important;
+        }
+        .page-item.active .page-link{
+            color:#fff !important;
+        }
+        .product__pagination a{
+            line-height:15px !important;
+        }
+        /*새로추가*/
+
+
         .col-lg-2 {
           position: relative;
           display: inline-block;
@@ -164,27 +194,60 @@
 
                 <div  class="product__item sale">
 
-                    <a th:href="@{/shop-details(pno=${dto.pno},
+
+                        <div class="product__item__pic set-bg">
+                            <div onclick="showSoldOutAlert()"
+                                    th:if="${dto.itemSellStatus == T(com.room.good.constant.ItemSellStatus).SOLD_OUT && dto.stock >= 1}"
+                                 style="position: relative; width: 100%; height: 100%; border-radius: 5px; background-color: rgba(0, 0, 100, 1);">
+                                <!-- 품절 문구 -->
+                                <h6 style="color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; font-size: 35px;">판매 중지</h6>
+                                <!-- 이미지 -->
+                                <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                     th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
+                                     style="width: 100%; height: 100%; border-radius: 5px; opacity: 0.7;">
+                                <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                     src="img/noimage.png" style="width: 100%; height: 100%; border-radius: 5px; opacity: 0.7;">
+                            </div>
+
+                            <div class="outofstock" onclick="showOutOfStockAlert()"
+                                 th:if="${dto.stock == 0}"
+                                 style="position: relative; width: 100%; height: 100%; border-radius: 5px; background-color: rgba(0, 0, 100, 1);">
+                                <!-- 품절 문구 -->
+                                <h6 style="color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; font-size: 50px;">품절</h6>
+                                <!-- 이미지 -->
+                                <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                     th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
+                                     style="width: 100%; height: 100%; border-radius: 5px; opacity: 0.7;">
+                                <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                     src="img/noimage.png" style="width: 100%; height: 100%; border-radius: 5px; opacity: 0.7;">
+                            </div>
+
+                            <a th:href="@{/shop-details(pno=${dto.pno},
                             page=${result.page},
                             type=${pageRequestDTO.type} ,
                             keyword = ${pageRequestDTO.keyword})}">
-                        <div class="product__item__pic set-bg">
-                            <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
-                                 th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
-                                 style="width: 100%; height:100%;border-radius: 5px;">
-                            <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
-                                 src="img/noimage.png" style="width: 100%; height:100%;border-radius: 5px;">
-                            <span class="label">Sale</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""><span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>
+                            <div onclick="showSoldOutAlert()"
+                                    th:unless="${dto.itemSellStatus == T(com.room.good.constant.ItemSellStatus).SOLD_OUT}"
+                                 style="width: 100%; height: 100%; border-radius: 5px;">
+                                <!-- 이미지 -->
+                                <img th:if="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                     th:src="@{|/display?fileName=${dto.imageDTOList[0].getThumbnailURL()}|}"
+                                     style="width: 100%; height: 100%; border-radius: 5px;">
+                                <img th:unless="${dto.imageDTOList != null && dto.imageDTOList.size() > 0 && dto.imageDTOList[0].pipath != null }"
+                                     src="img/noimage.png" style="width: 100%; height: 100%; border-radius: 5px;">
+                                <!-- Sale 레이블 -->
+                                <span class="label">Sale</span>
+                                <!-- 하트, 비교, 검색 아이콘 -->
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="img/icon/compare.png" alt=""><span>Compare</span></a></li>
+                                    <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
+                                </ul>
+                            </div>
+                            </a>
                         </div>
-                    </a>
                     <div class="product__item__text">
-                        <a href="#" class="add-cart">+ Add To Cart</a>
-                        <h5 style="color: #35C5F0; ">[[${dto.categoryBig.cname}]]</h5>
+                        <h5 class="mb-1" style="color: #35C5F0;">[[${dto.categoryBig.cname}]]<span class="float-right" th:if="${dto.stock <= 20}" style="color:red;">🕢품절 임박•잔여  <span th:text="${dto.stock}"></span>개</span></h5>
                         <h7 th:text="${dto.subContent}" class="sub-content"></h7>
                         <h5 th:text="${dto.pname}"></h5>
                         <div style="display: inline-block;">
@@ -192,23 +255,19 @@
                             <h5 class="originalPrice" th:text="${dto.originalPrice}" style="color: #C3C3BD; display: inline-block; text-decoration: line-through;"></h5>
                         </div>
                         <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>&nbsp;
-                            <span style="color: #F7941D; font-weight: bold;" class="">(4)</span>&nbsp;&nbsp;
-                            <span style="font-weight: bold;" class="review-count">리뷰 30,000</span>
+                            <i class="fa fa-star" style="color: #35C5F0;"></i>
+                            <i class="fa fa-star" style="color: #35C5F0;"></i>
+                            <i class="fa fa-star" style="color: #35C5F0;"></i>
+                            <i class="fa fa-star" style="color: #35C5F0;"></i>
+                            <i class="fa fa-star-o" style="color: #35C5F0;"></i>&nbsp;
+                            <span style="color: #35C5F0; font-weight: bold;" class="">(4)</span>&nbsp;&nbsp;
+                            <input type="hidden" th:value="${dto.pno}" id="pno">
+                            리뷰(30)
                         </div>
                         <div>
                             <h5 class="price" th:text="${dto.price}"></h5>
-                            <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}==0">무료배송</h5>
-                            <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}!=0">[[${dto.categoryBig.deliveryFee}]]원</h5>
-                        </div>
-                        <div class="product__color__select">
-                            <label for="pc-31"><input type="radio" id="pc-31"></label>
-                            <label class="active black" for="pc-32"><input type="radio" id="pc-32"></label>
-                            <label class="grey" for="pc-33"><input type="radio" id="pc-33"></label>
+                            <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}==0"><i class="fa-solid fa-truck-fast"></i>무료배송</h5>
+                            <h5 style="color: #35C5F0; text-align: right;" th:if="${dto.categoryBig.deliveryFee}!=0"><i class="fa-solid fa-truck-fast"></i>5,000원</h5>
                         </div>
                     </div>
                 </div>
@@ -359,26 +418,26 @@
 </div>
 <!-- Search End -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-var priceElements = document.getElementsByClassName("price");
-var originalPriceElements = document.getElementsByClassName("originalPrice");
+    document.addEventListener("DOMContentLoaded", function() {
+        var priceElements = document.getElementsByClassName("price");
+        var originalPriceElements = document.getElementsByClassName("originalPrice");
 
-for (var i = 0; i < priceElements.length; i++) {
-var priceElement = priceElements[i];
-var price = priceElement.textContent;
-priceElement.textContent = formatNumberWithCommas(price) + '원';
-}
+        for (var i = 0; i < priceElements.length; i++) {
+            var priceElement = priceElements[i];
+            var price = priceElement.textContent;
+            priceElement.textContent = formatNumberWithCommas(price) + '원';
+        }
 
-for (var i = 0; i < originalPriceElements.length; i++) {
-var originalPriceElement = originalPriceElements[i];
-var originalPrice = originalPriceElement.textContent;
-originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
-}
-});
+        for (var i = 0; i < originalPriceElements.length; i++) {
+            var originalPriceElement = originalPriceElements[i];
+            var originalPrice = originalPriceElement.textContent;
+            originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+        }
+    });
 
-function formatNumberWithCommas(number) {
-return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+    function formatNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>

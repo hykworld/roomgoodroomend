@@ -92,5 +92,4 @@ public class Product extends BaseEntity {
             // 상품의 재고가 주문 수량보다 작을 경우 재고 부족 예외처리
         }this.stock = restStock; // 주문 후 남은 재고 수량을 상품의 현재 재고 값으로 할당
     }
-
 }

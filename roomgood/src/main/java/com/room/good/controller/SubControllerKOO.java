@@ -13,9 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -30,6 +28,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Log4j2
@@ -212,15 +211,30 @@ public class SubControllerKOO {
     };
 
     @GetMapping("/testorder")
-    public ResponseEntity<Boolean> testorderget(Principal principal,String receiver){
-
+    public ResponseEntity<Boolean> testorderget(Principal principal, @RequestParam String receiver, @RequestParam String hopestring, @RequestParam String phonenumber, @RequestParam String address, @RequestParam String detailaddress){
+        String finaladdress = detailaddress+" "+address;
         String email = principal.getName();// 이메일일거임 아마
-
-        orderrrService.cartlistpay(email,receiver);
+        log.info("testordertestorder"+receiver+hopestring+phonenumber+finaladdress);
+        orderrrService.cartlistpay(email,receiver,hopestring,phonenumber,finaladdress);
         //
 
         return new ResponseEntity<>(true,HttpStatus.OK);
     };
+
+//    @GetMapping("/testorder") // @GetMapping 대신 @PostMapping 사용
+//    public ResponseEntity<Boolean> testorderpost(Principal principal, @RequestBody Map<String, String> requestData) {
+//        String receiver = requestData.get("receiver");
+//        String hopestring = requestData.get("hopestring");
+//        String phonenumber = requestData.get("phonenumber");
+//        String address = requestData.get("address");
+//        String detailaddress = requestData.get("detailaddress");
+//        String finaladdress = address + " " + detailaddress;
+//        String email = principal.getName();
+//        log.info("testorder: " + receiver + " " + hopestring + " " + phonenumber + " " + finaladdress);
+//        orderrrService.cartlistpay(email, receiver, hopestring, phonenumber, finaladdress);
+//
+//        return new ResponseEntity<>(true, HttpStatus.OK);
+//    }
 
     @GetMapping("/addwish")
     public ResponseEntity<Boolean> addwishget(Principal principal,Long pno){

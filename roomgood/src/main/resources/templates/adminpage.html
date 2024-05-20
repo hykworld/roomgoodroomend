@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>-->
+    <!--    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RoomGoodRoomEnd</title>
+    <!--폰트어썸-->
+    <script src="https://kit.fontawesome.com/07c0459639.js" crossorigin="anonymous"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!--제이쿼리-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /*5월 15일 새로추가*/
+        @font-face {
+            font-family: 'KCC-Hanbit';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: 'KCC-Hanbit';
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'KCC-Hanbit';
+        }
+
+    </style>
+</head>
+
+<body>
+<div th:include="header.html"></div>
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>관리자페이지</h4>
+                    <div class="breadcrumb__links">
+                        <a href="/index">home</a>
+                        <span>관리자페이지</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Offcanvas Menu Begin -->
+
+<!-- Header Section End -->
+
+
+<!-- Map Begin!!!! -->
+<Hr>
+<div class="mymember" style=" margin-bottom:150px; font-size:18px;">
+    <hr>
+    <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>결제 완료 상품</b></div>
+    <hr>
+    <div class="row" style="background: #f3f2ee;">
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상품</b></div>
+        <div class="col-md-4 mb-3" style="text-align: center;"><b>배송지</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center; "><b>수령인</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>전화번호</b></div>
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상세보기</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>배송준비하기</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>주문일자</b></div>
+    </div>
+    <!--반복될 애들-->
+    <div th:each="orderlistall : ${orderlistall}">
+        <div th:if="${orderlistall.status.equals('결제완료')}" class="row" style="border:1px solid #f3f2ee ;font-size:15px ;padding-top:0px;">
+            <div class="col-md-2 mb-3" style="text-align: center;"><b>[[${orderlistall.orderItemDTO[0].proname}]] 외 [[${orderlistall.count-1}]]개의 상품</b></div>
+            <div class="col-md-4 mb-3" style="text-align: center;"><b>[[${orderlistall.address}]]</b></div>
+            <div class="col-md-1 mb-3 popover-element" style="text-align: center; position: relative;" data-toggle="popover" title="배송 시 요청 사항" th:data-content="${orderlistall.hopestring}"><div style="position: absolute; top: -10px; left:110px; font-size:20px; cursor:pointer;"><i class="fa-solid fa-comment-dots"></i></div>[[${orderlistall.recipient}]]</div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.phonenumber}]]</div>
+            <div class="col-md-2 mb-3 readbtndiv btn" style="text-align: center;"><button class="koobtn readbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">상세보기</button></div>
+            <div class="col-md-2 mb-3 foldbtndiv btn" style="text-align: center;display:none;"> <button class="koobtn foldbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">접기</button></div>
+            <div class="col-md-1 mb-3" style="text-align: center;"> <a class="btn" th:href="@{/passreadyproduct(ono= ${orderlistall.ono})}"  style="color: #ffffff; background: #111111;border-color: #111111; height:30px;line-height:18px;">확인</a></div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.regDate}]]</div>
+
+        </div>
+        <div class="row readdiv2" style="background: #f3f2ff;;padding-top:0px;display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품명</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>수량</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>총 가격</b></div>
+        </div>
+        <div  th:each="orderItemDTO : ${orderlistall.orderItemDTO}" class="row readdiv" style="border:1px solid #f3f2ee ;font-size:15px;padding-top:0px; display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.proname}]]</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.count}]]개</b></div>
+            <div class="col-md-3 mb-3 originalPrice" style="text-align: center;">[[${orderItemDTO.itemprice}]]</div>
+            <div class="col-md-3 mb-3 originalPrice" style="text-align: center;"> [[${orderItemDTO.totalitemprice}]]</div>
+        </div>
+    </div>
+    <!--반복될 애들.end-->
+</div>
+
+<!--배송 준비중-->
+<div class="mymember" style="margin-left:50px; margin-top:150px; margin-bottom:150px; font-size:18px;">
+    <hr>
+    <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>배송 준비중 상품</b></div>
+    <hr>
+    <div class="row" style="background: #f3f2ee;">
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상품</b></div>
+        <div class="col-md-4 mb-3" style="text-align: center;"><b>배송지</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>수령인</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>전화번호</b></div>
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상세보기</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>준비완료</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>주문일자</b></div>
+    </div>
+    <!--반복될 애들-->
+    <div  th:each="orderlistall : ${orderlistall}">
+        <div th:if="${orderlistall.status.equals('배송준비중')}" class="row" style="border:1px solid #f3f2ee ;font-size:15px ;padding-top:0px;">
+            <div class="col-md-2 mb-3" style="text-align: center;"><b>[[${orderlistall.orderItemDTO[0].proname}]] 외 [[${orderlistall.count-1}]]개의 상품</b></div>
+            <div class="col-md-4 mb-3" style="text-align: center;"><b>[[${orderlistall.address}]]</b></div>
+            <div class="col-md-1 mb-3 popover-element" style="text-align: center; position: relative;" data-toggle="popover" title="배송 시 요청 사항" th:data-content="${orderlistall.hopestring}"><div style="position: absolute; top: -10px; left:110px; font-size:20px; cursor:pointer;"><i class="fa-solid fa-comment-dots"></i></div>[[${orderlistall.recipient}]]</div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.phonenumber}]]</div>
+            <div class="col-md-2 mb-3 readbtndiv btn" style="text-align: center;"><button class="koobtn readbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">상세보기</button></div>
+            <div class="col-md-2 mb-3 foldbtndiv btn" style="text-align: center;display:none;"> <button class="koobtn foldbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">접기</button></div>
+            <div class="col-md-1 mb-3" style="text-align: center;"> <a class="btn" th:href="@{/passreadyproduct2(ono= ${orderlistall.ono})}"  style="color: #ffffff; background: #111111;border-color: #111111; height:30px;line-height:18px;">확인</a></div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.regDate}]]</div>
+        </div>
+        <div class="row readdiv2" style="background: #f3f2ff;;padding-top:0px;display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품명</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>수량</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>총 가격</b></div>
+        </div>
+        <div  th:each="orderItemDTO : ${orderlistall.orderItemDTO}" class="row readdiv" style="border:1px solid #f3f2ee ;font-size:15px;padding-top:0px; display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.proname}]]</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.count}]]개</b></div>
+            <div class="col-md-3 mb-3 originalprice" style="text-align: center;">[[${orderItemDTO.itemprice}]]</div>
+            <div class="col-md-3 mb-3 price" style="text-align: center;"> [[${orderItemDTO.totalitemprice}]]</div>
+        </div>
+    </div>
+
+    <!--반복될 애들.end-->
+</div>
+<div class="mymember" style="margin-left:50px; margin-top:150px; margin-bottom:150px; font-size:18px;">
+    <hr>
+    <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>배송 중인 상품</b></div>
+    <hr>
+    <div class="row" style="background: #f3f2ee;">
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상품</b></div>
+        <div class="col-md-4 mb-3" style="text-align: center;"><b>배송지</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>수령인</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>전화번호</b></div>
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상세보기</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>배송완료이동</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>주문일자</b></div>
+    </div>
+    <!--반복될 애들-->
+    <div  th:each="orderlistall : ${orderlistall}">
+        <div th:if="${orderlistall.status.equals('배송중')}" class="row" style="border:1px solid #f3f2ee ;font-size:15px ;padding-top:0px;">
+            <div class="col-md-2 mb-3" style="text-align: center;"><b>[[${orderlistall.orderItemDTO[0].proname}]] 외 [[${orderlistall.count-1}]]개의 상품</b></div>
+            <div class="col-md-4 mb-3" style="text-align: center;"><b>[[${orderlistall.address}]]</b></div>
+            <div class="col-md-1 mb-3 popover-element" style="text-align: center; position: relative;" data-toggle="popover" title="배송 시 요청 사항" th:data-content="${orderlistall.hopestring}"><div style="position: absolute; top: -10px; left:110px; font-size:20px; cursor:pointer;"><i class="fa-solid fa-comment-dots"></i></div>[[${orderlistall.recipient}]]</div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.phonenumber}]]</div>
+            <div class="col-md-2 mb-3 readbtndiv btn" style="text-align: center;"><button class="koobtn readbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">상세보기</button></div>
+            <div class="col-md-2 mb-3 foldbtndiv btn" style="text-align: center;display:none;"> <button class="koobtn foldbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">접기</button></div>
+            <div class="col-md-1 mb-3" style="text-align: center;"> <a class="btn" th:href="@{/passreadyproduct3(ono= ${orderlistall.ono})}"  style="color: #ffffff; background: #111111;border-color: #111111; height:30px;line-height:18px;">확인</a></div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.regDate}]]</div>
+        </div>
+        <div class="row readdiv2" style="background: #f3f2ff;;padding-top:0px;display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품명</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>수량</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>총 가격</b></div>
+        </div>
+        <div  th:each="orderItemDTO : ${orderlistall.orderItemDTO}" class="row readdiv" style="border:1px solid #f3f2ee ;font-size:15px;padding-top:0px; display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.proname}]]</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.count}]]개</b></div>
+            <div class="col-md-3 mb-3 originalPrice" style="text-align: center;">[[${orderItemDTO.itemprice}]]</div>
+            <div class="col-md-3 mb-3 originalPrice" style="text-align: center;"> [[${orderItemDTO.totalitemprice}]]</div>
+        </div>
+    </div>
+
+    <!--반복될 애들.end-->
+</div>
+<div class="mymember" style="margin-left:50px; margin-top:150px; margin-bottom:150px; font-size:18px;">
+    <hr>
+    <div class="col-md-12 mb-3" style="text-align: center; font-size:20px;"><b>배송 완료 상품</b></div>
+    <hr>
+    <div class="row" style="background: #f3f2ee;">
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상품</b></div>
+        <div class="col-md-4 mb-3" style="text-align: center;"><b>배송지</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>수령인</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>전화번호</b></div>
+        <div class="col-md-2 mb-3" style="text-align: center;"><b>상세보기</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>완료일자</b></div>
+        <div class="col-md-1 mb-3" style="text-align: center;"><b>주문일자</b></div>
+    </div>
+    <!--반복될 애들-->
+    <div  th:each="orderlistall : ${orderlistall}">
+        <div th:if="${orderlistall.status.equals('배송완료')}" class="row" style="border:1px solid #f3f2ee ;font-size:15px ;padding-top:0px;">
+            <div class="col-md-2 mb-3" style="text-align: center;"><b>[[${orderlistall.orderItemDTO[0].proname}]] 외 [[${orderlistall.count-1}]]개의 상품</b></div>
+            <div class="col-md-4 mb-3" style="text-align: center;"><b>[[${orderlistall.address}]]</b></div>
+            <div class="col-md-1 mb-3 popover-element" style="text-align: center; position: relative;" data-toggle="popover" title="배송 시 요청 사항" th:data-content="${orderlistall.hopestring}"><div style="position: absolute; top: -10px; left:110px; font-size:20px; cursor:pointer;"><i class="fa-solid fa-comment-dots"></i></div>[[${orderlistall.recipient}]]</div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.phonenumber}]]</div>
+            <div class="col-md-2 mb-3 readbtndiv btn" style="text-align: center;"><button class="koobtn readbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">상세보기</button></div>
+            <div class="col-md-2 mb-3 foldbtndiv btn" style="text-align: center;display:none;"> <button class="koobtn foldbtn" type="button" style="color: #ffffff; background: #111111;border-color: #111111;">접기</button></div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.modDate}]]</div>
+            <div class="col-md-1 mb-3" style="text-align: center;">[[${orderlistall.regDate}]]</div>
+        </div>
+
+        <div class="row readdiv2" style="background: #f3f2ff;;padding-top:0px;display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품명</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>수량</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>상품 가격</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>총 가격</b></div>
+        </div>
+        <div  th:each="orderItemDTO : ${orderlistall.orderItemDTO}" class="row readdiv" style="border:1px solid #f3f2ee ;font-size:15px;padding-top:0px; display:none;">
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.proname}]]</b></div>
+            <div class="col-md-3 mb-3" style="text-align: center;"><b>[[${orderItemDTO.count}]]개</b></div>
+            <div class="col-md-3 mb-3 price" style="text-align: center;">[[${orderItemDTO.itemprice}]]</div>
+            <div class="col-md-3 mb-3 originalPrice" style="text-align: center;"> [[${orderItemDTO.totalitemprice}]]</div>
+        </div>
+
+    </div>
+
+    <!--반복될 애들.end-->
+</div>
+<hr>
+<div th:insert="~{footer.html}"></div>
+
+<script>
+    $('.readbtn').click(function() {
+        var row = $(this).closest('.row');
+        row.siblings('.readdiv').css('display', 'flex');
+        row.siblings('.readdiv2').css('display', 'flex');
+        row.find('.readbtndiv').css('display','none');
+        row.find('.foldbtndiv').css('display', 'block');
+    });
+
+    $('.foldbtn').click(function() {
+        var row = $(this).closest('.row');
+        row.siblings('.readdiv').css('display', 'none');
+        row.siblings('.readdiv2').css('display', 'none');
+        row.find('.readbtndiv').css('display','block');
+        row.find('.foldbtndiv').css('display', 'none');
+    });
+
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    $( function () {
+      $( '[data-toggle="popover"]' ).popover()
+    } );
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var priceElements = document.getElementsByClassName("price");
+        var originalPriceElements = document.getElementsByClassName("originalPrice");
+
+        for (var i = 0; i < priceElements.length; i++) {
+            var priceElement = priceElements[i];
+            var price = priceElement.textContent;
+            priceElement.textContent = formatNumberWithCommas(price) + '원';
+        }
+
+        for (var i = 0; i < originalPriceElements.length; i++) {
+            var originalPriceElement = originalPriceElements[i];
+            var originalPrice = originalPriceElement.textContent;
+            originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+        }
+    });
+
+    function formatNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
+</body>
+</html>

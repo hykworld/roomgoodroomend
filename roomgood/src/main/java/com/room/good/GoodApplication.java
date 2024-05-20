@@ -17,16 +17,16 @@ public class GoodApplication {
 	}
 
 
-@Bean
-public CommandLineRunner loadData(CategoryRepository repository) {
-	return (args) -> {
-		insertCategoryIfNotExists(repository, "가구", "10000", "50,000");
-		insertCategoryIfNotExists(repository, "가전", "10000", "50,000");
-		insertCategoryIfNotExists(repository, "정리/보관", "0", "20,000");
-		insertCategoryIfNotExists(repository, "생활용품", "0", "10,000");
-		insertCategoryIfNotExists(repository, "소품/취미", "0", "10,000");
-	};
-}
+	@Bean
+	public CommandLineRunner loadData(CategoryRepository repository) {
+		return (args) -> {
+			insertCategoryIfNotExists(repository, "가구", "5000", "50,000");
+			insertCategoryIfNotExists(repository, "가전", "5000", "50,000");
+			insertCategoryIfNotExists(repository, "정리/보관", "0", "20,000");
+			insertCategoryIfNotExists(repository, "생활용품", "0", "10,000");
+			insertCategoryIfNotExists(repository, "소품/취미", "0", "10,000");
+		};
+	}
 
 	private void insertCategoryIfNotExists(CategoryRepository repository, String cname, String deliveryFee, String refund) {
 		if (!repository.existsByCname(cname)) {

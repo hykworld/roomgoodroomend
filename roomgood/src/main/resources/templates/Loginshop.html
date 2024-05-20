@@ -15,6 +15,22 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /*15일 추가*/
+        @font-face {
+            font-family: 'KCC-Hanbit';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: 'KCC-Hanbit' !important;
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'KCC-Hanbit';
+        }
+
+    </style>
 </head>
 <body style="padding-top: 0px;!important">
 <div class="header__top">
@@ -22,7 +38,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-7">
                 <div class="header__top__left">
-                    <a href="/index">자취방 살아남기</a>
+                    <a href="/index" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">관리자 페이지</a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-5">

@@ -29,101 +29,36 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /*15일 추가*/
+        @font-face {
+            font-family: 'KCC-Hanbit';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        *{
+            font-family: 'KCC-Hanbit';
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-family: 'KCC-Hanbit' ;
+        }
+        .Fixed{
+            position:fixed !important;
+            top:100px;
+            width: 360px;
+        }
+        .down_bottom{
+            margin-bottom:50px;
+        }
+    </style>
 </head>
 
 <body>
 
 
 <!-- Offcanvas Menu Begin -->
-<div class="offcanvas-menu-overlay"></div>
-<div class="offcanvas-menu-wrapper">
-    <div class="offcanvas__option">
-        <div class="offcanvas__links">
-            <a href="#">Sign in</a>
-            <a href="#">FAQs</a>
-        </div>
-        <div class="offcanvas__top__hover">
-            <span>Usd <i class="arrow_carrot-down"></i></span>
-            <ul>
-                <li>USD</li>
-                <li>EUR</li>
-                <li>USD</li>
-            </ul>
-        </div>
-    </div>
-    <div class="offcanvas__nav__option">
-        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-        <div class="price">$0.00</div>
-    </div>
-    <div id="mobile-menu-wrap"></div>
-    <div class="offcanvas__text">
-        <p>Free shipping, 30-day return or refund guarantee.</p>
-    </div>
-</div>
-<!-- Offcanvas Menu End -->
-
-<!-- Header Section Begin -->
-<header class="header">
-    <div class="header__top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-7">
-                    <div class="header__top__left">
-                        <p>Free shipping, 30-day return or refund guarantee.</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-5">
-                    <div class="header__top__right">
-                        <div class="header__top__links">
-                            <a href="/Loginshop">로그인</a>
-                            <a href="/mypage">마이페이지</a>
-                            <a href="/FAQ">고객센터</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3">
-                <div class="header__logo">
-                    <a href="/index"><img src="img/logo2.png" alt=""></a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <nav class="header__menu mobile-menu">
-                    <ul style="margin-top:30px;">
-                        <li><a href="/index">Home</a></li>
-                        <li class="active"><a href="/shop">Shop</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="/about">About Us</a></li>
-                                <li><a href="/shop-details">Shop Details</a></li>
-                                <li><a href="/shopping-cart">Shopping Cart</a></li>
-                                <li><a href="/checkout">Check Out</a></li>
-                                <li><a href="/blog-details">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/contact">Contacts</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <div class="header__nav__option" style="margin-top:30px">
-                    <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                    <a href="/wishlist"><img src="img/icon/heart.png" alt=""></a>
-                    <a href="/shopping-cart"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                    <div class="price"></div>
-                </div>
-            </div>
-        </div>
-        <div class="canvas__open"><i class="fa fa-bars"></i></div>
-    </div>
-</header>
+<div th:insert="~{header.html}"></div>
 <!-- Header Section End -->
 
 <!-- Breadcrumb Section Begin -->
@@ -155,15 +90,6 @@
                         <form action="/shopping-cart" mothod="get" id="productList">
 
                         </form>
-                        <!--                        <thead>-->
-                        <!--                        <tr>-->
-                        <!--                            <th>Product</th>-->
-                        <!--                            <th>Quantity</th>-->
-                        <!--                            <th>Total</th>-->
-                        <!--                            <th></th>-->
-                        <!--                        </tr>-->
-                        <!--                        </thead>-->
-                        <!----------------------------------------------------------------------------------------------------->
                         <thead>
                         <tr class="text-center">
                             <td style="width:13%;">
@@ -180,21 +106,29 @@
 
                         <!--           내가 하는거     ------------------------------------------------------------------>
 
-
-
-
                         <tr th:each="cartItem : ${cartItems}">
                             <td class="text-center align-middle">
+                                <!--                                <div>[[${cartItem}]]</div>-->
                                 <input type="checkbox" name="cartChkBox" th:value="${cartItem.id}">
                             </td>
                             <td style="display:flex">
                                 <img  th:src="|/display?fileName=${cartItem.product.images[0].pipath}/${cartItem.product.images[0].piuuid}_${cartItem.product.images[0].piimgName}|"
 
-                                     class="rounded repImg"
-                                     style="height:200px; width:200px; float:left; padding-bottom:30px; padding-top:30px; margin-right:30px">
+                                      class="rounded repImg"
+                                      style="height:200px; width:200px; float:left; padding-bottom:30px; padding-top:30px; margin-right:30px">
                                 <div style="width:230px; margin-right:30px; display:flex;">
                                     <div class="align-self-center" style="padding-top:21px; width:60%; padding-right:20px;">
                                         <span th:text="${cartItem.product.pname}" class="fs24 font-weight-bold" style="font-size:23px; font-weight:600px; margin-bottom:10px;"></span>
+                                        <br>
+                                        <span th:id="'deliveryFee_' + ${cartItem.product.categoryBig.deliveryFee}"
+                                              th:data-deliveryFee="${cartItem.product.categoryBig.deliveryFee}"
+                                              th:text="'배송료 : ' + (${cartItem.product.categoryBig.deliveryFee}) + '원'">
+                                        </span>
+                                        <br>
+                                        <span th:id="'discount_' + ${cartItem.product.discount}"
+                                              th:data-discount="${cartItem.product.discount}"
+                                              th:text="'할인율 : ' + (${cartItem.product.discount}) + '%'">
+                                        </span>
                                     </div>
                                     <div class="align-self-center" style="width:40%; padding-top:20px;">
                                     <span th:id="'price_' + ${cartItem.id}"th:data-price="${cartItem.product.price}" th:text="${cartItem.product.price} + '원'" class="align-self-center mr-2" style="font-weight:700; font-size:18px;">
@@ -213,38 +147,6 @@
                             </td>
                         </tr>
 
-
-
-                        <tr>
-                            <td class="text-center-align-low" style="height:300px; width:500px;">
-                                <div class="product-container">
-                                    <div class="product-image">
-                                        <a href="#">
-                                            <img src="img/soomin/profile.jpg"
-                                                 alt="" style="width:150px; height:150px;">
-                                        </a>
-                                    </div>
-
-                                    <div class="product-info">
-                                        <h1 class="product-title" style="font-size:20px;">Product Name</h1>
-
-                                        <div class="product-price">
-                                            <span class="price">₩10,000</span>
-                                            <span class="discount">-21%</span>
-                                        </div>
-
-                                        <div class="product-rating">
-                                            <span class="rating">4.7</span>
-                                            <span class="reviews">(80 reviews)</span>
-                                        </div>
-
-                                        <p class="product-description">
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
                         <!--------------------내가 하는거 끝!!!!!!!!!!!!!!!!------------------------------------------------------------->
                         </tbody>
                     </table>
@@ -258,22 +160,14 @@
 
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="cart__total">
+            <div class="col-lg-4" style="padding-left: 150px; height:300px; width:300px;">
+                <div class="cart__total" style="height: 250px; width:350px;">
                     <h6>Cart total</h6>
                     <ul>
 
 
-                        <li >총 할인금액 :</li>
-                        <li >총 배송비 :</li>
-                        <li >총 할인금액 :
-                            <span id="${discount}">0 원</span>
-                        </li>
-                        <li >총 배송비 :
-                            <span id="${deliveryFee}">0 원</span>
-                        </li>
                         <br>
-                        <li>총 결제금액 :
+                        <li>장바구니 상품금액 :
                             <span id="orderTotalPrice">0 원</span>
                         </li>
                     </ul>
@@ -310,10 +204,32 @@
 
                     <!--bootpay 설치-->
                     <!-- Js Plugins -->
-                    <button onclick="requestPayment()">결제하기</button> <!-- 버튼 클릭 시 결제 요청 함수 호출 -->
+                    <a style="display:block; width:100%; font-size:17px; line-height:20px; cursor:pointer; padding:15px 10px;
+                    touch-action: manipulation; border-radius: 25px; font-weight:bold;
+                    background-color:#35c5f0; border-color:#35c5f0; color:#fff;text-align:center;"
+                       href="/pay">결제하기
+                        <!--                    <a href="pay"></a>-->
+                    </a> <!-- 버튼 클릭 시 결제 요청 함수 호출 -->
                     <script src="https://js.bootpay.co.kr/bootpay-4.3.4.min.js" type="application/javascript"></script>
                     <!--bootpay 설치.end-->
 
+
+                    <script>
+                        var scrollbar = $(".cart__total").offset();
+
+                        $(window).scroll(function()
+                        {
+                            if ( $(document).scrollTop() > scrollbar.top )
+                            {
+                               $('.cart__total').addClass('Fixed');
+                            }
+                            else
+                            {
+                               $('.cart__total').removeClass('Fixed');
+                            }
+
+                        });
+                    </script>
                     <!-- jQuery -->
                 </div>
             </div>
@@ -323,11 +239,12 @@
 
 
 <!---------------------------------------------------------------------------------------------------------->
-<div>
-    <div style="margin-left:110px; margin-bottom:30px;  font-size:20px; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: bold;">다른 고객이 함께 구매한 상품</div>
-    <div class="row" style="height:400px; width:1100px; margin-left:100px;">
+<div class="down_bottom">
+    <!--    <div style="margin-left:400px; margin-bottom:30px;  font-size:20px; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: bold;">다른 고객이 함께 구매한 상품</div>-->
+    <div style="margin-left:400px; margin-bottom:30px;  font-size:20px;font-weight: bold;">다른 고객이 함께 구매한 상품</div>
+    <div class="row" style="height:400px; width:1300px; margin-left:300px;">
         <div class="col-lg-3 col-md-6 col-sm-6" th:each="dto,iterStat : ${result.dtoList}" th:if="${iterStat.index < 3}">
-            <div  class="product__item sale" style="width:330px;">
+            <div  class="product__item sale" style="width:330px; padding-left:100px;">
                 <a th:href="@{/shop-details(pno=${dto.pno},
             page=${result.page},
             type=${pageRequestDTO.type} ,
@@ -363,7 +280,7 @@
                     </div>
 
                     <div>
-                        <h5 id="price" th:text="${dto.price}"></h5>
+                        <h5 id="price" th:text="${dto.price} + ' 원'"></h5>
                         <h5 style="color: #35C5F0; text-align: left;">배송비 : [[${dto.categoryBig.deliveryFee}]]</h5>
                     </div>
 
@@ -447,9 +364,6 @@
         </div>
     </div>
 </footer>
-    <!-- Search End -->
-
-    <script>
 <!-- Search End -->
 
 <script>
@@ -513,6 +427,16 @@
             });
 
 
+
+        function checkAll() {
+            if ($("#checkall").prop("checked")) {
+                $("input[name=cartChkBox]").prop("checked", true);
+            } else {
+                $("input[name=cartChkBox]").prop("checked", false);
+            }
+            getOrderTotalPrice();
+        }
+
         function getOrderTotalPrice() {
             var orderTotalPrice = 0;
             $("input[name=cartChkBox]:checked").each(function () {
@@ -526,6 +450,17 @@
             $("#orderTotalPrice").html(orderTotalPrice + '원');
         }
 
+
+
+
+
+
+
+
+
+
+
+
         function changeCount(obj) {
             var count = obj.value;
             var cartItemId = obj.id.split('_')[1];
@@ -536,8 +471,6 @@
             getOrderTotalPrice();
             updateCartItemCount(cartItemId, count);
         }
-
-
 
 
         function updateCartItemCount(cartItemId, quantity) {
@@ -569,16 +502,6 @@
                 }
             });
         }
-
-        function checkAll() {
-            if ($("#checkall").prop("checked")) {
-                $("input[name=cartChkBox]").prop("checked", true);
-            } else {
-                $("input[name=cartChkBox]").prop("checked", false);
-            }
-            getOrderTotalPrice();
-        }
-
 
 
         function deleteCartItem(event, obj){
@@ -665,7 +588,33 @@
     </script>
 
 </th:block>
-<!—    —————————————————————————————————————————>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var priceElements = document.getElementsByClassName("price");
+        var originalPriceElements = document.getElementsByClassName("originalPrice");
+
+        for (var i = 0; i < priceElements.length; i++) {
+            var priceElement = priceElements[i];
+            var price = priceElement.textContent;
+            priceElement.textContent = formatNumberWithCommas(price) + '원';
+        }
+
+        for (var i = 0; i < originalPriceElements.length; i++) {
+            var originalPriceElement = originalPriceElements[i];
+            var originalPrice = originalPriceElement.textContent;
+            originalPriceElement.textContent = formatNumberWithCommas(originalPrice) + '원';
+        }
+    });
+
+    function formatNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
+
+
+
 
 <!—————————————————————————————————————————    <script src="js/pay.js"></script>—————————————————————————————————————————>
 <script src="js/jquery-3.3.1.min.js"></script>

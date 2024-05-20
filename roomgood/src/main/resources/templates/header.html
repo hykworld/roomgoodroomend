@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-7">
                     <div class="header__top__left header__top__links">
-                        <b><a href="/index">자취방 살아남기</a></b>
+                        <a href="/adminpage" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">관리자 페이지</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5">
@@ -59,15 +59,16 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="" style="margin-left:30px; margin-top:5px; height:90px">
-                    <a href="/index"><img src="img/logo2.png"  style="height:100%" alt=""></a>
+                    <a href="/index"><img src="/img/roomgood.png"  style="margin-top:5%;height:70%" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
-                <nav class="header__menu mobile-menu" style="padding-top:36px;">
+                <nav class="header__menu mobile-menu" style="padding-top:34px;">
                     <ul>
                         <li><a href="/shop">카테고리</a>
                             <ul class="dropdown">
-                                <li><a href="/shop?" style="background-color:gray;">전체보기</a></li>
+<!--                                <li><a href="/shop?" style="background-color:gray;">전체보기</a></li>-->
+                                <li><a href="/shop?">전체보기</a></li>
                                 <li><a href="/shop?cno=1">가구</a></li>
                                 <li><a href="/shop?cno=2">가전</a></li>
                                 <li><a href="/shop?cno=3">옷정리/보관</a></li>
@@ -79,7 +80,7 @@
 
                         <li><a href="/contact">딸기마켓</a></li>
                         <li ><a href="/blog">이벤트</a>
-                            <ul class="dropdown" th:if="${#authorization.expression('hasRole(''ROLE_VIP'')')}">
+                            <ul class="dropdown" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                                 <li><a href="/eventRegister">글등록</a></li>
                             </ul>
                         </li>
@@ -88,7 +89,7 @@
                 </nav>
             </div>
             <div class="col-lg-3 col-md-3">
-                <div class="header__nav__option">
+                <div class="header__nav__option" style="padding-top:34px;">
                     <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
                     <!--로그인 한 상태-->
                     <a href="/wishlist" sec:authorize="isAuthenticated()"><img src="img/icon/heart.png" alt=""></a>

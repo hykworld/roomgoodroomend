@@ -18,9 +18,14 @@ public class OrderDTO {
 
     @Builder.Default
     private List<OrderItemDTO> orderItemDTO = new ArrayList<>();//movieImage
-
+    private Long count;
     private Long price;
     private String regDate;// baseEntity
     private String modDate;// baseEntity
 
+    private String recipient; // 수령인
+    private String address;
+    private String phonenumber;
+    private String hopestring;
+    private String status;
 }

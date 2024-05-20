@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.awt.*;
 import java.util.Date;
 
 @Entity
@@ -24,7 +25,9 @@ public class Order1 extends BaseEntity {
 
     private Date desireddate; // 배송희망일
     private String recipient; // 수령인
-
+    private String address;
+    private String phonenumber;
+    private String hopestring;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
