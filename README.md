@@ -26,13 +26,3 @@
 - Thymeleaf 및 BootStrap으로 반응형 웹페이지 구현
 - Ajax + Json으로 댓글 등 비동기 처리
 
-📣담당역할
-
-- Project Manager
-- Spring Boot로 상품 CRUD 작성
-- 장바구니, 결제 구현 등
-- Ajax + Json으로 댓글 등 비동기 처리
-
-📣참여도/기여도
-
--참여도 : 100%, 기여도 : 70%
