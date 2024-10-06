@@ -27,3 +27,21 @@
 - Ajax + Json으로 댓글 등 비동기 처리
 
 ![image](https://github.com/user-attachments/assets/4b636344-7221-42e0-8325-bd9448d20fbc)
+
+![image](https://github.com/user-attachments/assets/25dcdf48-4cc4-446e-a3d3-e327aa9bdc7c)
+
+![image](https://github.com/user-attachments/assets/c64816b3-26df-4be7-bb6c-ecde38e4a592)
+
+![image](https://github.com/user-attachments/assets/fb6846f9-d4e8-4dda-aafc-b46967bc07ac)
+
+![image](https://github.com/user-attachments/assets/67f6f169-48c9-4936-80af-393042358938)
+
+![image](https://github.com/user-attachments/assets/d5e8caba-b4b6-4398-9d22-16a3c071410a)
+
+![image](https://github.com/user-attachments/assets/58239141-da97-4f59-bf9a-07b740bfe3be)
+
+![image](https://github.com/user-attachments/assets/ccb9b614-6b1b-4c19-9b09-8215d4a1fc3c)
+
+![image](https://github.com/user-attachments/assets/091c19de-8aba-4ece-ac0a-5502c6360d7a)
+
+
