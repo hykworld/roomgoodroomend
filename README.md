@@ -26,6 +26,9 @@
 - Thymeleaf 및 BootStrap으로 반응형 웹페이지 구현
 - Ajax + Json으로 댓글 등 비동기 처리
 
+📣시연 영상 주소
+https://www.youtube.com/watch?v=njwmYqBfsG8
+
 ![image](https://github.com/user-attachments/assets/4b636344-7221-42e0-8325-bd9448d20fbc)
 
 ![image](https://github.com/user-attachments/assets/25dcdf48-4cc4-446e-a3d3-e327aa9bdc7c)
